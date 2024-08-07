@@ -27,7 +27,7 @@ import numpy as np
 
 from languia.block_conversation import (
     # TODO: to import/replace State and bot_response?
-    ConversationState,      
+    # ConversationState,      
     bot_response,
 )
 
@@ -39,9 +39,31 @@ def register_listeners():
 
     # Step -1
     
-    # @demo.load(inputs=[], outputs=[],api_name=False)
-    # def init_models(request: gr.Request):
-    #     logger.info("Logged")
+    @demo.load(inputs=[], outputs=[app_state],api_name=False)
+    def init_models(request: gr.Request):
+        # logger.info(str(app_state))
+        
+        # Editing it directly
+        app_state.model_left, app_state.model_right = get_battle_pair(
+                config.models,  
+                BATTLE_TARGETS,
+                outage_models,
+                SAMPLING_WEIGHTS,
+                SAMPLING_BOOST_MODELS,
+            )
+        # got_battle_pair_already = True
+        logger.info("Picked 2 models: " + app_state.model_left + " and " + app_state.model_right)
+        #     conversations_state = [
+        #         # NOTE: replacement of gr.State() to ConversationState happens here
+        #         ConversationState(model_name=model_left),
+        #         ConversationState(model_name=model_right),
+        #     ]
+        #     # TODO: test here if models answer?
+
+        # model_list = [
+        #     conversations_state[i].model_name for i in range(config.num_sides)
+        # ]
+        return
 
     # Step 0
 
@@ -177,8 +199,8 @@ def register_listeners():
             return gr.update(interactive=True)
 
     def add_text(
-        state0: gr.State,
-        state1: gr.State,
+        chatbot0: gr.Chatbot,
+        chatbot1: gr.Chatbot,
         text: gr.Text,
         request: gr.Request,
     ):
@@ -189,89 +211,33 @@ def register_listeners():
             # f"add_text. len: {len(text)}",
             extra={"request": request, "prompt": text},
         )
-        conversations_state = [state0, state1]
 
-        # TODO: refacto and put init apart
-        # Init conversations_state if necessary
-        is_conversations_state = hasattr(conversations_state[0], "model_name")
-        got_battle_pair_already = False
-        if is_conversations_state:
-            if conversations_state[0].model_name != "":
-                got_battle_pair_already = True
-
-        if not got_battle_pair_already:
-            # assert conversations_state[1] is None
-            logger.info("outage_models:  " + " ".join(outage_models))
-            model_left, model_right = get_battle_pair(
-                config.models,
-                BATTLE_TARGETS,
-                outage_models,
-                SAMPLING_WEIGHTS,
-                SAMPLING_BOOST_MODELS,
-            )
-            logger.info("Picked 2 models: " + model_left + " and " + model_right)
-            conversations_state = [
-                # NOTE: replacement of gr.State() to ConversationState happens here
-                ConversationState(model_name=model_left),
-                ConversationState(model_name=model_right),
-            ]
-            # TODO: test here if models answer?
-
-        model_list = [
-            conversations_state[i].model_name for i in range(config.num_sides)
-        ]
-        # all_conv_text_left = conversations_state[0].conv.get_prompt()
-        # all_conv_text_right = conversations_state[1].conv.get_prompt()
-        # all_conv_text = (
-        #     all_conv_text_left[-1000:] + all_conv_text_right[-1000:] + "\nuser: " + text
-        # )
-        # TODO: turn on moderation in battle mode
+        got_battle_pair_already = True
+        # FIXME: turn on moderation in battle mode
         # flagged = moderation_filter(all_conv_text, model_list, do_moderation=False)
         # if flagged:
         #     logger.info(f"violate moderation (anony). ip: {ip}. text: {text}")
         #     # overwrite the original text
         #     text = MODERATION_MSG
-
-        # conv = conversations_state[0].conv
+       # FIXME: fix ratelimiting / turn limit
         # if (len(conv.messages) - conv.offset) // 2 >= CONVERSATION_TURN_LIMIT:
-        #     logger.info(f"conversation turn limit. ip: {get_ip(request)}. text: {text}")
-        #     for i in range(config.num_sides):
-        #         conversations_state[i].skip_next = True
-        #         # FIXME: fix return value
-        #     return (
-        #         # 2 conversations_state
-        #         conversations_state
-        #         # 2 chatbots
-        #         + [x.to_gradio_chatbot() for x in conversations_state]
-        #         # text
-        #         # + [CONVERSATION_LIMIT_MSG]
-        #         # + [gr.update(visible=True)]
-        #     )
 
         text = text[:BLIND_MODE_INPUT_CHAR_LEN_LIMIT]  # Hard cut-off
         # TODO: what do?
 
-        for i in range(config.num_sides):
-            conversations_state[i].conv.append_message(
-                conversations_state[i].conv.roles[0], text
-            )
-            # TODO: Empty assistant message is needed to show user's first question but why??
-            conversations_state[i].conv.append_message(
-                conversations_state[i].conv.roles[1], None
-            )
-            conversations_state[i].skip_next = False
+        msg = gr.ChatMessage(role="user", content=text)
+        for i in [0, 1]:
+            chatbots[i].append(msg)
+            # Empty assistant message is needed to show user's first question but why??
+            chatbots[i].append(gr.ChatMessage(role="assistant", content=""))
 
         return (
-            # 2 conversations_state
-            conversations_state
-            # 2 chatbots
-            + [x.to_gradio_chatbot() for x in conversations_state]
+            chatbots
         )
 
-    # TODO: move this
     def bot_response_multi(
-        state0,
-        state1,
+        chatbot0,
+        chatbot1,
         temperature,
         top_p,
         max_new_tokens,
@@ -281,14 +247,15 @@ def register_listeners():
             f"bot_response_multi: {get_ip(request)}",
             extra={"request": request},
         )
-
-        conversations_state = [state0, state1]
+        chatbots = [chatbot0, chatbot1]
 
         gen = []
-        for i in range(config.num_sides):
+        model_name = [app_state.model_left, app_state.model_right] 
+        for i in [0,1]:
             gen.append(
                 bot_response(
-                    conversations_state[i],
+                    chatbots[i],
+                    model_name[i],
                     temperature,
                     top_p,
                     max_new_tokens,
@@ -298,21 +265,21 @@ def register_listeners():
                 )
             )
 
-        is_stream_batch = []
-        for i in range(config.num_sides):
-            is_stream_batch.append(
-                conversations_state[i].model_name
-                in [
-                    "gemini-pro",
-                    "gemini-pro-dev-api",
-                    "gemini-1.0-pro-vision",
-                    "gemini-1.5-pro",
-                    "gemini-1.5-flash",
-                    "gemma-1.1-2b-it",
-                    "gemma-1.1-7b-it",
-                ]
-            )
-        chatbots = [None] * config.num_sides
+        # is_stream_batch = []
+        # for i in range(config.num_sides):
+        #     is_stream_batch.append(
+        #         conversations_state[i].model_name
+        #         in [
+        #             "gemini-pro",
+        #             "gemini-pro-dev-api",
+        #             "gemini-1.0-pro-vision",
+        #             "gemini-1.5-pro",
+        #             "gemini-1.5-flash",
+        #             "gemma-1.1-2b-it",
+        #             "gemma-1.1-7b-it",
+        #         ]
+        #     )
+        # chatbots = [None] * config.num_sides
         iters = 0
         while True:
             stop = True
@@ -321,18 +288,19 @@ def register_listeners():
                 try:
                     # yield gemini fewer times as its chunk size is larger
                     # otherwise, gemini will stream too fast
-                    if not is_stream_batch[i] or (iters % 30 == 1 or iters < 3):
-                        ret = next(gen[i])
-                        conversations_state[i], chatbots[i] = ret[0], ret[1]
+                    # if not is_stream_batch[i] or (iters % 30 == 1 or iters < 3):
+                    ret = next(gen[i])
+                    chatbots[i] = ret[0]
+                    # conversations_state[i], chatbots[i] = ret[0], ret[1]
                     stop = False
                 except StopIteration:
                     pass
                 except Exception as e:
                     logger.error(
-                        f"Problem with generating model {conversations_state[i].model_name}. Adding to outcasts list and re-rolling.",
+                        f"Problem with generating model {model_name[i]}. Adding to outcasts list and re-rolling.",
                         extra={"request": request},
                     )
-                    outage_models.append(conversations_state[i].model_name)
+                    outage_models.append(model_name[i])
                     logger.error(str(e), extra={"request": request})
                     logger.error(traceback.format_exc(), extra={"request": request})
                     gr.Warning(
@@ -358,13 +326,11 @@ def register_listeners():
 
                     # print("conversations_state[0]:" + str(conversations_state[0].conv))
                     return (
-                        state0,
-                        state1,
                         chatbots[0],
                         chatbots[1],
                     )
 
-            yield conversations_state + chatbots
+            yield chatbots
             if stop:
                 break
 
@@ -397,7 +363,7 @@ def register_listeners():
             + [gr.update(visible=True, interactive=True)]
         )
 
-    def check_answers(state0, state1, request: gr.Request):
+    def check_answers(chatbot0, chatbot1, request: gr.Request):
         # Not set to none at all :'(
         # print(str(state0.conv_id))
         # print(str(state1.conv_id))
@@ -406,40 +372,40 @@ def register_listeners():
             extra={"request": request},
         )
 
-        if hasattr(app_state, "original_user_prompt"):
-            if app_state.original_user_prompt != False:
-                logger.info(
-                    "model crash detected, keeping prompt",
-                    extra={"request": request},
-                )
-                original_user_prompt = app_state.original_user_prompt
-                app_state.original_user_prompt = False
-                # TODO: reroll here
-                state0 = gr.State()
-                state1 = gr.State()
-                # state0 = ConversationState()
-                # state1 = ConversationState()
+        # if hasattr(app_state, "original_user_prompt"):
+        #     if app_state.original_user_prompt != False:
+        #         logger.info(
+        #             "model crash detected, keeping prompt",
+        #             extra={"request": request},
+        #         )
+        #         original_user_prompt = app_state.original_user_prompt
+        #         app_state.original_user_prompt = False
+        #         # TODO: reroll here
+        #         state0 = gr.State()
+        #         state1 = gr.State()
+        #         # state0 = ConversationState()
+        #         # state1 = ConversationState()
 
-                logger.info(
-                    "submitting original prompt",
-                    extra={"request": request},
-                )
-                textbox.value = original_user_prompt
+        #         logger.info(
+        #             "submitting original prompt",
+        #             extra={"request": request},
+        #         )
+        #         textbox.value = original_user_prompt
 
-                logger.info(
-                    "original prompt sent",
-                    extra={"request": request},
-                )
-                return (
-                    [state0]
-                    + [state1]
-                    # chatbots
-                    + [""]
-                    + [""]
-                    # disable conclude btn
-                    + [gr.update(interactive=False)]
-                    + [original_user_prompt]
-                )
+        #         logger.info(
+        #             "original prompt sent",
+        #             extra={"request": request},
+        #         )
+        #         return (
+        #             [state0]
+        #             + [state1]
+        #             # chatbots
+        #             + [""]
+        #             + [""]
+        #             # disable conclude btn
+        #             + [gr.update(interactive=False)]
+        #             + [original_user_prompt]
+        #         )
 
         # enable conclude_btn
         # TODO: log answers here?
@@ -450,8 +416,8 @@ def register_listeners():
 
         extra = ({"request": request},)
         return (
-            [state0]
-            + [state1]
+            # [state0]
+            # + [state1]
             + chatbots
             + [gr.update(interactive=True)]
             + [textbox]
@@ -461,9 +427,8 @@ def register_listeners():
         triggers=[textbox.submit, send_btn.click],
         fn=add_text,
         api_name=False,
-        inputs=conversations_state + [textbox],
-        # inputs=conversations_state + model_selectors + [textbox],
-        outputs=conversations_state + chatbots,
+        inputs=chatbots + [textbox],
+        outputs=chatbots,
     ).then(
         fn=goto_chatbot,
         inputs=[],
@@ -478,14 +443,14 @@ def register_listeners():
         ),
     ).then(
         fn=bot_response_multi,
-        inputs=conversations_state + [temperature, top_p, max_output_tokens],
-        outputs=conversations_state + chatbots,
+        inputs=chatbots + [temperature, top_p, max_output_tokens],
+        outputs=chatbots,
         api_name=False,
         # should do .success()
     ).then(
         fn=check_answers,
-        inputs=conversations_state,
-        outputs=conversations_state + chatbots + [conclude_btn] + [textbox],
+        inputs=chatbots,
+        outputs=chatbots + [conclude_btn] + [textbox],
         api_name=False,
         
     )
