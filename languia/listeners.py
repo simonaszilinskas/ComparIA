@@ -651,6 +651,21 @@ revealScreen.scrollIntoView({
 }""",
     )
 
+    @model_selector_a.change(inputs=[model_selector_a, conv_a],
+        outputs=[conv_a],
+        api_name=False,
+        show_progress="hidden",
+    )
+    @model_selector_b.change(inputs=[model_selector_b, conv_b],
+        outputs=[conv_b],
+        api_name=False,
+        show_progress="hidden",
+    )
+    def change_model(model_name, state):
+        state.model_name = model_name
+        return state
+
+
     # gr.on(
     #     triggers=retry_modal_btn.click,
     #     fn=(lambda: Modal(visible=True)),

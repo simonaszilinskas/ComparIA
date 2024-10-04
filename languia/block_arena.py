@@ -55,26 +55,13 @@ with gr.Blocks(
     # delete_cache=(1, 1) if config.debug else None,
 ) as demo:
 
-
-        # def set_conv_state(state, model_name=""):
-        #     # self.messages = get_conversation_template(model_name)
-        #     state.messages = []
-        #     state.output_tokens = None
-
-        #     # TODO: get it from api if generated
-        #     state.conv_id = uuid.uuid4().hex
-
-        #     # TODO: add template info? and test it
-        #     state.template_name = "zero_shot"
-        #     state.template = []
-        #     state.model_name = model_name
-        #     return state
-
     app_state = gr.State(value=AppState())
 
     conv_a = gr.State(value=Conversation())
     conv_b = gr.State(value=Conversation())
-    # model_selectors = [None] * num_sides
+
+    model_selector_a = gr.Textbox()
+    model_selector_b = gr.Textbox()
 
     # TODO: check cookies on load!
     # tos_cookie = check_for_tos_cookie(request)
