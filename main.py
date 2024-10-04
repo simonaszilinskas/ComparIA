@@ -126,6 +126,14 @@ async def accessibility(request: Request):
     )
 
 
+@app.get("/contact", response_class=HTMLResponse)
+async def contact(request: Request):
+    return templates.TemplateResponse(
+        "contact-modal.html",
+        {"request": request, "config": config},
+    )
+
+
 @app.exception_handler(500)
 async def http_exception_handler(request, exc):
     return FileResponse("templates/50x.html", status_code=500)
