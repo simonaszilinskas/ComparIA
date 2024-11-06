@@ -13,6 +13,7 @@ from languia.utils import ContextTooLongError, EmptyResponseError
 
 import openai
 
+
 def openai_stream(
     messages,
     model_api_dict,
@@ -54,12 +55,13 @@ def openai_stream(
     client = openai.OpenAI(
         base_url=api_base,
         api_key=api_key,
-        #         timeout=WORKER_API_TIMEOUT,
-        timeout=5,
         # max_retries=
+        #         timeout=WORKER_API_TIMEOUT,
+        # timeout=5,
+        #     timeout=httpx.Timeout(5, read=5, write=5, connect=2
+        # )
     )
-
-    #
+    
     response = client.chat.completions.create(
         model=model_name,
         messages=messages_dict,
@@ -70,6 +72,8 @@ def openai_stream(
         # Not available like this
         # top_p=top_p,
     )
+    # print(response.response.__dict__)
+    # response = response.parse()
 
     text = ""
     logger = logging.getLogger("languia")
@@ -128,5 +132,6 @@ def openai_stream(
             # buffer_output_tokens = 0
 
             yield data
-
+    # else:
+        # raise Empty
     yield data
