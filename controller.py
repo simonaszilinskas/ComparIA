@@ -7,7 +7,7 @@ import logging
 from fastapi.templating import Jinja2Templates
 import traceback
 
-from languia.api_provider import get_api_provider_stream_iter
+from languia.api_provider import openai_stream
 
 from gradio import ChatMessage
 
@@ -92,7 +92,7 @@ def test_endpoint(api_id):
     try:
         endpoint = get_endpoint(api_id)
 
-        stream_iter = get_api_provider_stream_iter(
+        stream_iter = openai_stream(
             [ChatMessage(role="user", content="ONLY say 'this is a test'.")],
             endpoint,
             temperature,
