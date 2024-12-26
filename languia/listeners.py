@@ -324,6 +324,7 @@ document.getElementById("fr-modal-welcome-close").blur();
     ):
         conversations = [conv_a_scoped, conv_b_scoped]
         pos = ["a", "b"]
+        i = 0
         try:
             gen = [
                 bot_response(
