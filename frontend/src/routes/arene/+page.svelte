@@ -5,6 +5,7 @@
   import { fetchAndSolve } from '$lib/captcha.svelte'
   import { getComparison, initComparisonsContext } from '$lib/chatService.svelte'
   import { m } from '$lib/i18n/messages'
+  import MedicalDisclaimer from '$components/MedicalDisclaimer.svelte'
   import { TOSModal, ViewChat, ViewPrompt } from './components'
 
   // TODO query user comparisons
@@ -38,6 +39,8 @@
   showHelpLink={showInitialPrompt}
   small
 />
+
+<MedicalDisclaimer kind="banner" />
 
 {#if comparator.status === 'revealed'}
   <div

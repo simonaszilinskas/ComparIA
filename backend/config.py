@@ -28,6 +28,7 @@ class Settings(BaseSettings):
     ALBERT_KEY: str | None = None
     HF_INFERENCE_KEY: str | None = None
     ORDBOGEN_API_KEY: str | None = None
+    SCALEWAY_API_KEY: str | None = None
     HF_PUSH_DATASET_KEY: str = ""
     HF_PUSH_DATASET_PATH: str = ""
 
@@ -62,6 +63,11 @@ GLOBAL_TIMEOUT = Timeout(15.0, read=15.0, write=5.0, connect=15.0)
 STREAM_TIMEOUT = 30
 ORDBOGEN_GLOBAL_TIMEOUT = Timeout(60.0, read=60.0, write=5.0, connect=15.0)
 ORDBOGEN_STREAM_TIMEOUT = 60
+# Scaleway hosts some very large MoE models (200B+) whose first token can take a
+# while, so we give it the same extended budget as Ordbogen rather than the
+# default 15s.
+SCALEWAY_GLOBAL_TIMEOUT = Timeout(60.0, read=60.0, write=5.0, connect=15.0)
+SCALEWAY_STREAM_TIMEOUT = 60
 
 # Preferences
 PositivePref = Literal["useful", "complete", "creative", "clear_formatting"]

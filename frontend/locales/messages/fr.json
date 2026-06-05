@@ -158,8 +158,8 @@
                     "title": "Les données de préférence ont-elles un effet immédiat pour améliorer les modèles?"
                 },
                 "2": {
-                    "desc": "<p>La spécificité des données collectées sur la plateforme compar:IA est qu’elles sont en français et qu’elles correspondent à des tâches réelles des utilisateurs. Ces données reflètent des préférences humaines dans un contexte linguistique et culturel précis. Elles permettent dans un second temps d'ajuster les modèles pour qu’ils soient plus pertinents, précis et adaptés aux usages des utilisateurs, tout en comblant les éventuels biais ou lacunes des modèles actuels.</p>",
-                    "title": "Pourquoi les données de préférence collectées sur compar:IA ont-elles de la valeur ?"
+                    "desc": "<p>Les données collectées sur compar:IA santé correspondent à des tâches réelles de professionnels de santé. Elles reflètent des préférences humaines dans un contexte d’usage précis et permettent, après anonymisation, d’évaluer et d’ajuster les modèles pour qu’ils soient plus pertinents et plus fiables sur les usages du secteur de la santé, tout en mettant en évidence leurs biais et leurs limites.</p>",
+                    "title": "Pourquoi les données de préférence collectées sur compar:IA santé ont-elles de la valeur ?"
                 },
                 "3": {
                     "desc": "<p>compar:IA se positionne comme un outil d'évaluation et d'alignement spécifique au français, axé sur la qualité des réponses et la collecte de données de préférence, se distinguant ainsi de l'approche de classement global de <a href='https://lmarena.ai/' target='_blank'>chatbot arena</a> développé par <a href='http://lmsys.org' target='_blank'>lmsys.org</a> et de l'alignement éthique des modèles d’IA de <a href='https://hannahkirk.github.io/prism-alignment/' target='_blank'>Prism Alignment Project</a>.</p>",
@@ -252,6 +252,18 @@
                 }
             },
             "title": "Usage"
+        },
+        "sante": {
+            "questions": {
+                "1": {
+                    "title": "Puis-je utiliser les réponses des IA pour une décision médicale ?",
+                    "desc": "<p><strong>Non.</strong> compar:IA santé est un outil expérimental d’évaluation et de comparaison. Les réponses générées par les modèles peuvent être incomplètes, erronées ou périmées : elles ne constituent pas un avis médical et ne remplacent ni l’expertise d’un professionnel de santé, ni les recommandations en vigueur. Toute information doit être vérifiée au regard des sources de référence et de votre jugement clinique avant tout usage.</p>"
+                },
+                "2": {
+                    "title": "Puis-je saisir des données de patients ou des informations sensibles ?",
+                    "desc": "<p><strong>Non.</strong> Ne saisissez aucune donnée sensible ni aucune information permettant d’identifier un patient (nom, date de naissance, numéro de sécurité sociale, etc.). Les échanges sont partagés à des fins de recherche et publiés sous forme de jeux de données après anonymisation : ils ne doivent jamais contenir de données personnelles de santé.</p>"
+                }
+            }
         }
     },
     "footer": {
@@ -1205,6 +1217,11 @@
                 "fyi": "<p>Ce modèle a été conçu pour offrir des performances solides à un coût inférieur à celui des modèles propriétaires ou semi-ouverts. Une attention particulière a été portée aux données d’usage professionnel pendant son entraînement. Il est particulièrement bon en comparaison à d’autres modèles de taille similaire à générer du code et réaliser des tâches mathématiques.</p>\n<p>Ce modèle a servi de base pour entraîner Magistral Medium - un modèle de raisonnement.</p>",
                 "size_desc": "<p>La taille exacte du modèle n’est pas connue. Des indices laissent penser qu’il s’agit d’un modèle de grande taille, nécessitant au moins plusieurs cartes graphiques puissantes pour fonctionner. Les estimations disponibles s’appuient sur des indices indirects comme les coûts d'inférence et la latence de réponse.</p>\n<p>Il dispose d’une fenêtre de contexte allant jusqu’à 128 000 jetons, utile pour l’analyse de longs documents.</p>"
             },
+            "Mistral Medium 3.5": {
+                "desc": "<p>Nouvelle version du modèle de taille moyenne de Mistral AI, multilingue et multimodal. Mistral Medium 3.5 vise à offrir des performances proches des grands modèles propriétaires pour un coût d'inférence nettement inférieur, avec des améliorations sur le suivi d'instructions, la génération de code et la recherche d'informations.</p>",
+                "fyi": "<p>Mistral Medium 3.5 succède à Mistral Medium 3.1 (août 2025) dans la gamme de taille moyenne de Mistral AI. Comme les versions précédentes, ce modèle propriétaire est accessible uniquement par API et privilégie un bon rapport entre performance et coût plutôt que la course à la taille. Une attention particulière est portée aux usages professionnels lors de son entraînement, avec de bonnes performances en programmation et en raisonnement mathématique par rapport aux modèles de taille comparable.</p>",
+                "size_desc": "<p>Le nom du modèle indique une taille d'environ 128 milliards de paramètres, ce qui le place dans la catégorie des grands modèles nécessitant plusieurs cartes graphiques puissantes pour fonctionner. Il dispose d'une fenêtre de contexte allant jusqu'à 128 000 jetons, utile pour l'analyse de longs documents.</p>"
+            },
             "Mistral Nemo": {
                 "desc": "<p>Optimisé pour un temps de réaction rapide, ce modèle est idéal pour des applications nécessitant des réponses immédiates et peut supporter un contexte de 128k tokens en plus de 100 langues. Sorti en juillet 2024.</p>",
                 "fyi": "<p>Sorti en juillet 2024, ce modèle de petit gabarit est entraîné pour des tâches de raisonnement, de connaissances générales et de programmation. Il utilise le tokenizer Tekken, efficace pour compresser des textes allant jusqu’à 128 000 tokens en plus de 100 langues.</p>",
@@ -1315,6 +1332,11 @@
                 "fyi": "<p>Ce modèle a été entraîné sur 5.5 bilions de jetons et plus de 92 langages de programmation, y compris des langages de code spécialisés comme Haskell ou Racket. </p>\n<p>Grâce à ses performances en code, il est  capable de bien gérer les appels à des outils externes, ce qui est utile pour des usages agentiques.</p>",
                 "size_desc": "<p>Avec 32 milliards de paramètres, ce modèle appartient à la catégorie des modèles de taille moyenne. Il peut fonctionner sur un serveur équipé d’une seule carte graphique puissante, ce qui limite les coûts d’infrastructure.</p>\n<p>Sa fenêtre de contexte de 128 000 jetons permet de traiter de longs documents.</p>"
             },
+            "Qwen 3 235B A22B": {
+                "desc": "<p>Très grand modèle de la génération Qwen3, dans sa variante « Instruct » non-raisonnante de juillet 2025. Grâce à une architecture de mélange d'experts (MoE, Mixture of Experts), il n'active que 22 milliards de paramètres sur 235 milliards au total, ce qui en fait un modèle polyvalent et multilingue adapté aux tâches courantes comme la rédaction, le résumé ou les questions-réponses.</p>",
+                "fyi": "<p>Publié par Alibaba en juillet 2025 sous licence Apache 2.0, Qwen3-235B-A22B-Instruct-2507 est la version « Instruct » non-raisonnante de la famille Qwen3 (une variante « Thinking » distincte est proposée séparément). Le modèle compte 128 experts au total, dont 8 sont activés par jeton. Il prend en charge plus de 100 langues et dialectes et a bénéficié d'un post-entraînement orienté vers le suivi d'instructions, l'usage d'outils et les tâches agentiques. Cette mise à jour 2507 améliore notablement la couverture des connaissances, le raisonnement mathématique et la génération de code par rapport à la version initiale d'avril 2025.</p>",
+                "size_desc": "<p>Avec 235 milliards de paramètres au total, ce modèle appartient à la catégorie des très grands modèles et nécessite plusieurs cartes graphiques puissantes pour fonctionner. L'architecture de mélange d'experts (MoE, Mixture of Experts) ne mobilise toutefois que 22 milliards de paramètres par jeton généré, ce qui réduit le coût d'inférence par rapport à un modèle dense de taille équivalente. Sa fenêtre de contexte native atteint 262 144 jetons et peut être étendue jusqu'à environ 1 million grâce à des techniques d'extrapolation (YaRN), ce qui convient à l'analyse de longs documents.</p>"
+            },
             "Qwen 3 30B A3B": {
                 "desc": "<p>Modèle de taille moyenne multilingue.</p>",
                 "fyi": "<p>Ce modèle MoE (Mixture of Experts) se distingue par une configuration de 128 experts au total, avec seulement 8 experts activés par jeton, ce qui permet une inférence plus rapide et plus efficace. Il utilise un système appelé <em>global-batch</em> pour optimiser la répartition du travail entre les experts, afin qu'ils soient tous utilisés de manière équilibrée.</p>\n<p>Contrairement à d'autres modèles comme Qwen 2.5-MoE qui recyclent les mêmes experts à travers plusieurs couches du réseau, Qwen 3 30B A2B attribue des experts uniques à chaque couche. Concrètement, cela signifie que les experts de la première couche ne sont jamais réutilisés dans les couches suivantes - chaque niveau du modèle dispose de son propre ensemble d'experts spécialisés. Cette architecture permet à chaque expert de se concentrer exclusivement sur les tâches spécifiques à sa position dans le réseau neuronal, résultant en une spécialisation plus fine et des performances optimisées pour chaque étape du traitement de l'information.</p>",
@@ -1344,6 +1366,11 @@
                 "desc": "<p>Très grand modèle multimodal et multilingue doté d'un mode de raisonnement. Grâce à une architecture hybride combinant attention linéaire (Gated DeltaNet) et mélange d'experts, il n'active que 17 milliards de paramètres sur 397 milliards au total.</p>",
                 "fyi": "<p>Ce modèle repose sur une architecture hybride innovante combinant Gated DeltaNet (attention linéaire) et attention classique avec un mélange d'experts ultra-sparse : 512 experts au total, dont seulement 10 routés et 1 partagé sont activés par jeton. Le réseau compte 60 couches organisées en blocs de 4 : 3 couches Gated DeltaNet suivies d'1 couche d'attention classique, chacune associée à un module MoE. Cette conception réduit considérablement le coût d'inférence tout en préservant la capacité du modèle sur les tâches de raisonnement complexes.</p>\n<p>Qwen 3.5 est nativement multimodal, entraîné en fusion précoce (early fusion) sur des billions de jetons multimodaux (texte et images). Il prend en charge 201 langues et dialectes. Le post-entraînement fait appel à un apprentissage par renforcement à grande échelle, déployé sur des environnements massivement parallèles (million-agent environments), avec des distributions de tâches de complexité progressive. L'infrastructure d'entraînement utilise un pipeline FP8 et un cadre d'apprentissage par renforcement asynchrone pour optimiser l'efficacité.</p>",
                 "size_desc": "<p>Avec 397 milliards de paramètres, Qwen 3.5 est un modèle de très grande taille, nécessitant plusieurs cartes graphiques puissantes pour fonctionner. L'architecture de mélange d'experts (MoE, Mixture of Experts) permet néanmoins de n'activer que 17 milliards de paramètres par jeton généré, ce qui réduit l'empreinte par rapport à un modèle dense de même taille. La fenêtre de contexte native atteint 262 144 jetons et peut être étendue jusqu'à environ 1 million grâce à des techniques d'extrapolation (YaRN). Les modèles de raisonnement de ce type fonctionnent plus longtemps pour produire une réponse, ce qui augmente la consommation énergétique.</p>"
+            },
+            "Qwen 3.6 35B A3B": {
+                "desc": "<p>Modèle de taille moyenne multimodal, multilingue et doté d'un mode de raisonnement, issu de la génération Qwen 3.6. Comme la version 3.5 dont il reprend l'architecture ultra-sparse, il n'active qu'une petite fraction de ses paramètres à chaque jeton, ce qui lui permet de rivaliser avec des modèles bien plus volumineux tout en restant exécutable sur du matériel grand public haut de gamme.</p>",
+                "fyi": "<p>Qwen 3.6 35B A3B prolonge l'architecture hybride introduite avec Qwen 3.5, qui combine attention linéaire (Gated DeltaNet) et attention classique avec un routage de mélange d'experts (MoE, Mixture of Experts) ultra-sparse. Nativement multimodal, il est entraîné sur des jetons mêlant texte, images et vidéos, et prend en charge plus de 200 langues et dialectes. Cette génération 3.6 vise des gains de stabilité et de précision sur le suivi d'instructions et les tâches de raisonnement par rapport à la série 3.5, à budget de calcul comparable.</p>",
+                "size_desc": "<p>Avec 35 milliards de paramètres au total, Qwen 3.6 35B A3B est un modèle de taille moyenne, mais son architecture de mélange d'experts (MoE, Mixture of Experts) ne mobilise que 3 milliards de paramètres par jeton généré, ce qui réduit fortement les besoins en puissance de calcul. La fenêtre de contexte native atteint 262 144 jetons et peut être étendue jusqu'à environ 1 million grâce à des techniques d'extrapolation (YaRN). Les modèles de raisonnement de ce type fonctionnent plus longtemps pour produire une réponse, ce qui augmente la consommation énergétique.</p>"
             },
             "Qwen 3.6 Plus": {
                 "desc": "<p>Modèle phare de la nouvelle génération Qwen 3.6, conçu par Alibaba autour de l'« agentic coding » : il sait décomposer un projet de programmation, écrire le code, le tester et corriger ses propres erreurs jusqu'à aboutir à un résultat fonctionnel. Il se distingue aussi par une très grande fenêtre de contexte, qui lui permet d'ingérer des bases de code ou des corpus documentaires entiers. C'est l'un des rares modèles propriétaires publiés par Qwen, qui sort habituellement beaucoup de modèles en poids ouverts.</p>",
@@ -1433,12 +1460,12 @@
                 "title": "Donner mon avis sur le comparateur - ouvre une nouvelle fenêtre"
             }
         },
-        "homeTitle": "Accueil - compar:IA",
+        "homeTitle": "Accueil - compar:IA santé",
         "logoAlt": "République Française",
         "menu": "Menu",
         "startDiscussion": "Commencer à discuter",
-        "subtitle": "Le comparateur d’IA conversationnelles",
-        "title": "compar:IA",
+        "subtitle": "Le comparateur d’IA pour les professionnels de santé",
+        "title": "compar:IA santé",
         "votes": {
             "count": "{count} votes",
             "legend": "Légende",
@@ -1463,7 +1490,7 @@
             "title": "Vos questions les plus courantes"
         },
         "intro": {
-            "desc": "Discutez avec deux IA à l’aveugle et évaluez leurs réponses",
+            "desc": "Comparez deux IA à l’aveugle pour vos usages professionnels en santé et évaluez leurs réponses",
             "steps": {
                 "a11yDesc": "1. Je discute avec deux IA anonymes : échangez aussi longtemps que vous le souhaitez. 2. Je donne mon avis : vous contribuez ainsi à l'amélioration des modèles d’IA. 3. Les modèles sont démasqués : apprenez-en plus sur les modèles d’IA et leurs caractéristiques.",
                 "one": {
@@ -1484,7 +1511,7 @@
             "tos": {
                 "accept": "J'accepte les <a {linkProps}>conditions générales d’utilisation</a>",
                 "error": "Vous devez accepter les modalités d'utilisation pour continuer",
-                "help": "Vos données sont partagées à des fins de recherche"
+                "help": "Vos échanges sont partagés à des fins de recherche : ne saisissez aucune donnée sensible ni aucune information permettant d’identifier un patient (nom, date de naissance, numéro de sécurité sociale, etc.)."
             }
         },
         "origin": {
@@ -1498,28 +1525,28 @@
             }
         },
         "usage": {
-            "desc": "L’outil s’adresse également aux experts IA et aux formateurs pour des usages plus spécifiques",
+            "desc": "compar:IA santé s’adresse aussi aux établissements, aux formateurs et aux chercheurs qui veulent mieux comprendre et encadrer l’usage de l’IA en santé.",
             "educate": {
-                "desc": "Utilisez le comparateur comme un support pédagogique de sensibilisation à l’IA auprès de votre public",
+                "desc": "Utilisez le comparateur comme support pédagogique pour sensibiliser soignants et étudiants aux atouts et aux limites de l’IA.",
                 "title": "Former et sensibiliser"
             },
             "explore": {
                 "desc": "Consultez au même endroit toutes les caractéristiques et conditions d’utilisation des modèles",
                 "title": "Explorer les modèles"
             },
-            "title": "Les usages spécifiques de compar:IA",
+            "title": "Les usages spécifiques de compar:IA santé",
             "use": {
-                "desc": "Développeurs, chercheurs, éditeurs de modèles… accédez aux jeux de données compar:IA pour améliorer les modèles",
+                "desc": "Chercheurs, établissements et éditeurs de modèles : accédez aux jeux de données pour améliorer les modèles et leurs usages en santé.",
                 "title": "Exploiter les données"
             }
         },
         "use": {
             "compare": {
                 "alt": "Comparer",
-                "desc": "Discutez et développez votre esprit critique en donnant votre préférence",
-                "title": "Comparer les réponses de différents modèles d’IA"
+                "desc": "Soumettez une même question à deux IA et aiguisez votre regard critique en comparant leurs réponses.",
+                "title": "Comparer plusieurs modèles d’IA sur vos cas d’usage"
             },
-            "desc": "compar:IA est un outil gratuit qui permet de sensibiliser les citoyens à l’IA générative et à ses enjeux.",
+            "desc": "compar:IA santé est un service public gratuit qui aide les professionnels de santé à comparer plusieurs modèles d’IA conversationnelle et à évaluer leur pertinence pour leurs usages.",
             "measure": {
                 "alt": "Mesurer",
                 "desc": "Découvrez l’impact environnemental de vos discussions avec chaque modèle",
@@ -1527,22 +1554,22 @@
             },
             "test": {
                 "alt": "Tester",
-                "desc": "Testez différents modèles, propriétaires ou non, de petites et grandes tailles...",
+                "desc": "Comparez les dernières IA, propriétaires ou non, de petite ou grande taille, sans installation ni abonnement.",
                 "title": "Tester au même endroit les dernières IA de l’écosystème"
             },
-            "title": "À quoi sert compar:IA ?"
+            "title": "À quoi sert compar:IA santé ?"
         },
         "vote": {
             "datasetAccess": "Accéder aux jeux de données",
-            "desc": "L’outil s’adresse également aux experts IA et aux formateurs pour des usages plus spécifiques",
+            "desc": "Vos retours aident à identifier les modèles d’IA les plus adaptés aux usages des professionnels de santé.",
             "steps": {
                 "datasets": {
                     "desc": "Toutes les questions posées et les votes sont compilés dans des jeux de données et publiés librement après anonymisation.",
-                    "title": "Les jeux de données par langue"
+                    "title": "Des jeux de données ouverts"
                 },
                 "finetune": {
-                    "desc": "À terme, les entreprises et les acteurs universitaires peuvent exploiter les jeux de données pour entrainer de nouveaux modèles plus respectueux de la diversité linguistique et culturelle.",
-                    "title": "Des modèles affinés sur la langue spécifique"
+                    "desc": "À terme, les établissements, les chercheurs et les éditeurs de modèles peuvent exploiter ces jeux de données pour évaluer et améliorer les modèles d’IA au regard des exigences propres au secteur de la santé.",
+                    "title": "Des modèles mieux adaptés à la santé"
                 },
                 "prefs": {
                     "desc": "Après discussion avec les IA, vous indiquez votre préférence pour un modèle selon des critères donnés, tels que la pertinence ou l’utilité des réponses.",
@@ -2055,18 +2082,18 @@
             "tabLabel": "Focus préférences",
             "table": {
                 "cols": {
-                    "clear_formatting": "Mise en forme<br> claire",
-                    "complete": "Complète",
-                    "creative": "Créative",
-                    "incorrect": "Incorrecte",
-                    "instructions_not_followed": "Instructions<br> non suivies",
+                    "clear_formatting": "Claire et<br> structurée",
+                    "complete": "Complète et<br> nuancée",
+                    "creative": "Pédagogique",
+                    "incorrect": "Erreur<br> médicale",
+                    "instructions_not_followed": "Recommandation<br> risquée",
                     "n_match": "Total matchs",
                     "name": "Modèle",
                     "positive_prefs_ratio": "Répartition des préférences",
-                    "superficial": "Superficielle",
+                    "superficial": "Trop<br> superficielle",
                     "total_negative_prefs": "Total préférences<br> Négatives",
                     "total_positive_prefs": "Total préférences<br> Positives",
-                    "useful": "Utile"
+                    "useful": "Cliniquement<br> pertinente"
                 },
                 "percentLabel": "Préférences en pourcentage",
                 "tooltips": {
@@ -2181,9 +2208,19 @@
             "title": "Merci pour votre contribution !"
         }
     },
+    "sante": {
+        "beta": "🧪 Version bêta : cet outil est en cours de test et d’évaluation. Les modèles, les fonctionnalités et les réponses peuvent évoluer.",
+        "disclaimer": {
+            "title": "Outil expérimental : ne remplace pas un avis médical",
+            "banner": "Les réponses générées par l’IA peuvent être incomplètes, erronées ou périmées. Elles ne constituent pas un avis médical et n’engagent pas la responsabilité du service. Vérifiez systématiquement les informations au regard des recommandations en vigueur et de votre jugement clinique.",
+            "short": "Les réponses des IA ne constituent pas un avis médical et peuvent comporter des erreurs. Vérifiez toujours auprès de sources fiables.",
+            "vote": "Rappel : ces réponses ne constituent pas un avis médical. Évaluez-les avec votre expertise clinique et ne les utilisez jamais telles quelles en situation de soin.",
+            "noPatientData": "Ne saisissez aucune donnée permettant d’identifier un patient (nom, date de naissance, identifiants…)."
+        }
+    },
     "seo": {
-        "desc": "compar:IA est un outil permettant de comparer à l’aveugle différents modèles d'IA conversationnelle pour sensibiliser aux enjeux de l'IA générative (biais, impact environmental) et constituer des jeux de données de préférence en français.",
-        "title": "compar:IA, le comparateur d'IA conversationnelles",
+        "desc": "compar:IA santé permet aux professionnels de santé de comparer à l’aveugle différents modèles d’IA conversationnelle afin d’évaluer leur pertinence et leur fiabilité pour les usages du secteur médical.",
+        "title": "compar:IA santé, le comparateur d’IA pour les professionnels de santé",
         "titles": {
             "accessibilite": "Déclaration d’accessibilité",
             "arene": "Discussion",
@@ -2210,22 +2247,22 @@
     "vote": {
         "choices": {
             "negative": {
-                "comment": "Précisez ce que vous n’avez pas aimé…",
-                "incorrect": "Incorrecte",
-                "instructions_not_followed": "Instructions non suivies",
-                "question": "Pourquoi la réponse ne convient-elle pas ?",
-                "superficial": "Superficielle"
+                "comment": "Précisez ce qui vous semble problématique sur le plan clinique…",
+                "incorrect": "Erreur médicale ou factuelle",
+                "instructions_not_followed": "Recommandation risquée",
+                "question": "Pourquoi cette réponse ne convient-elle pas ?",
+                "superficial": "Trop superficielle"
             },
             "positive": {
-                "clear_formatting": "Mise en forme claire",
-                "comment": "Précisez ce que vous avez apprécié…",
-                "complete": "Complète",
-                "creative": "Créative",
-                "question": "Qu'avez-vous apprécié dans la réponse ?",
-                "useful": "Utile"
+                "clear_formatting": "Claire et structurée",
+                "comment": "Précisez ce que vous avez apprécié sur le plan clinique…",
+                "complete": "Complète et nuancée",
+                "creative": "Pédagogique",
+                "question": "Qu'avez-vous apprécié dans cette réponse ?",
+                "useful": "Cliniquement pertinente"
             }
         },
-        "importantDesc": "Votre préférence enrichit les jeux de données compar:IA dont l’objectif est d’affiner les futurs modèles d’IA sur le français, le suédois, le lituanien et le danois.",
+        "importantDesc": "Votre préférence aide à évaluer la pertinence des modèles d’IA pour les usages des professionnels de santé.",
         "title": "Quel modèle d’IA préférez-vous ?",
         "turn": {
             "choices": {

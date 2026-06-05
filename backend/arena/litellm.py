@@ -15,6 +15,8 @@ from backend.config import (
     GLOBAL_TIMEOUT,
     ORDBOGEN_GLOBAL_TIMEOUT,
     ORDBOGEN_STREAM_TIMEOUT,
+    SCALEWAY_GLOBAL_TIMEOUT,
+    SCALEWAY_STREAM_TIMEOUT,
     STREAM_TIMEOUT,
     settings,
 )
@@ -56,6 +58,9 @@ def get_api_key(endpoint: "Endpoint") -> str | None:
     # Ordbogen.ai (Danish LLM)
     if endpoint.api_base and "ordbogen.ai" in endpoint.api_base:
         return settings.ORDBOGEN_API_KEY
+    # Scaleway Generative APIs (EU-hosted, OpenAI-compatible)
+    if endpoint.api_base and "scaleway.ai" in endpoint.api_base:
+        return settings.SCALEWAY_API_KEY
     # OpenRouter is handled by LiteLLM reading OPENROUTER_API_KEY env variable directly
     return None
 
@@ -118,11 +123,20 @@ def litellm_stream_iter(
     #   },
 
     is_ordbogen = endpoint.api_base and "ordbogen.ai" in endpoint.api_base
+    is_scaleway = endpoint.api_base and "scaleway.ai" in endpoint.api_base
+
+    # Pick the timeout budget: Ordbogen and Scaleway get extended budgets
+    if is_ordbogen:
+        global_timeout, stream_timeout = ORDBOGEN_GLOBAL_TIMEOUT, ORDBOGEN_STREAM_TIMEOUT
+    elif is_scaleway:
+        global_timeout, stream_timeout = SCALEWAY_GLOBAL_TIMEOUT, SCALEWAY_STREAM_TIMEOUT
+    else:
+        global_timeout, stream_timeout = GLOBAL_TIMEOUT, STREAM_TIMEOUT
 
     # Build parameters for LiteLLM API call
     kwargs = {
-        "timeout": ORDBOGEN_GLOBAL_TIMEOUT if is_ordbogen else GLOBAL_TIMEOUT,
-        "stream_timeout": ORDBOGEN_STREAM_TIMEOUT if is_ordbogen else STREAM_TIMEOUT,
+        "timeout": global_timeout,
+        "stream_timeout": stream_timeout,
         "api_version": endpoint.api_version,
         "base_url": endpoint.api_base,
         "api_key": api_key,
