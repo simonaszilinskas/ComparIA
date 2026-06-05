@@ -23,13 +23,17 @@ WORKDIR /app
 # Copier le venv et le code
 COPY --from=builder /app/.venv /app/.venv
 COPY pyproject.toml uv.lock ./
+# alembic.ini is needed so migrations can run from the image (Railway preDeployCommand)
+COPY alembic.ini /app/
 COPY controller.py /app/
 COPY backend /app/backend
 COPY utils /app/utils
 COPY templates /app/templates
 COPY comparia-cli /app/
 
-VOLUME /data
+# NB: no `VOLUME /data` here. Railway's builder rejects the Docker VOLUME
+# instruction (it uses managed Railway Volumes instead). /data is a plain
+# writable dir for ephemeral JSON backups; the database is the source of truth.
 EXPOSE 80
 
 ARG GIT_COMMIT
