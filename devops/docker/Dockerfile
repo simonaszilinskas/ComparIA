@@ -27,6 +27,7 @@ COPY controller.py /app/
 COPY alembic.ini /app/
 COPY backend /app/backend
 COPY utils /app/utils
+COPY data /app/data
 COPY templates /app/templates
 COPY comparia-cli /app/
 
