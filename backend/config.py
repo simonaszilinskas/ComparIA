@@ -105,6 +105,18 @@ ALL_PREFS: tuple[AllPref, ...] = POSITIVE_PREFS + NEGATIVE_PREFS
 TurnChoice = Literal["both_good", "both_bad", "a_better", "b_better", "idk"]
 TURN_CHOICE: tuple[TurnChoice, ...] = get_args(TurnChoice)
 
+# Socio-demographic profile (optional, logged-in users only)
+Profession = Literal[
+    "student", "employed_tech", "employed_other", "unemployed", "retired", "other"
+]
+PROFESSIONS: tuple[Profession, ...] = get_args(Profession)
+AIUsageFrequency = Literal["daily", "weekly", "monthly", "rarely", "never"]
+AI_USAGE_FREQUENCIES: tuple[AIUsageFrequency, ...] = get_args(AIUsageFrequency)
+Gender = Literal["woman", "man", "other", "prefer_not_to_say"]
+GENDERS: tuple[Gender, ...] = get_args(Gender)
+AgeRange = Literal["under_18", "18_24", "25_34", "35_44", "45_54", "55_64", "65_plus"]
+AGE_RANGES: tuple[AgeRange, ...] = get_args(AgeRange)
+
 # FIXME equivalences legacy?
 # # Reference data for scaled equivalences
 # # Population using generative AI

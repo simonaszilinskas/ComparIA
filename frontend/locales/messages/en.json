@@ -1808,6 +1808,54 @@
         },
         "title": "Everything you need to know about the chatbot arena"
     },
+    "profile": {
+        "title": "Profile",
+        "description": "By sharing this optional and anonymous information, you help researchers better understand how people use AI across different profiles.",
+        "selectPlaceholder": "Select an option",
+        "submit": "Submit",
+        "profession": {
+            "label": "What is your profession?",
+            "options": {
+                "student": "Student",
+                "employed_tech": "Employed - Tech sector",
+                "employed_other": "Employed - Other sector",
+                "unemployed": "Unemployed",
+                "retired": "Retired",
+                "other": "Other"
+            }
+        },
+        "aiUsageFrequency": {
+            "label": "How often do you use AI tools?",
+            "options": {
+                "daily": "Daily",
+                "weekly": "Weekly",
+                "monthly": "Monthly",
+                "rarely": "Rarely",
+                "never": "Never"
+            }
+        },
+        "gender": {
+            "label": "What is your gender?",
+            "options": {
+                "woman": "Woman",
+                "man": "Man",
+                "other": "Other",
+                "prefer_not_to_say": "Prefer not to say"
+            }
+        },
+        "ageRange": {
+            "label": "What is your age range?",
+            "options": {
+                "under_18": "Under 18",
+                "18_24": "18-24",
+                "25_34": "25-34",
+                "35_44": "35-44",
+                "45_54": "45-54",
+                "55_64": "55-64",
+                "65_plus": "65+"
+            }
+        }
+    },
     "ranking": {
         "energy": {
             "desc": "This graph represents the satisfaction score (Bradley Terry score) for each model as a function of the estimated average energy consumption per 1000 tokens. Energy consumption is estimated using the Ecologits methodology and is based on two parameters: the size of the models (number of parameters) and their architecture. For proprietary models, this information is either not provided or only partially available. Therefore, they are excluded from the graph below.",

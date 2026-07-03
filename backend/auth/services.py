@@ -143,6 +143,16 @@ async def revoke_current_session(token: str) -> None:
             await session.commit()
 
 
+async def update_user_profile(user_id: uuid.UUID, fields: dict) -> None:
+    if not fields:
+        return
+    async with get_session() as session:
+        await session.execute(
+            sa_update(User).where(User.id == user_id).values(**fields)
+        )
+        await session.commit()
+
+
 async def revoke_all_user_sessions(user_id: uuid.UUID) -> None:
     async with get_session() as session:
         await session.execute(

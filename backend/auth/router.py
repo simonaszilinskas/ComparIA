@@ -11,9 +11,10 @@ from backend.auth.services import (
     request_login_code,
     revoke_all_user_sessions,
     revoke_current_session,
+    update_user_profile,
     verify_login_code,
 )
-from backend.config import settings
+from backend.config import AgeRange, AIUsageFrequency, Gender, Profession, settings
 from backend.utils.user import get_ip, get_matomo_tracker_from_cookies
 from utils.storage.redis import REDIS_AUTH_EMAIL_REQ, get_redis_client
 
@@ -39,6 +40,13 @@ class EmailRequestBody(BaseModel):
 class EmailVerifyBody(BaseModel):
     email: EmailStr
     code: str
+
+
+class ProfileUpdateBody(BaseModel):
+    profession: Profession | None = None
+    ai_usage_frequency: AIUsageFrequency | None = None
+    gender: Gender | None = None
+    age_range: AgeRange | None = None
 
 
 @router.get("/config")
@@ -141,7 +149,28 @@ async def get_me(request: Request) -> dict:
     user = await get_user_from_token(token)
     if not user:
         return {"user": None}
-    return {"user": {"email": user.email, "role": user.role}}
+    return {
+        "user": {
+            "email": user.email,
+            "role": user.role,
+            "profession": user.profession,
+            "ai_usage_frequency": user.ai_usage_frequency,
+            "gender": user.gender,
+            "age_range": user.age_range,
+        }
+    }
+
+
+@router.patch("/profile", status_code=status.HTTP_204_NO_CONTENT)
+async def patch_profile(body: ProfileUpdateBody, request: Request) -> None:
+    token = request.cookies.get("auth_session")
+    if not token:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+    user = await get_user_from_token(token)
+    if not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+
+    await update_user_profile(user.id, body.model_dump(exclude_unset=True))
 
 
 @router.post("/logout-all", status_code=status.HTTP_204_NO_CONTENT)

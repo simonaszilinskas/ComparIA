@@ -1,11 +1,14 @@
 <script lang="ts">
   import { Button, Link } from '$components/dsfr'
+  import ProfileModal from '$components/ProfileModal.svelte'
   import SideSwitcher from '$components/SideSwitcher.svelte'
+  import { auth, hasIncompleteProfile } from '$lib/auth.svelte'
   import { parseAPIRevealData, type APIRevealData } from '$lib/chatService.svelte'
   import { scrollTo } from '$lib/helpers/attachments'
   import { useToast } from '$lib/helpers/useToast.svelte'
   import { m } from '$lib/i18n/messages'
   import { getLocale } from '$lib/i18n/runtime'
+  import { onMount } from 'svelte'
   import { RevealCard } from '.'
 
   let { data }: { data: APIRevealData } = $props()
@@ -21,6 +24,21 @@
     navigator.clipboard.writeText(shareInput.value)
     useToast(m['actions.copyLink.done'](), 2000)
   }
+
+  // ponytail: sessionStorage (not localStorage) so the prompt is silenced for
+  // this browser session only and reappears next session until complete.
+  onMount(() => {
+    if (
+      !sessionStorage.getItem('profile-prompt-shown') &&
+      auth.user &&
+      hasIncompleteProfile(auth.user)
+    ) {
+      sessionStorage.setItem('profile-prompt-shown', '1')
+      const el = document.getElementById('fr-modal-profile')
+      // @ts-expect-error - DSFR is globally available
+      if (el) window.dsfr(el).modal.disclose()
+    }
+  })
 </script>
 
 <div id="reveal-area" class="fr-container--fluid mt-8! md:mt-10!" {@attach scrollTo}>
@@ -142,6 +160,8 @@
     </div>
   </section>
 {/if}
+
+<ProfileModal />
 
 <style>
   #reveal-area {
