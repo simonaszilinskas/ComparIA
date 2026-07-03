@@ -37,14 +37,14 @@
   --cg-very-light-blue: #0a0a0b;
 }
 
-/* compar:IA juridique brand: swap accent to yellow #fcc63a. Text on accent
-   flips to dark since fcc63a is light (white would fail contrast). */
+/* compar:IA juridique brand: swap accent to coral #ff9575. Text on accent
+   flips to dark since ff9575 is light (white would fail contrast). */
 :root[data-brand='juridique'] {
-  --blue-france-main-525: #fcc63a;
+  --blue-france-main-525: #ff9575;
   --text-inverted-blue-france: #1e1e1e;
 
-  --cg-blue-france-main-525-hover: #ecb62a;
-  --cg-blue-france-main-525-active: #dca61a;
+  --cg-blue-france-main-525-hover: #ef8565;
+  --cg-blue-france-main-525-active: #df7555;
 }
 
 @media (min-width: 36em) {
