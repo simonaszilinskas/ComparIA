@@ -2,7 +2,7 @@ import logging
 from typing import Annotated, AsyncGenerator
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Header, HTTPException, Request, status
+from fastapi import APIRouter, BackgroundTasks, Depends, Header, HTTPException, Request, status
 from fastapi.responses import StreamingResponse
 
 from backend.arena.captcha import generate_challenge
@@ -37,6 +37,7 @@ from backend.arena.streaming import (
 from backend.arena.web_search import search_web
 from backend.llms.data import get_llms_data, pick_replacement_model
 from backend.utils.user import get_ip, get_matomo_tracker_from_cookies
+from utils.ranking.run import main as compute_and_store_ranking
 from utils.database.models import (
     ComparisonCreate,
     ComparisonPublic,
@@ -419,11 +420,19 @@ async def retry(
     return create_sse_response(event_stream(comparison))
 
 
+async def _recompute_ranking() -> None:
+    try:
+        await compute_and_store_ranking(mode="redis")
+    except Exception:
+        logger.exception("[RANKING] Failed to recompute ranking after vote")
+
+
 @router.post("/vote")
 async def vote(
     vote: TurnVoteChoice | TurnVoteAnnotate,
     metadata: ComparisonMetadataAnno,
     request: Request,
+    background_tasks: BackgroundTasks,
 ) -> None:
     """
     Submit a vote choice or annotations.
@@ -472,6 +481,13 @@ async def vote(
         )
 
     await update_turn_vote(turn.id, vote)
+
+    # ponytail: recompute the full ranking synchronously after every decisive
+    # vote instead of on a cron. Fine at this instance's low volume (numpy
+    # bootstrap over the whole vote history, ~sub-second); if votes/minute
+    # grows enough to matter, debounce or go back to a periodic cron instead.
+    if isinstance(vote, TurnVoteChoice) and vote.choice in ("a_better", "b_better"):
+        background_tasks.add_task(_recompute_ranking)
 
 
 @router.get("/reveal")
