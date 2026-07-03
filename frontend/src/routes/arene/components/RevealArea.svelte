@@ -1,6 +1,5 @@
 <script lang="ts">
   import { Button, Link } from '$components/dsfr'
-  import ProfileModal from '$components/ProfileModal.svelte'
   import SideSwitcher from '$components/SideSwitcher.svelte'
   import { auth, hasIncompleteProfile } from '$lib/auth.svelte'
   import { parseAPIRevealData, type APIRevealData } from '$lib/chatService.svelte'
@@ -9,7 +8,7 @@
   import { m } from '$lib/i18n/messages'
   import { getLocale } from '$lib/i18n/runtime'
   import { onMount } from 'svelte'
-  import { RevealCard } from '.'
+  import { ProfileModal, RevealCard } from '.'
 
   let { data }: { data: APIRevealData } = $props()
 
