@@ -12,6 +12,8 @@
 	reverse_proxy /counter* backend.railway.internal:80
 	reverse_proxy /models/* backend.railway.internal:80
 	reverse_proxy /arena/* backend.railway.internal:80
+	reverse_proxy /auth/* backend.railway.internal:80
+	reverse_proxy /admin/* backend.railway.internal:80
 
 	# Everything else is served by the SvelteKit frontend
 	reverse_proxy frontend.railway.internal:3000
