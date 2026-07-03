@@ -2,6 +2,7 @@
   import { resolve } from '$app/paths'
   import { page } from '$app/state'
   import { Button, Icon, Link } from '$components/dsfr'
+  import { env } from '$env/dynamic/public'
   import { auth, logout } from '$lib/auth.svelte'
   import { m } from '$lib/i18n/messages'
   import type { ClassValue, HTMLAnchorAttributes } from 'svelte/elements'
@@ -9,6 +10,8 @@
 
   type NavLink = { href: string; label: string; icon: string }
   const { navLinks, isAdmin = false }: { navLinks: NavLink[]; isAdmin?: boolean } = $props()
+
+  const appName = env.PUBLIC_APP_NAME || m['header.title']()
 
   let expanded = $state(true)
 </script>
@@ -62,10 +65,10 @@
     <img src="/orgs/comparia.png" aria-hidden="true" alt="" class="h-[35px]" />
     <a
       href={resolve('/')}
-      title={m['header.homeTitle']()}
+      title={appName}
       class="font-bold text-lg text-[--text-title-grey]"
     >
-      {m['header.title']()}
+      {appName}
     </a>
   </div>
 {/snippet}

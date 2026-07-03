@@ -1,4 +1,5 @@
 import { env } from '$env/dynamic/private'
+import { env as publicEnv } from '$env/dynamic/public'
 import { HOST_TO_LOCALE } from '$lib/global.svelte'
 import { defineCustomServerStrategy } from '$lib/i18n/runtime'
 import { paraglideMiddleware } from '$lib/i18n/server'
@@ -10,6 +11,7 @@ const MATOMO_ID = env.MATOMO_ID || ''
 const MATOMO_URL = env.MATOMO_URL || ''
 
 const DEFAULT_LOCALE = env.DEFAULT_LOCALE || ''
+const BRAND = publicEnv.PUBLIC_BRAND || ''
 
 defineCustomServerStrategy('custom-url', {
   getLocale: (request) => {
@@ -52,6 +54,7 @@ const paraglideHandle: Handle = ({ event, resolve }) => {
           .replaceAll('%lang%', locale)
           .replace('%scheme%', event.cookies.get('scheme') || 'system')
           .replace('%theme%', event.cookies.get('theme') || 'system')
+          .replace('%brand%', BRAND)
           .replaceAll('%matomo_id%', MATOMO_ID)
           .replaceAll('%matomo_url%', MATOMO_URL)
       }

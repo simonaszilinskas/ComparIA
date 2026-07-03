@@ -1,0 +1,18 @@
+# Railway-adapted reverse proxy: single public entrypoint for the whole app.
+# Caddy is the only service with a public domain; it fans out to the backend and
+# frontend over Railway's private network (IPv6). No TLS here: Railway terminates
+# HTTPS at the edge and forwards plain HTTP to this container's port.
+{
+	auto_https off
+	admin off
+}
+
+:8080 {
+	# API paths handled by the FastAPI backend
+	reverse_proxy /counter* backend.railway.internal:80
+	reverse_proxy /models/* backend.railway.internal:80
+	reverse_proxy /arena/* backend.railway.internal:80
+
+	# Everything else is served by the SvelteKit frontend
+	reverse_proxy frontend.railway.internal:3000
+}

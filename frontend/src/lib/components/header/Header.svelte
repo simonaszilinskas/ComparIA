@@ -1,9 +1,12 @@
 <script lang="ts">
   import { page } from '$app/state'
   import { Button, Link } from '$components/dsfr'
+  import { env } from '$env/dynamic/public'
   import { m } from '$lib/i18n/messages'
   import { getLocale } from '$lib/i18n/runtime'
   import { LanguageSelector, Menubar, VoteGauge } from '.'
+
+  const appName = env.PUBLIC_APP_NAME || m['header.title']()
 
   let {
     hideNavigation = false,
@@ -86,9 +89,9 @@
                 <a
                   href="/"
                   target={page.url.pathname.includes('arene') ? '_blank' : undefined}
-                  title={m['header.homeTitle']()}
+                  title={appName}
                 >
-                  {m['header.title']()}
+                  {appName}
                 </a>
               </p>
 

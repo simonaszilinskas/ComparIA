@@ -9,6 +9,7 @@
 
   const redirectTo = $derived(page.url.searchParams.get('redirect') || '/arene')
 
+  const appName = env.PUBLIC_APP_NAME || 'compar:IA'
   const loginTitle = env.PUBLIC_AUTH_LOGIN_TITLE || 'Bienvenue sur compar:IA'
   const loginDescription =
     env.PUBLIC_AUTH_LOGIN_DESCRIPTION ||
@@ -20,14 +21,14 @@
 </script>
 
 <svelte:head>
-  <title>Connexion — compar:IA</title>
+  <title>Connexion — {appName}</title>
 </svelte:head>
 
 <div class="md:flex-row flex min-h-screen flex-col">
   <header class="px-8 py-10 gap-20 md:justify-center flex basis-1/2 flex-col">
     <div class="gap-2 flex items-center">
       <img src="/orgs/comparia.png" aria-hidden="true" alt="" class="h-[35px]" />
-      <h1 class="font-bold text-base! mb-0!">{m['header.title']()}</h1>
+      <h1 class="font-bold text-base! mb-0!">{appName}</h1>
     </div>
 
     <div>

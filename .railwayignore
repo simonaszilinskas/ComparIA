@@ -1,0 +1,8 @@
+# Keep Railway uploads lean: exclude local dev artefacts the images never need.
+# IMPORTANT: do NOT use a blanket *.png here. frontend/static/** contains real PNG
+# assets (logos, flags, home images); a global *.png makes them 404 on the site.
+.playwright-mcp/
+docs/
+.venv/
+node_modules/
+data/

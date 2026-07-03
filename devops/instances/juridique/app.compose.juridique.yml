@@ -1,0 +1,49 @@
+services:
+  frontend-juridique:
+    build:
+      context: ../../../frontend
+      dockerfile: ../devops/docker/Dockerfile.front
+    depends_on:
+      - backend-juridique
+    environment:
+      DEFAULT_LOCALE: fr
+      PUBLIC_APP_NAME: "compar:IA juridique"
+      PUBLIC_BRAND: juridique
+      PUBLIC_LANGUIA_DEBUG: "true"
+      PUBLIC_API_LOCAL_URL: "http://backend-juridique:80"
+      PUBLIC_API_URL: "${PUBLIC_API_URL:-http://localhost:8003}"
+      PUBLIC_API_DEV_MODE: "true"
+    ports:
+      - "3003:3000"
+    networks:
+      - comparia-net
+
+  backend-juridique:
+    environment:
+      LOGDIR: /data
+      LANGUIA_DEBUG: "true"
+      DEFAULT_COUNTRY_PORTAL: fr
+      COMPARIA_DB_URI: "${COMPARIA_DB_URI_JURIDIQUE:-postgresql://comparia:comparia@postgres:5432/comparia_juridique}"
+      COMPARIA_REDIS_HOST: redis
+      OPENROUTER_API_KEY:
+      ALBERT_KEY:
+      # Only needed for dataset export (uv run python -m utils.dataset.run):
+      # HF_PUSH_DATASET_KEY:
+      # HF_PUSH_DATASET_PATH:
+      ALTCHA_HMAC_KEY:
+      SENTRY_SAMPLE_RATE: "1.0"
+      SENTRY_ENV: "dev-juridique"
+      # No Sentry project provisioned yet for this instance; add once created.
+      SENTRY_FRONT_DSN:
+      SENTRY_DSN:
+    build:
+      context: ../../..
+      dockerfile: devops/docker/Dockerfile
+    ports:
+      - "8003:80"
+    networks:
+      - comparia-net
+
+networks:
+  comparia-net:
+    external: true

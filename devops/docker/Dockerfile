@@ -24,12 +24,12 @@ WORKDIR /app
 COPY --from=builder /app/.venv /app/.venv
 COPY pyproject.toml uv.lock ./
 COPY controller.py /app/
+COPY alembic.ini /app/
 COPY backend /app/backend
 COPY utils /app/utils
 COPY templates /app/templates
 COPY comparia-cli /app/
 
-VOLUME /data
 EXPOSE 80
 
 ARG GIT_COMMIT
