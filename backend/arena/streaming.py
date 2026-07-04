@@ -20,7 +20,7 @@ from backend.arena.conversation import (
     SystemMessageRead,
     bot_response_async,
 )
-from backend.arena.legal_tools.mcp_client import ToolSet, build_tool_set
+from backend.arena.legal_tools.mcp_client import ToolSet, mcp_tools_for
 from backend.arena.services import update_comparison_error, update_comparison_llm_id
 from backend.config import CustomModelsSelection, SelectionMode, settings
 from backend.errors import ChatError
@@ -200,119 +200,120 @@ async def stream_comparison_messages(
 
     turn_index = len(comparison.turns) - 1
     llms_data = (await get_llms_data()).enabled
+
     # Built once and shared identically by both positions: both bots being
-    # compared must always see the exact same tools.
-    tool_set = build_tool_set(comparison.enabled_mcp_servers)
-
-    try:
-        # Create async generators for both models
-        generators: dict[BotPos, AsyncGenerator[AnySSEEventMsg]] = {
-            pos: stream_llm_response(
-                pos,
-                llms_data[getattr(comparison, f"llm_id_{pos}")],
-                turn,
-                turn_index,
-                _get_messages(comparison, pos),
-                request,
-                tool_set=tool_set,
-            )
-            for pos in BOT_POS
-        }
-        # Track state from both generators
-        complete: dict[BotPos, bool] = {"a": False, "b": False}
-        # Track timeout swap attempts (max one per position)
-        retried: dict[BotPos, bool] = {"a": False, "b": False}
-
-        # Consume both generators in parallel
-        while not (complete["a"] and complete["b"]):
-            # Collect pending tasks
-            tasks = [
-                asyncio.create_task(anext(generators[pos]))
+    # compared must always see the exact same tools. Kept open for the
+    # duration of the streaming response (remote MCP sessions live here).
+    async with mcp_tools_for(comparison.enabled_mcp_servers) as tool_set:
+        try:
+            # Create async generators for both models
+            generators: dict[BotPos, AsyncGenerator[AnySSEEventMsg]] = {
+                pos: stream_llm_response(
+                    pos,
+                    llms_data[getattr(comparison, f"llm_id_{pos}")],
+                    turn,
+                    turn_index,
+                    _get_messages(comparison, pos),
+                    request,
+                    tool_set=tool_set,
+                )
                 for pos in BOT_POS
-                if not complete[pos]
-            ]
+            }
+            # Track state from both generators
+            complete: dict[BotPos, bool] = {"a": False, "b": False}
+            # Track timeout swap attempts (max one per position)
+            retried: dict[BotPos, bool] = {"a": False, "b": False}
 
-            if not tasks:
-                break
+            # Consume both generators in parallel
+            while not (complete["a"] and complete["b"]):
+                # Collect pending tasks
+                tasks = [
+                    asyncio.create_task(anext(generators[pos]))
+                    for pos in BOT_POS
+                    if not complete[pos]
+                ]
 
-            # Wait for next chunk from either model
-            completed, pending = await asyncio.wait(
-                tasks, return_when=asyncio.FIRST_COMPLETED
+                if not tasks:
+                    break
+
+                # Wait for next chunk from either model
+                completed, pending = await asyncio.wait(
+                    tasks, return_when=asyncio.FIRST_COMPLETED
+                )
+
+                # Cancel pending tasks to avoid concurrent anext() on the same generator
+                for task in pending:
+                    task.cancel()
+
+                # Process completed chunks
+                for task in completed:
+                    try:
+                        event = task.result()
+                    except ChatError as e:
+                        # On first-turn timeout, swap the model if it wasn't user-selected
+                        failing_llm_id = getattr(comparison, f"llm_id_{e.pos}")
+                        if (
+                            e.is_timeout
+                            and turn_index == 0
+                            and not retried[e.pos]
+                            and not _is_model_user_selected(
+                                failing_llm_id,
+                                comparison.mode,
+                                comparison.custom_models_selection,
+                            )
+                        ):
+                            if new_llm_id := await pick_replacement_model(
+                                comparison, e.pos
+                            ):
+                                await update_comparison_llm_id(
+                                    comparison, e.pos, new_llm_id
+                                )
+                                logger.warning(
+                                    f"LLM '{failing_llm_id}' timed out, swapping to '{new_llm_id}'"
+                                )
+                                generators[e.pos] = stream_llm_response(
+                                    e.pos,
+                                    llms_data[new_llm_id],
+                                    turn,
+                                    turn_index,
+                                    _get_messages(comparison, e.pos),
+                                    request,
+                                    tool_set=tool_set,
+                                )
+                                retried[e.pos] = True
+                                yield {"type": "swap", "pos": e.pos}
+                                continue
+                            # No replacement available, fall through to raise
+                        raise
+
+                    for pos in BOT_POS:
+                        if event["type"] == "complete":
+                            complete[event["pos"]] = True
+
+                    yield event
+
+            # Signal completion
+            yield {"type": "complete"}
+        except ChatError as e:
+            # Specific chat error
+            # Error logging is done in `stream_llm_response()`
+            await update_comparison_error(
+                comparison,
+                ErrorDetails(message=e.message, pos=e.pos, is_timeout=e.is_timeout),
             )
 
-            # Cancel pending tasks to avoid concurrent anext() on the same generator
-            for task in pending:
-                task.cancel()
+            yield {"type": "error", "error": e.message, "pos": e.pos}
+        except Exception as e:
+            # General error
+            if settings.SENTRY_DSN:
+                # Error is silenced to be sent thru sse message, send it to sentry manually
+                sentry_sdk.capture_exception(e)
 
-            # Process completed chunks
-            for task in completed:
-                try:
-                    event = task.result()
-                except ChatError as e:
-                    # On first-turn timeout, swap the model if it wasn't user-selected
-                    failing_llm_id = getattr(comparison, f"llm_id_{e.pos}")
-                    if (
-                        e.is_timeout
-                        and turn_index == 0
-                        and not retried[e.pos]
-                        and not _is_model_user_selected(
-                            failing_llm_id,
-                            comparison.mode,
-                            comparison.custom_models_selection,
-                        )
-                    ):
-                        if new_llm_id := await pick_replacement_model(
-                            comparison, e.pos
-                        ):
-                            await update_comparison_llm_id(
-                                comparison, e.pos, new_llm_id
-                            )
-                            logger.warning(
-                                f"LLM '{failing_llm_id}' timed out, swapping to '{new_llm_id}'"
-                            )
-                            generators[e.pos] = stream_llm_response(
-                                e.pos,
-                                llms_data[new_llm_id],
-                                turn,
-                                turn_index,
-                                _get_messages(comparison, e.pos),
-                                request,
-                                tool_set=tool_set,
-                            )
-                            retried[e.pos] = True
-                            yield {"type": "swap", "pos": e.pos}
-                            continue
-                        # No replacement available, fall through to raise
-                    raise
-
-                for pos in BOT_POS:
-                    if event["type"] == "complete":
-                        complete[event["pos"]] = True
-
-                yield event
-
-        # Signal completion
-        yield {"type": "complete"}
-    except ChatError as e:
-        # Specific chat error
-        # Error logging is done in `stream_llm_response()`
-        await update_comparison_error(
-            comparison,
-            ErrorDetails(message=e.message, pos=e.pos, is_timeout=e.is_timeout),
-        )
-
-        yield {"type": "error", "error": e.message, "pos": e.pos}
-    except Exception as e:
-        # General error
-        if settings.SENTRY_DSN:
-            # Error is silenced to be sent thru sse message, send it to sentry manually
-            sentry_sdk.capture_exception(e)
-
-        await update_comparison_error(comparison, ErrorDetails(message=str(e)))
-        logger.error(
-            f"[STREAMING] Error in stream_comparison_messages: {e}", exc_info=True
-        )
-        yield {"type": "error", "error": str(e)}
+            await update_comparison_error(comparison, ErrorDetails(message=str(e)))
+            logger.error(
+                f"[STREAMING] Error in stream_comparison_messages: {e}", exc_info=True
+            )
+            yield {"type": "error", "error": str(e)}
 
 
 def _get_messages(comparison: ComparisonRead, pos: BotPos) -> list[AnyMessageRead]:
