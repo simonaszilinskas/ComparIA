@@ -1401,11 +1401,11 @@
                 "steps": {
                     "datasets": {
                         "desc": "Questions asked and votes are compiled into a dedicated legal corpus, published after anonymization.",
-                        "title": "A reference legal corpus"
+                        "title": "A legal corpus"
                     },
                     "finetune": {
                         "desc": "This corpus is used to train and evaluate models that are more rigorous on legal questions.",
-                        "title": "More reliable AIs for the law"
+                        "title": "More reliable AIs"
                     },
                     "prefs": {
                         "desc": "After discussing with the AIs, you assess their answers against precise legal criteria: legal accuracy, sources, clarity.",

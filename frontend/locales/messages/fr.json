@@ -1588,11 +1588,11 @@
                 "steps": {
                     "datasets": {
                         "desc": "Les questions posées et les votes sont compilés dans un corpus dédié au droit, publié après anonymisation.",
-                        "title": "Un corpus juridique de référence"
+                        "title": "Un corpus juridique"
                     },
                     "finetune": {
                         "desc": "Ce corpus permet d’entraîner et d’évaluer des modèles plus rigoureux sur les questions juridiques.",
-                        "title": "Des IA plus fiables pour le droit"
+                        "title": "Des IA plus fiables"
                     },
                     "prefs": {
                         "desc": "Après discussion avec les IA, vous évaluez leurs réponses selon des critères juridiques précis : exactitude du droit, sources, clarté.",
