@@ -6,6 +6,7 @@ OpenRouter, etc.) through LiteLLM, handling streaming responses, token counting,
 """
 
 import logging
+import re
 from datetime import datetime
 from typing import TYPE_CHECKING, Generator, Union, cast
 
@@ -24,7 +25,7 @@ if TYPE_CHECKING:
     from fastapi import Request
 
     from backend.arena.conversation import AnyMessageRead
-    from backend.llms.models import LLMDataEnabled
+    from backend.llms.models import LitellmEndpoint, LLMDataEnabled
     from utils.database.models import LLMMessageCreate
 
 logger = logging.getLogger("languia")
@@ -40,6 +41,7 @@ def litellm_stream_iter(
     include_reasoning: bool = False,  # FIXME Legacy ?
     enable_reasoning: bool = False,  # FIXME Legacy ?
     tools: list[dict] | None = None,
+    endpoint_override: "LitellmEndpoint | None" = None,
 ) -> Generator["LLMMessageCreate"]:
     """
     Stream responses from an LLM API using LiteLLM.
@@ -56,11 +58,13 @@ def litellm_stream_iter(
         request: FastAPI request for logging
         include_reasoning: Whether to include reasoning in response
         enable_reasoning: Whether to enable reasoning mode
+        endpoint_override: Use this endpoint instead of llm.litellm_endpoint
+            (e.g. routing a tool-enabled turn through OpenRouter)
 
     Yields:
         updated LLMMessageCreate
     """
-    endpoint = llm.litellm_endpoint
+    endpoint = endpoint_override or llm.litellm_endpoint
 
     logger.info(
         f"using endpoint {endpoint.model} for {llm.id}: {endpoint.model_dump(mode="json", exclude={"api_key"})}",

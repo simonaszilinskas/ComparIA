@@ -21,10 +21,11 @@ from backend.arena.cache import (
     store_cached_response,
 )
 from backend.arena.legal_tools.mcp_client import ToolSet
+from backend.arena.legal_tools.openrouter_models import OPENROUTER_MODEL_OVERRIDES
 from backend.arena.litellm import litellm_stream_iter
-from backend.config import MAX_TOOL_ITERATIONS
+from backend.config import MAX_TOOL_ITERATIONS, settings
 from backend.errors import EmptyResponseError
-from backend.llms.models import LLMDataEnabled
+from backend.llms.models import LitellmEndpoint, LLMDataEnabled
 from utils.database.models import (
     BotPos,
     LLMMessageCreate,
@@ -150,6 +151,21 @@ async def bot_response_async(
     tool_rounds: list[dict] = []
     iterations = 0
 
+    # When tools are enabled, route this whole turn through OpenRouter for
+    # models we've verified support tool-calling there — more reliable than
+    # these models' direct (mostly Scaleway) endpoints, whose tool-calling
+    # support varies. A model without an entry just keeps its normal
+    # endpoint (fail-open, not fail-closed).
+    endpoint_override: LitellmEndpoint | None = None
+    if tool_set is not None and settings.OPENROUTER_API_KEY:
+        if openrouter_model := OPENROUTER_MODEL_OVERRIDES.get(str(llm.id)):
+            endpoint_override = LitellmEndpoint(
+                model=f"openrouter/{openrouter_model}",
+                api_key=settings.OPENROUTER_API_KEY,
+                base_url=None,
+                api_version=None,
+            )
+
     while True:
         # Cap agentic tool-calling rounds: past the limit, force a final
         # textual answer by not offering tools at all.
@@ -175,6 +191,7 @@ async def bot_response_async(
             max_new_tokens=max_new_tokens,
             request=request,
             tools=tool_set.openai_tools if allow_tools else None,
+            endpoint_override=endpoint_override,
         )
 
         # Process streaming response chunks and update current message
