@@ -1,9 +1,11 @@
 <script lang="ts">
   import { page } from '$app/state'
+  import * as env from '$env/static/public'
   import { m } from '$lib/i18n/messages'
   import { getLocale } from '$lib/i18n/runtime'
 
   const locale = getLocale()
+  const isLegal = (env as any).PUBLIC_BRAND === 'juridique'
   // Navigation links for both desktop and mobile menus
   const navLinks = [
     { href: '/', label: m['seo.titles.home']() },
@@ -11,6 +13,9 @@
     { href: '/datasets', label: m['seo.titles.datasets']() },
     { href: '/news', label: m['seo.titles.news']() }
   ].filter((link) => {
+    if (isLegal && (link.href.includes('/datasets') || link.href.includes('/news'))) {
+      return false
+    }
     if (link.href.includes('/news') && !['fr', 'en'].includes(locale)) {
       return false
     }

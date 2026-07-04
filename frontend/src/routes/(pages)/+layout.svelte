@@ -3,6 +3,7 @@
   import { Icon, Link } from '$components/dsfr'
   import Footer from '$components/Footer.svelte'
   import { Header, VoteGauge } from '$components/header'
+  import * as env from '$env/static/public'
   import { m } from '$lib/i18n/messages'
   import { getLocale } from '$lib/i18n/runtime'
   import { onMount } from 'svelte'
@@ -11,6 +12,7 @@
 
   const isHome = $derived(page.url.pathname === '/')
   const isFr = getLocale() === 'fr'
+  const isLegal = (env as any).PUBLIC_BRAND === 'juridique'
 
   onMount(() => {
     if (isFr) {
@@ -25,7 +27,7 @@
 
 <Header hideDiscussBtn={isHome} />
 
-{#if isHome}
+{#if isHome && !isLegal}
   <Link button href="/arene/ranking" text={m['header.banner']()} cornered class="w-auto!" />
 {/if}
 

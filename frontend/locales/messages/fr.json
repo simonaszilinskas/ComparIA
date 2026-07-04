@@ -1542,6 +1542,66 @@
                 "help": "Vos données sont partagées à des fins de recherche"
             }
         },
+        "legal": {
+            "intro": {
+                "desc": "Comparez à l’aveugle les réponses de plusieurs IA à vos questions de droit, et donnez votre avis de professionnel du droit.",
+                "title": "Évaluez la fiabilité <span {props}>des IA génératives</span> sur des cas juridiques"
+            },
+            "tosHelp": "Vos échanges sont partagés de façon anonymisée à des fins de recherche juridique",
+            "use": {
+                "compare": {
+                    "alt": "Comparer",
+                    "desc": "Soumettez vos questions de droit et développez votre esprit critique en donnant votre préférence",
+                    "title": "Comparer les réponses de différentes IA sur des cas juridiques"
+                },
+                "desc": "Un espace conçu pour les professionnels du droit afin d’évaluer la fiabilité juridique des IA génératives.",
+                "measure": {
+                    "alt": "Évaluer",
+                    "desc": "Repérez les mauvaises applications du droit, les sources inventées ou les réponses hors sujet",
+                    "title": "Identifier les erreurs et approximations juridiques"
+                },
+                "test": {
+                    "alt": "Tester",
+                    "desc": "Testez différents modèles, propriétaires ou non, sur des problématiques juridiques réelles",
+                    "title": "Tester au même endroit les IA les plus utilisées"
+                },
+                "title": "À quoi sert l’Arène juridique ?"
+            },
+            "usage": {
+                "desc": "Un outil pensé pour les avocats, juristes, magistrats et enseignants en droit",
+                "educate": {
+                    "desc": "Utilisez l’Arène juridique comme support pédagogique auprès de vos étudiants ou de vos équipes",
+                    "title": "Former et sensibiliser"
+                },
+                "explore": {
+                    "desc": "Consultez au même endroit les caractéristiques et conditions d’utilisation des modèles",
+                    "title": "Explorer les modèles"
+                },
+                "title": "Les usages spécifiques de l’Arène juridique",
+                "use": {
+                    "desc": "Chercheurs et institutions, exploitez le corpus de l’Arène juridique pour évaluer la fiabilité des IA sur le droit",
+                    "title": "Objectiver la fiabilité juridique"
+                }
+            },
+            "vote": {
+                "desc": "Vos votes permettent d’objectiver la fiabilité juridique des IA génératives et d’orienter leur amélioration",
+                "steps": {
+                    "datasets": {
+                        "desc": "Les questions posées et les votes sont compilés dans un corpus dédié au droit, publié après anonymisation.",
+                        "title": "Un corpus juridique de référence"
+                    },
+                    "finetune": {
+                        "desc": "Ce corpus permet d’entraîner et d’évaluer des modèles plus rigoureux sur les questions juridiques.",
+                        "title": "Des IA plus fiables pour le droit"
+                    },
+                    "prefs": {
+                        "desc": "Après discussion avec les IA, vous évaluez leurs réponses selon des critères juridiques précis : exactitude du droit, sources, clarté.",
+                        "title": "Votre expertise"
+                    }
+                },
+                "title": "Pourquoi votre avis de professionnel du droit compte"
+            }
+        },
         "origin": {
             "project": {
                 "desc": "Le comparateur a été conçu et développé dans le cadre d’une start-up d’Etat portée par le ministère de la Culture et intégrée au programme <a {linkProps}>Beta.gouv.fr</a> de la Direction interministérielle du numérique (DINUM) qui aide les administrations publiques françaises à construire des services numériques utiles, simples et faciles à utiliser.",

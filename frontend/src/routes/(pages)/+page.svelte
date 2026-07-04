@@ -19,6 +19,8 @@
 
   if (PUBLIC_GIT_COMMIT) console.log(`Git commit: ${PUBLIC_GIT_COMMIT}`)
 
+  const isLegal = (env as any).PUBLIC_BRAND === 'juridique'
+
   $effect(() => {
     if (acceptTos.value) tosError = undefined
   })
@@ -49,9 +51,9 @@
       ] as const
     ).map(({ i18nKey, ...card }) => ({
       ...card,
-      title: m[`home.use.${i18nKey}.title`](),
-      desc: m[`home.use.${i18nKey}.desc`](),
-      alt: m[`home.use.${i18nKey}.alt`]()
+      title: m[`home.${isLegal ? 'legal.use' : 'use'}.${i18nKey}.title`](),
+      desc: m[`home.${isLegal ? 'legal.use' : 'use'}.${i18nKey}.desc`](),
+      alt: m[`home.${isLegal ? 'legal.use' : 'use'}.${i18nKey}.alt`]()
     }))
   )
 
@@ -90,8 +92,8 @@
     ] as const
   ).map(({ i18nKey, ...card }) => ({
     ...card,
-    title: m[`home.vote.steps.${i18nKey}.title`](),
-    desc: m[`home.vote.steps.${i18nKey}.desc`]()
+    title: m[`home.${isLegal ? 'legal.vote' : 'vote'}.steps.${i18nKey}.title`](),
+    desc: m[`home.${isLegal ? 'legal.vote' : 'vote'}.steps.${i18nKey}.desc`]()
   }))
 
   const usageCards = (
@@ -102,8 +104,8 @@
     ] as const
   ).map(({ i18nKey, ...card }) => ({
     ...card,
-    title: m[`home.usage.${i18nKey}.title`](),
-    desc: m[`home.usage.${i18nKey}.desc`]()
+    title: m[`home.${isLegal ? 'legal.usage' : 'usage'}.${i18nKey}.title`](),
+    desc: m[`home.${isLegal ? 'legal.usage' : 'usage'}.${i18nKey}.desc`]()
   }))
 
   // FIXME i18n specific logos
@@ -154,9 +156,13 @@
         <div class="mb-15 px-4 md:px-0">
           <div class="mb-10 md:w-[320px] md:max-w-[320px] max-w-[280px]">
             <h1 class="mb-5!">
-              {@html sanitize(m['home.intro.title']({ props: 'class="text-primary"' }))}
+              {@html sanitize(
+                m[isLegal ? 'home.legal.intro.title' : 'home.intro.title']({
+                  props: 'class="text-primary"'
+                })
+              )}
             </h1>
-            <p>{m['home.intro.desc']()}</p>
+            <p>{m[isLegal ? 'home.legal.intro.desc' : 'home.intro.desc']()}</p>
           </div>
 
           <Checkbox
@@ -165,7 +171,7 @@
             label={m['home.intro.tos.accept']({
               linkProps: propsToAttrs({ href: '/modalites', target: '_blank' })
             })}
-            help={m['home.intro.tos.help']()}
+            help={isLegal ? m['home.legal.tosHelp']() : m['home.intro.tos.help']()}
             error={tosError}
           />
         </div>
@@ -187,8 +193,12 @@
 
   <section class="fr-container--fluid md:py-15 py-10">
     <div class="fr-container">
-      <h3 class="mb-3! text-center">{m['home.use.title']()}</h3>
-      <p class="mb-8! text-grey text-center">{m['home.use.desc']()}</p>
+      <h3 class="mb-3! text-center">
+        {m[isLegal ? 'home.legal.use.title' : 'home.use.title']()}
+      </h3>
+      <p class="mb-8! text-grey text-center">
+        {m[isLegal ? 'home.legal.use.desc' : 'home.use.desc']()}
+      </p>
 
       <div class="gap-7 md:grid-cols-3 grid">
         {#each utilyCards as card, i (i)}
@@ -271,8 +281,12 @@
   <section class="fr-container--fluid bg-very-light-grey py-10 lg:py-14">
     <div class="fr-container">
       <div class="cg-border xl:p-13! bg-white px-4 py-10">
-        <h4 class="mb-2! text-center">{m['home.vote.title']()}</h4>
-        <p class="text-grey text-center">{m['home.vote.desc']()}</p>
+        <h4 class="mb-2! text-center">
+          {m[isLegal ? 'home.legal.vote.title' : 'home.vote.title']()}
+        </h4>
+        <p class="text-grey text-center">
+          {m[isLegal ? 'home.legal.vote.desc' : 'home.vote.desc']()}
+        </p>
 
         <div class="md:mt-13 mt-10 lg:flex-row flex flex-col text-center">
           {#each whyVoteCards as card, index (index)}
@@ -289,23 +303,29 @@
           {/each}
         </div>
 
-        <div class="lg:mt-19 mt-12 flex justify-center">
-          <Link
-            button
-            hideExternalIcon
-            size="lg"
-            href="https://huggingface.co/collections/comparIA/jeux-de-donnees-compar-ia-67644adf20912236342c3f3b"
-            text={m['home.vote.datasetAccess']()}
-          />
-        </div>
+        {#if !isLegal}
+          <div class="lg:mt-19 mt-12 flex justify-center">
+            <Link
+              button
+              hideExternalIcon
+              size="lg"
+              href="https://huggingface.co/collections/comparIA/jeux-de-donnees-compar-ia-67644adf20912236342c3f3b"
+              text={m['home.vote.datasetAccess']()}
+            />
+          </div>
+        {/if}
       </div>
     </div>
   </section>
 
   <section class="fr-container--fluid bg-light-grey py-10 lg:py-20">
     <div class="fr-container">
-      <h3 class="mb-2! text-center">{m['home.usage.title']()}</h3>
-      <p class="fr-mb-4w text-grey text-center">{m['home.vote.desc']()}</p>
+      <h3 class="mb-2! text-center">
+        {m[isLegal ? 'home.legal.usage.title' : 'home.usage.title']()}
+      </h3>
+      <p class="fr-mb-4w text-grey text-center">
+        {m[isLegal ? 'home.legal.usage.desc' : 'home.usage.desc']()}
+      </p>
 
       <div class="gap-8 md:grid-cols-3 grid">
         {#each usageCards as card, i (i)}

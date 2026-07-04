@@ -1355,6 +1355,66 @@
                 "help": "Data is shared for research purposes"
             }
         },
+        "legal": {
+            "intro": {
+                "desc": "Compare the blind responses of several AIs to your legal questions, and share your feedback as a legal professional.",
+                "title": "Assess the reliability <span {props}>of generative AIs</span> on legal cases"
+            },
+            "tosHelp": "Your exchanges are shared anonymously for legal research purposes",
+            "use": {
+                "compare": {
+                    "alt": "Compare",
+                    "desc": "Submit your legal questions and sharpen your critical thinking by giving your preference",
+                    "title": "Compare the responses of different AIs on legal cases"
+                },
+                "desc": "A space designed for legal professionals to assess the legal reliability of generative AIs.",
+                "measure": {
+                    "alt": "Assess",
+                    "desc": "Spot incorrect applications of the law, invented sources, or off-topic answers",
+                    "title": "Identify legal errors and inaccuracies"
+                },
+                "test": {
+                    "alt": "Test",
+                    "desc": "Test different models, proprietary or not, on real legal questions",
+                    "title": "Test the most widely used AIs in one place"
+                },
+                "title": "What is the Legal Arena for?"
+            },
+            "usage": {
+                "desc": "A tool designed for lawyers, jurists, magistrates and law educators",
+                "educate": {
+                    "desc": "Use the Legal Arena as a teaching tool for your students or teams",
+                    "title": "Train and raise awareness"
+                },
+                "explore": {
+                    "desc": "Find all model specifications and terms of use in one place",
+                    "title": "Explore the models"
+                },
+                "title": "Specific use cases of the Legal Arena",
+                "use": {
+                    "desc": "Researchers and institutions, use the Legal Arena's corpus to assess AI reliability on legal matters",
+                    "title": "Assess legal reliability"
+                }
+            },
+            "vote": {
+                "desc": "Your votes help objectively assess the legal reliability of generative AIs and guide their improvement",
+                "steps": {
+                    "datasets": {
+                        "desc": "Questions asked and votes are compiled into a dedicated legal corpus, published after anonymization.",
+                        "title": "A reference legal corpus"
+                    },
+                    "finetune": {
+                        "desc": "This corpus is used to train and evaluate models that are more rigorous on legal questions.",
+                        "title": "More reliable AIs for the law"
+                    },
+                    "prefs": {
+                        "desc": "After discussing with the AIs, you assess their answers against precise legal criteria: legal accuracy, sources, clarity.",
+                        "title": "Your expertise"
+                    }
+                },
+                "title": "Why your feedback as a legal professional matters"
+            }
+        },
         "origin": {
             "project": {
                 "desc": "The chatbot arena was designed and developed as part of a government startup led by the French Ministry of Culture, integrated into the <a {linkProps}>Beta.gouv.fr</a> program by the Interministerial Digital Directorate (DINUM). This initiative supports French public administrations in building useful, simple, and user-friendly digital services.",
