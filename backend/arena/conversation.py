@@ -148,6 +148,10 @@ async def bot_response_async(
         # Cap agentic tool-calling rounds: past the limit, force a final
         # textual answer by not offering tools at all.
         allow_tools = tool_set is not None and iterations < MAX_TOOL_ITERATIONS
+        # llm_msg.content accumulates across every round (for display); track
+        # where this round's own text starts so the assistant tool-call
+        # message below reflects only what the model actually said just now.
+        round_start = len(llm_msg.content)
 
         # Initialize streaming iterator from LiteLLM
         # Use message to avoid sending the empty AssistantMessage placeholder
@@ -182,9 +186,14 @@ async def bot_response_async(
         llm_msg.tool_calls = None
 
         # Execute each requested tool call and append the OpenAI-style
-        # assistant/tool exchange messages for the next round.
+        # assistant/tool exchange messages for the next round. Carrying this
+        # round's own text forward (instead of dropping it) is important: a
+        # model that narrated something before calling the tool needs to see
+        # that narration in the next round, or it re-narrates from scratch
+        # instead of continuing from where it left off.
+        round_text = llm_msg.content[round_start:] or None
         call_messages = call_messages + [
-            {"role": "assistant", "content": None, "tool_calls": requested_calls}
+            {"role": "assistant", "content": round_text, "tool_calls": requested_calls}
         ]
         for call in requested_calls:
             name = call["function"]["name"]
