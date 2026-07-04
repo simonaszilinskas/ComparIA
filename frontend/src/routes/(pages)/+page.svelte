@@ -156,13 +156,12 @@
       <div class="">
         <div class="mb-15 px-4 md:px-0">
           <div class="mb-10 md:w-[320px] md:max-w-[320px] max-w-[280px]">
-            <h1 class="mb-5!">
-              {@html sanitize(
-                m[isLegal ? 'home.legal.intro.title' : 'home.intro.title']({
-                  props: 'class="text-primary"'
-                })
-              )}
+            <h1 class="mb-1!">
+              {@html sanitize(m['home.intro.title']({ props: 'class="text-primary"' }))}
             </h1>
+            {#if isLegal}
+              <p class="text-primary mb-4! font-medium">{m['home.legal.intro.subtitle']()}</p>
+            {/if}
             <p>{m[isLegal ? 'home.legal.intro.desc' : 'home.intro.desc']()}</p>
           </div>
 

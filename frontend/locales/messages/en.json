@@ -1358,7 +1358,7 @@
         "legal": {
             "intro": {
                 "desc": "Compare the blind responses of several AIs to your legal questions, and share your feedback as a legal professional.",
-                "title": "Assess the reliability <span {props}>of generative AIs</span> on legal cases"
+                "subtitle": "Especially in the law"
             },
             "tosHelp": "Your exchanges are shared anonymously for legal research purposes",
             "use": {

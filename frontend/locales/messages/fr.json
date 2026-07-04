@@ -1545,7 +1545,7 @@
         "legal": {
             "intro": {
                 "desc": "Comparez à l’aveugle les réponses de plusieurs IA à vos questions de droit, et donnez votre avis de professionnel du droit.",
-                "title": "Évaluez la fiabilité <span {props}>des IA génératives</span> sur des cas juridiques"
+                "subtitle": "Surtout dans le droit"
             },
             "tosHelp": "Vos échanges sont partagés de façon anonymisée à des fins de recherche juridique",
             "use": {
