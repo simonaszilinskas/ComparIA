@@ -157,6 +157,12 @@ async def bot_response_async(
         # llm_msg.content accumulates across every round; track where this
         # round's own text starts so it can be pulled out below.
         round_start = len(llm_msg.content)
+        # litellm_stream_iter only ever *sets* msg.tool_calls (when the model
+        # requests one); it never clears it on a normal "stop" finish. Since
+        # llm_msg is reused across rounds, a stale value here (in our own
+        # audit-trail shape, not litellm's raw tool-call shape) would be
+        # misread below as a fresh request and crash on `call["function"]`.
+        llm_msg.tool_calls = None
 
         # Initialize streaming iterator from LiteLLM
         # Use message to avoid sending the empty AssistantMessage placeholder
