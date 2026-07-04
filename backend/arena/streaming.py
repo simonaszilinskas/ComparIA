@@ -224,29 +224,35 @@ async def stream_comparison_messages(
             # Track timeout swap attempts (max one per position)
             retried: dict[BotPos, bool] = {"a": False, "b": False}
 
-            # Consume both generators in parallel
-            while not (complete["a"] and complete["b"]):
-                # Collect pending tasks
-                tasks = [
-                    asyncio.create_task(anext(generators[pos]))
-                    for pos in BOT_POS
-                    if not complete[pos]
-                ]
+            # Consume both generators in parallel. One outstanding anext() task
+            # per position, kept alive across loop iterations rather than
+            # cancelled-and-recreated: cancelling a task whose anext() call is
+            # suspended mid-await inside the generator (e.g. an in-flight tool
+            # call) can leave that generator corrupted, making its next
+            # anext() raise a bare StopAsyncIteration that silently kills the
+            # whole stream.
+            pending_tasks: dict[BotPos, asyncio.Task] = {}
 
-                if not tasks:
+            while not (complete["a"] and complete["b"]):
+                for pos in BOT_POS:
+                    if not complete[pos] and pos not in pending_tasks:
+                        pending_tasks[pos] = asyncio.create_task(anext(generators[pos]))
+
+                if not pending_tasks:
                     break
 
                 # Wait for next chunk from either model
-                completed, pending = await asyncio.wait(
-                    tasks, return_when=asyncio.FIRST_COMPLETED
+                done, _ = await asyncio.wait(
+                    pending_tasks.values(), return_when=asyncio.FIRST_COMPLETED
                 )
 
-                # Cancel pending tasks to avoid concurrent anext() on the same generator
-                for task in pending:
-                    task.cancel()
-
                 # Process completed chunks
-                for task in completed:
+                for pos in list(pending_tasks):
+                    task = pending_tasks[pos]
+                    if task not in done:
+                        continue
+                    del pending_tasks[pos]
+
                     try:
                         event = task.result()
                     except ChatError as e:
@@ -286,9 +292,8 @@ async def stream_comparison_messages(
                             # No replacement available, fall through to raise
                         raise
 
-                    for pos in BOT_POS:
-                        if event["type"] == "complete":
-                            complete[event["pos"]] = True
+                    if event["type"] == "complete":
+                        complete[event["pos"]] = True
 
                     yield event
 
