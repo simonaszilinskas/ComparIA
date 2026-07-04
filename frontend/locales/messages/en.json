@@ -1814,13 +1814,18 @@
         "selectPlaceholder": "Select an option",
         "submit": "Submit",
         "profession": {
-            "label": "What is your profession?",
+            "label": "What is your legal profession?",
             "options": {
-                "student": "Student",
-                "employed_tech": "Employed - Tech sector",
-                "employed_other": "Employed - Other sector",
-                "unemployed": "Unemployed",
-                "retired": "Retired",
+                "avocat": "Lawyer (avocat)",
+                "magistrat": "Judge or public prosecutor (magistrat)",
+                "notaire": "Notary (notaire)",
+                "commissaire_justice": "Judicial officer (commissaire de justice)",
+                "juriste_entreprise": "In-house or firm legal counsel",
+                "greffier": "Court clerk (greffier)",
+                "etudiant_droit": "Law student",
+                "enseignant_chercheur_droit": "Legal academic / researcher",
+                "autre_professionnel_droit": "Other legal professional",
+                "non_juriste": "Non-lawyer",
                 "other": "Other"
             }
         },

@@ -105,9 +105,21 @@ ALL_PREFS: tuple[AllPref, ...] = POSITIVE_PREFS + NEGATIVE_PREFS
 TurnChoice = Literal["both_good", "both_bad", "a_better", "b_better", "idk"]
 TURN_CHOICE: tuple[TurnChoice, ...] = get_args(TurnChoice)
 
-# Socio-demographic profile (optional, logged-in users only)
+# Socio-demographic profile (optional, logged-in users only).
+# `Profession` identifies the French legal-professional role (compar:IA juridique
+# is a legal-domain instance), not a generic occupation category.
 Profession = Literal[
-    "student", "employed_tech", "employed_other", "unemployed", "retired", "other"
+    "avocat",
+    "magistrat",
+    "notaire",
+    "commissaire_justice",
+    "juriste_entreprise",
+    "greffier",
+    "etudiant_droit",
+    "enseignant_chercheur_droit",
+    "autre_professionnel_droit",
+    "non_juriste",
+    "other",
 ]
 PROFESSIONS: tuple[Profession, ...] = get_args(Profession)
 AIUsageFrequency = Literal["daily", "weekly", "monthly", "rarely", "never"]

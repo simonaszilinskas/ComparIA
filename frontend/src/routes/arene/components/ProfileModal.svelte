@@ -5,11 +5,16 @@
   import { m } from '$lib/i18n/messages'
 
   const PROFESSIONS = [
-    'student',
-    'employed_tech',
-    'employed_other',
-    'unemployed',
-    'retired',
+    'avocat',
+    'magistrat',
+    'notaire',
+    'commissaire_justice',
+    'juriste_entreprise',
+    'greffier',
+    'etudiant_droit',
+    'enseignant_chercheur_droit',
+    'autre_professionnel_droit',
+    'non_juriste',
     'other'
   ] as const
   const AI_USAGE_FREQUENCIES = ['daily', 'weekly', 'monthly', 'rarely', 'never'] as const

@@ -2147,13 +2147,18 @@
         "selectPlaceholder": "Sélectionner une option",
         "submit": "Envoyer",
         "profession": {
-            "label": "Quelle est votre profession ?",
+            "label": "Quelle est votre profession juridique ?",
             "options": {
-                "student": "Étudiant·e",
-                "employed_tech": "En activité - secteur technologique",
-                "employed_other": "En activité - autre secteur",
-                "unemployed": "Sans emploi",
-                "retired": "Retraité·e",
+                "avocat": "Avocat·e",
+                "magistrat": "Magistrat·e (juge, procureur·e)",
+                "notaire": "Notaire",
+                "commissaire_justice": "Commissaire de justice",
+                "juriste_entreprise": "Juriste d'entreprise ou de cabinet",
+                "greffier": "Greffier·ère",
+                "etudiant_droit": "Étudiant·e en droit",
+                "enseignant_chercheur_droit": "Enseignant·e-chercheur·se en droit",
+                "autre_professionnel_droit": "Autre professionnel·le du droit",
+                "non_juriste": "Non-juriste",
                 "other": "Autre"
             }
         },
