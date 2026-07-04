@@ -33,6 +33,10 @@ class Settings(BaseSettings):
     HF_PUSH_DATASET_PATH: str = ""
 
     DEFAULT_COUNTRY_PORTAL: str = "fr"
+    # Mirrors the frontend's PUBLIC_BRAND. Gates brand-specific backend features
+    # (e.g. legal skills/tools) so they can't be requested on other instances
+    # sharing this codebase, even though each instance is its own deployment.
+    PUBLIC_BRAND: str = ""
 
     RANKING_INTERVAL_SECONDS: int = 3600  # 1 hour
     REPO_ORG: str = "ministere-culture"
@@ -194,3 +198,7 @@ ALTCHA_REPLAY_TTL_SECONDS = 3600  # 1 hour Redis TTL for used challenges
 
 # Web search intro for LLM
 WEB_SEARCH_INTRO = "Here is some recent information from a web search. Use it to answer the user's question if it's relevant:\n\n"
+
+# Agentic legal tools/skills (compar:IA juridique only). The model decides
+# whether to use an enabled tool; it is never forced.
+MAX_TOOL_ITERATIONS = 4

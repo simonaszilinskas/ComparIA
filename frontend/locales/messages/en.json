@@ -32,6 +32,14 @@
         "errors": {
             "rateLimitCustomSelection": "Model selection is limited to ensure fair access for everyone. You can continue using random mode, or try again later."
         },
+        "legalTools": {
+            "mcpServers": {
+                "legend": "Tools"
+            },
+            "skills": {
+                "legend": "Skills"
+            }
+        },
         "modelSelection": "Model selection",
         "prompt": {
             "label": "Write your first message",
@@ -115,6 +123,9 @@
             "inProgress": "Reasoning in progress…"
         },
         "revealButton": "Reveal the models",
+        "toolCall": {
+            "using": "Using tool: {tool}"
+        },
         "webSearch": {
             "label": "Associated Web search results."
         }

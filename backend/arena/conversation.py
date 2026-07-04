@@ -6,6 +6,7 @@ handling streaming responses, token counting, and message tracking.
 """
 
 import asyncio
+import json
 import logging
 from datetime import datetime
 from typing import AsyncGenerator, Literal
@@ -19,7 +20,9 @@ from backend.arena.cache import (
     get_cached_response,
     store_cached_response,
 )
+from backend.arena.legal_tools.mcp_client import ToolSet
 from backend.arena.litellm import litellm_stream_iter
+from backend.config import MAX_TOOL_ITERATIONS
 from backend.errors import EmptyResponseError
 from backend.llms.models import LLMDataEnabled
 from utils.database.models import (
@@ -95,6 +98,7 @@ async def bot_response_async(
     request: Request | None = None,
     temperature=0.7,
     max_new_tokens=16384,
+    tool_set: ToolSet | None = None,
 ) -> AsyncGenerator[LLMMessageCreate]:
     """
     Stream a response from a LLM asynchronously.
@@ -134,23 +138,76 @@ async def bot_response_async(
     llm_msg = LLMMessageCreate()
     setattr(turn, f"llm_msg_{pos}", llm_msg)
 
-    # Initialize streaming iterator from LiteLLM
-    # Use message to avoid sending the empty AssistantMessage placeholder
-    # (some providers like Cohere reject messages with empty content)
-    stream_iter = litellm_stream_iter(
-        llm=llm,
-        messages=messages,
-        msg=llm_msg,
-        temperature=temperature,
-        max_new_tokens=max_new_tokens,
-        request=request,
-    )
+    # Working message list this call can extend with tool-call exchanges
+    # without mutating the turn/comparison history.
+    call_messages: list[AnyMessageRead | dict] = list(messages)
+    tool_call_audit: list[dict] = []
+    iterations = 0
 
-    # Process streaming response chunks and update current message
-    for llm_msg in stream_iter:
-        # Yield complete chat only if there's content to display in current message
-        if llm_msg.content or llm_msg.reasoning_content:
-            yield llm_msg
+    while True:
+        # Cap agentic tool-calling rounds: past the limit, force a final
+        # textual answer by not offering tools at all.
+        allow_tools = tool_set is not None and iterations < MAX_TOOL_ITERATIONS
+
+        # Initialize streaming iterator from LiteLLM
+        # Use message to avoid sending the empty AssistantMessage placeholder
+        # (some providers like Cohere reject messages with empty content)
+        stream_iter = litellm_stream_iter(
+            llm=llm,
+            messages=call_messages,
+            msg=llm_msg,
+            temperature=temperature,
+            max_new_tokens=max_new_tokens,
+            request=request,
+            tools=tool_set.openai_tools if allow_tools else None,
+        )
+
+        # Process streaming response chunks and update current message
+        for llm_msg in stream_iter:
+            # Yield complete chat only if there's content to display in current message
+            if llm_msg.content or llm_msg.reasoning_content:
+                yield llm_msg
+
+        requested_calls = llm_msg.tool_calls
+        if not requested_calls or not tool_set:
+            break
+
+        iterations += 1
+        tool_call_audit.extend(requested_calls)
+
+        # Surface a chunk with the pending calls so the SSE stream can show a
+        # "using tool X" activity indicator, then clear the transient signal.
+        llm_msg.tool_calls = requested_calls
+        yield llm_msg
+        llm_msg.tool_calls = None
+
+        # Execute each requested tool call and append the OpenAI-style
+        # assistant/tool exchange messages for the next round.
+        call_messages = call_messages + [
+            {"role": "assistant", "content": None, "tool_calls": requested_calls}
+        ]
+        for call in requested_calls:
+            name = call["function"]["name"]
+            try:
+                arguments = json.loads(call["function"].get("arguments") or "{}")
+            except json.JSONDecodeError:
+                arguments = {}
+
+            handler = tool_set.handlers.get(name)
+            try:
+                result = await handler(arguments) if handler else "Outil inconnu."
+            except Exception as e:
+                logger.warning(
+                    f"tool_call_failed: {name}: {e}", extra={"request": request}
+                )
+                result = f"Erreur lors de l'appel de l'outil : {e}"
+
+            call_messages.append(
+                {"role": "tool", "tool_call_id": call.get("id"), "content": result}
+            )
+
+    # Persist the tool-call audit trail, if any, on the final message
+    llm_msg.tool_calls = tool_call_audit or None
 
     duration = (llm_msg.updated_at - llm_msg.created_at).total_seconds()
     logger.debug(

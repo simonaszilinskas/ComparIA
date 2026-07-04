@@ -32,13 +32,14 @@ logger = logging.getLogger("languia")
 
 def litellm_stream_iter(
     llm: "LLMDataEnabled",
-    messages: list["AnyMessageRead"],
+    messages: list[Union["AnyMessageRead", dict]],
     msg: "LLMMessageCreate",
     temperature: float,
     max_new_tokens: int,
     request: Union["Request", None] = None,
     include_reasoning: bool = False,  # FIXME Legacy ?
     enable_reasoning: bool = False,  # FIXME Legacy ?
+    tools: list[dict] | None = None,
 ) -> Generator["LLMMessageCreate"]:
     """
     Stream responses from an LLM API using LiteLLM.
@@ -92,9 +93,12 @@ def litellm_stream_iter(
         # litellm endpoint formated args
         **endpoint.model_dump(),
         # max_retries can be added if needed
-        # Only pass supported message args 'role' and 'content'
+        # Only pass supported message args 'role' and 'content', except for
+        # plain dicts (tool-call exchange messages), passed through as-is
         "messages": [
-            msg.model_dump(
+            msg
+            if isinstance(msg, dict)
+            else msg.model_dump(
                 include={"role", "content"}, context={"merge_web_search": True}
             )
             for msg in messages
@@ -103,6 +107,10 @@ def litellm_stream_iter(
         "max_tokens": max_new_tokens,
         "stream": True,  # Enable streaming for real-time responses
     }
+
+    if tools:
+        kwargs["tools"] = tools
+        kwargs["tool_choice"] = "auto"
 
     # Use mock response for testing if enabled
     if settings.MOCK_RESPONSE:
@@ -135,9 +143,25 @@ def litellm_stream_iter(
             extra={"request": request},
         )
         raise ContextTooLongError from e
+    except Exception as e:
+        # Fail-open: not every provider/model behind litellm handles `tools`
+        # cleanly. Degrade to a normal (tool-less) response rather than
+        # erroring the whole comparison.
+        if not tools:
+            raise
+        logger.warning(
+            f"tool_calling_unsupported_retrying_without_tools: {endpoint.model}: {e}",
+            extra={"request": request},
+        )
+        kwargs.pop("tools", None)
+        kwargs.pop("tool_choice", None)
+        response = litellm.completion(**kwargs)
 
     # OpenRouter specific params could be added here
     # transforms = [""], route= ""
+
+    # Accumulate streamed tool-call deltas by index until finish_reason=="tool_calls"
+    pending_tool_calls: dict[int, dict] = {}
 
     # Process streaming chunks from the API
     for chunk in response:
@@ -172,6 +196,19 @@ def litellm_stream_iter(
                     "reasoning"
                 ):
                     msg.reasoning_content += reasoning
+                # Accumulate tool-call deltas (litellm normalizes these across
+                # providers into OpenAI-shaped incremental chunks by index)
+                for tc in delta.get("tool_calls") or []:
+                    entry = pending_tool_calls.setdefault(
+                        tc.index, {"id": None, "type": "function", "function": {"name": "", "arguments": ""}}
+                    )
+                    if tc.id:
+                        entry["id"] = tc.id
+                    if tc.function:
+                        if tc.function.name:
+                            entry["function"]["name"] += tc.function.name
+                        if tc.function.arguments:
+                            entry["function"]["arguments"] += tc.function.arguments
 
             # Check for generation completion signal
             if choice.finish_reason == "stop":
@@ -182,6 +219,9 @@ def litellm_stream_iter(
                     "output_truncated_at_max_tokens: " + str(chunk),
                     extra={"request": request},
                 )
+                break
+            elif choice.finish_reason == "tool_calls":
+                msg.tool_calls = list(pending_tool_calls.values())
                 break
 
             # Yield partial results for streaming to frontend

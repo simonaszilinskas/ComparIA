@@ -13,6 +13,8 @@ export interface APIModeAndPromptData {
   mode: Mode
   custom_models_selection: string[]
   web_search: boolean
+  enabled_skills?: string[]
+  enabled_mcp_servers?: string[]
 }
 
 export type ModeInfos = {
@@ -42,12 +44,20 @@ export interface UserMessage {
   user_content: string
   web_search_results: WebSearchResults[] | null
 }
+export interface ToolCall {
+  id: string
+  type: 'function'
+  function: { name: string; arguments: string }
+}
 export interface AssistantMessage {
   role: 'assistant'
   duration: number | null
   generation_id: string
   content: string
   reasoning_content: string | ''
+  // Present transiently on the chunk where the model requests a tool call
+  // (legal instance only) — used to show a "using tool X" activity indicator.
+  tool_calls?: ToolCall[] | null
 }
 export type AnyMessage = UserMessage | AssistantMessage
 
@@ -418,6 +428,8 @@ export function getComparison<Id extends string | undefined>(comparisonId: Id) {
         mode: args.mode,
         custom_models_selection: args.mode === 'custom' ? args.custom_models_selection : null,
         web_search: args.web_search,
+        enabled_skills: args.enabled_skills ?? [],
+        enabled_mcp_servers: args.enabled_mcp_servers ?? [],
         cohorts
       })
     },
