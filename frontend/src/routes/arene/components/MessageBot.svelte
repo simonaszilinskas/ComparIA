@@ -33,6 +33,7 @@
 
   let annotations = $derived({
     keyword_annotations: turnSide.keyword_annotations,
+    sub_annotations: turnSide.sub_annotations,
     custom_annotation: turnSide.custom_annotation
   })
 </script>

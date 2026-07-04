@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, get_args
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlmodel import Field, Relationship, SQLModel, String
 
-from backend.config import NegativePref, PositivePref, TurnChoice
+from backend.config import NegativePref, NegativeSubtag, PositivePref, TurnChoice
 from utils.validation import StripAndEmptyAsNone
 
 from .messages import (
@@ -27,6 +27,7 @@ LLMMessageId = Annotated[
 KeywordAnnotations = Annotated[
     list[PositivePref] | list[NegativePref], Field(sa_type=JSONB)
 ]
+SubAnnotations = Annotated[list[NegativeSubtag], Field(sa_type=JSONB)]
 
 
 class TurnBase(BaseDBModel):
@@ -43,11 +44,13 @@ class TurnBase(BaseDBModel):
     # a
     llm_msg_a_id: LLMMessageId = None
     keyword_annotations_a: KeywordAnnotations = []
+    sub_annotations_a: SubAnnotations = []
     custom_annotation_a: str | None = None
 
     # b
     llm_msg_b_id: LLMMessageId = None
     keyword_annotations_b: KeywordAnnotations = []
+    sub_annotations_b: SubAnnotations = []
     custom_annotation_b: str | None = None
 
 
@@ -92,10 +95,12 @@ class TurnPublic(SQLModel):
 
     llm_msg_a: LLMMessageCreate | None
     keyword_annotations_a: KeywordAnnotations
+    sub_annotations_a: SubAnnotations
     custom_annotation_a: str | None = ""
 
     llm_msg_b: LLMMessageCreate | None
     keyword_annotations_b: KeywordAnnotations
+    sub_annotations_b: SubAnnotations
     custom_annotation_b: str | None = ""
 
 
@@ -109,4 +114,5 @@ class TurnVoteAnnotate(SQLModel):
     turn_id: Annotated[uuid.UUID, Field(exclude=True)]
     pos: Annotated[BotPos, Field(exclude=True)]
     keyword_annotations: list[PositivePref] | list[NegativePref]
+    sub_annotations: list[NegativeSubtag] = []
     custom_annotation: Annotated[str | None, StripAndEmptyAsNone]

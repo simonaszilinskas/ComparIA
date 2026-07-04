@@ -61,6 +61,7 @@ export interface ComparisonTurnSide {
   status: ComparisonTurnStatus
   llm_msg?: AssistantMessage
   keyword_annotations: APIPositivePref[] | APINegativePref[]
+  sub_annotations: APINegativeSubtag[]
   custom_annotation: string
 }
 
@@ -72,9 +73,11 @@ interface BaseComparisonTurn {
 export interface APIComparisonTurn extends BaseComparisonTurn {
   llm_msg_a?: AssistantMessage
   keyword_annotations_a: APIPositivePref[] | APINegativePref[]
+  sub_annotations_a: APINegativeSubtag[]
   custom_annotation_a: string
   llm_msg_b?: AssistantMessage
   keyword_annotations_b: APIPositivePref[] | APINegativePref[]
+  sub_annotations_b: APINegativeSubtag[]
   custom_annotation_b: string
 }
 export interface ComparisonTurn extends BaseComparisonTurn {
@@ -129,8 +132,28 @@ export const PREFS_EMOJIS: Record<APIReactionPref, string> = {
 export type APIPositivePref = (typeof APIPositivePrefs)[number]
 export type APINegativePref = (typeof APINegativePrefs)[number]
 export type APIReactionPref = APIPositivePref | APINegativePref
+
+// Sub-tags: shown only once their parent negative tag is selected.
+export type APINegativeSubtag =
+  | 'wrong_rule'
+  | 'irrelevant'
+  | 'no_source'
+  | 'vague_source'
+  | 'wrong_source'
+  | 'invented_source'
+  | 'disorganized'
+  | 'too_long'
+  | 'too_short'
+
+export const NEGATIVE_SUBTAGS: Partial<Record<APINegativePref, readonly APINegativeSubtag[]>> = {
+  legal_error: ['wrong_rule', 'irrelevant'],
+  fabricated_source: ['no_source', 'vague_source', 'wrong_source', 'invented_source'],
+  confusing: ['disorganized', 'too_long', 'too_short']
+}
+
 export interface VoteAnnotations {
   keyword_annotations: APIPositivePref[] | APINegativePref[]
+  sub_annotations: APINegativeSubtag[]
   custom_annotation: string
 }
 export interface APIVoteChoice {
@@ -142,6 +165,7 @@ export interface APIVoteAnnotate {
   turn_id: number
   pos: Bot
   keyword_annotations: APIPositivePref[] | APINegativePref[]
+  sub_annotations: APINegativeSubtag[]
   custom_annotation: string
 }
 
@@ -229,13 +253,15 @@ function parseAPITurn(turn: APIComparisonTurn): ComparisonTurn {
       status: !turn.llm_msg_a ? 'pending' : 'complete',
       llm_msg: turn.llm_msg_a,
       custom_annotation: '',
-      keyword_annotations: []
+      keyword_annotations: [],
+      sub_annotations: []
     },
     b: {
       status: !turn.llm_msg_b ? 'pending' : 'complete',
       llm_msg: turn.llm_msg_b,
       custom_annotation: '',
-      keyword_annotations: []
+      keyword_annotations: [],
+      sub_annotations: []
     }
   }
 }
@@ -419,6 +445,7 @@ export function getComparison<Id extends string | undefined>(comparisonId: Id) {
       } else {
         turn[data.pos].custom_annotation = data.custom_annotation
         turn[data.pos].keyword_annotations = data.keyword_annotations
+        turn[data.pos].sub_annotations = data.sub_annotations
       }
     },
 

@@ -2107,7 +2107,24 @@
                 "legal_error": "Legal error",
                 "off_topic": "Off topic",
                 "outdated_law": "Outdated law",
-                "question": "Why did you not like the answer"
+                "question": "Why did you not like the answer",
+                "subtags": {
+                    "confusing": {
+                        "disorganized": "Disorganized",
+                        "too_long": "Too long",
+                        "too_short": "Too short"
+                    },
+                    "fabricated_source": {
+                        "invented_source": "Invented source",
+                        "no_source": "No source cited",
+                        "vague_source": "Vague source (\"the law says\")",
+                        "wrong_source": "Wrong source"
+                    },
+                    "legal_error": {
+                        "irrelevant": "Off topic",
+                        "wrong_rule": "Wrong rule applied"
+                    }
+                }
             },
             "positive": {
                 "clear": "Clarity of answer",

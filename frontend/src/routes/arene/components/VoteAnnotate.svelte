@@ -1,8 +1,13 @@
 <script lang="ts">
   import Selector from '$components/Selector.svelte'
   import TextPrompt from '$components/TextPrompt.svelte'
-  import type { APIReactionPref, VoteAnnotations } from '$lib/chatService.svelte'
-  import { APINegativePrefs, APIPositivePrefs, PREFS_EMOJIS } from '$lib/chatService.svelte'
+  import type { APINegativeSubtag, APIReactionPref, VoteAnnotations } from '$lib/chatService.svelte'
+  import {
+    APINegativePrefs,
+    APIPositivePrefs,
+    NEGATIVE_SUBTAGS,
+    PREFS_EMOJIS
+  } from '$lib/chatService.svelte'
   import { m } from '$lib/i18n/messages'
   import { fly } from 'svelte/transition'
 
@@ -41,6 +46,34 @@
     }
   }
   const keywordChoices = $derived(keywords[kind])
+
+  // Sub-tags refine why a selected negative tag applies; shown only while
+  // their parent tag is checked, and pruned from sub_annotations otherwise.
+  const subtagGroups = $derived(
+    kind === 'negative'
+      ? (annotations.keyword_annotations as string[])
+          .filter((parent) => NEGATIVE_SUBTAGS[parent as keyof typeof NEGATIVE_SUBTAGS])
+          .map((parent) => ({
+            parent,
+            label: m[`vote.choices.negative.${parent}`](),
+            choices: (NEGATIVE_SUBTAGS[parent as keyof typeof NEGATIVE_SUBTAGS] ?? []).map(
+              (value) => ({
+                value,
+                label: m[`vote.choices.negative.subtags.${parent}.${value}`]()
+              })
+            ) as { value: APINegativeSubtag; label: string }[]
+          }))
+      : []
+  )
+
+  $effect(() => {
+    const allowed = new Set(subtagGroups.flatMap((g) => g.choices.map((c) => c.value)))
+    const pruned = annotations.sub_annotations.filter((s) => allowed.has(s))
+    if (pruned.length !== annotations.sub_annotations.length) {
+      annotations.sub_annotations = pruned as APINegativeSubtag[]
+      onUpdate(annotations)
+    }
+  })
 </script>
 
 <form
@@ -73,6 +106,23 @@
     choiceClass="px-2 py-1 md:px-3 md:py-2 rounded-full lh-none! has-checked:text-primary! text-xs! md:text-[14px]! bg-white"
     onChange={() => onUpdate(annotations)}
   />
+
+  {#each subtagGroups as group (group.parent)}
+    <div class="mt-2" transition:fly={{ y: 4, duration: 150 }}>
+      <p class="mb-1! text-xs! text-grey">{group.label}</p>
+      <Selector
+        id="{id}-selector-{group.parent}"
+        kind="checkbox"
+        bind:value={annotations.sub_annotations}
+        choices={group.choices}
+        multiple
+        {disabled}
+        containerClass="flex flex-wrap gap-1"
+        choiceClass="px-2 py-1 md:px-3 md:py-2 rounded-full lh-none! has-checked:text-primary! text-xs! bg-white"
+        onChange={() => onUpdate(annotations)}
+      />
+    </div>
+  {/each}
 </form>
 
 <style>

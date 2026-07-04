@@ -2465,7 +2465,24 @@
                 "legal_error": "Erreur de droit",
                 "off_topic": "Hors sujet",
                 "outdated_law": "Droit obsolète",
-                "question": "Pourquoi la réponse ne convient-elle pas ?"
+                "question": "Pourquoi la réponse ne convient-elle pas ?",
+                "subtags": {
+                    "confusing": {
+                        "disorganized": "Décousue",
+                        "too_long": "Trop longue",
+                        "too_short": "Trop brève"
+                    },
+                    "fabricated_source": {
+                        "invented_source": "Source inventée",
+                        "no_source": "Aucune source citée",
+                        "vague_source": "Source vague (« la loi dit »)",
+                        "wrong_source": "Mauvaise source"
+                    },
+                    "legal_error": {
+                        "irrelevant": "Hors sujet",
+                        "wrong_rule": "Mauvaise application des règles applicables"
+                    }
+                }
             },
             "positive": {
                 "clear": "Clarté de la réponse",

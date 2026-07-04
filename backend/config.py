@@ -104,6 +104,26 @@ NegativePref = Literal[
 NEGATIVE_PREFS: tuple[NegativePref, ...] = get_args(NegativePref)
 AllPref = Literal[PositivePref | NegativePref]
 ALL_PREFS: tuple[AllPref, ...] = POSITIVE_PREFS + NEGATIVE_PREFS
+
+# Sub-tags: shown only once their parent negative tag is selected, to pin down
+# *why* it applies. Not every negative tag has sub-tags.
+NegativeSubtag = Literal[
+    "wrong_rule",
+    "irrelevant",
+    "no_source",
+    "vague_source",
+    "wrong_source",
+    "invented_source",
+    "disorganized",
+    "too_long",
+    "too_short",
+]
+NEGATIVE_SUBTAGS: dict[NegativePref, tuple[NegativeSubtag, ...]] = {
+    "legal_error": ("wrong_rule", "irrelevant"),
+    "fabricated_source": ("no_source", "vague_source", "wrong_source", "invented_source"),
+    "confusing": ("disorganized", "too_long", "too_short"),
+}
+ALL_NEGATIVE_SUBTAGS: tuple[NegativeSubtag, ...] = get_args(NegativeSubtag)
 TurnChoice = Literal["both_good", "both_bad", "a_better", "b_better", "idk"]
 TURN_CHOICE: tuple[TurnChoice, ...] = get_args(TurnChoice)
 
