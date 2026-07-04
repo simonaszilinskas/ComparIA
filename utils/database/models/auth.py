@@ -3,7 +3,7 @@ from typing import Annotated
 
 from sqlmodel import Field, Relationship, SQLModel, String
 
-from backend.config import AgeRange, AIUsageFrequency, Gender, Profession
+from backend.config import Profession
 
 from .utils import AutoDatetime, Datetime, ModelId, OptionalDatetime
 
@@ -20,11 +20,8 @@ class User(SQLModel, table=True):
     last_seen_at: AutoDatetime
     deleted_at: OptionalDatetime = None
 
-    # Socio-demographic profile, optional and self-reported (see backend/auth/router.py profile endpoint)
+    # Legal-professional role, optional and self-reported (see backend/auth/router.py profile endpoint)
     profession: Annotated[Profession | None, Field(sa_type=String)] = None
-    ai_usage_frequency: Annotated[AIUsageFrequency | None, Field(sa_type=String)] = None
-    gender: Annotated[Gender | None, Field(sa_type=String)] = None
-    age_range: Annotated[AgeRange | None, Field(sa_type=String)] = None
 
     login_codes: list["LoginCode"] = Relationship(back_populates="user")
     auth_sessions: list["AuthSession"] = Relationship(back_populates="user")

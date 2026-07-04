@@ -14,7 +14,7 @@ from backend.auth.services import (
     update_user_profile,
     verify_login_code,
 )
-from backend.config import AgeRange, AIUsageFrequency, Gender, Profession, settings
+from backend.config import Profession, settings
 from backend.utils.user import get_ip, get_matomo_tracker_from_cookies
 from utils.storage.redis import REDIS_AUTH_EMAIL_REQ, get_redis_client
 
@@ -44,9 +44,6 @@ class EmailVerifyBody(BaseModel):
 
 class ProfileUpdateBody(BaseModel):
     profession: Profession | None = None
-    ai_usage_frequency: AIUsageFrequency | None = None
-    gender: Gender | None = None
-    age_range: AgeRange | None = None
 
 
 @router.get("/config")
@@ -154,9 +151,6 @@ async def get_me(request: Request) -> dict:
             "email": user.email,
             "role": user.role,
             "profession": user.profession,
-            "ai_usage_frequency": user.ai_usage_frequency,
-            "gender": user.gender,
-            "age_range": user.age_range,
         }
     }
 

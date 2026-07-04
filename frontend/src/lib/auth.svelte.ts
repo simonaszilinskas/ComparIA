@@ -6,16 +6,10 @@ export interface AuthUser {
   email: string
   role: string
   profession: string | null
-  ai_usage_frequency: string | null
-  gender: string | null
-  age_range: string | null
 }
 
 export function hasIncompleteProfile(user: AuthUser | null): boolean {
-  if (!user) return false
-  return (
-    !user.profession || !user.ai_usage_frequency || !user.gender || !user.age_range
-  )
+  return !!user && !user.profession
 }
 
 export interface AuthConfig {

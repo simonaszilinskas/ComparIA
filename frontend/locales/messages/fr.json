@@ -2161,37 +2161,6 @@
                 "non_juriste": "Non-juriste",
                 "other": "Autre"
             }
-        },
-        "aiUsageFrequency": {
-            "label": "À quelle fréquence utilisez-vous des outils d'IA ?",
-            "options": {
-                "daily": "Tous les jours",
-                "weekly": "Toutes les semaines",
-                "monthly": "Tous les mois",
-                "rarely": "Rarement",
-                "never": "Jamais"
-            }
-        },
-        "gender": {
-            "label": "Quel est votre genre ?",
-            "options": {
-                "woman": "Femme",
-                "man": "Homme",
-                "other": "Autre",
-                "prefer_not_to_say": "Je ne souhaite pas répondre"
-            }
-        },
-        "ageRange": {
-            "label": "Quelle est votre tranche d'âge ?",
-            "options": {
-                "under_18": "Moins de 18 ans",
-                "18_24": "18-24 ans",
-                "25_34": "25-34 ans",
-                "35_44": "35-44 ans",
-                "45_54": "45-54 ans",
-                "55_64": "55-64 ans",
-                "65_plus": "65 ans et plus"
-            }
         }
     },
     "ranking": {
