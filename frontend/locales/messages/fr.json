@@ -36,6 +36,14 @@
         "errors": {
             "rateLimitCustomSelection": "Le choix de modèles est limité pour garantir un accès équitable à tous. Vous pouvez continuer à utiliser le mode aléatoire, ou réessayer plus tard."
         },
+        "legalTools": {
+            "mcpServers": {
+                "legend": "Outils"
+            },
+            "skills": {
+                "legend": "Compétences"
+            }
+        },
         "modelSelection": "Sélection des modèles",
         "prompt": {
             "label": "Écrivez votre premier message",
@@ -120,6 +128,9 @@
             "inProgress": "Raisonnement en cours…"
         },
         "revealButton": "Terminer et découvrir les modèles",
+        "toolCall": {
+            "using": "Utilise l'outil : {tool}"
+        },
         "webSearch": {
             "label": "Résultats de recherche Web associés."
         }

@@ -20,6 +20,7 @@ from backend.arena.conversation import (
     SystemMessageRead,
     bot_response_async,
 )
+from backend.arena.legal_tools.mcp_client import ToolSet, build_tool_set
 from backend.arena.services import update_comparison_error, update_comparison_llm_id
 from backend.config import CustomModelsSelection, SelectionMode, settings
 from backend.errors import ChatError
@@ -105,6 +106,7 @@ async def stream_llm_response(
     turn_index: int,
     messages: list[AnyMessageRead],
     request: Request | None = None,
+    tool_set: ToolSet | None = None,
 ) -> AsyncGenerator[AnySSEEventMsg]:
     """
     Stream a single LLM response using Server-Sent Events format.
@@ -116,6 +118,7 @@ async def stream_llm_response(
         turn_index: Current Turn index
         messages: List of messages to be serialized for llm call
         request: FastAPI Request object for logging
+        tool_set: Agentic tools available to the model (legal instance only)
 
     Yields:
         AnySSEEventMsg
@@ -124,7 +127,7 @@ async def stream_llm_response(
     try:
         # Stream responses from bot_response_async generator
         async for llm_msg in bot_response_async(
-            pos, llm, turn, turn_index, messages, request
+            pos, llm, turn, turn_index, messages, request, tool_set=tool_set
         ):
             yield {"type": "chunk", "pos": pos, "llm_msg": llm_msg}
 
@@ -197,6 +200,9 @@ async def stream_comparison_messages(
 
     turn_index = len(comparison.turns) - 1
     llms_data = (await get_llms_data()).enabled
+    # Built once and shared identically by both positions: both bots being
+    # compared must always see the exact same tools.
+    tool_set = build_tool_set(comparison.enabled_mcp_servers)
 
     try:
         # Create async generators for both models
@@ -208,6 +214,7 @@ async def stream_comparison_messages(
                 turn_index,
                 _get_messages(comparison, pos),
                 request,
+                tool_set=tool_set,
             )
             for pos in BOT_POS
         }
@@ -270,6 +277,7 @@ async def stream_comparison_messages(
                                 turn_index,
                                 _get_messages(comparison, e.pos),
                                 request,
+                                tool_set=tool_set,
                             )
                             retried[e.pos] = True
                             yield {"type": "swap", "pos": e.pos}

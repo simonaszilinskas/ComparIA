@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING, TypeVar
 from fastapi import HTTPException, status
 from linkup import LinkupSearchTextResult
 
+from backend.arena.legal_tools.skills import AVAILABLE_SKILLS
 from backend.llms.data import get_llms_data
 from utils.database.models import (
     BOT_POS,
@@ -31,6 +32,16 @@ if TYPE_CHECKING:
 T = TypeVar("T", bound=Comparison | Turn)
 
 
+def _skills_suffix(enabled_skills: tuple[str, ...] | None) -> str:
+    if not enabled_skills:
+        return ""
+    return "\n\n" + "\n\n".join(
+        AVAILABLE_SKILLS[skill_id].prompt_content
+        for skill_id in enabled_skills
+        if skill_id in AVAILABLE_SKILLS
+    )
+
+
 async def _get_item(item_class: type[T], id: uuid.UUID, session: "AsyncSession") -> T:
     db_item = await session.get(item_class, id)
 
@@ -47,10 +58,12 @@ async def create_comparison(comparison: ComparisonCreate) -> ComparisonRead:
     async with get_session() as session:
         db_comparison = Comparison.model_validate(comparison)
         llms_data = (await get_llms_data()).enabled
+        skills_suffix = _skills_suffix(comparison.enabled_skills)
 
         for pos in BOT_POS:
-            if content := llms_data[getattr(comparison, f"llm_id_{pos}")].system_prompt:
-                setattr(db_comparison, f"system_msg_{pos}", content)
+            system_msg = llms_data[getattr(comparison, f"llm_id_{pos}")].system_prompt
+            if system_msg or skills_suffix:
+                setattr(db_comparison, f"system_msg_{pos}", (system_msg or "") + skills_suffix)
 
         session.add(db_comparison)
         await session.commit()
@@ -74,9 +87,11 @@ async def update_comparison_llm_id(
     # Mutate the current ComparisonRead and TurnRead
     # Update current ComparisonRead failing LLM id
     setattr(comparison, f"llm_id_{pos}", new_llm_id)
-    # Remove or add new system_msg if any
+    # Remove or add new system_msg if any, keeping any enabled skill content
     llm = (await get_llms_data()).enabled[new_llm_id]
-    system_msg = llm.system_prompt if llm.system_prompt else None
+    skills_suffix = _skills_suffix(comparison.enabled_skills)
+    system_msg = (llm.system_prompt or "") + skills_suffix
+    system_msg = system_msg or None
     setattr(comparison, f"system_msg_{pos}", system_msg)
     # Reset TurnRead llm_msg_* to None (no need to do it in db, it is not yet saved)
     setattr(comparison.turns[-1], f"llm_msg_{pos}", None)

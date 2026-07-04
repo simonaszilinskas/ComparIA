@@ -56,6 +56,15 @@
     </div>
 
     <div class="px-4 overflow-scroll">
+      {#if message.tool_calls?.length}
+        <p class="text-primary flex items-center gap-1 text-sm">
+          <Icon icon="i-ri-tools-line" />
+          {m['chatbot.toolCall.using']({
+            tool: message.tool_calls.map((call) => call.function.name).join(', ')
+          })}
+        </p>
+      {/if}
+
       {#if message.reasoning_content?.trim()}
         <section class="fr-accordion mb-8 py-2">
           <div class="fr-highlight ms-0! ps-0!">

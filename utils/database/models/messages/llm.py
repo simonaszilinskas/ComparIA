@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import Annotated, Literal
 
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlmodel import Field, SQLModel, String
 
 from utils.validation import StripAndEmptyAsNone
@@ -21,6 +22,10 @@ class LLMMessageBase(SQLModel):
     generation_id: str | None = None
     tokens: int | None = None
     is_cached: bool = False
+    # Audit trail of agentic tool calls made while generating this message
+    # (compar:IA juridique only). Not required for rendering; the live
+    # activity indicator is driven by SSE events instead.
+    tool_calls: Annotated[list[dict] | None, Field(sa_type=JSONB)] = None
 
 
 class LLMMessageFinal(LLMMessageBase):

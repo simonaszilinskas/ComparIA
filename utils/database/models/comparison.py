@@ -60,6 +60,10 @@ class ComparisonBase(BaseDBModel):
     custom_models_selection: Annotated[CustomModelsSelection, Field(sa_type=JSONB)] = (
         None
     )
+    # Legal-instance only (compar:IA juridique): chosen once at conversation
+    # start, applied identically to both bot positions for every turn.
+    enabled_skills: Annotated[tuple[str, ...] | None, Field(sa_type=JSONB)] = None
+    enabled_mcp_servers: Annotated[tuple[str, ...] | None, Field(sa_type=JSONB)] = None
 
     # a
     llm_id_a: LLMDataId

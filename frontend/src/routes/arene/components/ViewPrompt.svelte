@@ -2,12 +2,15 @@
   import { Button, Toggle, Tooltip } from '$components/dsfr'
   import TextPrompt from '$components/TextPrompt.svelte'
   import type { APIModeAndPromptData } from '$lib/chatService.svelte'
+  import { env as publicEnv } from '$env/dynamic/public'
   import { useLocalStorage } from '$lib/helpers/useLocalStorage.svelte'
   import { m } from '$lib/i18n/messages.js'
   import { getModelsContext } from '$lib/models'
   import { sanitize } from '$lib/utils/commons'
   import { tick } from 'svelte'
-  import { GuidedPromptSuggestions, ModelSelector } from '.'
+  import { GuidedPromptSuggestions, ModelSelector, ToolsSelector } from '.'
+
+  const isLegal = publicEnv.PUBLIC_BRAND === 'juridique'
 
   let {
     onPrompt,
@@ -33,6 +36,8 @@
     return []
   })
   let webSearch = $state(false)
+  const enabledSkills = useLocalStorage<string[]>('enabledSkills', [])
+  const enabledMcpServers = useLocalStorage<string[]>('enabledMcpServers', [])
 
   const disabled = $derived(prompt == '' || !!promptError || loading)
 
@@ -56,7 +61,9 @@
       mode: mode.value,
       custom_models_selection: modelsSelection.value,
       prompt_value: prompt,
-      web_search: webSearch
+      web_search: webSearch,
+      enabled_skills: isLegal ? enabledSkills.value : [],
+      enabled_mcp_servers: isLegal ? enabledMcpServers.value : []
     })
   }
 
@@ -144,6 +151,15 @@
           </Tooltip>
         </Toggle>
       </div>
+
+      {#if isLegal}
+        <div class="md:col-span-full">
+          <ToolsSelector
+            bind:enabledSkills={enabledSkills.value}
+            bind:enabledMcpServers={enabledMcpServers.value}
+          />
+        </div>
+      {/if}
 
       <Button
         type="submit"

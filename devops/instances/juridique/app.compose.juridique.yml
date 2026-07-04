@@ -23,6 +23,7 @@ services:
       LOGDIR: /data
       LANGUIA_DEBUG: "true"
       DEFAULT_COUNTRY_PORTAL: fr
+      PUBLIC_BRAND: juridique
       COMPARIA_DB_URI: "${COMPARIA_DB_URI_JURIDIQUE:-postgresql://comparia:comparia@postgres:5432/comparia_juridique}"
       COMPARIA_REDIS_HOST: redis
       OPENROUTER_API_KEY:

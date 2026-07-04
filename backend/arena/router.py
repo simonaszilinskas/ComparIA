@@ -6,6 +6,8 @@ from fastapi import APIRouter, BackgroundTasks, Depends, Header, HTTPException, 
 from fastapi.responses import StreamingResponse
 
 from backend.arena.captcha import generate_challenge
+from backend.arena.legal_tools.mcp_servers import AVAILABLE_MCP_SERVERS
+from backend.arena.legal_tools.skills import AVAILABLE_SKILLS
 from backend.arena.models import AddFirstTextBody, AddTextBody
 from backend.arena.moderation import GuardrailVerdict, check_prompt
 from backend.arena.reveal import RevealData, get_reveal_data
@@ -35,6 +37,7 @@ from backend.arena.streaming import (
     stream_comparison_messages,
 )
 from backend.arena.web_search import search_web
+from backend.config import settings
 from backend.llms.data import get_llms_data, pick_replacement_model
 from backend.utils.user import get_ip, get_matomo_tracker_from_cookies
 from utils.ranking.run import main as compute_and_store_ranking
@@ -159,6 +162,27 @@ async def get_challenge() -> dict:
     return generate_challenge()
 
 
+@router.get("/legal_tools")
+async def get_legal_tools() -> dict:
+    """
+    List available skills/MCP servers the user can enable before starting a
+    conversation. Empty on every instance except compar:IA juridique.
+    """
+    if settings.PUBLIC_BRAND != "juridique":
+        return {"skills": [], "mcp_servers": []}
+
+    return {
+        "skills": [
+            {"id": s.id, "label": s.label, "description": s.description}
+            for s in AVAILABLE_SKILLS.values()
+        ],
+        "mcp_servers": [
+            {"id": t.id, "label": t.label, "description": t.description}
+            for t in AVAILABLE_MCP_SERVERS.values()
+        ],
+    }
+
+
 @router.post(
     "/add_first_text",
     dependencies=[Depends(assert_not_rate_limited), Depends(assert_not_block_cooldown)],
@@ -227,6 +251,8 @@ async def add_first_text(args: AddFirstTextBody, request: Request) -> StreamingR
             custom_models_selection=args.custom_models_selection,
             llm_id_a=llm_a_id,
             llm_id_b=llm_b_id,
+            enabled_skills=args.enabled_skills or None,
+            enabled_mcp_servers=args.enabled_mcp_servers or None,
         )
     )
 
