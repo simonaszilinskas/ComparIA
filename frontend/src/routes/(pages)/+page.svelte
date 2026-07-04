@@ -2,6 +2,7 @@
   import { Accordion, AccordionGroup, Button, Checkbox, Icon, Link } from '$components/dsfr'
   import HowItWorks from '$components/HowItWorks.svelte'
   import Newsletter from '$components/Newsletter.svelte'
+  import { env as publicEnv } from '$env/dynamic/public'
   import * as env from '$env/static/public'
   import { getI18nContext } from '$lib/global.svelte'
   import { useLocalStorage } from '$lib/helpers/useLocalStorage.svelte'
@@ -19,7 +20,7 @@
 
   if (PUBLIC_GIT_COMMIT) console.log(`Git commit: ${PUBLIC_GIT_COMMIT}`)
 
-  const isLegal = (env as any).PUBLIC_BRAND === 'juridique'
+  const isLegal = publicEnv.PUBLIC_BRAND === 'juridique'
 
   $effect(() => {
     if (acceptTos.value) tosError = undefined

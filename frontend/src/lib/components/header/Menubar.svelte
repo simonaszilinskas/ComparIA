@@ -1,11 +1,11 @@
 <script lang="ts">
   import { page } from '$app/state'
-  import * as env from '$env/static/public'
+  import { env as publicEnv } from '$env/dynamic/public'
   import { m } from '$lib/i18n/messages'
   import { getLocale } from '$lib/i18n/runtime'
 
   const locale = getLocale()
-  const isLegal = (env as any).PUBLIC_BRAND === 'juridique'
+  const isLegal = publicEnv.PUBLIC_BRAND === 'juridique'
   // Navigation links for both desktop and mobile menus
   const navLinks = [
     { href: '/', label: m['seo.titles.home']() },
