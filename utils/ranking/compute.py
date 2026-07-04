@@ -106,13 +106,16 @@ def _aggregate_preferences(votes: list[dict]) -> dict[UUID, PreferencesData]:
                 positive_count / all_prefs_count if all_prefs_count > 0 else -1
             ),
             total_prefs=total[model],
-            useful=c["useful"],
-            complete=c["complete"],
-            creative=c["creative"],
-            clear_formatting=c["clear_formatting"],
-            incorrect=c["incorrect"],
-            superficial=c["superficial"],
-            instructions_not_followed=c["instructions_not_followed"],
+            legally_sound=c["legally_sound"],
+            up_to_date=c["up_to_date"],
+            sourced=c["sourced"],
+            clear=c["clear"],
+            nuanced=c["nuanced"],
+            legal_error=c["legal_error"],
+            outdated_law=c["outdated_law"],
+            fabricated_source=c["fabricated_source"],
+            off_topic=c["off_topic"],
+            confusing=c["confusing"],
         )
 
     return result

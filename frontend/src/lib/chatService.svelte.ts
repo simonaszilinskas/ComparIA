@@ -100,16 +100,31 @@ export interface Comparison extends BaseComparison {
 
 // ANNOTATIONS
 
-export const APIPositivePrefs = ['useful', 'complete', 'creative', 'clear_formatting'] as const
-export const APINegativePrefs = ['incorrect', 'superficial', 'instructions_not_followed'] as const
+export const APIPositivePrefs = [
+  'legally_sound',
+  'up_to_date',
+  'sourced',
+  'clear',
+  'nuanced'
+] as const
+export const APINegativePrefs = [
+  'legal_error',
+  'outdated_law',
+  'fabricated_source',
+  'off_topic',
+  'confusing'
+] as const
 export const PREFS_EMOJIS: Record<APIReactionPref, string> = {
-  useful: '🙌',
-  complete: '💯',
-  creative: '🌀',
-  clear_formatting: '🎨',
-  incorrect: '❌',
-  superficial: '🚩',
-  instructions_not_followed: '🚫'
+  legally_sound: '⚖️',
+  up_to_date: '📅',
+  sourced: '📖',
+  clear: '💡',
+  nuanced: '🔍',
+  legal_error: '❌',
+  outdated_law: '🕰️',
+  fabricated_source: '👻',
+  off_topic: '🚫',
+  confusing: '🌫️'
 }
 export type APIPositivePref = (typeof APIPositivePrefs)[number]
 export type APINegativePref = (typeof APINegativePrefs)[number]

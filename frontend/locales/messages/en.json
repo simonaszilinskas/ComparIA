@@ -1944,18 +1944,21 @@
             "tabLabel": "Preference focused view",
             "table": {
                 "cols": {
-                    "clear_formatting": "Clear formatting<br>",
-                    "complete": "Complete",
-                    "creative": "Creative",
-                    "incorrect": "Incorrect",
-                    "instructions_not_followed": "Instructions<br> not followed",
+                    "clear": "Clarity<br> of answer",
+                    "confusing": "Confusing",
+                    "fabricated_source": "Source not<br> cited or invented",
+                    "legal_error": "Legal<br> error",
+                    "legally_sound": "Legally sound<br> and relevant",
                     "n_match": "Total matches",
                     "name": "Model",
+                    "nuanced": "Nuanced",
+                    "off_topic": "Off topic",
+                    "outdated_law": "Outdated law",
                     "positive_prefs_ratio": "Distribution of preferences",
-                    "superficial": "Superficial",
+                    "sourced": "Sources cited",
                     "total_negative_prefs": "Total preferences<br> Negative",
                     "total_positive_prefs": "Total preferences<br> Positive",
-                    "useful": "Useful"
+                    "up_to_date": "Up to date"
                 },
                 "percentLabel": "Preferences in percentage",
                 "tooltips": {
@@ -2099,17 +2102,20 @@
     "vote": {
         "choices": {
             "negative": {
-                "incorrect": "Incorrect",
-                "instructions_not_followed": "Instructions not followed",
-                "question": "Why did you not like the answer",
-                "superficial": "Superficial"
+                "confusing": "Confusing",
+                "fabricated_source": "Source not cited or invented",
+                "legal_error": "Legal error",
+                "off_topic": "Off topic",
+                "outdated_law": "Outdated law",
+                "question": "Why did you not like the answer"
             },
             "positive": {
-                "clear_formatting": "Clear formatting",
-                "complete": "Complete",
-                "creative": "Creative",
+                "clear": "Clarity of answer",
+                "legally_sound": "Legally sound and relevant",
+                "nuanced": "Nuanced",
                 "question": "What did you like about the answer?",
-                "useful": "Useful"
+                "sourced": "Sources cited",
+                "up_to_date": "Up to date"
             }
         },
         "title": "Which AI model do you prefer",

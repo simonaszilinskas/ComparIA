@@ -143,20 +143,23 @@ export interface RankingVariant {
  * Aggregated counts of user ratings for specific quality attributes.
  *
  * Attributes:
- *     positive_prefs_ratio: Percentage of positive preferences (useful, complete, etc.)
+ *     positive_prefs_ratio: Percentage of positive preferences (legally_sound, etc.)
  *     total_prefs: Total number of preference votes received
- *     useful/complete/creative/clear_formatting: Count of positive preferences
- *     incorrect/superficial/instructions_not_followed: Count of negative preferences
+ *     legally_sound/up_to_date/sourced/clear/nuanced: Count of positive preferences
+ *     legal_error/outdated_law/fabricated_source/off_topic/confusing: Count of negative preferences
  */
 export interface PreferencesData {
   positive_prefs_ratio: number;
   total_prefs: number;
-  useful: number;
-  clear_formatting: number;
-  complete: number;
-  creative: number;
-  incorrect: number;
-  instructions_not_followed: number;
-  superficial: number;
+  legally_sound: number;
+  up_to_date: number;
+  sourced: number;
+  clear: number;
+  nuanced: number;
+  legal_error: number;
+  outdated_law: number;
+  fabricated_source: number;
+  off_topic: number;
+  confusing: number;
   [k: string]: unknown;
 }

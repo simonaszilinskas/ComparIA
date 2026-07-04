@@ -2296,18 +2296,21 @@
             "tabLabel": "Focus préférences",
             "table": {
                 "cols": {
-                    "clear_formatting": "Mise en forme<br> claire",
-                    "complete": "Complète",
-                    "creative": "Créative",
-                    "incorrect": "Incorrecte",
-                    "instructions_not_followed": "Instructions<br> non suivies",
+                    "clear": "Clarté de<br> la réponse",
+                    "confusing": "Confus",
+                    "fabricated_source": "Source non<br> citée ou inventée",
+                    "legal_error": "Erreur<br> de droit",
+                    "legally_sound": "Juridiquement juste<br> et pertinent",
                     "n_match": "Total matchs",
                     "name": "Modèle",
+                    "nuanced": "Nuancé",
+                    "off_topic": "Hors sujet",
+                    "outdated_law": "Droit obsolète",
                     "positive_prefs_ratio": "Répartition des préférences",
-                    "superficial": "Superficielle",
+                    "sourced": "Sources citées",
                     "total_negative_prefs": "Total préférences<br> Négatives",
                     "total_positive_prefs": "Total préférences<br> Positives",
-                    "useful": "Utile"
+                    "up_to_date": "À jour"
                 },
                 "percentLabel": "Préférences en pourcentage",
                 "tooltips": {
@@ -2457,18 +2460,21 @@
         "choices": {
             "negative": {
                 "comment": "Précisez ce que vous n’avez pas aimé…",
-                "incorrect": "Incorrecte",
-                "instructions_not_followed": "Instructions non suivies",
-                "question": "Pourquoi la réponse ne convient-elle pas ?",
-                "superficial": "Superficielle"
+                "confusing": "Confus",
+                "fabricated_source": "Source non citée ou inventée",
+                "legal_error": "Erreur de droit",
+                "off_topic": "Hors sujet",
+                "outdated_law": "Droit obsolète",
+                "question": "Pourquoi la réponse ne convient-elle pas ?"
             },
             "positive": {
-                "clear_formatting": "Mise en forme claire",
+                "clear": "Clarté de la réponse",
                 "comment": "Précisez ce que vous avez apprécié…",
-                "complete": "Complète",
-                "creative": "Créative",
+                "legally_sound": "Juridiquement juste et pertinent",
+                "nuanced": "Nuancé",
                 "question": "Qu'avez-vous apprécié dans la réponse ?",
-                "useful": "Utile"
+                "sourced": "Sources citées",
+                "up_to_date": "À jour"
             }
         },
         "importantDesc": "Votre préférence enrichit les jeux de données compar:IA dont l’objectif est d’affiner les futurs modèles d’IA sur le français, le suédois, le lituanien et le danois.",

@@ -153,23 +153,26 @@ class PreferencesData(BaseModel):
     Aggregated counts of user ratings for specific quality attributes.
 
     Attributes:
-        positive_prefs_ratio: Percentage of positive preferences (useful, complete, etc.)
+        positive_prefs_ratio: Percentage of positive preferences (legally_sound, etc.)
         total_prefs: Total number of preference votes received
-        useful/complete/creative/clear_formatting: Count of positive preferences
-        incorrect/superficial/instructions_not_followed: Count of negative preferences
+        legally_sound/up_to_date/sourced/clear/nuanced: Count of positive preferences
+        legal_error/outdated_law/fabricated_source/off_topic/confusing: Count of negative preferences
     """
 
     positive_prefs_ratio: float
     total_prefs: int
     # Positive quality indicators
-    useful: int
-    clear_formatting: int
-    complete: int
-    creative: int
+    legally_sound: int
+    up_to_date: int
+    sourced: int
+    clear: int
+    nuanced: int
     # Negative quality indicators
-    incorrect: int
-    instructions_not_followed: int
-    superficial: int
+    legal_error: int
+    outdated_law: int
+    fabricated_source: int
+    off_topic: int
+    confusing: int
 
     @field_validator("positive_prefs_ratio", mode="before")
     @classmethod
