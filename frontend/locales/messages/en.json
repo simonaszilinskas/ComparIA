@@ -124,7 +124,10 @@
         },
         "revealButton": "Reveal the models",
         "toolCall": {
-            "using": "Using tool: {tool}"
+            "arguments": "Arguments:",
+            "label": "Used: {tools}",
+            "pending": "Waiting for result…",
+            "result": "Result:"
         },
         "webSearch": {
             "label": "Associated Web search results."

@@ -94,7 +94,7 @@ async def bot_response_async(
     llm: LLMDataEnabled,
     turn: TurnRead,
     turn_index: int,
-    messages: list[AnyMessageRead],
+    messages: list[AnyMessageRead | dict],
     request: Request | None = None,
     temperature=0.7,
     max_new_tokens=16384,
@@ -141,16 +141,21 @@ async def bot_response_async(
     # Working message list this call can extend with tool-call exchanges
     # without mutating the turn/comparison history.
     call_messages: list[AnyMessageRead | dict] = list(messages)
-    tool_call_audit: list[dict] = []
+    # Persisted trace of every round that involved a tool call: narration
+    # text (if any) plus each call's name/arguments/result. This becomes
+    # `llm_msg.tool_calls`, which is (a) shown to the user as the tool
+    # activity/trace, and (b) replayed as real assistant/tool messages on
+    # future turns (see streaming._get_messages) so the model actually
+    # remembers what it called and what came back.
+    tool_rounds: list[dict] = []
     iterations = 0
 
     while True:
         # Cap agentic tool-calling rounds: past the limit, force a final
         # textual answer by not offering tools at all.
         allow_tools = tool_set is not None and iterations < MAX_TOOL_ITERATIONS
-        # llm_msg.content accumulates across every round (for display); track
-        # where this round's own text starts so the assistant tool-call
-        # message below reflects only what the model actually said just now.
+        # llm_msg.content accumulates across every round; track where this
+        # round's own text starts so it can be pulled out below.
         round_start = len(llm_msg.content)
 
         # Initialize streaming iterator from LiteLLM
@@ -177,25 +182,38 @@ async def bot_response_async(
             break
 
         iterations += 1
-        tool_call_audit.extend(requested_calls)
 
-        # Surface a chunk with the pending calls so the SSE stream can show a
-        # "using tool X" activity indicator, then clear the transient signal.
-        llm_msg.tool_calls = requested_calls
+        # Pull this round's own narration out of the displayed content and
+        # reset it: the final answer bubble should be the clean final text,
+        # not "let me check X... [tool] ...here's the answer" stitched
+        # together. The narration itself isn't lost — it's preserved in the
+        # tool trace below (and replayed as the assistant message's content
+        # for this round on future turns).
+        round_text = llm_msg.content[round_start:] or None
+        llm_msg.content = llm_msg.content[:round_start]
+
+        round_calls = [
+            {
+                "id": call.get("id"),
+                "name": call["function"]["name"],
+                "arguments": call["function"].get("arguments"),
+                "result": None,
+            }
+            for call in requested_calls
+        ]
+        tool_rounds.append({"text": round_text, "calls": round_calls})
+
+        # Surface the round with pending (result=None) calls so the UI can
+        # show an in-progress indicator while the tool executes.
+        llm_msg.tool_calls = tool_rounds
         yield llm_msg
-        llm_msg.tool_calls = None
 
         # Execute each requested tool call and append the OpenAI-style
-        # assistant/tool exchange messages for the next round. Carrying this
-        # round's own text forward (instead of dropping it) is important: a
-        # model that narrated something before calling the tool needs to see
-        # that narration in the next round, or it re-narrates from scratch
-        # instead of continuing from where it left off.
-        round_text = llm_msg.content[round_start:] or None
-        call_messages = call_messages + [
+        # assistant/tool exchange messages for the next round.
+        round_messages: list[dict] = [
             {"role": "assistant", "content": round_text, "tool_calls": requested_calls}
         ]
-        for call in requested_calls:
+        for call, call_record in zip(requested_calls, round_calls):
             name = call["function"]["name"]
             try:
                 arguments = json.loads(call["function"].get("arguments") or "{}")
@@ -211,12 +229,19 @@ async def bot_response_async(
                 )
                 result = f"Erreur lors de l'appel de l'outil : {e}"
 
-            call_messages.append(
+            call_record["result"] = result
+            round_messages.append(
                 {"role": "tool", "tool_call_id": call.get("id"), "content": result}
             )
 
-    # Persist the tool-call audit trail, if any, on the final message
-    llm_msg.tool_calls = tool_call_audit or None
+        call_messages = call_messages + round_messages
+
+        # Re-surface the same round, now with results filled in.
+        llm_msg.tool_calls = tool_rounds
+        yield llm_msg
+
+    # Persist the tool-call trace, if any, on the final message
+    llm_msg.tool_calls = tool_rounds or None
 
     duration = (llm_msg.updated_at - llm_msg.created_at).total_seconds()
     logger.debug(

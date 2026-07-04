@@ -57,12 +57,56 @@
 
     <div class="px-4 overflow-scroll">
       {#if message.tool_calls?.length}
-        <p class="text-primary flex items-center gap-1 text-sm">
-          <Icon icon="i-ri-tools-line" />
-          {m['chatbot.toolCall.using']({
-            tool: message.tool_calls.map((call) => call.function.name).join(', ')
-          })}
-        </p>
+        <section class="fr-accordion mb-8 py-2">
+          <div class="fr-highlight ms-0! ps-0!">
+            <h3 class="fr-accordion__title ms-1!">
+              <button
+                type="button"
+                class="fr-accordion__btn text-primary! bg-transparent!"
+                aria-expanded="true"
+                aria-controls="tool-trace-{message.generation_id}"
+              >
+                <Icon icon="i-ri-tools-line" class="text-primary me-1" />
+                {m['chatbot.toolCall.label']({
+                  tools: [
+                    ...new Set(message.tool_calls.flatMap((r) => r.calls.map((c) => c.name)))
+                  ].join(', ')
+                })}
+              </button>
+            </h3>
+            <div
+              id="tool-trace-{message.generation_id}"
+              class="fr-collapse m-0! p-0! text-sm text-[#8B8B8B]"
+            >
+              <div class="flex flex-col gap-3 px-5 py-4">
+                {#each message.tool_calls as round}
+                  {#if round.text}
+                    <p class="italic">{round.text}</p>
+                  {/if}
+                  {#each round.calls as call}
+                    <div class="border-l-2 border-[--blue-france-main-525] pl-3">
+                      <p class="mb-1! font-medium">{call.name}</p>
+                      {#if call.arguments}
+                        <p class="mb-1!">
+                          <span class="font-medium">{m['chatbot.toolCall.arguments']()}</span>
+                          <code class="break-all">{call.arguments}</code>
+                        </p>
+                      {/if}
+                      <p class="mb-0!">
+                        <span class="font-medium">{m['chatbot.toolCall.result']()}</span>
+                        {#if call.result === null}
+                          {m['chatbot.toolCall.pending']()}
+                        {:else}
+                          <span class="break-all whitespace-pre-wrap">{call.result}</span>
+                        {/if}
+                      </p>
+                    </div>
+                  {/each}
+                {/each}
+              </div>
+            </div>
+          </div>
+        </section>
       {/if}
 
       {#if message.reasoning_content?.trim()}

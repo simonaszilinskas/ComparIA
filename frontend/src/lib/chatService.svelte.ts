@@ -44,10 +44,17 @@ export interface UserMessage {
   user_content: string
   web_search_results: WebSearchResults[] | null
 }
-export interface ToolCall {
+export interface ToolCallRecord {
   id: string
-  type: 'function'
-  function: { name: string; arguments: string }
+  name: string
+  arguments: string | null
+  // null while the call is in flight, filled in once the tool returns
+  result: string | null
+}
+export interface ToolRound {
+  // The model's own narration before making this round's call(s), if any
+  text: string | null
+  calls: ToolCallRecord[]
 }
 export interface AssistantMessage {
   role: 'assistant'
@@ -55,9 +62,9 @@ export interface AssistantMessage {
   generation_id: string
   content: string
   reasoning_content: string | ''
-  // Present transiently on the chunk where the model requests a tool call
-  // (legal instance only) — used to show a "using tool X" activity indicator.
-  tool_calls?: ToolCall[] | null
+  // Trace of agentic tool-calling rounds for this message (legal instance
+  // only) — shown to the user as an expandable "tool activity" section.
+  tool_calls?: ToolRound[] | null
 }
 export type AnyMessage = UserMessage | AssistantMessage
 

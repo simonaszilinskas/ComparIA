@@ -129,7 +129,10 @@
         },
         "revealButton": "Terminer et découvrir les modèles",
         "toolCall": {
-            "using": "Utilise l'outil : {tool}"
+            "arguments": "Paramètres :",
+            "label": "A utilisé : {tools}",
+            "pending": "En attente du résultat…",
+            "result": "Résultat :"
         },
         "webSearch": {
             "label": "Résultats de recherche Web associés."

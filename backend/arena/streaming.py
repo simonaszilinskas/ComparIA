@@ -104,7 +104,7 @@ async def stream_llm_response(
     llm: LLMDataEnabled,
     turn: TurnRead,
     turn_index: int,
-    messages: list[AnyMessageRead],
+    messages: list[AnyMessageRead | dict],
     request: Request | None = None,
     tool_set: ToolSet | None = None,
 ) -> AsyncGenerator[AnySSEEventMsg]:
@@ -321,8 +321,8 @@ async def stream_comparison_messages(
             yield {"type": "error", "error": str(e)}
 
 
-def _get_messages(comparison: ComparisonRead, pos: BotPos) -> list[AnyMessageRead]:
-    messages: list[AnyMessageRead] = []
+def _get_messages(comparison: ComparisonRead, pos: BotPos) -> list[AnyMessageRead | dict]:
+    messages: list[AnyMessageRead | dict] = []
 
     if system_msg := getattr(comparison, f"system_msg_{pos}"):
         messages.append(SystemMessageRead(content=system_msg))
@@ -330,6 +330,36 @@ def _get_messages(comparison: ComparisonRead, pos: BotPos) -> list[AnyMessageRea
     for turn in comparison.turns:
         messages.append(turn.user_msg)
         if llm_msg := getattr(turn, f"llm_msg_{pos}"):
+            # Replay any past tool-calling rounds as real assistant/tool
+            # messages before the final answer, so the model actually
+            # remembers what it called and what came back — not just the
+            # final text, which by itself gives no memory of tool use.
+            for round in llm_msg.tool_calls or []:
+                messages.append(
+                    {
+                        "role": "assistant",
+                        "content": round.get("text"),
+                        "tool_calls": [
+                            {
+                                "id": call["id"],
+                                "type": "function",
+                                "function": {
+                                    "name": call["name"],
+                                    "arguments": call["arguments"],
+                                },
+                            }
+                            for call in round["calls"]
+                        ],
+                    }
+                )
+                for call in round["calls"]:
+                    messages.append(
+                        {
+                            "role": "tool",
+                            "tool_call_id": call["id"],
+                            "content": call.get("result") or "",
+                        }
+                    )
             messages.append(llm_msg)
 
     return messages
