@@ -60,6 +60,7 @@ jobs:
           grep -q 'COPY data /app/data' devops/docker/Dockerfile || \
             perl -0pi -e 's{(COPY templates /app/templates\n)}{$1COPY data /app/data\n}' devops/docker/Dockerfile
           perl -ni -e 'print unless m{^data/$}' .railwayignore
+          perl -ni -e 'print unless m{^data/$}' .dockerignore
 
           git add -A
           git commit -q -m "chore: railway-next = betagouv/next + Railway deploy overlay" || true
