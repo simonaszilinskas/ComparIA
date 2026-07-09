@@ -1,0 +1,73 @@
+name: sync-railway-next
+
+# Rebuilds the `railway-next` branch = betagouv/ComparIA `next` + Railway deploy
+# overlay, then pushes it (only when the resulting tree actually changed).
+# Railway is connected to `railway-next` with auto-deploy, so a push here rolls
+# the live next instance forward. This never writes to betagouv `next`.
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # hourly
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-railway-next
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Rebuild railway-next = betagouv/next + overlay
+        run: |
+          set -euo pipefail
+          git config user.name  "railway-next-bot"
+          git config user.email "railway-next-bot@users.noreply.github.com"
+
+          git fetch --quiet https://github.com/betagouv/ComparIA.git next:refs/heads/_upstream_next
+          git fetch --quiet origin railway-deploy:refs/remotes/origin/railway-deploy || \
+            git fetch --quiet origin railway-deploy
+
+          # start from an exact copy of betagouv next
+          git checkout -B railway-next refs/heads/_upstream_next
+
+          # overlay the Railway config from railway-deploy (single source of truth)
+          git checkout origin/railway-deploy -- \
+            railway.json \
+            frontend/railway.json \
+            frontend/Dockerfile \
+            devops/railway/caddy/Caddyfile \
+            devops/railway/caddy/Dockerfile \
+            devops/railway/caddy/railway.json \
+            devops/railway/redis/Dockerfile \
+            devops/railway/redis/railway.json \
+            .railwayignore
+
+          # backend Dockerfile: drop VOLUME (Railway rejects it), add alembic.ini for migrations
+          perl -0pi -e 's/^VOLUME \/data\n//m' devops/docker/Dockerfile
+          grep -q 'COPY alembic.ini' devops/docker/Dockerfile || \
+            perl -0pi -e 's{(COPY --from=builder /app/\.venv /app/\.venv\nCOPY pyproject\.toml uv\.lock \./\n)}{$1COPY alembic.ini /app/\n}' devops/docker/Dockerfile
+
+          git add -A
+          git commit -q -m "chore: railway-next = betagouv/next + Railway deploy overlay" || true
+
+          NEW_TREE=$(git rev-parse HEAD^{tree})
+          if git fetch --quiet origin railway-next:refs/remotes/origin/railway-next 2>/dev/null; then
+            OLD_TREE=$(git rev-parse refs/remotes/origin/railway-next^{tree} 2>/dev/null || echo none)
+          else
+            OLD_TREE=none
+          fi
+
+          if [ "$NEW_TREE" = "$OLD_TREE" ]; then
+            echo "railway-next already up to date (tree $NEW_TREE) — nothing to push."
+            exit 0
+          fi
+          echo "Tree changed ($OLD_TREE -> $NEW_TREE) — pushing railway-next."
+          git push -f origin railway-next
