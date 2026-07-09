@@ -55,6 +55,12 @@ jobs:
           grep -q 'COPY alembic.ini' devops/docker/Dockerfile || \
             perl -0pi -e 's{(COPY --from=builder /app/\.venv /app/\.venv\nCOPY pyproject\.toml uv\.lock \./\n)}{$1COPY alembic.ini /app/\n}' devops/docker/Dockerfile
 
+          # next seeds LLM data from data/legacy/*.json during the alembic migration,
+          # so copy data/ into the image and don't let .railwayignore strip it.
+          grep -q 'COPY data /app/data' devops/docker/Dockerfile || \
+            perl -0pi -e 's{(COPY templates /app/templates\n)}{$1COPY data /app/data\n}' devops/docker/Dockerfile
+          perl -ni -e 'print unless m{^data/$}' .railwayignore
+
           git add -A
           git commit -q -m "chore: railway-next = betagouv/next + Railway deploy overlay" || true
 
