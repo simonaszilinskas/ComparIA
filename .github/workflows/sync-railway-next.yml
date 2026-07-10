@@ -31,6 +31,10 @@ jobs:
           git config user.name  "railway-next-bot"
           git config user.email "railway-next-bot@users.noreply.github.com"
 
+          # Stash the next-specific caddy config (lives on develop, would be wiped
+          # when we switch the working tree to next's content below).
+          cp .github/railway-next-overlay/Caddyfile "$RUNNER_TEMP/next-caddyfile"
+
           git fetch --quiet https://github.com/betagouv/ComparIA.git next:refs/heads/_upstream_next
           git fetch --quiet origin railway-deploy:refs/remotes/origin/railway-deploy || \
             git fetch --quiet origin railway-deploy
@@ -43,12 +47,14 @@ jobs:
             railway.json \
             frontend/railway.json \
             frontend/Dockerfile \
-            devops/railway/caddy/Caddyfile \
             devops/railway/caddy/Dockerfile \
             devops/railway/caddy/railway.json \
             devops/railway/redis/Dockerfile \
             devops/railway/redis/railway.json \
             .railwayignore
+
+          # next needs more backend routes proxied than santé -> use the next-specific Caddyfile
+          cp "$RUNNER_TEMP/next-caddyfile" devops/railway/caddy/Caddyfile
 
           # backend Dockerfile: drop VOLUME (Railway rejects it), add alembic.ini for migrations
           perl -0pi -e 's/^VOLUME \/data\n//m' devops/docker/Dockerfile
