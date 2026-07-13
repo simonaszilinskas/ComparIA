@@ -42,6 +42,14 @@ jobs:
           # start from an exact copy of betagouv next
           git checkout -B railway-next refs/heads/_upstream_next
 
+          # --- TEMPORARY (user testing, ~few days): also include PR #582
+          # feat/reveal-summary-currency. To revert to plain next, delete this block. ---
+          git fetch --quiet https://github.com/betagouv/ComparIA.git feat/reveal-summary-currency:refs/heads/_pr582
+          if ! git merge --no-edit _pr582; then
+            echo "WARN: PR #582 no longer merges cleanly into next; aborting merge, deploying plain next."
+            git merge --abort
+          fi
+
           # overlay the Railway config from railway-deploy (single source of truth)
           git checkout origin/railway-deploy -- \
             railway.json \
