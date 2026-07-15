@@ -8,10 +8,27 @@
 }
 
 :8080 {
-	# Backend (FastAPI) API paths. /admin and /maintenance are deliberately split:
-	# the frontend owns the /admin and /maintenance *pages*, the backend owns the
-	# /admin/users, /admin/llms and /maintenance/status *APIs*.
-	@backend path /counter* /models/* /arena/* /auth/* /admin/users* /admin/llms/* /maintenance/status*
+	# Backend (FastAPI) API paths. The /admin namespace is shared with frontend
+	# *pages*, so the split is deliberate and exact:
+	#   backend  API:  /admin/users*, /admin/settings*, /admin/llms/{data,schemas,
+	#                  llm,endpoint,lab,license}  (singular nouns + data/schemas)
+	#   frontend pages: /admin, /admin/authentification, /admin/personnalisation,
+	#                  /admin/utilisateurs, /admin/llms/{llms,endpoints,labs,licenses}
+	#                  (plural nouns) -> fall through to the frontend below.
+	@backend path \
+ /counter* \
+ /maintenance/status \
+ /models/* \
+ /arena/* \
+ /auth/* \
+ /admin/users* \
+ /admin/settings* \
+ /admin/llms/data \
+ /admin/llms/schemas \
+ /admin/llms/llm /admin/llms/llm/* \
+ /admin/llms/endpoint /admin/llms/endpoint/* \
+ /admin/llms/lab /admin/llms/lab/* \
+ /admin/llms/license /admin/llms/license/*
 	handle @backend {
 		reverse_proxy backend.railway.internal:80
 	}
