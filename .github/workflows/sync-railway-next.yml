@@ -76,6 +76,13 @@ jobs:
           perl -ni -e 'print unless m{^data/$}' .railwayignore
           perl -ni -e 'print unless m{^data/$}' .dockerignore
 
+          # GITHUB_TOKEN is not allowed to create or update files under
+          # .github/workflows, so keep that directory exactly as it already is on
+          # railway-next (upstream workflow changes never matter for the deploy).
+          git fetch --quiet origin railway-next:refs/remotes/origin/railway-next || true
+          rm -rf .github/workflows
+          git checkout refs/remotes/origin/railway-next -- .github/workflows 2>/dev/null || true
+
           git add -A
           git commit -q -m "chore: railway-next = betagouv/next + Railway deploy overlay" || true
 
