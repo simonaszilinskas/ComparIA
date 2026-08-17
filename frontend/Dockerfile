@@ -3,7 +3,8 @@
 FROM public.ecr.aws/docker/library/node:24.19 AS builder
 
 WORKDIR /app
-COPY package.json yarn.lock ./
+# .dsfr.yml carries the DSFR licence consent its preinstall script checks for.
+COPY package.json yarn.lock .dsfr.yml ./
 RUN yarn install --frozen-lockfile
 
 COPY . .
