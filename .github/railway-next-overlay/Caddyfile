@@ -15,12 +15,19 @@
 	#   frontend pages: /admin, /admin/authentification, /admin/personnalisation,
 	#                  /admin/utilisateurs, /admin/llms/{llms,endpoints,labs,licenses}
 	#                  (plural nouns) -> fall through to the frontend below.
+	# Same story for /settings, /ranking, /statistics and /models: each is a
+	# frontend page on its own, so only the API sub-paths below go to backend.
 	@backend path \
  /counter* \
  /maintenance/status \
  /models/* \
  /arena/* \
  /auth/* \
+ /settings/* \
+ /suggestions \
+ /vote-tags \
+ /statistics/summary \
+ /ranking/personal \
  /admin/users* \
  /admin/settings* \
  /admin/llms/data \
