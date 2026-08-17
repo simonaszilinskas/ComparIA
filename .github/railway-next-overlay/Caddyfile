@@ -37,6 +37,12 @@
  /admin/llms/lab /admin/llms/lab/* \
  /admin/llms/license /admin/llms/license/*
 	handle @backend {
+		# The frontend's SSR calls come back in here via caddy.railway.internal:8080,
+		# a different origin from the page, and SvelteKit refuses a cross-origin
+		# response with no Access-Control-Allow-Origin. The backend only allows
+		# localhost origins, so caddy names the site's own origin instead. Granting
+		# a page access to its own origin is what same-origin already allows.
+		header Access-Control-Allow-Origin "https://{$RAILWAY_PUBLIC_DOMAIN}"
 		reverse_proxy backend.railway.internal:80
 	}
 
