@@ -1,6 +1,6 @@
 # Railway build for the SvelteKit frontend.
 # Build context is the frontend/ directory (mirrors devops/docker/Dockerfile.front).
-FROM public.ecr.aws/docker/library/node:24.4 AS builder
+FROM public.ecr.aws/docker/library/node:24.19 AS builder
 
 WORKDIR /app
 COPY package.json yarn.lock ./
@@ -12,7 +12,7 @@ ENV PUBLIC_API_URL=$PUBLIC_API_URL MATOMO_ID=$MATOMO_ID MATOMO_URL=$MATOMO_URL P
 
 RUN yarn build && yarn install --production --ignore-scripts
 
-FROM public.ecr.aws/docker/library/node:24.4-alpine AS runtime
+FROM public.ecr.aws/docker/library/node:24.19-alpine AS runtime
 WORKDIR /app
 
 COPY --from=builder /app/package.json ./package.json
