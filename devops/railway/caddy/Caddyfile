@@ -1,0 +1,53 @@
+# Railway reverse proxy for the `next` branch: caddy is the only public service.
+# It routes the FastAPI backend API paths to backend and serves everything else
+# from the SvelteKit frontend, both over Railway's IPv6 private network. Railway
+# terminates TLS at the edge and forwards plain HTTP to :8080.
+{
+	auto_https off
+	admin off
+}
+
+:8080 {
+	# Backend (FastAPI) API paths. The /admin namespace is shared with frontend
+	# *pages*, so the split is deliberate and exact:
+	#   backend  API:  /admin/users*, /admin/settings*, /admin/llms/{data,schemas,
+	#                  llm,endpoint,lab,license}  (singular nouns + data/schemas)
+	#   frontend pages: /admin, /admin/authentification, /admin/personnalisation,
+	#                  /admin/utilisateurs, /admin/llms/{llms,endpoints,labs,licenses}
+	#                  (plural nouns) -> fall through to the frontend below.
+	# Same story for /settings, /ranking, /statistics and /models: each is a
+	# frontend page on its own, so only the API sub-paths below go to backend.
+	@backend path \
+ /counter* \
+ /maintenance/status \
+ /models/* \
+ /arena/* \
+ /auth/* \
+ /settings/* \
+ /suggestions \
+ /vote-tags \
+ /statistics/summary \
+ /ranking/personal \
+ /admin/users* \
+ /admin/settings* \
+ /admin/llms/data \
+ /admin/llms/schemas \
+ /admin/llms/llm /admin/llms/llm/* \
+ /admin/llms/endpoint /admin/llms/endpoint/* \
+ /admin/llms/lab /admin/llms/lab/* \
+ /admin/llms/license /admin/llms/license/*
+	handle @backend {
+		# The frontend's SSR calls come back in here via caddy.railway.internal:8080,
+		# a different origin from the page, and SvelteKit refuses a cross-origin
+		# response with no Access-Control-Allow-Origin. The backend only allows
+		# localhost origins, so caddy names the site's own origin instead. Granting
+		# a page access to its own origin is what same-origin already allows.
+		header Access-Control-Allow-Origin "https://{$RAILWAY_PUBLIC_DOMAIN}"
+		reverse_proxy backend.railway.internal:80
+	}
+
+	# Everything else -> SvelteKit frontend
+	handle {
+		reverse_proxy frontend.railway.internal:3000
+	}
+}
