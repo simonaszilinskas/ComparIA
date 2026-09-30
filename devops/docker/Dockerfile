@@ -33,7 +33,6 @@ COPY --chown=app:app internal /app/internal
 COPY --chown=app:app data /app/data
 
 RUN mkdir -p /data && chown app:app /data
-VOLUME /data
 EXPOSE 80
 
 ARG GIT_COMMIT
