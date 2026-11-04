@@ -1,0 +1,659 @@
+{
+    "a11y": {
+        "externalLink": "{text}"
+    },
+    "actions": {
+        "accessData": "Få åtkomst till data",
+        "contact": "Kontakta oss",
+        "contactUs": "Kontakta oss",
+        "copyLink": {
+            "do": "Kopiera länk",
+            "done": "Länk kopierad"
+        },
+        "copyMessage": {
+            "do": "Kopiera meddelande",
+            "done": "Meddelandet har kopierats"
+        },
+        "downloadData": "Ladda ner data",
+        "home": "Startsida",
+        "returnHome": "Tillbaka till startsida",
+        "scrollLeft": "Scrolla till vänster",
+        "scrollRight": "Scrolla till höger",
+        "searchModel": "Sök modell",
+        "seeMore": "Visa mer",
+        "selectLanguage": "Välj språk"
+    },
+    "arenaHome": {
+        "compareModels": {
+            "count": "{count}/2 modeller",
+            "help": "Om bara en är vald, kommer den andra att väljas slumpmässigt",
+            "question": "Vilka modeller vill du jämföra?"
+        },
+        "modelSelection": "Val av modeller",
+        "prompt": {
+            "label": "Skriv ditt första meddelande",
+            "placeholder": "Skriv ditt första meddelande här"
+        },
+        "selectModels": {
+            "help": "Välj jämförelseläge",
+            "question": "Vilka modeller vill du jämföra?"
+        },
+        "suggestions": {
+            "generateAnother": "Skapa ett nytt meddelande",
+            "title": "Förslag på prompter"
+        },
+        "title": "Hur kan jag hjälpa dig idag?",
+        "webSearch": {
+            "disabled": "Webbsökning inaktiverad",
+            "enabled": "Webbsökning aktiverad",
+            "label": "Webbsökning",
+            "tooltip": "Aktivera webbsökning för att låta modellerna använda onlinekällor och citera mer aktuell information.<br><strong>Utan webbsökning</strong> svarar modellerna baserat på vad de lärde sig under träning (deras träningsdata). De kan inte verifiera information online, så mycket nya eller specifika fakta kan vara ofullständiga."
+        }
+    },
+    "chatbot": {
+        "continuePrompt": "Fortsätt chatta med AI-modellerna",
+        "conversation": "Konversation",
+        "errors": {
+            "other": {
+                "message": "Ett tillfälligt fel har uppstått.",
+                "retry": "Du kan försöka begära modellerna igen.",
+                "title": "Ett tillfälligt fel har uppstått"
+            },
+            "tooLong": {
+                "message": "Varje modell har en gräns för hur stora samtal den kan hantera.",
+                "retry": "Du kan återuppta en konversation med två nya modeller.",
+                "title": "Konversationen är för lång för en av modellerna."
+            }
+        },
+        "loading": "Läser in svar",
+        "reasoning": {
+            "finished": "Resonemang avslutat",
+            "inProgress": "Resonemang pågår…"
+        },
+        "revealButton": "Visa vilka modeller som användes",
+        "webSearch": {
+            "label": "Tillhörande webbsökresultat."
+        }
+    },
+    "closeModal": "Stäng modalfönstret",
+    "components": {
+        "pagination": {
+            "first": "Första sidan",
+            "label": "Sidnummer",
+            "last": "Sista sidan",
+            "next": "Nästa sida",
+            "nth": "Sida {count}",
+            "previous": "Föregående sida"
+        },
+        "table": {
+            "linePerPage": "Antal rader per sida",
+            "pageCount": "{count} rader per sida",
+            "triage": "Sortera"
+        },
+        "theme": {
+            "legend": "Välj ett tema för att anpassa webbplatsens utseende.",
+            "options": {
+                "dark": "Mörkt tema",
+                "light": "Ljust tema",
+                "system": "System",
+                "systemSub": "Använd systeminställningar"
+            },
+            "title": "Visningsinställningar"
+        }
+    },
+    "errors": {
+        "404": {
+            "desc": "Om du skrev in webbadressen i din webbläsare, kontrollera att den är korrekt. Sidan kanske inte längre är tillgänglig. <br /> I så fall kan du gå tillbaka till startsidan. <br />Kontakta oss så hjälper vi dig hitta rätt information.",
+            "error": "Fel 404",
+            "sorry": "Sidan kunde inte visas.",
+            "title": "Sidan hittades inte"
+        },
+        "unexpected": {
+            "desc": "Prova att ladda om sidan, eller försök igen senare.",
+            "error": "Felkod {code}",
+            "sorry": "Ett problem har uppstått med tjänsten. Vi arbetar på att lösa det så snabbt som möjligt.",
+            "title": "Oväntat fel"
+        },
+        "unknown": "Ett fel har uppstått"
+    },
+    "footer": {
+        "license": {
+            "linkTitle": "Etalab-licens – nytt fönster",
+            "mention": "Innehållet på denna webbplats är tillgängligt under <a {linkProps}>etalab-2.0-licensen</a>, förutom där rättigheter som innehas av tredje part uttryckligen anges"
+        },
+        "links": {
+            "accessibility": "Brister i tillgänglighet",
+            "legal": "Rättsliga meddelanden",
+            "sources": "Källkod"
+        }
+    },
+    "general": {
+        "a11y": {
+            "desc": "Denna tillgänglighetspolicy gäller webbplatsen <strong>{domain}</strong>.",
+            "disclaimer": "<strong> compar:IA </strong> åtar sig att göra sina digitala tjänster tillgängliga, i enlighet med artikel 47 i lag nr 2005-102 av den 11 februari 2005.",
+            "improveAdress": "Adress: DINUM, 20 avenue de Ségur, 75007 Paris",
+            "improveDelay": "Vi försöker svara inom 2 arbetsdagar.",
+            "improveDesc": "Om du har problem att komma åt innehåll eller tjänst kan du kontakta administratören för {domain}, för att bli hänvisad till ett tillgängligt alternativ eller få innehållet i ett annat format.",
+            "improveMail": "E-post: <a {linkProps}>contact@beta.gouv.fr</a>",
+            "improveTitle": "Feedback och kontakt",
+            "remedyAdvocate": "Skriv ett meddelande till <a {linkProps}>Frankrikes ombudsman för mänskliga rättigheter (le Défenseur des Droits)</a>",
+            "remedyAdvocateAdress": "Skicka ett brev med posten (gratis, inget frimärke behövs): Défenseur des droits - Libre réponse 71120 75342 Paris CEDEX 07",
+            "remedyDelegateAdvocate": "Kontakta <a {linkProps}>Frankrikes ombudsman för mänskliga rättigheter (le Défenseur des Droits)</a>",
+            "remedyDesc": "Denna procedur ska användas i följande fall: Du har rapporterat ett tillgänglighetsfel till webbplatsansvarig som hindrar dig från att komma åt innehåll eller en av portalens tjänster och du inte har fått ett tillfredsställande svar.",
+            "remedyList": "Du kan:",
+            "remedyTitle": "Överklaga",
+            "stateDesc": "Webbplatsen {domain} uppfyller inte RGAA 4.1. Webbplatsen har ännu inte granskats. <strong>Den har dock utformats för att vara tillgänglig för så många som möjligt</strong>. Du bör därför kunna:",
+            "stateNavigate": "navigera på alla sidor på webbplatsen med hjälp av ett tangentbord",
+            "statePrefs": "anpassa webbplatsen efter dina preferenser (teckenstorlek, skärmzoom, ändring av typsnitt etc.) utan att innehåll förloras",
+            "stateScreenReader": "visa webbplatsen med en skärmläsare.",
+            "stateTitle": "Efterlevnad",
+            "title": "Tillgänglighetspolicy"
+        },
+        "legal": {
+            "a11yDesc": "Efterlevnad av digitala tillgänglighetsstandarder är ett framtida mål, men vi arbetar för att göra webbplatsen tillgänglig för alla.",
+            "a11yTitle": "Tillgänglighet",
+            "directorDesc": "Romain Delassus, chef för kulturministeriets digitala avdelning",
+            "directorTitle": "Publikationsansvarig",
+            "editorDesc": "Denna webbplats publiceras av franska kulturministeriet. Postadress: Ministère de la culture, 182 Rue Saint-Honoré, 75001 Paris",
+            "editorTitle": "Redaktör",
+            "hostingDesc": "Denna webbplats drivs av OVH SAS (<a {linkProps}>https://www.ovh.com</a>) vars huvudkontor ligger på 2 rue Kellermann, 59100 Roubaix, Frankrike.",
+            "hostingTitle": "Servertjänst för sidan",
+            "reportA11y": "Om du träffar på ett tillgänglighetsproblem som hindrar dig från att komma åt innehåll eller funktioner på webbplatsen, meddela oss gärna.",
+            "reportA11yDesc": "För att läsa mer om Frankrikes policy för digital tillgänglighet: <a {linkProps}>references.modernisation.gouv.fr/accessibilite-numerique</a>",
+            "reportDesc": "Om du inte får ett snabbt svar från oss har du rätt att skicka ditt klagomål eller en begäran om hänvisning till Frankrikes ombudsman för mänskliga rättigheter (le Défenseur des Droits).",
+            "reportTitle": "Rapportera ett problem",
+            "securityCertif": "Webbplatsen är skyddad av ett elektroniskt certifikat, som hjälper till att säkerställa konfidentialiteten för dina uppgifter. I de flesta webbläsare visas detta med en symbol i form av ett hänglås.",
+            "securityNoMail": "De tjänster som är kopplade till plattformen kommer inte att användas som källa för att skicka e-postmeddelanden med begäran om att ange personlig information.",
+            "securityTitle": "Säkerhet",
+            "sources": "Om inget annat anges är all text på denna webbplats licensierad under <a {etalabLinkProps}>Etalab Open 2.0-licensen</a>. Källkoden för denna applikation är fritt återanvändbar och tillgänglig på <a {githubLinkProps}>GitHub</a>.",
+            "title": "Rättsliga meddelanden"
+        },
+        "privacy": {
+            "cookiesBannerDesc": "Just det, du behövde inte klicka på ett block som täcker halva sidan för att säga att du godkänner cookies!",
+            "cookiesBannerNoNeed": "Inget speciellt, ingen specialbehandling i samband med .gouv.fr. Vi respekterar helt enkelt lagen, som anger att vissa verktyg för publikspårning, korrekt konfigurerade för att respektera integritet, är undantagna från förhandsgodkännande.",
+            "cookiesBannerTitle": "Den här webbplatsen visar ingen banner för samtycke till cookies, varför?",
+            "cookiesBannerTools": "För detta använder vi <a {matomoLinkProps}>Matomo</a>, ett <a {libreLinkProps}>gratis</a> verktyg, konfigurerat för att följa CNIL:s <a {cnilLinkProps}>rekommendation om cookies</a>. Det innebär att din IP-adress, till exempel, anonymiseras innan den registreras. Det är därför omöjligt att koppla dina besök på denna webbplats till dig personligen.",
+            "cookiesDesc": "Den här webbplatsen placerar en liten textfil (en \"cookie\") på din dator när du besöker den. Detta gör att vi kan mäta antalet besök och se vilka sidor som besöks mest.",
+            "cookiesDescMore": "Du kan välja bort att din aktivitet på den här webbplatsen spåras. Detta skyddar din integritet, men hindrar också sidans ägare från att sammanställa statistik som kan användas för att skapa en bättre upplevelse för dig och andra användare.",
+            "cookiesTitle": "Cookies och samtycke",
+            "dataAccessDatasets": "Data för användardialog och preferenser distribueras under Etalabs Open License 2.0 på Hugging Face-plattformen via franska kulturministeriets konto (<a {linkProps}>https://huggingface.co/ministere-culture</a>).",
+            "dataAccessDesc": "Självklart! Statistik över webbplatsens användning finns fritt tillgänglig på <a {linkProps}>stats.beta.gouv.fr</a>.",
+            "dataAccessTitle": "Jag bidrar till att berika era data, kan jag få tillgång till dem?",
+            "dataExtraCountry": "Destinationsland: Frankrike",
+            "dataExtraHost": "Underleverantör: OVH",
+            "dataExtraTitle": "Vem hjälper oss att behandla uppgifterna?",
+            "dataExtraWarranty": "Garantier: <a {linkProps}>https://storage.gra.cloud.ovh.net/v1/AUTH_325716a587c64897acbef9a4a4726e38/contracts/9e74492-OVH_Data_Protection_Agreement-FR-6.0.pdf</a>",
+            "dataExtraWhat": "Utförd process: Ackommodering",
+            "dataRespDesc": "Franska kulturdepartementets digitala avdelning ansvarar för behandlingen av dina personuppgifter.",
+            "dataRespTitle": "Vem är ansvarig för databehandlingen?",
+            "dataTimeDesc": "Data som rör användare och deras samtal med modeller sparas när du anger vilken modell du föredrar.",
+            "dataTimeTitle": "Hur länge sparas dessa uppgifter?",
+            "dataUseDesc": "Utgivaren åtar sig att vidta åtgärder för att säkerställa anonymisering av dialogdata innan de görs tillgängliga för allmänheten.",
+            "dataUseTitle": "Vilken behandling utförs på konversationsdata?",
+            "desc": "Tjänsten publiceras av franska kulturministeriets digitala avdelning.",
+            "optOutTitle": "Avstå från besöksmätning",
+            "privacyData": "Uppgifterna som samlas in på webbplatsen är följande:",
+            "privacyDataArena": "Data relaterade till användarkonversationer med modeller: frågor ställda av användare, svar från modeller, och vilken av de två modellerna användaren föredrar",
+            "privacyDataForm": "Data relaterade till frågeformuläret ”Hjälp oss att förbättra compar:IA”.",
+            "privacyDesc": "Tjänsten behandlar inte personuppgifter enligt CNIL:s definition, nämligen information som rör en fysisk person som kan identifieras, direkt eller indirekt.",
+            "privacyResp": "Användaren ansvarar för de uppgifter eller det innehåll som de anger i de frågor som erbjuds av plattformen. Genom att acceptera <a {linkProps}>användarvillkoren</a> samtycker användaren till att inte överföra någon information som kan identifiera dem eller en tredje part.",
+            "privacyTitle": "Behandlar vi personuppgifter?",
+            "title": "Integritetspolicy"
+        },
+        "tos": {
+            "title": "Användarvillkor"
+        }
+    },
+    "generated": {
+        "archs": {
+            "dense": {
+                "desc": "Tät arkitektur hänvisar till en typ av neuralt nätverk där varje neuron i ett lager är kopplad till alla neuroner i nästa lager. Detta gör att alla parametrar i lagret kan bidra till beräkningen av utdata.",
+                "name": "Tät"
+            },
+            "matformer": {
+                "desc": "Föreställ dig ryska dockor (matrjosjkor → matrjosjkatransformator → Matformer): Varje block innehåller flera inkapslade delmodeller av ökande storlek, som delar samma parametrar. Detta gör det möjligt att för varje begäran välja en modell med anpassad kapacitet, beroende på tillgängligt minne eller latens, utan att behöva omträna olika modeller.",
+                "name": "Matformer"
+            },
+            "moe": {
+                "desc": "Arkitekturen Mixture of Experts (MoE) använder en routingmekanism för att, beroende på indata, endast aktivera vissa specialiserade delmängder (\"experter\") av det neurala nätverket. Detta möjliggör konstruktion av mycket stora modeller samtidigt som beräkningskostnaderna hålls nere, eftersom endast en del av nätverket används i varje steg.",
+                "name": "MoE"
+            },
+            "na": {
+                "desc": "Utgivaren har inte offentliggjort information om modellens arkitektur.",
+                "name": "Proprietär"
+            }
+        }
+    },
+    "header": {
+        "chatbot": {
+            "newDiscussion": "Ny diskussion"
+        },
+        "homeTitle": "Hem – compar:IA",
+        "menu": "Meny",
+        "title": "jämföra:AI",
+        "votes": {
+            "count": "{count} röster",
+            "legend": "Teckenförklaring",
+            "objective": "Mål: {count}k",
+            "tooltip": "Diskutera, rösta och hjälp oss att uppnå detta mål!<br /><strong>Dina röster är viktiga</strong> – de bidrar till compar:IA-datasetet som görs fritt tillgängligt för att förfina framtida modeller många olika språk.<br />Denna digitala allmänning bidrar till bästa <strong>respekt för den språkliga och kulturella mångfalden i framtida språkmodeller.</strong>"
+        }
+    },
+    "home": {
+        "vote": {
+            "steps": {
+                "datasets": {
+                    "desc": "Alla frågor som ställs och alla röster sammanställs och publiceras fritt efter anonymisering.",
+                    "title": "Datamängder efter språk"
+                },
+                "finetune": {
+                    "desc": "I slutändan kan företag och akademiker använda datamängderna för att utbilda nya modeller som är bättre anpassade för språklig och kulturell mångfald.",
+                    "title": "Språkspecifika förfinade modeller"
+                },
+                "prefs": {
+                    "desc": "Efter att ha diskuterat med AI-modellerna anger du vilken du föredrar enligt givna kriterier, såsom svarens relevans eller användbarhet.",
+                    "title": "Dina preferenser"
+                }
+            },
+            "title": "Varför är din röst viktig?"
+        }
+    },
+    "models": {
+        "arch": {
+            "title": "Visste du?"
+        },
+        "cards": {
+            "sovereignty": {
+                "title": "Öppenhetsgrad"
+            }
+        },
+        "licenses": {
+            "type": {
+                "openSource": "Öppen källkod",
+                "proprietary": "Proprietär",
+                "semiOpen": "Semi-öppen"
+            }
+        },
+        "list": {
+            "filters": {
+                "editor": {
+                    "legend": "Utgivare"
+                },
+                "license": {
+                    "legend": "Användarlicens"
+                },
+                "reset": "Rensa alla filter",
+                "size": {
+                    "legend": "Storlek (parametrar)"
+                }
+            },
+            "model": "modell",
+            "models": "modeller",
+            "noresults": "Inga modeller matchar dina sökkriterier.",
+            "triage": {
+                "label": "Sortera efter",
+                "options": {
+                    "date-desc": "Utgivningsdatum (från nyaste till äldsta)",
+                    "name-asc": "Modellnamn (bokstavsordning)",
+                    "org-asc": "Utgivare (bokstavsordning)",
+                    "params-asc": "Storlek (från minsta till största)"
+                }
+            }
+        },
+        "names": {
+            "a": "Modell A",
+            "b": "Modell B"
+        },
+        "openWeight": {
+            "tooltips": {
+                "openSource": "Träningsdata, kod och vikter för denna modell (dvs. parametrarna som lärs in under träningen) kan laddas ner och modifieras fritt. Att en modell är \"öppen källkod\" ställer hårdare krav än \"öppna vikter\", särskilt på grund av behovet av transparens i träningsmaterialet, och få modeller anses vara \"öppen källkod\".",
+                "openWeight": "En så kallad \"open weights\"-modell, vilket innebär att dess vikter – de parametrar som lärs in under träning – kan laddas ner fritt, vilket gör att det går att köra modellen på sin egen dator. Att en modell är \"öppen källkod\" ställer hårdare krav än \"öppna vikter\", särskilt på grund av behovet av transparens i träningsmaterialet, och få modeller anses vara \"öppen källkod\"."
+            }
+        },
+        "opennessSovereignty": {
+            "title": "Öppenhetsgrad"
+        },
+        "release": "Utgiven {date}",
+        "size": {
+            "count": {
+                "L": "100 till 400 miljarder",
+                "M": "60 till 100 miljarder",
+                "S": "15 till 60 miljarder",
+                "XL": ">400 miljarder",
+                "XS": "<15 miljarder"
+            },
+            "estimated": "Uppskattad storlek ({size})",
+            "title": "Storlek {size}"
+        }
+    },
+    "modes": {
+        "big-vs-small": {
+            "altLabel": "David mot Goliat",
+            "description": "En liten modell mot en stor, båda valda slumpmässigt",
+            "label": "David mot Goliat",
+            "title": "David mot Goliat-läget"
+        },
+        "custom": {
+            "altLabel": "Manuellt val",
+            "description": "Kommer du att känna igen de två modellerna du valde?",
+            "label": "Manuellt val",
+            "title": "Manuellt val"
+        },
+        "random": {
+            "altLabel": "Slumpmässigt val av modeller",
+            "description": "Två modeller utvalda slumpmässigt från hela listan",
+            "label": "Slump",
+            "title": "Slumpläge"
+        },
+        "reasoning": {
+            "altLabel": "Resonemangsmodeller",
+            "description": "Två modeller, optimerade för komplexa uppgifter, slumpmässigt utvalda",
+            "label": "Resonemang",
+            "title": "Resonemangsläge"
+        },
+        "small-models": {
+            "altLabel": "Sparsamma modeller",
+            "description": "Två slumpmässigt valda modeller, ur kategorin små modeller",
+            "label": "Sparsam",
+            "title": "Sparsamt läge"
+        }
+    },
+    "ranking": {
+        "energy": {
+            "views": {
+                "graph": {
+                    "tooltip": {
+                        "consumption": "Genomsnittlig förbrukning (mWh)",
+                        "elo": "BT-poäng",
+                        "params": "Parametrar (i miljarder)"
+                    },
+                    "xLabel": "Genomsnittlig förbrukning per 1000 tokens (mWh)",
+                    "yLabel": "Bradley-Terry-poäng"
+                },
+                "table": {
+                    "title": "Data från grafen i tabellformat"
+                }
+            }
+        },
+        "methodo": {
+            "desc": {
+                "1": "Sedan 2024 har tusentals användare använt compar:IA för att jämföra svaren från olika modeller, vilket genererat hundratusentals röster. Att bara räkna antalet vinster räcker inte för att fastställa en ranking. Ett rättvist system måste vara statistiskt robust, justera efter varje jämförelse och verkligen återspegla värdet av de prestationer som uppnåtts.",
+                "2": "Det är med detta i åtanke som en <strong>rankning baserad på Bradley-Terry-modellen</strong> upprättades, utvecklad i samarbete med <strong>teamen vid Digital Regulation Expertise Center (<a {perenLinkProps}>PEReN</a>)</strong>, med hjälp av alla röster och reaktioner som samlats in på plattformen. För att lära dig mer, se vår <a {notebookLinkProps}>metodguide</a>."
+            },
+            "impacts": {
+                "elo": {
+                    "desc": {
+                        "1": "<strong>Bradley-Terry</strong>-modellen omvandlar en uppsättning lokala och potentiellt ofullständiga jämförelser till ett konsekvent och statistiskt robust globalt rankingsystem, där den empiriska vinstfrekvensen förblir begränsad till direkta observationer."
+                    },
+                    "title": "Topp 10 modeller i rankningen baserat på uppskattad vinstfrekvens med Bradley-Terry-modellen"
+                },
+                "title": "Metodvalets påverkan på modellrankning",
+                "winrate": {
+                    "desc": {
+                        "1": "Baserat enbart på den <strong>genomsnittliga vinstprocenten</strong> kan vi få en övergripande ranking, men denna beräkning förutsätter att varje modell har jämförts med alla de andra.",
+                        "2": "Denna metod är inte idealisk eftersom den kräver data från alla modellkombinationer, och så fort antalet modeller ökar blir den snabbt dyr och besvärlig att underhålla."
+                    },
+                    "title": "Topp 10 modeller i rankningen baserat på \"empiriska\" vinstfrekvenser"
+                }
+            },
+            "methods": {
+                "cons": "Huvudproblem",
+                "elo": {
+                    "def": "<strong>Definition</strong>: Rankningssystem där poängvinsten eller -förlusten beror på resultatet (vinst/förlust/oavgjort) <strong>och</strong> motståndarens uppskattade nivå – om en svagare modell slår en starkare modell, gör den större framsteg i rankingen.",
+                    "list": {
+                        "1": "<strong>Probabilistisk modell</strong>: vi kan uppskatta det sannolika resultatet av vilken jämförelse som helst, även mellan modeller som aldrig har jämförts direkt.",
+                        "2": "<strong>Nivåjustering</strong>: Poäng enligt Bradley Terry-modellen tar hänsyn till nivån på de motståndare som möts, vilket möjliggör en rättvis jämförelse mellan modellerna.",
+                        "3": "<strong>Förbättrad osäkerhetshantering</strong>: Konfidensintervallet omfattar hela jämförelsenätverket. Detta möjliggör en mer exakt uppskattning av osäkerhet, särskilt för modeller med få direkta konfrontationer men många gemensamma motståndare."
+                    },
+                    "title": "Topplista enligt Bradley-Terry (BT)"
+                },
+                "pros": "Fördelar",
+                "title": "Två sätt att klassificera modeller",
+                "winrate": {
+                    "def": "<strong>Definition</strong>: Ett empiriskt rankingsystem för modeller baserat på andelen matcher som vunnits av en modell jämfört med alla andra modeller.",
+                    "list": {
+                        "1": "<strong>Osäkerhet med få mätpunkter</strong>: En modell som har vunnit tre av tre \"matcher\" visar en vinstprocent på 100 %, men denna poäng är inte särskilt signifikant eftersom den baseras på väldigt lite data.",
+                        "2": "<strong>Ingen hänsyn till motståndare</strong>: Att vinna mot en starkare eller svagare modell räknas lika. Vinstprocenten är orättvis eftersom den inte tar hänsyn till matchens svårighetsgrad.",
+                        "3": "<strong>Stagnering</strong>: På lång sikt får många bra modeller en vinstprocent på runt 50 % eftersom de möter modeller på liknande nivå, vilket gör att rankningen blir mindre meningsfull."
+                    },
+                    "title": "Rankning efter vinstfrekvens"
+                }
+            },
+            "personal": {
+                "choices": {
+                    "both_bad": "<strong>Ingen är bra</strong>: 0 poäng till vardera modell — ditt missnöje räknas, inte bara din relativa preferens.",
+                    "both_good": "<strong>Båda är bra</strong>: 0,5 poäng till vardera modell.",
+                    "idk": "<strong>Vet inte</strong>: utesluts från beräkningen, räknas inte för någon av modellerna."
+                },
+                "desc": {
+                    "1": "Bradley-Terry kräver ett sammanhängande nätverk av jämförelser: dina röster bildar mestadels spridda, osammanhängande par, så metoden fungerar inte för ett enskilt konto. Den personliga poängen är en <strong>utjämnad vinstandel</strong>:",
+                    "2": "<strong>points</strong> är din totala poäng på modellen, <strong>battles</strong> antalet poängsatta jämförelser den ingår i, och <strong>m</strong> ditt genomsnittliga antal poäng per jämförelse över alla modeller. Utjämningen drar en sällan jämförd modell mot detta genomsnitt: en vinst visar 0,667 och inte 100 %, och en modell jämförd tjugo gånger rankas över en jämförd en gång vid liknande andel."
+                },
+                "title": "Din personliga rankning: så beräknas din poäng"
+            },
+            "tabLabel": "Metodik",
+            "title": "Hur väljer man metod för att klassificera modeller?"
+        },
+        "personal": {
+            "cols": {
+                "battles": "Jämförelser",
+                "general_rank": "Allmän rang",
+                "record": "Resultat (V-O-F)",
+                "score": "Mina poäng"
+            },
+            "loading": "Laddar din rankning…",
+            "noVotes": "Rösta i en jämförelse för att starta din rankning.",
+            "signedOut": "Logga in för att se rankningen som byggts av dina röster.",
+            "title": "Min rankning",
+            "tooltips": {
+                "score": "En modell du bara jämfört några gånger dras mot ditt eget genomsnitt i stället för att visa en extrem poäng."
+            },
+            "totalModels": "Rankade modeller:",
+            "totalVotes": "Mina röster:"
+        },
+        "preferences": {
+            "desc": "När du röstar kan du kategorisera dina preferenser med hjälp av olika positiva och negativa kategorier. Jämför deras fördelning mellan olika modeller.",
+            "modal": {
+                "cta": "Vad är en preferens?",
+                "title": "Positiva och negativa preferenser"
+            },
+            "tabLabel": "Preferensvy",
+            "table": {
+                "cols": {
+                    "clear_formatting": "Rensa formatering",
+                    "complete": "Komplett",
+                    "creative": "Kreativt",
+                    "incorrect": "Fel",
+                    "instructions_not_followed": "Instruktioner följdes inte",
+                    "n_match": "Totalt antal matchningar",
+                    "name": "Modell",
+                    "positive_prefs_ratio": "Fördelning av preferenser",
+                    "superficial": "Ytligt",
+                    "total_negative_prefs": "Totalt antal preferenser <br>Negativa",
+                    "total_positive_prefs": "Totalt antal preferenser <br>Positiva",
+                    "useful": "Användbart"
+                },
+                "percentLabel": "Preferenser i procent",
+                "tooltips": {
+                    "positive_prefs_ratio": "Under omröstningen kan användaren med hjälp av etiketter ange skälen till sin preferens. Denna kolumn visar den procentuella fördelningen av dessa etiketter (positiva eller negativa) för alla röster."
+                }
+            },
+            "title": "Hur är preferenserna fördelade?"
+        },
+        "ranking": {
+            "desc": "Den här rankningen beräknas från röster som samlats in genom <strong>blinda jämförelser</strong> med den statistiska <strong>Bradley-Terry-modellen</strong>. Den speglar <strong>subjektiva preferenser</strong> och bör tolkas med försiktighet: den mäter varken faktakorrekthet eller modellernas övergripande prestanda.",
+            "tabLabel": "Rankning"
+        },
+        "table": {
+            "data": {
+                "billions": "{count} miljarder",
+                "cols": {
+                    "arch": "Arkitektur",
+                    "consumption": "Genomsnittlig förbrukning<br>(1000 tokens)",
+                    "elo": "Nöjdhetspoäng (BT)",
+                    "license": "Licens",
+                    "n_match": "Totalt antal röster",
+                    "name": "Modell",
+                    "organisation": "Organisation",
+                    "rank": "Rang",
+                    "release": "Utgivningsdatum",
+                    "size": "Storlek<br>(parametrar)",
+                    "trust_range": "Konfidens (±)"
+                },
+                "estimation": "(uppskattning)",
+                "tooltips": {
+                    "arch": "Arkitekturen för en LLM-modell syftar på de designprinciper som definierar hur komponenterna i ett neuralt nätverk är arrangerade och interagerar för att omvandla indata till prediktiva resultat, inklusive läget för parameteraktivering (tät vs. gles), komponentspecialisering och informationsbehandlingsmekanismer (transformatorer, konvolutionella nätverk, hybridarkitekturer).",
+                    "elo": "Den statistiska poängen, uppskattad enligt Bradley-Terry-modellen, återspeglar sannolikheten att en modell föredras framför en annan. Denna poäng beräknas utifrån alla användarröster och reaktioner. För mer information, gå in på fliken \"metod\".",
+                    "rank": "Rankning enligt Bradley-Terry-nöjdhetspoängen",
+                    "size": "Modellstorleken i miljarder parametrar, kategoriserad i fem klasser. För proprietära modeller anges inte denna storlek.",
+                    "trust_range": "Intervall som anger tillförlitligheten hos rankningsuppskattningen – ju smalare intervallet är, desto mer tillförlitlig är rankningsuppskattningen. Sannolikheten är 95% att modellens verkliga ranking ligger inom detta intervall."
+                }
+            },
+            "lastUpdate": "Uppdaterat {date}",
+            "totalModels": "Totalt antal modeller:",
+            "totalVotes": "Totalt antal röster:"
+        },
+        "title": "Från röster till rankning",
+        "views": {
+            "general": "Allmän",
+            "legend": "Rankningsvy",
+            "personal": "Min rankning"
+        }
+    },
+    "reveal": {
+        "feedback": {
+            "description": "Dela compar:AI med andra genom att dela AI-modellerna du har interagerat med! Endast namnen och energipåverkan från diskussionen kommer att synas via den här länken – din text visas inte.",
+            "example": "Exempel på delade resultat",
+            "moreOnVotes": "Läs mer om att rösta",
+            "shareResult": "Dela ditt resultat"
+        },
+        "impacts": {
+            "energy": {
+                "tooltip": "Mätt i wattimmar representerar strömförbrukningen den elektricitet som modellen använder för att bearbeta en fråga och generera motsvarande svar. Ju större en modell är (i antal parametrar), desto mer energi krävs för att producera varje token."
+            },
+            "summary": {
+                "classification": {
+                    "dense": "<strong>{model}</strong> är en <strong>{size}</strong> modell med en <strong>tät</strong> arkitektur: den använder alla sina parametrar för varje svar. Dess energiklass är <strong>{energyClass}</strong>.",
+                    "matformer": "<strong>{model}</strong> är en <strong>{size}</strong> modell med en <strong>Matformer</strong>-arkitektur: den anpassar den andel av parametrarna som används för varje svar. Dess energiklass är <strong>{energyClass}</strong>.",
+                    "moe": "<strong>{model}</strong> är en <strong>{size}</strong> modell med en <strong>Mixture-of-Experts</strong>-arkitektur: den aktiverar bara en del av sina parametrar för varje svar (cirka <strong>{activeParams} miljarder</strong> av <strong>{params} miljarder</strong>). Dess energiklass är <strong>{energyClass}</strong>.",
+                    "unknown": "<strong>{model}</strong> är en <strong>{size}</strong> modell vars arkitektur inte har offentliggjorts. Med tanke på dess storlek är energiklassen <strong>{energyClass}</strong>.",
+                    "unknownProprietary": "<strong>{model}</strong> är en proprietär <strong>{size}</strong> modell vars arkitektur inte har offentliggjorts. Med tanke på dess storlek är energiklassen <strong>{energyClass}</strong>."
+                },
+                "comparison": {
+                    "comparable": "jämförbart med <strong>{otherModel}</strong>",
+                    "multipleLess": "nästan <strong>{count} gånger mindre</strong> än <strong>{otherModel}</strong>",
+                    "multipleMore": "nästan <strong>{count} gånger så mycket</strong> som <strong>{otherModel}</strong>",
+                    "percentageLess": "<strong>{percentage} % lägre</strong> än <strong>{otherModel}</strong>",
+                    "percentageMore": "<strong>{percentage} % högre</strong> än <strong>{otherModel}</strong>",
+                    "unavailable": "ingen jämförelse med <strong>{otherModel}</strong> är tillgänglig"
+                },
+                "consumption": "I den här diskussionen krävde genereringen av <strong>{tokens} token</strong> cirka <strong>{energy} mWh</strong>, vilket är {comparison}.",
+                "size": {
+                    "estimatedL": "uppskattningsvis stor",
+                    "estimatedM": "uppskattningsvis mellanstor",
+                    "estimatedS": "uppskattningsvis liten",
+                    "estimatedXl": "uppskattningsvis mycket stor",
+                    "estimatedXs": "uppskattningsvis mycket liten",
+                    "l": "stor",
+                    "m": "mellanstor",
+                    "s": "liten",
+                    "xl": "mycket stor",
+                    "xs": "mycket liten"
+                }
+            },
+            "title": "Diskussionens energiförbrukning",
+            "tokens": {
+                "tooltip": "AI analyserar och genererar meningar från ord eller orddelar på ungefär fyra bokstäver. Denna textenhet kallas token. Ju längre text, desto fler tokens."
+            }
+        }
+    },
+    "seo": {
+        "desc": "{platformName} är ett verktyg för att jämföra olika konversationsbaserade AI-modeller, för att öka medvetenheten om utmaningarna med generativ AI (bias, miljöpåverkan) och för att skapa datamängder för språk med begränsade resurser.",
+        "title": "{platformName}, jämförelseverktyget för konversations-AI",
+        "titles": {
+            "accessibilite": "Tillgänglighetspolicy",
+            "arene": "Chat",
+            "donnees-personnelles": "Integritetspolicy",
+            "mentions-legales": "Rättsliga meddelanden",
+            "modalites": "Användarvillkor",
+            "modeles": "Lista över modeller",
+            "ranking": "Rankning"
+        }
+    },
+    "statistics": {
+        "activity": {
+            "conversationsLabel": "Konversationer",
+            "dateLabel": "Datum",
+            "estimateLabel": "uppskattning för innevarande period",
+            "ongoingLabel": "pågår",
+            "promptsLabel": "Skickade prompter",
+            "sectionTitle": "Aktivitet",
+            "tableLabel": "Visa data som tabell",
+            "title": "Plattformsaktivitet"
+        },
+        "counterLink": "Visa plattformens statistik",
+        "eyebrow": "Statistik",
+        "filters": {
+            "allTime": "Sedan start",
+            "label": "Period",
+            "ninetyDays": "90 dagar",
+            "sevenDays": "7 dagar",
+            "thirtyDays": "30 dagar"
+        },
+        "intro": "Se hur samtal och preferenser på plattformen bidrar till en gemensam datamängd.",
+        "metrics": {
+            "conversations": {
+                "label": "Genomförda konversationer"
+            },
+            "models": {
+                "label": "Testade modeller"
+            },
+            "prompts": {
+                "label": "Skickade prompter"
+            },
+            "votes": {
+                "label": "Avgivna röster"
+            }
+        },
+        "overview": "Översikt",
+        "title": "Plattformsstatistik"
+    },
+    "vote": {
+        "choices": {
+            "negative": {
+                "incorrect": "Fel",
+                "instructions_not_followed": "Instruktioner följdes inte",
+                "question": "Varför var du inte nöjd med svaret?",
+                "superficial": "Ytligt"
+            },
+            "positive": {
+                "clear_formatting": "Rensa formatering",
+                "complete": "Komplett",
+                "creative": "Kreativt",
+                "question": "Vad tyckte du om med svaret?",
+                "useful": "Användbart"
+            }
+        },
+        "continueReminder": "Rösta på ett svar eller välj ”Hoppa över omröstningen” innan du fortsätter.",
+        "title": "Vilken AI-modell föredrar du?",
+        "yours": "Din röst"
+    },
+    "words": {
+        "NA": "--",
+        "activated": "Aktiverad",
+        "archived": "Arkiverad",
+        "back": "Tillbaka",
+        "close": "Stäng",
+        "deactivated": "Inaktiv",
+        "loading": "Laddar",
+        "new": "Ny",
+        "random": "Slump",
+        "regenerate": "Regenerera",
+        "reset": "Återställ",
+        "restart": "Börja om",
+        "retry": "Börja om",
+        "search": "Sök",
+        "send": "Skicka",
+        "tooltip": "Tips",
+        "validate": "Validera"
+    }
+}

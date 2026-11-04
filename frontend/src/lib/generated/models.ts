@@ -1,0 +1,1 @@
+export const ICONS = ['meta-color', 'deepseek-color', 'cohere-color', 'arcee', 'xai', 'microsoft-color', 'google-color', 'qwen-color', 'moonshot', 'nvidia-color', 'openai', 'mistral-color', 'aws-color', 'anthropic', 'zhipu-color', 'nousresearch', 'huggingface-color', 'ai21', 'liquid', 'yi-color', 'minimax-color', 'ibm']

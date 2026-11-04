@@ -9,11 +9,14 @@ venv
 
 # JS
 node_modules
+package-lock.json # using yarn.lock instead
 
 # Log
 *.log
 *.log.*
-data/
+
+# Vite
+.vite
 
 !playground/deepspeed_config_s2.json
 !playground/deepspeed_config_s3.json
@@ -33,6 +36,17 @@ checkpoints_flant5_3b
 # *.csv
 tests/state_of_the_union.txt
 
+#Dataset
+*.parquet
+*.arrow
+*.duckdb
+*.tsv
+*.jsonl
+
+#Postgresql backup files
+prd-backup.dump
+*.dump
+
 # Build
 build
 
@@ -40,10 +54,33 @@ build
 serve_images
 val2014
 vqa_examples
-docker/.env
+devops/docker/.env
+devops/db-init/init-db.sql
+devops/instances/postgres/schema.sql
+devops/instances/fr/.env.fr
+devops/instances/da/.env.da
+
+# KeePass databases
+*.kdbx
 
 # Secrets
 model-info-file.json
 register-api-endpoint-file*.json
-docker/.env
+google_creds.json
 .env
+languia-*.json
+utils/results/
+utils/results-output/
+/datasets/
+litellm_config.yml
+results-output/
+venv.bak
+cache/
+.mypy_cache
+
+# Agentic stuffs
+CLAUDE.md
+AGENTS.md
+.claude
+ignored_files
+.playwright-mcp/

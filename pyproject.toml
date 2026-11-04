@@ -1,0 +1,100 @@
+[project]
+name = "languia"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ecologits==0.11.3",
+    "fastapi>=0.133.0",
+    "json5>=0.15.0",
+    "litellm==1.88.6",
+    "google-auth>=2.48.0",
+    "httpx>=0.28.1",
+    "markdown>=3.10.3",
+    "numpy>=2.4.2",
+    "prometheus-fastapi-instrumentator>=8.1.0",
+    "psycopg2-binary>=2.9.11",
+    "pydantic[email]>=2.12.5",
+    "sqlalchemy[asyncio]>=2.0.52",
+    "pydantic-settings>=2.15.0",
+    "python-logging-loki>=0.3.1",
+    "redis[hiredis]>=8.1.0",
+    "requests>=2.32.5",
+    "rich>=14.3.3",
+    "sentry-sdk>=2.68.0",
+    "uvicorn>=0.52.3",
+    "altcha>=1.0.0,<3.0.0",
+    "sqlmodel>=0.0.39",
+    "psycopg[binary]>=3.3.4",
+    "alembic>=1.19.1",
+    "linkup-sdk>=0.20.0",
+    "async-lru>=2.3.0",
+    "python-multipart>=0.0.32",
+    "polars>=1.43.2",
+    "pillow>=12.3.0",
+    "pyotp>=2.10.0",
+    "cryptography>=46.0.5",
+    "segno>=1.6.0",
+]
+
+[dependency-groups]
+data = [
+    "duckdb>=1.5.5",
+    "pandas>=3.0.5",
+    "polars>=1.43.2",
+    "psycopg2-binary>=2.9.12",
+    "pyarrow>=25.0.1",
+    "huggingface-hub>=1.27.0",
+    "google-cloud-aiplatform>=1.164.0",
+    "cyclopts>=4.22.5",
+    "minio>=7.2.20",
+]
+devops = [
+    "cyclopts>=4.22.5",
+    "keyring>=25.7.0",
+    "pykeepass>=4.2.0",
+]
+dev = [
+    "autoflake>=2.3.3",
+    "black>=26.5.1",
+    "isort>=8.0.1",
+    "mypy>=2.3.0",
+    "python-jenkins>=1.8.3",
+    "types-markdown>=3.10.2.20260712",
+    "types-psycopg2>=2.9.21.20260724",
+    "types-requests>=2.33.0.20260712",
+    "pydantic-to-typescript>=2.0.0",
+    "pytest>=9.1.1",
+]
+
+[tool.mypy]
+exclude = ["utils/ranking_methods"]
+exclude_gitignore = true
+check_untyped_defs = true
+# disallow_untyped_defs = true
+
+[tool.autoflake]
+recursive = true
+in-place = true
+remove-all-unused-imports = true
+exclude= [
+    "./**/__init__.py",
+    "./utils/ranking_methods",
+    "./utils/database/actions/__init__.py",
+    "./utils/database/alembic",
+    "./internal/typescript/backend_types.py",
+    "./internal/typescript/admin_types.py"
+]
+
+[tool.isort]
+profile = "black"
+extend_skip = ["utils/ranking_methods", "utils/database/alembic"]
+
+[tool.black]
+target-version = ["py313"]
+extend-exclude = "utils/ranking_methods|utils/database/alembic"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["backend*", "utils*"]

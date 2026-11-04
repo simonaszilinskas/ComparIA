@@ -1,0 +1,362 @@
+import os
+from pathlib import Path
+from typing import Literal, get_args
+
+from httpx import Timeout
+from pydantic import field_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+BACKEND_DIR = Path(__file__).parent
+ROOT_DIR = BACKEND_DIR.parent
+
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=ROOT_DIR / ".env", env_file_encoding="utf-8", extra="ignore"
+    )
+    LANGUIA_DEBUG: bool = False
+    COMPARIA_REDIS_HOST: str = "localhost"
+    COMPARIA_REDIS_PASSWORD: str | None = None
+    MOCK_RESPONSE: bool = False
+    LOGDIR: Path = ROOT_DIR / "logs"
+    LOG_FORMAT: Literal["JSON", "RAW"] = "JSON"
+    COMPARIA_DB_URI: str | None = None
+    GIT_COMMIT: str | None = None
+    SENTRY_DSN: str | None = None
+    SENTRY_ENVIRONMENT: str = "dev"
+    SENTRY_SAMPLE_RATE: float = 0.1
+    LINKUP_API_KEY: str | None = None
+    OPENROUTER_API_KEY: str | None = None
+    HF_INFERENCE_KEY: str | None = None
+    ORDBOGEN_API_KEY: str | None = None
+
+    # Names the deployment (fr, da, a museum one-off, ...). Used as the Redis key
+    # namespace and to seed the default locale. Renamed from DEFAULT_COUNTRY_PORTAL,
+    # which described a country portal the project outgrew; the deployment manifests
+    # have to carry the new name, since nothing falls back to the old one. The
+    # values themselves are unchanged, so Redis keys stay put.
+    COMPARIA_INSTANCE_NAME: str = "fr"
+
+    # Display currency. Model prices are stored in US dollars and converted for the UI.
+    DISPLAY_CURRENCY: str = "EUR"
+    DISPLAY_CURRENCY_RATE_FROM_USD: float | None = None
+    EXCHANGE_RATE_API_URL: str = "https://api.frankfurter.dev/v2"
+    EXCHANGE_RATE_CACHE_SECONDS: int = 86_400
+
+    RANKING_INTERVAL_SECONDS: int = 3600  # 1 hour
+    VOTES_OBJECTIVE: int = 300_000
+    ALTCHA_HMAC_KEY: str = ""
+
+    # Dataset publishing. The schedule itself lives in the admin panel.
+    # Generous: the export's single read walks the whole comparison table, and
+    # this is here to end a query that has stopped moving, not a slow one.
+    DATASET_STATEMENT_TIMEOUT_MS: int = 2 * 3600 * 1000
+
+    # Admin activity panel. Its queries run on their own two connections and
+    # stop after this long, so a heavy filter fails alone instead of taking
+    # connections the arena needs.
+    ADMIN_ACTIVITY_STATEMENT_TIMEOUT_MS: int = 15_000
+    ADMIN_ACTIVITY_CACHE_SECONDS: int = 300
+
+    # Auth
+    # "anonymous_first": sign-in optional; "sign_in_required": blocks /arena/* without session
+    ADMIN_EMAILS: list[str] = []
+    AUTH_ACCESS_POLICY: Literal["anonymous_first", "sign_in_required"] = (
+        "anonymous_first"
+    )
+    # If non-empty, only emails from these domains can request a login code (e.g. ["beta.gouv.fr"])
+    AUTH_DOMAIN_ALLOWLIST: list[str] = []
+    AUTH_SESSION_LENGTH_DAYS: int = 30
+
+    # Deliberately high: keyed on IP, so a school class behind one shared NAT
+    # must never be locked out. The real anti-abuse limit is per-email below.
+    AUTH_EMAIL_REQUEST_PER_IP_PER_HOUR: int = 2000
+    AUTH_EMAIL_REQUEST_PER_EMAIL_PER_HOUR: int = 5
+    # Same reasoning: each OIDC sign-in start stores a state and may reach the
+    # provider, but a whole class signing in at once must still go through.
+    AUTH_OIDC_LOGIN_PER_IP_PER_HOUR: int = 2000
+    AUTH_VERIFY_MAX_ATTEMPTS: int = 5
+    # Ceiling on guesses per email (a right code clears the count), whatever the
+    # source IP. The per-IP counter above only slows one attacker down; this one
+    # closes the login code itself.
+    AUTH_VERIFY_MAX_ATTEMPTS_PER_EMAIL: int = 10
+    # Fernet key(s) for secrets stored in the database: the admins'
+    # authenticator secrets, the OIDC client secret, the endpoints' API keys,
+    # the moderation key and the publishing credentials. Comma-separated to
+    # rotate: the first encrypts, every one decrypts, and
+    # `comparia-cli db reencrypt-secrets` rewrites every secret with the first.
+    COMPARIA_ENCRYPTION_KEY: str = ""
+
+    # Anonymous
+    ANONYMOUS_SESSION_LENGTH_DAYS: int = 30
+
+    # Conversation caps
+    # Conversations one IP may start in a sliding hour, and how many of those may
+    # use the same pair of models (0 turns a cap off). Counted per IP, so a school
+    # or a ministry behind one NAT shares them: raise them for such an instance.
+    # Members of an exempt cohort (RATELIMIT_EXEMPT_COHORTS) are never counted.
+    RATELIMIT_CONVERSATIONS_PER_IP_PER_HOUR: int = 20
+    RATELIMIT_CONVERSATIONS_SAME_MODELS_PER_IP_PER_HOUR: int = 5
+
+    # Public app origin, used to build absolute links in emails (e.g. invite links)
+    COMPARIA_APP_URL: str = "http://localhost:5173"
+    # Public origin the backend itself answers on, used for the OIDC redirect_uri
+    # the provider sends the browser back to. Deployed, the ingress puts the
+    # backend under /api of the app origin, so leaving this unset is right. In
+    # dev the two run on separate ports, so point it at the backend.
+    COMPARIA_API_URL: str | None = None
+
+    # Number of reverse proxies in front of the app. X-Forwarded-For is only read
+    # when this is > 0, and only the entry the outermost trusted proxy appended is
+    # kept, so a client cannot pick its own IP by sending the header itself.
+    # Set it to the real number of hops in every deployment (1 behind Caddy alone).
+    COMPARIA_TRUSTED_PROXY_COUNT: int = 0
+
+    # Header an edge proxy (a WAF or CDN) sets to the real client IP, for when
+    # X-Forwarded-For only carries the edge's own address. Takes precedence over
+    # X-Forwarded-For when set and valid. Leave it empty unless the origin cannot
+    # be reached without going through that edge: anybody who can talk to the
+    # backend directly can send this header too.
+    COMPARIA_CLIENT_IP_HEADER: str = ""
+
+    # Session cookies carry the Secure flag unless this is turned off for local
+    # HTTP development. Never tie it to the debug flag: debug logging and cookie
+    # security are separate decisions.
+    COMPARIA_COOKIE_SECURE: bool = True
+
+    # Extra browser origins allowed to call the API with credentials. The
+    # deployments serve the front and the API from one origin through Caddy, so
+    # this stays empty outside development.
+    COMPARIA_CORS_ORIGINS: list[str] = []
+
+    # /metrics requires "Authorization: Bearer <token>". Unset, the endpoint
+    # refuses every request outside debug.
+    METRICS_TOKEN: str | None = None
+
+    @field_validator("COMPARIA_APP_URL", "COMPARIA_API_URL")
+    @classmethod
+    def _strip_trailing_slash(cls, value: str | None) -> str | None:
+        return value.rstrip("/") if value else value
+
+    @property
+    def api_origin(self) -> str:
+        """Origin the OIDC provider redirects the browser back to."""
+        return self.COMPARIA_API_URL or self.COMPARIA_APP_URL
+
+    # SMTP (Brevo relay or any SMTP provider)
+    # If unset, login codes are logged to console instead of being sent by email
+    SMTP_HOST: str | None = None
+    SMTP_PORT: int = 587
+    SMTP_USERNAME: str | None = None
+    SMTP_PASSWORD: str | None = None
+    SMTP_STARTTLS: bool = True
+    EMAIL_FROM: str = "noreply@comparia.beta.gouv.fr"
+    EMAIL_FROM_NAME: str = "ComparIA"
+
+    # Response caching
+    CACHE_ENABLED: bool = False
+    CACHE_PROBABILITY: float = 0.5  # Probability of serving a cached response on hit
+    CACHE_TTL: int = 172800  # Cache TTL in seconds (default 48h)
+    CACHE_MAX_RESPONSES: int = 5  # Max cached responses per (model, prompt) pair
+
+    @field_validator("DISPLAY_CURRENCY")
+    @classmethod
+    def validate_display_currency(cls, value: str) -> str:
+        currency = value.strip().upper()
+        if len(currency) != 3 or not currency.isalpha():
+            raise ValueError("DISPLAY_CURRENCY must be a three-letter ISO 4217 code")
+        return currency
+
+    @field_validator("DISPLAY_CURRENCY_RATE_FROM_USD")
+    @classmethod
+    def validate_manual_currency_rate(cls, value: float | None) -> float | None:
+        if value is not None and value <= 0:
+            raise ValueError("DISPLAY_CURRENCY_RATE_FROM_USD must be greater than zero")
+        return value
+
+    @field_validator("EXCHANGE_RATE_CACHE_SECONDS")
+    @classmethod
+    def validate_exchange_rate_cache_seconds(cls, value: int) -> int:
+        if value <= 0:
+            raise ValueError("EXCHANGE_RATE_CACHE_SECONDS must be greater than zero")
+        return value
+
+
+settings = Settings()
+
+# A per-process key breaks the captcha across replicas and across restarts, so it
+# is a dev-only convenience. Outside debug the deployment has to provide one.
+if not settings.ALTCHA_HMAC_KEY:
+    if not settings.LANGUIA_DEBUG:
+        raise RuntimeError(
+            "ALTCHA_HMAC_KEY is required. Generate one with: openssl rand -hex 32"
+        )
+    import secrets
+
+    settings.ALTCHA_HMAC_KEY = secrets.token_hex(32)
+
+ENCRYPTION_KEY_HELP = (
+    "Generate one with: python -c 'from cryptography.fernet import Fernet; "
+    "print(Fernet.generate_key().decode())'"
+)
+
+
+def check_encryption_keys(value: str) -> None:
+    """Refuse a key Fernet would refuse, at boot rather than at the first
+    admin enrolment. Several keys may be listed, comma-separated."""
+    from cryptography.fernet import Fernet
+
+    keys = [k.strip() for k in value.split(",") if k.strip()]
+    if not keys:
+        raise RuntimeError(
+            f"COMPARIA_ENCRYPTION_KEY is required. {ENCRYPTION_KEY_HELP}"
+        )
+    for key in keys:
+        try:
+            Fernet(key)
+        except (ValueError, TypeError) as e:
+            raise RuntimeError(
+                "COMPARIA_ENCRYPTION_KEY is not a valid Fernet key: 32 url-safe "
+                f"base64-encoded bytes, not a hex string. {ENCRYPTION_KEY_HELP}"
+            ) from e
+
+
+# Unlike the captcha key, a random one here would lock every local admin out on
+# each restart, so debug gets a fixed key instead of a fresh one.
+if not settings.COMPARIA_ENCRYPTION_KEY and settings.LANGUIA_DEBUG:
+    import base64
+    import hashlib
+
+    settings.COMPARIA_ENCRYPTION_KEY = base64.urlsafe_b64encode(
+        hashlib.sha256(b"comparia-dev-totp-key").digest()
+    ).decode()
+
+check_encryption_keys(settings.COMPARIA_ENCRYPTION_KEY)
+
+# Create directory for JSON backup files
+os.makedirs(settings.LOGDIR, exist_ok=True)
+
+
+# Cookies
+ANONYMOUS_SESSION_COOKIE = "anonymous_session"
+
+# HTTP timeout for API calls to LLM providers
+# Structure: total timeout, read, write, connect (all in seconds)
+GLOBAL_TIMEOUT = Timeout(15.0, read=15.0, write=5.0, connect=15.0)
+STREAM_TIMEOUT = 30
+ORDBOGEN_GLOBAL_TIMEOUT = Timeout(60.0, read=60.0, write=5.0, connect=15.0)
+ORDBOGEN_STREAM_TIMEOUT = 60
+
+# Vote
+# The tags a voter can attach are in the 'vote_tag' table, not here: an
+# operator edits them without a deploy. See utils/database/models/vote_tag.py.
+TurnChoice = Literal["both_good", "both_bad", "a_better", "b_better", "idk"]
+TURN_CHOICE: tuple[TurnChoice, ...] = get_args(TurnChoice)
+
+# Language model selection modes
+SelectionMode = Literal["random", "big-vs-small", "small-models", "custom"]
+SELECTION_MODES: tuple[SelectionMode, ...] = get_args(SelectionMode)
+DEFAULT_SELECTION_MODE: SelectionMode = "random"
+
+# Language model custom selection (tuple of 0, 1, or 2 model IDs, or None)
+CustomModelsSelection = tuple[str, ...] | None
+
+# Model parameter thresholds for categorization
+SMALL_MODELS_BUCKET_UPPER_LIMIT = 60  # Models with <= 60B params
+BIG_MODELS_BUCKET_LOWER_LIMIT = 100  # Models with >= 100B params
+
+# Rate limiting specifically for expensive models (openai models, etc.).
+# Keyed per anonymous session (the `anonymous_session` cookie hash), not per IP,
+# so users behind a shared NAT (schools, hospitals) each get their own budget.
+RATELIMIT_PRICEY_MODELS_INPUT = 50_000
+
+# The per-session budget above is the one that matters, since users behind one
+# shared NAT each get their own. But a client that drops the `anonymous_session`
+# cookie gets a fresh session on every request, so the same budget also runs per
+# IP as a backstop. A hundred times the room, because that IP may be a whole
+# school: at twenty, one class of thirty could spend it before the break. Spam
+# seen in the OpenRouter logs picks the cheapest models, which this pool does
+# not cover.
+RATELIMIT_PRICEY_MODELS_INPUT_PER_IP = RATELIMIT_PRICEY_MODELS_INPUT * 100
+
+# Cheap models are not free either, and only pricey ones used to be counted, so
+# nothing at all stopped someone hammering the rest. Wider still: an ordinary
+# session must never meet this.
+RATELIMIT_ALL_MODELS_INPUT = RATELIMIT_PRICEY_MODELS_INPUT * 10
+RATELIMIT_ALL_MODELS_INPUT_PER_IP = RATELIMIT_ALL_MODELS_INPUT * 20
+
+# The same long message, whoever sends it, is not a conversation: it is a script
+# replaying one prompt, and it drops its cookie every time, so neither the
+# session budget nor the IP (a WAF or proxy may hide it) can see it. Counted over
+# every session together, on a sliding hour, so a script that keeps going stays
+# refused. Short prompts are left out, since suggested prompts are clicked by
+# many people. Set above what a class pasting the same assignment would send.
+RATELIMIT_REPEATED_PROMPT_MIN_CHARS = 500
+RATELIMIT_REPEATED_PROMPT_PER_HOUR = 30
+# Cohorts left out of the repeated prompt and conversation caps: pupils of a
+# partner programme are given the same prompt template and share a school IP.
+# The cohort is whatever the client declares (`?c=pix`), so anyone can claim
+# it: this is a courtesy to the programme, not a guarantee, and a script that
+# sends it escapes the caps.
+RATELIMIT_EXEMPT_COHORTS = ("pix",)
+
+# Cooldown for IPs that trip a prompt check too often (abuse / jailbreak
+# probing). Counts blocks and spam pattern hits in a rolling window; once an
+# IP crosses the threshold it is cooled down for the rest of the window
+# WITHOUT calling the moderation API (protects the quota). Kept generous
+# because gov users share NAT IPs (hospitals, ministries) and must not be
+# locked out.
+RATELIMIT_BLOCKED_PROMPTS_PER_HOUR = 15
+
+# Warnings one session may answer with "send anyway" in an hour. Counted per
+# session, not per IP like the cooldown above: on a sante instance PII warnings
+# are routine, and a hospital behind one IP must not lock itself out. A script
+# that drops its cookie to start over runs into the consent cap below.
+RATELIMIT_SENT_WARNINGS_PER_HOUR = 15
+
+# Each anonymous session gets its own input budget, and a new session costs only
+# a consent. Without a cap here, a script would clear its cookie and accept the
+# terms again whenever the session budget ran out. Set for a school or a
+# ministry where hundreds of people share one IP.
+RATELIMIT_ANONYMOUS_CONSENTS_PER_HOUR = 300
+
+# Longest message a user can send, about five pages. The prompt check reads a
+# message in windows of 8,000 characters, so this keeps a check to a few calls.
+BLIND_MODE_INPUT_CHAR_LEN_LIMIT = 20_000
+
+# Every turn resends the whole transcript to both models, so an endless
+# conversation costs more on each message. Cap it.
+MAX_TURNS_PER_COMPARISON = 20
+
+# Bounds on the free-text and tag annotations a voter can attach to a turn.
+MAX_VOTE_KEYWORD_ANNOTATIONS = 20
+MAX_VOTE_CUSTOM_ANNOTATION_LEN = 1_000
+
+# Admin-uploaded logos. The upload cap only bounds what one request may carry:
+# rasters are resized into the box below and stored as WebP, so what is served
+# to every visitor stays a few KB whatever the original was.
+LOGO_UPLOAD_MAX_SIZE = 2 * 1024 * 1024
+# An SVG is stored as uploaded, so it gets a cap of its own.
+LOGO_SVG_MAX_SIZE = 64 * 1024
+# The largest lab logo slot is 34 px; 160 covers 4x pixel density with margin.
+LAB_LOGO_BOX = (160, 160)
+# The instance logo sits in the header at about 35 px high, and is often wide.
+INSTANCE_LOGO_BOX = (320, 120)
+# The OIDC sign-in button shows the provider logo at icon size.
+OIDC_LOGO_BOX = (160, 160)
+
+# Altcha PoW CAPTCHA settings
+ALTCHA_MAX_NUMBER = 100_000  # Difficulty: ~0.5s on good devices, ~2-3s on low-end
+ALTCHA_CHALLENGE_EXPIRY_SECONDS = 600  # 10 minutes
+ALTCHA_REPLAY_TTL_SECONDS = 3600  # 1 hour Redis TTL for used challenges
+
+# A session that keeps starting comparisons and never votes is using the arena
+# as a free model API. After this many comparisons in a row without a vote, its
+# challenges take ten times the work, until it votes again. The browser solves
+# the next challenge while the user reads the answers and types, so a person
+# rarely waits for it; a script sending at once pays the full cost every time.
+ALTCHA_UNVOTED_COMPARISONS = 5
+ALTCHA_HARD_MAX_NUMBER = ALTCHA_MAX_NUMBER * 10
+
+# Web search intro for LLM
+WEB_SEARCH_INTRO = "Here is some recent information from a web search. Use it to answer the user's question if it's relevant:\n\n"

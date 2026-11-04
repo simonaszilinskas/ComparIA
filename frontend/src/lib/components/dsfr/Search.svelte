@@ -1,0 +1,39 @@
+<script lang="ts">
+  import { Button } from '$components/dsfr'
+  import { m } from '$lib/i18n/messages'
+  import type { HTMLInputAttributes } from 'svelte/elements'
+
+  let {
+    id,
+    value = $bindable(),
+    label,
+    variant = 'normal',
+    placeholder = label,
+    class: classes,
+    ...props
+  }: {
+    id: string
+    value: string
+    label: string
+    variant?: 'light' | 'normal'
+  } & HTMLInputAttributes = $props()
+</script>
+
+<div class={['fr-search-bar', classes]} role="search">
+  <label class="fr-label" for={id}>{label}</label>
+  <input
+    bind:value
+    {...props}
+    class={['fr-input placeholder:overflow-visible', { 'bg-white!': variant === 'light' }]}
+    {placeholder}
+    {id}
+    type="search"
+  />
+  <Button text={m['words.search']()} title={m['words.search']()} iconOnly />
+</div>
+
+<style lang="postcss">
+  .fr-input {
+    --border-action-high-blue-france: var(--blue-france-main-525);
+  }
+</style>

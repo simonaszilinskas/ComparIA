@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="%lang%" data-fr-scheme="%scheme%" data-fr-theme="%theme%">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no" />
+    <!-- Défini la couleur de thème du navigateur (Safari/Android) -->
+    <meta name="theme-color" content="#6464f3" />
+    <meta name="google-site-verification" content="1xrdIzQy45wIoAeeNvpRb9l8s_k5DjzMtrvbOzx6wMQ" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="%lang%" />
+    <meta property="og:image" content="https://comparia.beta.gouv.fr//thumbnail-comparia.png" />
+    <!-- 180×180 -->
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/png" href="/favicon/favicon.png" sizes="96x96" />
+    <!-- 32×32 -->
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="/favicon/manifest.webmanifest" crossorigin="use-credentials" />
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div id="app">%sveltekit.body%</div>
+
+    <script nonce="%sveltekit.nonce%">
+      // Directly set scheme + theme to avoid initial flash
+      const scheme = localStorage.getItem('scheme') || 'system'
+      const theme =
+        scheme === 'system'
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light'
+          : scheme
+
+      setCookie('scheme', scheme)
+      setCookie('theme', theme)
+
+      function setCookie(name, value, days) {
+        let expires = ''
+        if (days) {
+          const date = new Date()
+          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+          expires = '; expires=' + date.toUTCString()
+        }
+        const secure = location.protocol === 'https:' ? '; Secure' : ''
+        document.cookie = name + '=' + value + expires + '; path=/; SameSite=Lax' + secure
+      }
+    </script>
+
+    <!-- Matomo -->
+    <script nonce="%sveltekit.nonce%">
+      var _paq = (window._paq = window._paq || [])
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['enableLinkTracking'])
+      /* No HeatmapSessionRecording: it captured mouse movement and DOM changes
+         for the whole visit, and nobody watched the recordings. */
+      /* An invite link is a sign-in credential; keep the token off the
+         analytics host. */
+      if (/^\/invite\/[^/]+/.test(location.pathname)) {
+        _paq.push(['setCustomUrl', location.origin + '/invite/<redacted>'])
+      }
+      _paq.push(['trackPageView'])
+      ;(function () {
+        var u = '%matomo_url%/'
+        _paq.push(['setTrackerUrl', u + 'matomo.php'])
+        _paq.push(['setSiteId', '%matomo_id%'])
+        var d = document,
+          g = d.createElement('script'),
+          s = d.getElementsByTagName('script')[0]
+        g.async = true
+        g.src = u + 'matomo.js'
+        s.parentNode.insertBefore(g, s)
+      })()
+    </script>
+    <noscript
+      ><p>
+        <img
+          referrerpolicy="no-referrer-when-downgrade"
+          src="%matomo_url%/matomo.php?idsite=%matomo_id%&amp;rec=1"
+          style="border: 0"
+          alt=""
+        /></p
+    ></noscript>
+    <!-- End Matomo Code -->
+  </body>
+</html>

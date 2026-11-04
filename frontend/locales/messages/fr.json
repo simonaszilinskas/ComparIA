@@ -1,0 +1,2430 @@
+{
+    "a11y": {
+        "energyGraphDesc": "Nuage de points : chaque modèle est positionné selon son score de préférence en ordonnée et sa consommation énergétique en abscisse. Les mêmes données sont disponibles sous forme de tableau.",
+        "externalLink": "{text} (nouvelle fenêtre)",
+        "graphAsTable": "Consulter les mêmes données sous forme de tableau",
+        "languageNav": "Choix de la langue",
+        "mainNav": "Navigation principale",
+        "mobileMenu": "Menu",
+        "mobileNav": "Navigation mobile",
+        "modelSheet": "Fiche du modèle",
+        "modeSelection": "Choix des modèles à comparer",
+        "newWindow": "nouvelle fenêtre",
+        "priceGraphDesc": "Nuage de points : chaque modèle est positionné selon son score de préférence en ordonnée et son prix de sortie par million de jetons en abscisse. Une ligne relie les modèles de la frontière de Pareto. Les mêmes données sont disponibles sous forme de tableau.",
+        "shareLinkLabel": "Lien de partage du résultat",
+        "skipToContent": "Aller au contenu principal",
+        "suggestionCategories": "Catégories de suggestions de questions",
+        "voteTags": "Mots-clés qualifiant la réponse"
+    },
+    "actions": {
+        "accessData": "Accéder aux données",
+        "contact": "Contactez-nous",
+        "contactUs": "Nous contacter",
+        "copyKey": {
+            "do": "Copier la clé",
+            "done": "Clé copiée"
+        },
+        "copyLink": {
+            "do": "Copier le lien",
+            "done": "Lien copié dans le presse-papiers"
+        },
+        "copyMessage": {
+            "do": "Copier le message",
+            "done": "Message copié"
+        },
+        "discover": "Découvrir",
+        "downloadData": "Télécharger les données",
+        "expandMenu": "Étendre le menu",
+        "home": "Page d'accueil",
+        "reduceMenu": "Réduire le menu",
+        "returnArena": "Revenir à l’arène",
+        "returnHome": "Revenir à l'accueil",
+        "scrollLeft": "Defiler vers la gauche",
+        "scrollRight": "Défiler vers la droite",
+        "searchModel": "Rechercher un modèle",
+        "seeMore": "Voir plus",
+        "selectLanguage": "Sélectionner une langue"
+    },
+    "admin": {
+        "activity": {
+            "choices": {
+                "a_better": "A est meilleur",
+                "b_better": "B est meilleur",
+                "both_bad": "Les deux sont mauvais",
+                "both_good": "Les deux sont bons",
+                "idk": "Ne sait pas",
+                "none": "Pas de vote"
+            },
+            "conversation": {
+                "analysis": "Analyse",
+                "archived": "Archivée : {reason}",
+                "back": "Retour aux conversations",
+                "categories": "Sujets",
+                "cohort": "Cohorte",
+                "details": "Détails",
+                "error": "Erreur : {code}",
+                "keywords": "Mots-clés",
+                "languages": "Langues",
+                "mode": "Mode",
+                "no": "Non",
+                "noAnswer": "Pas de réponse : erreur ou délai dépassé.",
+                "notAnalyzed": "Cette conversation n'a pas encore été analysée.",
+                "piiWarning": "L'analyse a repéré des données personnelles dans cette conversation. Le texte est masqué.",
+                "prompt": "Message {index}",
+                "readLess": "Réduire",
+                "readMore": "Lire la suite",
+                "revealed": "Modèles révélés",
+                "show": "Afficher le texte",
+                "summary": "Résumé",
+                "systemPrompts": "Instructions système",
+                "title": "Conversation",
+                "tokens": "jetons",
+                "unknownModel": "Modèle supprimé",
+                "versus": "{a} contre {b}",
+                "vote": "Vote : {choice}",
+                "yes": "Oui"
+            },
+            "conversations": {
+                "caption": "Conversations",
+                "cols": {
+                    "conversation": "Conversation",
+                    "date": "Date",
+                    "journey": "Parcours",
+                    "models": "Modèles"
+                },
+                "count": "{count} conversations",
+                "countCapped": "Plus de {count} conversations",
+                "empty": "Aucune conversation ne correspond à ces filtres.",
+                "first": "Revenir aux plus récentes",
+                "hiddenPrompt": "Masqué : données personnelles",
+                "next": "Suivantes",
+                "nextOne": "Suivante",
+                "open": "Ouvrir la page",
+                "previous": "Précédente",
+                "turnsCount": "{count} messages"
+            },
+            "errors": {
+                "generic": "Les données n'ont pas pu être chargées.",
+                "timeout": "La requête a pris trop de temps. Réduisez la période ou retirez des filtres."
+            },
+            "filters": {
+                "allJourneys": "Tous les parcours",
+                "allModels": "Tous les modèles",
+                "journey": "Parcours",
+                "label": "Filtres",
+                "model": "Modèle",
+                "period": "Période",
+                "periodsShort": {
+                    "24h": "24 h",
+                    "30d": "30 j",
+                    "365d": "12 mois",
+                    "7d": "7 j",
+                    "90d": "90 j",
+                    "all": "Tout"
+                },
+                "search": "Rechercher dans les messages"
+            },
+            "flags": {
+                "archived": "Archivée",
+                "error": "Erreur",
+                "not_analyzed": "Pas encore analysée",
+                "pii": "Données personnelles",
+                "spam": "Spam"
+            },
+            "modes": {
+                "big-vs-small": "Grand contre petit",
+                "custom": "Choix manuel",
+                "random": "Aléatoire",
+                "small-models": "Petits modèles"
+            },
+            "overview": {
+                "activityChartTitle": "Conversations et messages",
+                "activityDate": "Période",
+                "activityTable": "Conversations et messages par période",
+                "activityTitle": "Activité dans le temps",
+                "choicesTitle": "Votes",
+                "computedAt": "Chiffres calculés à {time}",
+                "empty": "Aucune conversation sur cette période.",
+                "funnel": {
+                    "continue": "{share} continuent",
+                    "dropped": "{count} s’arrêtent là",
+                    "revealed": "Modèles révélés",
+                    "started": "Conversations commencées",
+                    "voted": "Avec au moins un vote"
+                },
+                "funnelTitle": "Parcours",
+                "metrics": {
+                    "commentRate": "Messages commentés",
+                    "conversations": "Conversations",
+                    "errorRate": "Conversations en erreur",
+                    "prompts": "Messages envoyés",
+                    "promptsPerConversation": "Messages par conversation",
+                    "voteRate": "Messages votés"
+                },
+                "modesTitle": "Modes",
+                "ofConversations": "{count} sur {total} conversations",
+                "ofPrompts": "{count} sur {total} messages",
+                "refresh": "Actualiser",
+                "unvoted": "Sans vote : {count} messages ({share})"
+            },
+            "stages": {
+                "commented": "Commentée",
+                "revealed": "Révélée",
+                "started": "Sans vote",
+                "voted": "Votée",
+                "stopped": "Refusés ou prévenus"
+            },
+            "stopped": {
+                "caption": "Messages refusés ou prévenus",
+                "cols": {
+                    "message": "Message",
+                    "verdict": "Vérification"
+                },
+                "empty": "Aucun message refusé ou prévenu sur cette période.",
+                "notSent": "Pas envoyé aux modèles",
+                "openConversation": "Voir la conversation",
+                "verdicts": {
+                    "blocked": "Refusé",
+                    "proceeded": "Prévenu, envoyé quand même",
+                    "unavailable": "Refusé, vérification indisponible",
+                    "warned": "Prévenu, pas envoyé"
+                }
+            },
+            "subTitle": "Ce qui se passe dans l'arène : les questions posées, les modèles comparés, les votes.",
+            "tabs": {
+                "conversations": "Conversations",
+                "overview": "Vue d'ensemble"
+            },
+            "title": "Activité",
+            "verdicts": {
+                "mixed": "Avis partagés",
+                "preferred": "Préférée",
+                "rejected": "Rejetée"
+            }
+        },
+        "endpointKey": {
+            "hint": "Laissez le champ vide pour conserver la clé actuelle. Saisissez-en une nouvelle pour la remplacer.",
+            "remove": "Retirer la clé",
+            "removeConfirm": "Confirmer le retrait",
+            "removed": "Clé retirée. Les modèles de ce point d'accès ne sont plus servis.",
+            "set": "Clé enregistrée",
+            "unset": "Aucune clé"
+        },
+        "legal": {
+            "back": "Retour aux documents juridiques",
+            "document": {
+                "backToWriting": "Revenir à la rédaction",
+                "confirm": "J’ai relu le document et je comprends que cette version ne pourra plus être modifiée.",
+                "continue": "Continuer vers « Vérifier et publier »",
+                "create": "Publier une première version",
+                "effectiveAt": "Date d’entrée en vigueur",
+                "effectiveAtHelp": "Laissez vide pour publier immédiatement.",
+                "effectiveSince": "En vigueur depuis le {date}.",
+                "emptyTitle": "Aucune version publiée",
+                "history": "Historique",
+                "historyEmpty": "Aucune ancienne version.",
+                "inForce": "En vigueur",
+                "leave": "Quitter sans publier",
+                "loading": "Chargement du document…",
+                "locale": "Langue",
+                "nextStep": "Étape suivante :",
+                "prepare": "Préparer une nouvelle version",
+                "preview": "Aperçu",
+                "previewEmpty": "L’aperçu apparaîtra ici.",
+                "publicPage": "Voir la page publique",
+                "publish": "Publier cette version",
+                "published": "La nouvelle version a été publiée.",
+                "publishing": "Publication…",
+                "read": "Consulter la version en vigueur",
+                "scheduled": "Publications programmées",
+                "seededDescription": "Les conditions installées à l’initialisation de la plateforme sont encore celles acceptées par les visiteurs. Publiez vos propres conditions d’utilisation.",
+                "seededTitle": "Conditions d’exemple en vigueur",
+                "stepReview": "Vérifier et publier",
+                "stepState": "Étape {current} sur 2",
+                "stepWrite": "Rédiger le document",
+                "unpublished": "Non publiée",
+                "version": "Version {version}",
+                "versionHelp": "Par exemple 2026.2. Cette référence doit être unique.",
+                "versionLabel": "Référence de la nouvelle version",
+                "versionOn": "Version {version} du {date}"
+            },
+            "hub": {
+                "documentsGroup": "Documents juridiques",
+                "informationalDescription": "Mentions légales, accessibilité et écoconception, hébergées sur la plateforme ou liées à un site externe.",
+                "journeyDescription": "Textes affichés avant le premier message et lors de la connexion.",
+                "journeyGroup": "Parcours d’acceptation",
+                "journeyLink": "Parcours de participation",
+                "privacyDescription": "Information relative à l’utilisation des données personnelles.",
+                "subtitle": "Chaque contenu dispose de son propre espace de gestion et de publication.",
+                "termsDescription": "Document dont l’acceptation est obligatoire.",
+                "title": "Documents et parcours juridiques"
+            },
+            "informational": {
+                "contentLabel": "Contenu en {locale}",
+                "external": "Lien externe",
+                "externalUrl": "Adresse de la page externe",
+                "externalUrlError": "Saisissez une adresse HTTPS valide.",
+                "externalUrlHelp": "L’adresse doit commencer par https://.",
+                "internal": "Page hébergée sur {platformName}",
+                "loading": "Chargement des pages d’information…",
+                "locale": "Langue du contenu",
+                "modeLabel": "Destination",
+                "pages": {
+                    "accessibility": "Déclaration d’accessibilité",
+                    "ecodesign": "Écoconception",
+                    "legal_notice": "Mentions légales"
+                },
+                "save": "Enregistrer les pages",
+                "saved": "Les pages d’information ont été enregistrées.",
+                "saving": "Enregistrement…",
+                "subtitle": "Choisissez où chaque page est hébergée et dans quels emplacements elle est proposée.",
+                "title": "Pages d’information",
+                "visibilityLabel": "Afficher le lien dans",
+                "visibleInLegalMenu": "Le menu « Légal »",
+                "visibleInSettings": "La page Paramètres"
+            },
+            "markdownHelp": "Mise en forme Markdown acceptée : **gras**, *italique*, [lien](https://exemple.fr).",
+            "participation": {
+                "arenaDescription": "Ce contenu apparaît lorsqu’une personne non connectée tente d’envoyer son premier message.",
+                "arenaTitle": "Avant le premier message",
+                "buttonLabel": "Texte du bouton de confirmation",
+                "buttonPlaceholder": "Continuer",
+                "checkboxLabel": "Texte associé à la case obligatoire",
+                "checkboxPlaceholder": "Le texte associé à la case apparaîtra ici.",
+                "formTitle": "Modifier le parcours",
+                "introduction": "Texte introductif",
+                "introductionPlaceholder": "Le texte introductif apparaîtra ici.",
+                "loading": "Chargement du parcours…",
+                "modalTitle": "Titre de la fenêtre",
+                "preview": "Aperçu utilisateur",
+                "save": "Enregistrer le parcours",
+                "saved": "Le parcours de participation a été enregistré.",
+                "saving": "Enregistrement…",
+                "signInDescription": "Cette case apparaît avant l’envoi du code de connexion et reste cochée pendant la saisie du code.",
+                "signInTitle": "À la connexion",
+                "subtitle": "Configurez les informations présentées avant le premier message et à la connexion.",
+                "title": "Parcours de participation"
+            },
+            "privacy": {
+                "contentLabel": "Contenu de la politique de confidentialité",
+                "draftTitle": "Nouvelle politique de confidentialité",
+                "emptyDescription": "La page publique affiche encore le contenu intégré à l’application. Publiez une première version pour la gérer depuis ce back-office.",
+                "subtitle": "Rédigez et publiez l’information relative aux traitements de données personnelles.",
+                "title": "Politique de confidentialité"
+            },
+            "terms": {
+                "contentLabel": "Contenu des conditions d’utilisation",
+                "draftTitle": "Nouvelles conditions d’utilisation",
+                "emptyDescription": "Publiez les conditions d’utilisation avant d’ouvrir l’arène au public.",
+                "subtitle": "Rédigez, vérifiez et publiez le document accepté pour participer à l’arène.",
+                "title": "Conditions d’utilisation"
+            }
+        },
+        "llms": {
+            "subTitle": "LLMs, labs, licenses and endpoints.",
+            "title": "LLMs data configuration"
+        },
+        "nav": {
+            "activity": "Activité",
+            "authentification": "Authentification",
+            "customization": "Personnalisation",
+            "legal": "Documents juridiques",
+            "llms": "LLMs",
+            "locales": "Langues",
+            "promptChecks": "Vérifications",
+            "publishing": "Jeux de données",
+            "suggestions": "Suggestions",
+            "users": "Utilisateurs",
+            "voteTags": "Étiquettes de vote"
+        },
+        "panelLink": "Administration",
+        "promptChecks": {
+            "actions": {
+                "block": "Refuser",
+                "help": {
+                    "block": "Le message n'est pas envoyé.",
+                    "log": "On enregistre ce qui a été repéré, la personne ne voit rien.",
+                    "off": "Le critère n'est pas pris en compte.",
+                    "title": "Ce que fait chaque action",
+                    "warn": "Une fenêtre s'ouvre à l'envoi. La personne peut envoyer quand même ou corriger son message."
+                },
+                "log": "Surveiller",
+                "off": "Ignorer",
+                "warn": "Prévenir"
+            },
+            "apiKey": {
+                "removed": "Clé retirée. La vérification utilise désormais OPENROUTER_API_KEY."
+            },
+            "bench": {
+                "caption": "Note, seuil et résultat par critère",
+                "columns": {
+                    "score": "Note",
+                    "verdict": "Résultat"
+                },
+                "decision": {
+                    "blocked": "Refusé",
+                    "error": "La vérification n'a pas répondu",
+                    "logged": "Surveillé",
+                    "pass": "Passé sans rien",
+                    "skipped": "Pas vérifié, modèle indisponible",
+                    "warned": "Prévenu"
+                },
+                "decisionLegend": "Résultat",
+                "empty": "Écrivez un message avant de lancer le test.",
+                "errors": {
+                    "call_failed": "L'appel au modèle a échoué : {error}",
+                    "no_api_key": "Aucune clé API OpenRouter n'est configurée : la vérification ne peut pas s'exécuter.",
+                    "no_model": "Aucun modèle de décision n'est choisi : la vérification ne peut pas s'exécuter."
+                },
+                "ignored": "Non surveillée",
+                "label": "Message à vérifier",
+                "labelHint": "Écrivez ici le message tel qu'une personne l'enverrait.",
+                "latency": "Réponse en {count} ms",
+                "messageNone": "Rien ne lui serait affiché.",
+                "messageTitle": "Ce que verrait la personne",
+                "notTriggered": "Sous le seuil",
+                "resultTitle": "Résultat du test",
+                "resultWaiting": "Le résultat s'affichera ici.",
+                "run": "Tester",
+                "running": "Test en cours...",
+                "scoresHint": "Chaque barre montre la probabilité que la réponse soit oui, le trait vertical marque le seuil. Une note juste sous son seuil est la première chose à surveiller.",
+                "scoresTitle": "Détail par critère",
+                "threshold": "Seuil {value}",
+                "title": "Tester un message",
+                "triggered": "Déclenché"
+            },
+            "columns": {
+                "action": "Action",
+                "threshold": "Seuil"
+            },
+            "health": {
+                "failures": "{count} échecs consécutifs",
+                "keyRejected": "OpenRouter refuse la clé",
+                "keyRejectedHint": "Tous les messages sont refusés tant que la clé n'est pas corrigée. Collez une clé OpenRouter valide ci-dessous.",
+                "keyRejectedHintOptional": "La vérification n'étant pas obligatoire, les messages passent sans être vérifiés tant que la clé n'est pas corrigée. Collez une clé OpenRouter valide ci-dessous.",
+                "noCredits": "OpenRouter n'a plus de crédits pour cette clé",
+                "noCreditsHint": "Tous les messages sont refusés tant que le compte ou la limite de la clé n'est pas rechargé. Ajoutez des crédits sur OpenRouter ou collez une autre clé ci-dessous.",
+                "noCreditsHintOptional": "La vérification n'étant pas obligatoire, les messages passent sans être vérifiés tant que le compte ou la limite de la clé n'est pas rechargé. Ajoutez des crédits sur OpenRouter ou collez une autre clé ci-dessous.",
+                "noKey": "Aucune clé API",
+                "noKeyHint": "Aucune clé n'est enregistrée ici et OPENROUTER_API_KEY n'est pas défini : la vérification ne tourne pas et les messages passent sans être vérifiés, même si elle est obligatoire. Collez une clé OpenRouter ci-dessous.",
+                "noModel": "Aucun modèle de décision",
+                "noModelHint": "Choisissez un modèle de décision ci-dessous : tant qu'il n'y en a pas, la vérification ne tourne pas et les messages passent sans être vérifiés, même si elle est obligatoire.",
+                "unhealthy": "La vérification ne répond plus",
+                "unhealthyHint": "Les appels au modèle de décision échouent. Les messages sont refusés tant qu'il ne répond pas, puis, après quelques échecs de plus, passent sans vérification une minute à la fois. Contrôlez les journaux du serveur.",
+                "unhealthyHintOptional": "Les appels au modèle de décision échouent. La vérification n'étant pas obligatoire, les messages passent sans être vérifiés tant qu'il ne répond pas. Contrôlez les journaux du serveur."
+            },
+            "settings": {
+                "title": "Réglages"
+            },
+            "stats": {
+                "byCriterionHint": "Répartition des détections par critère et par résultat.",
+                "byCriterionNone": "Aucun critère ne s'est déclenché sur la période.",
+                "byCriterionTitle": "Critères déclenchés",
+                "byDecisionTitle": "Résultats",
+                "checked": "{count} messages vérifiés",
+                "decision": {
+                    "blocked": "Refusés",
+                    "error": "En échec",
+                    "logged": "Surveillés",
+                    "pass": "Passés sans rien",
+                    "skipped": "Non vérifiés (modèle indisponible)",
+                    "warned": "Prévenus"
+                },
+                "periodLabel": "Période affichée",
+                "periods": {
+                    "all": "Depuis le début",
+                    "7d": "7 derniers jours",
+                    "30d": "30 derniers jours",
+                    "90d": "90 derniers jours",
+                    "365d": "12 derniers mois"
+                },
+                "proceeded": "{count} envoyés quand même",
+                "subtitle": "Suivez les détections et les décisions prises sur la période sélectionnée.",
+                "timelineChart": "Évolution des messages surveillés, prévenus, refusés et en échec",
+                "timelineHint": "Messages surveillés, prévenus, refusés ou en échec sur la période.",
+                "timelineLegend": "Légende du graphique",
+                "timelineNone": "Aucune détection sur cette période.",
+                "timelineTitle": "Détections dans le temps",
+                "title": "Activité des messages",
+                "totalLabel": "messages vérifiés sur la période",
+                "unavailable": "Les compteurs ne sont pas disponibles pour le moment.",
+                "warningsHint": "Ces deux compteurs ne suivent pas la période ci-dessus : l'affichage des avertissements n'est pas horodaté, donc les deux sont comptés depuis le début.",
+                "warningsShown": "{count} affichés",
+                "warningsTitle": "Avertissements affichés, depuis le début"
+            },
+            "subtitle": "Quand un message remplit l'un de vos critères, vous décidez de ce qui arrive à la personne : rien, un avertissement qu'elle peut passer, ou un refus.",
+            "title": "Vérifications des messages",
+            "criteria": {
+                "add": "Ajouter un critère",
+                "empty": "Aucun critère : aucun message n'est vérifié.",
+                "messages": {
+                    "generic": "Général",
+                    "pii": "Données personnelles",
+                    "self_harm": "Détresse (avec numéro d'aide)"
+                },
+                "new": "Nouveau critère",
+                "remove": "Retirer"
+            }
+        },
+        "publishing": {
+            "accessKeyLabel": "Clé d'accès",
+            "addTitle": "Ajouter une destination",
+            "bucketLabel": "Bucket",
+            "cancel": "Annuler",
+            "colActions": "Actions",
+            "colDatasets": "Jeux de données",
+            "colKind": "Type",
+            "colName": "Nom",
+            "colStatus": "Statut",
+            "colTarget": "Cible",
+            "createSuccess": "Destination ajoutée",
+            "datasetNormal": "Ouvert",
+            "datasetNormalHelp": "Tout ce que l'analyse a validé.",
+            "datasetRaw": "Brut",
+            "datasetRawHelp": "Toutes les conversations, y compris celles mises de côté. À ne pas publier en clair.",
+            "datasetsError": "Une destination reçoit au moins un jeu de données.",
+            "datasetsLabel": "Jeux de données envoyés ici",
+            "delete": "Supprimer",
+            "deleteConfirm": "Supprimer la destination « {name} » ?",
+            "deleteSuccess": "Destination supprimée",
+            "deleteWarning": "Le jeu de données déjà publié reste en place. Seul l'envoi s'arrête.",
+            "destinations": "Destinations",
+            "disable": "Désactiver",
+            "disabled": "Désactivée",
+            "edit": "Modifier",
+            "editSuccess": "Destination modifiée",
+            "editTitle": "Modifier la destination",
+            "enable": "Activer",
+            "enabled": "Activée",
+            "enabledLabel": "Destination activée",
+            "endpointHelp": "L'hôte seul, sans https://.",
+            "endpointLabel": "Hôte",
+            "firstRunHelp": "La première publication démarre dès que vous enregistrez cette fréquence.",
+            "frequencyDaily": "Tous les jours",
+            "frequencyLabel": "Fréquence",
+            "frequencyMonthly": "Tous les mois, le 1er",
+            "frequencyOff": "Aucune publication automatique",
+            "frequencyWeekly": "Toutes les semaines, le lundi",
+            "historyDate": "Date",
+            "historyDetails": "Explication",
+            "historyFailed": "Échec",
+            "historyNoDataset": "Aucun jeu de données publié",
+            "historyNoError": "Publication terminée sans erreur.",
+            "historyNoRows": "Aucune conversation ne répond aux critères de publication : elle doit être analysée, non archivée et ne contenir ni données personnelles ni spam.",
+            "historyPending": "Publication en cours",
+            "historyResult": "Résultat",
+            "historyRunning": "En cours",
+            "historyStatus": "Statut",
+            "historySucceeded": "Réussie",
+            "historyTechnicalError": "La publication a échoué pour une raison technique. Consultez les journaux du serveur pour obtenir le détail.",
+            "hourLabel": "Heure",
+            "kindHuggingface": "Hugging Face",
+            "kindLabel": "Type de destination",
+            "kindS3": "Bucket S3",
+            "lastRun": "Historique des publications",
+            "lastRunNever": "Aucune publication enregistrée.",
+            "nameLabel": "Nom",
+            "nextRun": "Prochaine publication : {date}",
+            "nextRunNever": "Aucune publication programmée.",
+            "noDestinations": "Aucune destination : la publication ne part nulle part.",
+            "prefixHelp": "Ajouté devant chaque fichier, pour partager un bucket entre plusieurs instances.",
+            "prefixLabel": "Préfixe",
+            "publishing": "Publication…",
+            "publishNow": "Publier",
+            "publishStarted": "Publication démarrée",
+            "rawWarning": "Cette destination reçoit le jeu brut, qui contient les conversations mises de côté pour données personnelles. Vérifiez qu'elle est privée.",
+            "regionLabel": "Région",
+            "repoPathHelp": "Sous la forme organisation/dépôt. Le jeu de données brut part vers le même nom suivi de -raw.",
+            "repoPathLabel": "Dépôt",
+            "requestPending": "Publication demandée il y a {duration}, en attente du job de publication",
+            "reviewerEndpointLabel": "Endpoint",
+            "reviewerEndpointNone": "Aucun endpoint",
+            "reviewerHelp": "Ce modèle analyse les conversations avant publication pour détecter les données personnelles et le spam.",
+            "reviewerIncomplete": "Sélectionnez un endpoint et renseignez un modèle, ou laissez les deux champs vides.",
+            "reviewerModelHelp": "Identifiant du modèle attendu par l'endpoint.",
+            "reviewerModelLabel": "Modèle",
+            "reviewerSave": "Enregistrer le modèle d'analyse",
+            "reviewerSuccess": "Modèle d'analyse enregistré",
+            "reviewerTitle": "Modèle d'analyse",
+            "runCounts": "Conversations publiées : {published} · mises de côté : {heldBack}.",
+            "runCountsUnknown": "Cette publication n'a pas reconstruit le jeu ouvert.",
+            "runFailed": "Échouée le {date}",
+            "runRunning": "En cours depuis {date}",
+            "runSucceeded": "Réussie le {date}",
+            "save": "Enregistrer",
+            "schedule": "Fréquence",
+            "scheduleSuccess": "Fréquence enregistrée",
+            "secretKeep": "Laisser vide pour garder les clés enregistrées.",
+            "secretKeyLabel": "Clé secrète",
+            "secureLabel": "Connexion en HTTPS",
+            "subtitle": "Configurez les destinations et leur fréquence. L'historique regroupe toutes les publications.",
+            "timezoneLabel": "Fuseau horaire",
+            "title": "Jeux de données",
+            "tokenHelp": "Un jeton en lecture seule passe le test de lecture et échoue à la première publication.",
+            "tokenKeep": "Laisser vide pour garder le jeton enregistré.",
+            "tokenLabel": "Jeton d'écriture"
+        },
+        "settings": {
+            "authentification": {
+                "accessPolicy": {
+                    "anonymous": "Connexion facultative (anonymous_first)",
+                    "label": "Mode d'accès",
+                    "required": "Connexion obligatoire (sign_in_required)"
+                },
+                "authMethods": {
+                    "emailCode": "Code par email",
+                    "emailCodeLocked": "Testez la connexion OIDC avec succès pour pouvoir retirer ce mode de connexion.",
+                    "error": "Au moins une méthode doit être activée",
+                    "label": "Méthodes d'authentification",
+                    "oidc": "Fournisseur d'identité (OIDC)"
+                },
+                "domainAllowlist": {
+                    "help": "Séparés par des virgules. Laisser vide pour autoriser tous les domaines.",
+                    "label": "Domaines email autorisés"
+                }
+            },
+            "customization": {
+                "colors": {
+                    "contrastDark": "Choisissez une couleur primaire ayant un contraste d’au moins 4,5:1 avec le fond sombre.",
+                    "contrastLight": "Choisissez une couleur primaire ayant un contraste d’au moins 4,5:1 avec un fond blanc.",
+                    "fieldHint": "Format attendu : #RRGGBB.",
+                    "hint": "Utilisez un code couleur hexadécimal au format #RRGGBB.",
+                    "invalid": "Saisissez une couleur au format #RRGGBB.",
+                    "primaryDark": "Couleur primaire (thème sombre)",
+                    "primaryLight": "Couleur primaire (thème clair)",
+                    "secondaryDark": "Couleur secondaire (thème sombre)",
+                    "secondaryLight": "Couleur secondaire (thème clair)",
+                    "title": "Couleurs de la plateforme"
+                },
+                "discard": "Annuler les modifications",
+                "homepageUrl": {
+                    "hint": "Cette adresse est ouverte lorsqu’une personne sélectionne le logo ou le nom de la plateforme. Laissez vide pour utiliser l’accueil local.",
+                    "invalid": "Saisissez une URL HTTPS complète.",
+                    "label": "URL de la page d’accueil"
+                },
+                "logo": {
+                    "chooseFile": "Choisir un fichier",
+                    "hint": "PNG, JPEG, SVG ou WebP, 2 Mo maximum.",
+                    "label": "Logo",
+                    "reset": "Réinitialiser",
+                    "resetDone": "Logo réinitialisé",
+                    "updated": "Logo mis à jour"
+                },
+                "platformName": "Nom de la plateforme",
+                "ranking": {
+                    "maxRankSpread": "Écart de rang maximum",
+                    "maxRankSpreadHelp": "Un modèle n'est affiché que si son rang peut varier d'au plus ce nombre de places, vers le haut comme vers le bas. Une valeur plus haute affiche plus de modèles, avec des rangs moins sûrs.",
+                    "minVotes": "Nombre minimum de votes",
+                    "minVotesHelp": "Un modèle n'est classé qu'à partir de ce nombre de votes. Pris en compte au prochain calcul du classement, dans l'heure.",
+                    "title": "Classement"
+                },
+                "votesObjective": "Objectif de votes"
+            },
+            "loading": "Chargement...",
+            "locales": {
+                "default": {
+                    "label": "Langue par défaut"
+                },
+                "enabled": {
+                    "hint": "Décocher une langue la retire immédiatement du menu. Les personnes qui la lisaient basculent vers la langue par défaut au prochain chargement.",
+                    "label": "Langues activées"
+                }
+            },
+            "oidc": {
+                "buttonLabel": {
+                    "hint": "Ex. : Se connecter avec ProConnect",
+                    "label": "Libellé du bouton"
+                },
+                "buttonLogo": {
+                    "hint": "PNG, JPEG, SVG ou WebP, 2 Mo maximum.",
+                    "label": "Logo du bouton",
+                    "reset": "Supprimer",
+                    "resetDone": "Logo supprimé",
+                    "updated": "Logo mis à jour"
+                },
+                "clientId": {
+                    "label": "Client ID",
+                    "required": "Le client ID est requis"
+                },
+                "clientSecret": {
+                    "hint": "Laissez vide pour conserver la valeur actuelle",
+                    "label": "Client secret",
+                    "replace": "Remplacer",
+                    "required": "Le client secret est requis pour activer l'OIDC",
+                    "set": "Secret enregistré"
+                },
+                "issuer": {
+                    "hint": "Ex. : https://auth.example.gouv.fr",
+                    "label": "URL de l'émetteur (issuer)",
+                    "required": "L'URL de l'émetteur est requise"
+                },
+                "scopes": {
+                    "hint": "Séparés par des espaces. Ex. : openid email",
+                    "label": "Scopes",
+                    "openidRequired": "Les scopes doivent inclure openid"
+                },
+                "test": {
+                    "button": "Tester la connexion",
+                    "failed": "Échec du test : {reason}",
+                    "hint": "Enregistrez la configuration avant de la tester.",
+                    "passed": "Connexion réussie : le fournisseur répond et la configuration est lisible.",
+                    "reasons": {
+                        "discovery_invalid": "le document de découverte du fournisseur est illisible.",
+                        "discovery_unreachable": "le fournisseur est injoignable ou ne publie pas de document de découverte.",
+                        "endpoint_not_https": "un des points d’accès du fournisseur n’est pas en https.",
+                        "incomplete_config": "la configuration est incomplète.",
+                        "issuer_mismatch": "l’émetteur annoncé par le fournisseur ne correspond pas à l’URL configurée.",
+                        "missing_endpoint": "il manque un point d’accès (autorisation, jeton ou userinfo) dans le document de découverte.",
+                        "secret_unreadable": "le client secret enregistré est illisible, saisissez-le à nouveau."
+                    },
+                    "running": "Test en cours…"
+                },
+                "title": "Configuration OIDC"
+            },
+            "save": "Enregistrer",
+            "saved": "Paramètres mis à jour",
+            "saving": "Enregistrement...",
+            "subtitle": "Configuration de l'application."
+        },
+        "suggestions": {
+            "actions": "Actions",
+            "add": "Ajouter une suggestion",
+            "addCategory": "Ajouter une catégorie",
+            "allCategories": "Toutes les catégories",
+            "allLocales": "Toutes les langues",
+            "allStatuses": "Tous les statuts",
+            "archive": "Archiver",
+            "archiveCategory": "Archiver la catégorie",
+            "archiveConfirm": "Archiver cette suggestion ? Elle ne sera plus proposée dans l’arène, mais pourra être restaurée.",
+            "archived": "Archivée",
+            "archiveSuccess": "Suggestion archivée.",
+            "available": "Disponible",
+            "cancel": "Annuler",
+            "categories": "Catégories",
+            "category": "Catégorie",
+            "categoryArchiveConfirm": "Archiver « {title} » et masquer ses {count} suggestions dans l’arène ? Leur statut individuel sera conservé.",
+            "categoryArchiveSuccess": "Catégorie archivée.",
+            "categoryCountSummary": "{available} disponibles sur {total} suggestions",
+            "categoryCreateSuccess": "Catégorie ajoutée.",
+            "categoryDeleteConfirm": "Supprimer « {title} » ?",
+            "categoryDeleteConflict": "Cette catégorie contient des suggestions et ne peut pas être supprimée.",
+            "categoryDeleteError": "La catégorie n’a pas pu être supprimée. Réessayez.",
+            "categoryDeleteIntro": "Une catégorie contenant au moins une suggestion est protégée et ne peut pas être supprimée.",
+            "categoryDeleteSuccess": "Catégorie supprimée.",
+            "categoryDeleteWarning": "Cette action est définitive. Elle est autorisée uniquement car la catégorie est vide.",
+            "categoryDescription": "Description",
+            "categoryDescriptionHint": "Cette description est affichée sous le nom de la catégorie dans l’arène.",
+            "categoryDuplicateError": "Une catégorie portant ce nom existe déjà pour cette langue.",
+            "categoryEmpty": "Catégorie vide",
+            "categoryIcon": "Icône",
+            "categoryIconPreview": "Aperçu de l’icône sélectionnée",
+            "categoryRestoreConfirm": "Restaurer « {title} » ? Seules les suggestions dont le statut est « Disponible » seront de nouveau proposées dans l’arène.",
+            "categoryRestoreSuccess": "Catégorie restaurée.",
+            "categorySuggestionCount": "1 suggestion — suppression impossible",
+            "categorySuggestionsCount": "{count} suggestions — suppression impossible",
+            "categoryTitle": "Nom de la catégorie",
+            "categoryTitleUnusableError": "Le nom doit contenir au moins une lettre ou un chiffre.",
+            "categoryTooltip": "Information complémentaire",
+            "categoryTooltipHint": "Facultatif. Cette information sera accessible depuis une infobulle.",
+            "categoryValidation": "Saisissez un nom, une description et choisissez une icône.",
+            "charactersMaximum": "{count} caractères maximum",
+            "collapseCategory": "Replier la catégorie",
+            "confirm": "Confirmer",
+            "createSuccess": "Suggestion ajoutée.",
+            "delete": "Supprimer",
+            "deleteCategory": "Supprimer la catégorie",
+            "duplicateError": "Cette suggestion existe déjà dans cette catégorie.",
+            "empty": "Aucune suggestion ne correspond aux filtres sélectionnés.",
+            "expandCategory": "Déplier la catégorie",
+            "filters": "Filtres",
+            "iconArt": "Art",
+            "iconBook": "Livre",
+            "iconCreative": "Créativité",
+            "iconDiscussion": "Discussion",
+            "iconDocument": "Document",
+            "iconEnvironment": "Environnement",
+            "iconFolder": "Dossier",
+            "iconFood": "Cuisine",
+            "iconLearning": "Apprentissage",
+            "iconLightbulb": "Idée",
+            "iconMusic": "Musique",
+            "iconPresentation": "Présentation",
+            "iconProfile": "Profil",
+            "iconResearch": "Recherche",
+            "iconScience": "Sciences",
+            "iconSettings": "Paramètres",
+            "iconShopping": "Achats",
+            "iconTechnology": "Technologie",
+            "iconTranslation": "Traduction",
+            "iconTravel": "Voyage",
+            "iconWellbeing": "Bien-être",
+            "iconWorld": "Monde",
+            "iconWriting": "Rédaction",
+            "locale": "Langue",
+            "manageCategories": "Gérer les catégories",
+            "noCategories": "Aucune catégorie.",
+            "prompt": "Suggestion",
+            "promptHint": "La suggestion pourra contenir des champs à compléter entre crochets.",
+            "restore": "Restaurer",
+            "restoreCategory": "Restaurer la catégorie",
+            "restoreConfirm": "Restaurer cette suggestion ? Elle sera de nouveau proposée dans l’arène.",
+            "restoreSuccess": "Suggestion restaurée.",
+            "resultCount": "{count} suggestions trouvées",
+            "search": "Rechercher une suggestion",
+            "searchFilter": "Recherche",
+            "status": "Statut",
+            "subtitle": "Ajoutez et gérez les suggestions proposées dans l’arène.",
+            "tableCaption": "Suggestions de prompts",
+            "title": "Suggestions de prompts",
+            "validation": "Saisissez une suggestion et choisissez une catégorie."
+        },
+        "voteTags": {
+            "active": "Active",
+            "addTitle": "Ajouter une étiquette",
+            "archive": "Masquer",
+            "archived": "Masquée",
+            "archiveSuccess": "Étiquette masquée",
+            "cancel": "Annuler",
+            "colActions": "Actions",
+            "colKey": "Clé",
+            "colLabel": "Étiquette",
+            "colOrder": "Ordre",
+            "colStatus": "Statut",
+            "colUsage": "Votes",
+            "conflictError": "Cette étiquette existe déjà, ou des votes l'utilisent déjà et elle doit être masquée plutôt que supprimée.",
+            "createSuccess": "Étiquette ajoutée",
+            "delete": "Supprimer",
+            "deleteConfirm": "Supprimer « {label} » ?",
+            "deleteSuccess": "Étiquette supprimée",
+            "deleteWarning": "Aucun vote ne l'utilise, la suppression est définitive.",
+            "dragHint": "Glissez la ligne pour la déplacer.",
+            "edit": "Modifier",
+            "editSuccess": "Étiquette modifiée",
+            "editTitle": "Modifier l'étiquette",
+            "emojiError": "Renseignez un emoji, pas du texte.",
+            "emojiHelp": "Un seul emoji, affiché sur l'étiquette dans l'arène.",
+            "emojiLabel": "Emoji",
+            "emptySide": "Aucune étiquette active de ce côté : la question correspondante n'est plus posée dans l'arène.",
+            "keyFrozen": "Clé publiée : {key}. Elle ne change pas, même si le libellé est corrigé.",
+            "keyPreview": "Clé publiée : {key}",
+            "labelError": "Renseignez un emoji et au moins un libellé contenant une lettre ou un chiffre.",
+            "labelFor": "Libellé ({locale})",
+            "labelHelp": "Sert à construire la clé publiée dans le jeu de données.",
+            "moved": "{label} déplacée en position {position} sur {total}.",
+            "moveDown": "Descendre",
+            "moveUp": "Monter",
+            "negative": "Étiquettes négatives",
+            "positive": "Étiquettes positives",
+            "reserved": "Livrée",
+            "restore": "Réafficher",
+            "restoreSuccess": "Étiquette réaffichée",
+            "save": "Enregistrer",
+            "signLabel": "Type",
+            "subtitle": "Ajoutez et gérez les étiquettes que les visiteurs attachent à leur vote.",
+            "title": "Étiquettes de vote"
+        }
+    },
+    "arenaHome": {
+        "compareModels": {
+            "count": "{count}/2 modèles",
+            "help": "Si vous n’en choisissez qu’un, le second sera sélectionné de manière aléatoire",
+            "noneSelected": "Aucun modèle choisi : la comparaison se fera entre deux modèles aléatoires.",
+            "question": "Quels modèles voulez-vous comparer ?",
+            "randomOnly": "Disponible au hasard uniquement"
+        },
+        "modelSelection": "Sélection des modèles",
+        "prompt": {
+            "label": "Écrivez votre première requête",
+            "placeholder": "Écrivez votre première requête ici"
+        },
+        "selectModels": {
+            "help": "Sélectionnez le mode de comparaison qui vous convient",
+            "question": "Quels modèles voulez-vous comparer ?"
+        },
+        "suggestions": {
+            "fallback": "Explorer la catégorie : {category}",
+            "generateAnother": "Générer une autre requête",
+            "title": "Suggestions de requêtes"
+        },
+        "title": "Comment puis-je vous aider aujourd'hui ?",
+        "webSearch": {
+            "disabled": "Recherche web désactivée",
+            "enabled": "Recherche web activée",
+            "label": "Recherche web",
+            "tooltip": "Activez la recherche sur le Web pour permettre aux modèles d'utiliser des sources en ligne et de citer des informations plus récentes.<br><strong>Sans la recherche sur le Web</strong>, les modèles répondent en se basant sur ce qu'ils ont appris pendant leur formation (leurs données d'entraînement). Ils ne peuvent pas vérifier les informations en ligne ; par conséquent, les faits très récents ou très spécifiques peuvent être incomplets."
+        }
+    },
+    "arene": {
+        "apiErrors": {
+            "block_cooldown": "Trop de messages bloqués ont été envoyés depuis votre connexion. Veuillez patienter avant de réessayer.",
+            "captcha_failed": "Vérification anti-robot échouée, veuillez réessayer.",
+            "captcha_unavailable": "Vérification anti-robot indisponible, veuillez réessayer.",
+            "comparison_streaming": "Veuillez attendre la fin de la réponse des modèles.",
+            "max_turns_reached": "Cette conversation a atteint sa limite d’échanges. Veuillez en démarrer une nouvelle.",
+            "model_unavailable": "Un des modèles choisis n’est plus disponible en sélection manuelle. Rechargez la page pour choisir parmi les modèles disponibles.",
+            "prompt_check": {
+                "generic": "Votre message n'a pas pu être envoyé car il enfreint nos conditions d'utilisation. Veuillez le reformuler.",
+                "pii": "Votre message semble contenir des données personnelles. Les messages envoyés peuvent être publiés dans le jeu de données ouvert.",
+                "self_harm": "Si vous traversez une période difficile ou avez des pensées suicidaires, vous n'êtes pas seul·e. Le 3114, numéro national de prévention du suicide, est joignable gratuitement et de façon confidentielle 24h/24 et 7j/7.",
+                "unavailable": "Votre message n'a pas pu être vérifié. Veuillez réessayer dans quelques minutes."
+            },
+            "prompt_too_long": "Votre message dépasse 20 000 caractères. Veuillez le raccourcir.",
+            "rate_limited": "Vous avez trop sollicité les modèles parmi les plus onéreux, veuillez réessayer dans quelques heures. Vous pouvez toujours solliciter des modèles plus petits.",
+            "retry_unavailable": "Il n'est pas possible de réessayer, veuillez recharger la page.",
+            "spam_detected": "Ce format de message n'est pas autorisé. Veuillez écrire en langage naturel."
+        },
+        "promptWarning": {
+            "edit": "Modifier mon message",
+            "proceed": "Envoyer quand même",
+            "title": "Avant d’envoyer votre message"
+        }
+    },
+    "auth": {
+        "discussions": {
+            "signIn": "Se connecter",
+            "title": "Discussions"
+        },
+        "login": {
+            "description": "Comparez les modèles d'IA conversationnelle en aveugle et contribuez à l'évaluation de l'IA en Europe.",
+            "tabEmail": "Email",
+            "tabsLabel": "Méthodes de connexion",
+            "tabSso": "SSO",
+            "title": "Bienvenue sur {platformName}"
+        },
+        "modal": {
+            "code": {
+                "changeEmail": "Modifier l’adresse email",
+                "error": "Code invalide ou expiré.",
+                "label": "Code reçu par email",
+                "notReceived": "Vous n’avez rien reçu ?",
+                "resend": "Recevoir un nouveau code",
+                "submit": "Valider",
+                "verifying": "Vérification..."
+            },
+            "email": {
+                "emailLabel": "Email",
+                "submit": "Recevoir le code de connexion",
+                "submitting": "Envoi en cours...",
+                "subtitle": "Accédez à votre historique de discussion et à un quota plus élevé d'utilisation de modèles en étant connecté. La création de compte reste facultative sur {platformName}",
+                "title": "Se connecter ou s'inscrire"
+            },
+            "info": {
+                "dataDesc": "Les conversations et les préférences que vous exprimez sur compar:IA sont utilisées de manière anonyme pour constituer des jeux de données représentatifs des langues et usages européens, afin de réduire les biais culturels et proposer de futurs modèles d'IA plus inclusifs.",
+                "datasetsDesc": "Les conversations sont publiées en open data dans des jeux de données de recherche. C'est pourquoi nous vous demandons de <strong>ne jamais inclure</strong> dans vos conversations :",
+                "datasetsTitle": "Les jeux de données compar:IA",
+                "dataTitle": "Comment mes données sont-elles utilisées ?",
+                "emailPrivacy": "Votre email n'est jamais publié ni partagé avec des tiers.",
+                "neverAddress": "des adresses (postale, email)",
+                "neverName": "votre nom, prénom ou celui d'un tiers",
+                "neverOther": "tout autre élément permettant de vous identifier",
+                "neverPersonal": "des informations médicales, financières ou juridiques personnelles",
+                "neverPhone": "des numéros de téléphone"
+            },
+            "merge": "Fusionner les conversations existantes avec votre compte",
+            "totp": {
+                "emailChecked": "Votre adresse email a déjà été vérifiée : il ne reste que le code de votre application d’authentification.",
+                "error": "Code incorrect.",
+                "expired": "Connexion expirée, demandez un nouveau code par email.",
+                "expiredSso": "Connexion expirée, reconnectez-vous avec le fournisseur d’identité.",
+                "help": "Les 6 chiffres affichés par votre application (Google Authenticator, Aegis, FreeOTP…).",
+                "label": "Code de l’application d’authentification"
+            }
+        },
+        "oidc": {
+            "buttonFallback": "Se connecter avec le fournisseur d’identité",
+            "error": {
+                "account_unavailable": "Le compte associé à cette adresse a été désactivé ou supprimé.",
+                "domain_not_allowed": "Votre adresse n’appartient pas à un domaine autorisé pour cette instance.",
+                "email_not_verified": "Le fournisseur d’identité n’a pas confirmé votre adresse e-mail.",
+                "invalid_nonce": "La connexion via le fournisseur d’identité a échoué (jeton invalide).",
+                "invalid_state": "La connexion via le fournisseur d’identité a expiré. Réessayez.",
+                "missing_code": "La connexion via le fournisseur d’identité est incomplète. Réessayez.",
+                "no_email": "Le fournisseur d’identité n’a pas renvoyé d’adresse e-mail.",
+                "oidc_unavailable": "La connexion via le fournisseur d’identité n’est pas activée sur cette instance.",
+                "provider_error": "Le fournisseur d’identité a refusé la demande de connexion. Réessayez.",
+                "rate_limited": "Trop de tentatives de connexion depuis ce réseau. Réessayez dans une heure.",
+                "server_error": "Une erreur technique a interrompu la connexion. Réessayez dans quelques instants.",
+                "terms_required": "Acceptez les conditions générales d’utilisation avant de vous connecter."
+            },
+            "panelSubtitle": "Vous serez redirigé vers le fournisseur d’identité configuré pour cette instance."
+        },
+        "settings": {
+            "account": {
+                "email": "Adresse électronique",
+                "signInPrompt": "Connectez-vous pour accéder aux paramètres de votre compte.",
+                "title": "Mon compte"
+            },
+            "display": {
+                "title": "Préférences"
+            },
+            "erase": {
+                "action": "Supprimer mon compte",
+                "confirmHelp": "Saisissez {email} pour confirmer la suppression.",
+                "confirmLabel": "Confirmez votre adresse électronique",
+                "effectAccount": "votre adresse électronique est remplacée par une valeur anonyme et toutes vos sessions sont fermées ;",
+                "effectComparisons": "vos conversations sont détachées du compte, et l’adresse IP, l’identifiant de mesure d’audience et l’identifiant de session anonyme qui y étaient attachés sont effacés ;",
+                "effectConsent": "la preuve de votre acceptation des conditions est conservée, sans adresse IP, parce que la loi l’exige.",
+                "effectContent": "le texte de vos conversations et vos votes sont conservés et restent publiés dans les jeux de données, sans lien avec vous ;",
+                "failed": "Le compte n’a pas pu être supprimé. Réessayez, ou écrivez-nous pour exercer ce droit.",
+                "intro": "La suppression est définitive. Voici ce qu’elle fait, ni plus ni moins :",
+                "mismatch": "Saisissez exactement l’adresse électronique de votre compte.",
+                "pending": "Suppression…",
+                "title": "Supprimer mon compte"
+            },
+            "export": {
+                "action": "Exporter mes données",
+                "desc": "Téléchargez une copie de votre compte, de vos conversations, de vos votes et de vos acceptations des conditions, au format JSON.",
+                "failed": "L’export n’a pas pu être préparé. Réessayez dans un instant.",
+                "pending": "Préparation…",
+                "title": "Exporter mes données"
+            },
+            "links": {
+                "title": "Liens utiles"
+            },
+            "logout": "Se déconnecter",
+            "subtitle": "Compte, données et informations sur la plateforme",
+            "tabAbout": "À propos",
+            "tabAccount": "Compte",
+            "tabsLabel": "Rubriques des paramètres",
+            "title": "Paramètres",
+            "totp": {
+                "change": "Changer d’appareil",
+                "desc": "L’accès à l’administration demande, en plus du code reçu par email, un code d’une application d’authentification installée sur votre téléphone.",
+                "modal": {
+                    "confirm": "Activer",
+                    "confirming": "Vérification…",
+                    "confirmLabel": "Code affiché par l’application",
+                    "continue": "Continuer",
+                    "currentHelp": "Pour changer d’appareil, saisissez d’abord un code de l’application en place.",
+                    "currentLabel": "Code de l’application actuelle",
+                    "expired": "Ce QR code a expiré, recommencez.",
+                    "failedTitle": "La configuration n’a pas pu démarrer",
+                    "invalid": "Code incorrect.",
+                    "loading": "Préparation…",
+                    "manualKey": "Ou saisissez cette clé à la main :",
+                    "manualKeyLabel": "Clé secrète",
+                    "otherSessions": "Vos autres sessions seront déconnectées.",
+                    "qrAlt": "QR code à scanner avec votre application d’authentification",
+                    "restart": "Recommencez depuis le début.",
+                    "scanHelp": "Scannez ce QR code avec votre application (Google Authenticator, Aegis, FreeOTP…), puis saisissez le code qu’elle affiche.",
+                    "sessionExpired": "Session expirée, reconnectez-vous.",
+                    "title": "Configurer l’application d’authentification",
+                    "tooMany": "Trop de tentatives, réessayez dans quelques minutes."
+                },
+                "required": {
+                    "desc": "Configurez une application d’authentification pour accéder à l’administration.",
+                    "title": "Configuration requise"
+                },
+                "setup": "Configurer une application",
+                "status": "Statut :",
+                "statusOff": "Non configurée",
+                "statusOn": "Activée",
+                "success": "Application d’authentification activée.",
+                "title": "Double authentification"
+            }
+        },
+        "success": "Vous êtes connecté !"
+    },
+    "chatbot": {
+        "announce": {
+            "generating": "Les modèles rédigent leur réponse…",
+            "ready": "Les deux réponses sont prêtes."
+        },
+        "continuePrompt": "Continuer à discuter…",
+        "conversation": "Conversation",
+        "errors": {
+            "other": {
+                "message": "Une erreur temporaire est survenue.",
+                "retry": "Vous pouvez tenter de réessayer de solliciter les modèles.",
+                "title": "Oups, erreur temporaire"
+            },
+            "tooLong": {
+                "message": "Chaque modèle est limité dans la taille des conversations qu'il est capable de traiter.",
+                "retry": "Vous pouvez recommencer une conversation avec deux nouveaux modèles.",
+                "title": "Oups, la conversation est trop longue pour un des modèles."
+            }
+        },
+        "loading": "Chargement des réponses",
+        "reasoning": {
+            "finished": "Raisonnement terminé",
+            "inProgress": "Raisonnement en cours…"
+        },
+        "revealButton": "Terminer et découvrir les modèles",
+        "webSearch": {
+            "label": "Résultats de recherche Web associés."
+        }
+    },
+    "closeModal": "Fermer la fenêtre modale",
+    "components": {
+        "pagination": {
+            "first": "Première page",
+            "label": "Pagination",
+            "last": "Dernière page",
+            "next": "Page suivante",
+            "nth": "Page {count}",
+            "previous": "Page précédente"
+        },
+        "table": {
+            "linePerPage": "Nombre de lignes par page",
+            "pageCount": "{count} lignes par page",
+            "triage": "Trier",
+            "triageCol": "Trier par {col}"
+        },
+        "theme": {
+            "legend": "Choisissez un thème pour personnaliser l’apparence du site.",
+            "options": {
+                "dark": "Thème sombre",
+                "light": "Thème clair",
+                "system": "Système",
+                "systemSub": "Utilise les paramètres système"
+            },
+            "title": "Paramètres d'affichage"
+        }
+    },
+    "consent": {
+        "close": "Fermer sans envoyer",
+        "confirm": "Confirmer",
+        "links": {
+            "privacy": "Politique de confidentialité",
+            "terms": "Conditions générales d’utilisation"
+        },
+        "loadFailed": "Les conditions d’utilisation n’ont pas pu être chargées.",
+        "required": "Vous devez accepter les conditions d’utilisation pour continuer",
+        "retry": "Réessayer",
+        "saveFailed": "Votre choix n’a pas pu être enregistré. Vérifiez votre connexion puis réessayez.",
+        "saving": "Enregistrement…"
+    },
+    "errors": {
+        "404": {
+            "desc": "Si vous avez tapé l'adresse web dans le navigateur, vérifiez qu'elle est correcte. La page n’est peut-être plus disponible.<br />Dans ce cas, pour continuer votre visite vous pouvez consulter notre page d’accueil.<br />Sinon contactez-nous pour que l’on puisse vous rediriger vers la bonne information.",
+            "error": "Erreur 404",
+            "sorry": "La page que vous cherchez est introuvable. Excusez-nous pour la gène occasionnée.",
+            "title": "Page non trouvée"
+        },
+        "unexpected": {
+            "desc": "Essayez de rafraîchir la page ou bien ressayez plus tard.",
+            "error": "Erreur {code}",
+            "sorry": "Désolé, le service rencontre un problème, nous travaillons pour le résoudre le plus rapidement possible.",
+            "title": "Erreur inattendue"
+        },
+        "unknown": "Une erreur est survenue"
+    },
+    "footer": {
+        "license": {
+            "linkTitle": "Licence etalab - nouvelle fenêtre",
+            "mention": "Sauf mention explicite de propriété intellectuelle détenue par des tiers, les contenus de ce site sont proposés sous <a {linkProps}>licence etalab-2.0</a>"
+        },
+        "links": {
+            "accessibility": "Accessibilité : non conforme",
+            "legal": "Mentions légales",
+            "rgesn": "Écoconception",
+            "sources": "Code source"
+        }
+    },
+    "general": {
+        "a11y": {
+            "desc": "Cette déclaration d’accessibilité s’applique au site <strong>{domain}</strong>.",
+            "disclaimer": "<strong>{platformName}</strong> s’engage à rendre ses services numériques accessibles, conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005.",
+            "improveAdress": "Adresse : DINUM, 20 avenue de Ségur 75007 Paris",
+            "improveDelay": "Nous essayons de répondre dans les 2 jours ouvrés.",
+            "improveDesc": "Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable de {domain} pour être orienté·e vers une alternative accessible ou obtenir le contenu sous une autre forme.",
+            "improveMail": "Courriel : <a {linkProps}>contact@beta.gouv.fr</a>",
+            "improveTitle": "Amélioration et contact",
+            "remedyAdvocate": "Écrire un message au <a {linkProps}>Défenseur des droits</a>",
+            "remedyAdvocateAdress": "Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) : Défenseur des droits - Libre réponse 71120 75342 Paris CEDEX 07",
+            "remedyDelegateAdvocate": "Contacter le délégué du <a {linkProps}>Défenseur des droits dans votre région</a>",
+            "remedyDesc": "Cette procédure est à utiliser dans le cas suivant : vous avez signalé au responsable du site internet un défaut d’accessibilité qui vous empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu de réponse satisfaisante.",
+            "remedyList": "Vous pouvez :",
+            "remedyTitle": "Voie de recours",
+            "stateDesc": "Le site {domain} est non conforme avec le RGAA 4.1. Le site n’a <strong>pas encore été audité</strong>. Il a cependant été conçu pour être accessible au plus grand nombre. Vous devriez donc pouvoir :",
+            "stateNavigate": "naviguer sur toutes les pages du site en utilisant un clavier",
+            "statePrefs": "adapter le site à votre préférences (taille de la police, zoom écran, changement de typographie…) sans perte de contenu",
+            "stateScreenReader": "consulter le site web avec un lecteur d’écran.",
+            "stateTitle": "État de conformité",
+            "title": "Déclaration d’accessibilité"
+        },
+        "document": {
+            "frenchOnly": "Ce document n’est publié qu’en français pour le moment.",
+            "unavailable": "Ce document n’est pas disponible pour le moment. Merci de réessayer plus tard.",
+            "version": "Version {version}, applicable depuis le {date}."
+        },
+        "legal": {
+            "a11yDesc": "La conformité aux normes d’accessibilité numérique est un objectif ultérieur mais nous tâchons de rendre ce site accessible à toutes et à tous.",
+            "a11yTitle": "Accessibilité",
+            "directorDesc": "Monsieur Romain Delassus, chef du service du numérique du Ministère de la Culture",
+            "directorTitle": "Directeur de la publication",
+            "editorDesc": "Ce site est édité par le Ministère de la culture, 182, rue Saint-Honoré 75001 Paris",
+            "editorTitle": "Éditeur",
+            "hostingDesc": "Ce site est hébergé par OVH SAS (<a {linkProps}>https://www.ovh.com</a>) dont le siège social est situé au 2 rue Kellermann - 59100 Roubaix - France.",
+            "hostingTitle": "Hébergement du site",
+            "reportA11y": "Si vous rencontrez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou une fonctionnalité du site, merci de nous en faire part.",
+            "reportA11yDesc": "Pour en savoir plus sur la politique d’accessibilité numérique de l’État : <a {linkProps}>references.modernisation.gouv.fr/accessibilite-numerique</a>",
+            "reportDesc": "Si vous n’obtenez pas de réponse rapide de notre part, vous êtes en droit de faire parvenir vos doléances ou une demande de saisine au Défenseur des droits.",
+            "reportTitle": "Signaler un dysfonctionnement",
+            "securityCertif": "Le site est protégé par un certificat électronique, matérialisé pour la grande majorité des navigateurs par un cadenas. Cette protection participe à la confidentialité des échanges.",
+            "securityNoMail": "En aucun cas les services associés à la plateforme ne seront à l’origine d’envoi de courriels pour demander la saisie d’informations personnelles.",
+            "securityTitle": "Sécurité",
+            "sources": "Sauf mention contraire, tous les textes de ce site sont sous <a {etalabLinkProps}>licence Etalab Open 2.0</a>. Le code source de cette application est librement réutilisable et accessible sur <a {githubLinkProps}>GitHub</a>.",
+            "title": "Mentions légales"
+        },
+        "privacy": {
+            "cookiesBannerDesc": "C’est vrai, vous n’avez pas eu à cliquer sur un bloc qui recouvre la moitié de la page pour dire que vous êtes d’accord avec le dépôt de cookies — même si vous ne savez pas ce que ça veut dire !",
+            "cookiesBannerNoNeed": "Rien d’exceptionnel, pas de passe-droit lié à un .gouv.fr. Nous respectons simplement la loi, qui dit que certains outils de suivi d’audience, correctement configurés pour respecter la vie privée, sont exemptés d’autorisation préalable.",
+            "cookiesBannerTitle": "Ce site n’affiche pas de bannière de consentement aux cookies, pourquoi ?",
+            "cookiesBannerTools": "Nous utilisons pour cela <a {matomoLinkProps}>Matomo</a>, un outil <a {libreLinkProps}>libre</a>, paramétré pour être en conformité avec la <a {cnilLinkProps}>recommandation « Cookies »</a> de la CNIL. Cela signifie que votre adresse IP, par exemple, est anonymisée avant d’être enregistrée. Il est donc impossible d’associer vos visites sur ce site à votre personne.",
+            "cookiesDesc": "Ce site dépose un petit fichier texte (un « cookie ») sur votre ordinateur lorsque vous le consultez. Cela nous permet de mesurer le nombre de visites et de comprendre quelles sont les pages les plus consultées.",
+            "cookiesDescMore": "Vous pouvez vous opposer au suivi de votre navigation sur ce site web. Cela protégera votre vie privée, mais empêchera également le propriétaire d'apprendre de vos actions et de créer une meilleure expérience pour vous et les autres utilisateurs.",
+            "cookiesTitle": "Cookies déposés et consentement",
+            "dataAccessDatasets": "Les données de dialogue et de préférence de l’utilisateur sont distribuées sous la Licence Ouverte 2.0 d'Etalab sur la plateforme Hugging Face à travers le compte du ministère de la culture (<a {linkProps}>https://huggingface.co/ministere-culture</a>).",
+            "dataAccessDesc": "Bien sûr ! Les statistiques d’usage du site sont disponibles en accès libre sur <a {linkProps}>stats.beta.gouv.fr</a>.",
+            "dataAccessTitle": "Je contribue à enrichir vos données, puis-je y accéder ?",
+            "dataExtraCountry": "Pays destinataire : France",
+            "dataExtraHost": "Sous-traitant : OVH",
+            "dataExtraTitle": "Qui nous aide à traiter les données ?",
+            "dataExtraWarranty": "Garanties : <a {linkProps}>https://storage.gra.cloud.ovh.net/v1/AUTH_325716a587c64897acbef9a4a4726e38/contracts/9e74492-OVH_Data_Protection_Agreement-FR-6.0.pdf</a>",
+            "dataExtraWhat": "Traitement réalisé : Hébergement",
+            "dataRespDesc": "Le service du numérique du ministère de la Culture est le responsable du traitement de vos données à caractère personnel.",
+            "dataRespTitle": "Qui est responsable du traitement des données ?",
+            "dataTimeDesc": "Les données relatives aux utilisateurs et à leurs conversations avec les modèles sont conservées à compter de l’enregistrement du vote de préférence.",
+            "dataTimeTitle": "Pendant combien de temps conservons-nous ces données ?",
+            "dataUseDesc": "En tout état de cause, l’éditeur s’engage à mettre en œuvre les moyens permettant de s’assurer de l’anonymisation des données de dialogue avant leur mise à disposition publique.",
+            "dataUseTitle": "Quels sont les traitements réalisés sur les données de conversation ?",
+            "desc": "Le service est édité par le service du numérique du ministère de la Culture.",
+            "optOutTitle": "Vous opposer à la mesure d’audience",
+            "privacyData": "Les données collectées sur le site sont les suivantes :",
+            "privacyDataArena": "Données relatives aux conversations des utilisateurs avec les modèles : questions posées par les utilisateurs, réponses des modèles et préférence exprimée par l’utilisateur sur les deux modèles",
+            "privacyDataForm": "Données relatives au questionnaire « Nous aider à améliorer compar:IA ».",
+            "privacyDesc": "Le service ne traite pas de données à caractère personnel telles que définies par la CNIL, à savoir toute information relative à une personne physique susceptible d'être identifiée, directement ou indirectement.",
+            "privacyResp": "L’utilisateur est responsable des données ou contenus qu'il ou elle saisit dans l’invite offert par la plateforme. En acceptant les <a {linkProps}>modalités d’utilisation</a>, l’utilisateur ou l’utilisatrice s’engage à ne pas transmettre d’informations permettant de l’identifier ou d’identifier un tiers.",
+            "privacyTitle": "Traitons-nous des données à caractère personnel ?",
+            "tallyData": "Lorsque vous remplissez l'un de ces formulaires, les données saisies sont transmises et hébergées par Tally (Tally BV, Belgique). Tally s'engage à ne pas utiliser vos données à des fins commerciales et à respecter le RGPD. Pour plus d'informations, consultez la <a {tallyPrivacyLinkProps}>politique de confidentialité de Tally</a>.",
+            "tallyDesc": "Ce site utilise <a {tallyLinkProps}>Tally</a>, un service de création de formulaires en ligne, pour deux fonctionnalités :",
+            "tallyFeedback": "Le formulaire « Votre avis » permettant de recueillir vos retours sur le service",
+            "tallyNewsletter": "Le formulaire d'inscription à la lettre d'information (infolettre) compar:IA",
+            "tallyTitle": "Formulaires Tally",
+            "title": "Politique de confidentialité"
+        },
+        "rgesn": {
+            "1": {
+                "1": "Le site compar:IA permet de donner accès simplement et gratuitement à une très grande diversité de modèles d'IA conversationnelle et ainsi de sensibiliser les citoyens aux divers enjeux des IA génératives : diversité, biais, impact environnemental. Par ailleurs, les jeux de données de questions et de préférences constitués sont partagés en open source sous licence MIT/Etalab 2.0.",
+                "2": "Les cibles utilisatrices du service Compar:IA ont été identifiées en procédant à des entretiens utilisateurs et une phase préalable d'investigation des besoins.",
+                "3": "Ainsi, tous les citoyens sont concernés comme utilisateurs potentiels, mais particulièrement les professeurs, élèves, étudiants, médiateurs numériques, formateurs IA, ainsi que chercheurs (computer sciences, IA, SHS) et entreprises intéressées par l'analyse ou l’utilisation des jeux de données partagés en open source.<br> En cohérence, le service numérique répond à leurs besoins grâce aux fonctionnalités suivantes : tester et comparer gratuitement les modèles, utiliser les données partagées en open source.",
+                "4": "Le service compar:IA s’inscrit dans une démarche d’écoconception visant à réduire les impacts environnementaux. À cette fin, la déclaration a été rédigée dans le cadre de la mise en œuvre du référentiel général de l’écoconception des services numériques (RGESN, version 2024).<br> Le RGESN, réalisé par l’Arcep et l’Arcom, en collaboration avec l’ADEME, la DINUM, la CNIL et l’Inria, est disponible sur le <a {linkProps}>site web de l’Arcep</a>.",
+                "title": "Raison d’être de ce service"
+            },
+            "2": {
+                "1": "L'écoconception de services numériques est une démarche visant à réduire et limiter les impacts environnementaux d’un service dès sa phase de conception et tout au long de son cycle de vie.",
+                "2": {
+                    "1": "Concevoir des services numériques plus durables permettant d’allonger la durée de vie des terminaux ;",
+                    "2": "Promouvoir une démarche de sobriété environnementale face aux stratégies de captation de l’attention de l’utilisateur pour des usages en ligne avec les objectifs environnementaux internationaux ;",
+                    "3": "Diminuer les ressources informatiques mobilisées, optimiser le trafic de données et la sollicitation des infrastructures numériques ;",
+                    "4": "Accroître le niveau de transparence sur l’empreinte environnementale du service numérique.",
+                    "title": "Sa mise en œuvre poursuit quatre objectifs principaux :"
+                },
+                "3": {
+                    "1": "Limiter le poids d’une page",
+                    "2": "Limiter la complexité d’une page",
+                    "3": "Limiter le nombre de requêtes serveurs",
+                    "4": "Limiter la consommation d’énergie permettant d’héberger le service",
+                    "title": "Concrètement, l’écoconception se traduit par un ensemble de bonnes pratiques à respecter avant, pendant et après la création ou l’amélioration d’un service, permettant notamment de :"
+                },
+                "4": "Il s’agit d’une démarche d'amélioration continue et collective.",
+                "title": "Qu’est ce que l’écoconception ?"
+            },
+            "3": {
+                "1": {
+                    "1": "Simplification de l’expérience utilisateur : les parcours de navigation sont optimisés et centrés autour des fonctionnalités essentielles du service Compar:IA (arène de modèles à tester, jeux de données, classement) avec des tests utilisateurs réguliers.",
+                    "2": "Sensibilisation auprès des utilisateurs sur l’empreinte écologique du service : mise en avant d’indicateurs d’impact énergétique sur les questions posées aux IA ; valorisation des usages « frugaux », avec un mode dédié à l’interrogation de « petits » modèles d’IA conversationnelles dont l’impact environnemental est moindre.",
+                    "3": "Utilisation des composants d’interfaces du Système de Design de l’État (DSFR) : ils sont accessibles et leur empreinte est minimale.",
+                    "4": "Navigation la plus intuitive possible pour réduire le temps passé à trouver une information.",
+                    "5": "Conception « mobile first » : tous les contenus sont consultables a minima sur mobile. Le site s’adapte à toutes les tailles d’écran.",
+                    "6": "Exclusion de l’intégration des vidéos sur le site.",
+                    "title": "L’enjeu principal consiste à ce que le service compar:IA fonctionne sur les terminaux utilisateurs les plus anciens possibles, dans des conditions de connectivité variées. Plusieurs mesures ont été mise en œuvre lors de la conception, parmi lesquelles :"
+                },
+                "title": "Stratégie mise en œuvre et objectifs en matière de réduction ou de limitation des impacts environnementaux"
+            },
+            "4": {
+                "1": "L’auto-diagnostic, mené entre mai et octobre 2025 par l’équipe produit (deux personnes ont été en charge de la relecture et la validation de tous les critères), a porté sur l’ensemble des pages du site. Les outils utilisés pour évaluer certains indicateurs techniques sont l’inspecteur « réseau » des outils de développement du navigateur, l’extension <a {greenitLinkProps}>Green IT Analysis</a> et l’outil <a {ecoindexLinkProps}>EcoIndex</a>.",
+                "title": "Diagnostic RGESN"
+            },
+            "5": {
+                "1": {
+                    "1": "Score d’avancement dans la mise en œuvre du RGESN, le 10/12/2025 : 89%",
+                    "title": "L’auto-diagnostic donne un taux de conformité au <a {linkProps}>RGESN</a> (référentiel général d’écoconception) de 89%."
+                },
+                "2": "Le service numérique compar:IA vise une amélioration de ce score d’avancement pour atteindre 95% en 2027.",
+                "3": {
+                    "1": "Stratégie : 100 %",
+                    "2": "Spécifications : 78 %",
+                    "3": "Architecture : 100 %",
+                    "4": "Expérience et interface utilisateur (UX/UI) : 100 %",
+                    "5": "Contenus : 67 %",
+                    "6": "Frontend : 82 %",
+                    "7": "Backend : 64 %",
+                    "8": "Hébergement : 90 %",
+                    "9": "Algorithmie : 100 %",
+                    "title": "Score par thématique :"
+                },
+                "4": {
+                    "date": "10 décembre 2025",
+                    "title": "Tableau d’audit RGESN"
+                },
+                "title": "Score dans la mise en oeuvre du référentiel"
+            },
+            "6": {
+                "1": "Le site est conçu pour être accessible pour tout équipement mobile datant de 2017 minimum.",
+                "2": "Connexion minimum pour un accès et une utilisation confortable du service : 3G en mobile et 512 Kbs en connexion fixe.",
+                "3": "Le site est conçu pour les différentes tailles d’écran (minimum 320 pixels de large).",
+                "4": "Le site n’est pas accessible via le navigateur Internet Explorer. ",
+                "title": "Configuration minimale pour accéder au site"
+            },
+            "7": {
+                "1": "Concevoir le service avec une revue de conception et une revue de code, dont l’un des objectifs de réduire les impacts environnementaux de chaque fonctionnalité (critère 2.1)",
+                "2": "Mettre en place des durées de conservation sur les données en vue de leur suppression ou archivage : suppression des logs régulières dans le serveur de fichiers « S3 » et la base de données (Postgres) notamment.",
+                "3": {
+                    "1": "Nombre de requêtes serveurs maximum astreinte par écran : 40",
+                    "2": "Poids des ressources maximum astreint par écran : 600 Ko",
+                    "title": "S’astreindre à un poids maximum et une limite de requêtes par écran (critère 6.1) :"
+                },
+                "4": "Convertir les illustrations en WebP, AVIF, JPEG XL ou un format d’image plus performant pour les images matricielles (critère 5.1).",
+                "5": "Laisser la possibilité d'interrompre l'inférence (chargement des réponses) lors de la comparaison des modèles.",
+                "6": "Les scores d’analyses EcoIndex démontrent un décalage important dans les mesures d’impact avec des notes allant jusqu’à E ou F pour certaines pages (poids, complexité et nombre de requêtes des pages relativement importants) ; il s’agit désormais de comprendre plus finement ces résultats au cas par cas, malgré les bonnes pratiques mises en œuvre, pour identifier de nouvelles améliorations.",
+                "desc": "Plusieurs améliorations ont été ou sont toujours en cours d’identification, parmi lesquelles :",
+                "title": "Améliorations identifiées"
+            },
+            "8": {
+                "1": "Feuille de style allégée de 3,27 Mo à 1,46 Mo, soit 239 Ko de moins après compression sur chaque page : le service n’embarque plus les 1 047 icônes du système de design mais seulement les vingt-cinq qu’il utilise.",
+                "2": "Retrait de 344 Ko de fichiers publics qu’aucune page n’appelait.",
+                "3": "Arrêt de l’enregistrement des sessions : il observait les mouvements de souris et les modifications de la page pendant toute la visite, pour des enregistrements que personne ne consultait. Le comptage de pages est conservé.",
+                "4": "Mesure du 13 août 2026 sur l’écran de discussion : 111 requêtes et 1 152 Ko. Le service reste au-dessus des limites qu’il s’est fixées plus haut, 40 requêtes et 600 Ko par écran. Le principal poste restant est le fichier de traductions, qui contient les cinq langues sur chaque page.",
+                "desc": "Depuis la publication, les corrections suivantes ont été apportées à l’arène :",
+                "title": "Améliorations réalisées"
+            },
+            "desc": "publiée le 11 décembre 2025",
+            "title": "Déclaration d’écoconception"
+        },
+        "tos": {
+            "title": "Modalités d’utilisation"
+        }
+    },
+    "generated": {
+        "archs": {
+            "dense": {
+                "desc": "L’architecture dense désigne un type de réseau de neurones dans lequel chaque neurone d’une couche est connecté à tous les neurones de la couche suivante. Cela permet à tous les paramètres de la couche de contribuer au calcul de la sortie.",
+                "long_name": "",
+                "name": "Dense"
+            },
+            "matformer": {
+                "desc": "Imaginez des poupées russes (matryoshkas → matryoshka transformer → Matformer) : chaque bloc contient plusieurs sous-modèles imbriqués de tailles croissantes, partageant les mêmes paramètres. Cela permet, à chaque requête, de sélectionner un modèle de capacité adaptée, selon la mémoire ou la latence disponibles, sans avoir besoin de ré-entraîner différents modèles.",
+                "long_name": "",
+                "name": "Matformer"
+            },
+            "moe": {
+                "desc": "L’architecture Mixture of Experts (MoE) utilise un mécanisme de routage pour n’activer, en fonction de l’entrée, que certains sous-ensembles spécialisés (“experts”) du réseau de neurones. Cela permet de construire des modèles très grands tout en gardant un coût de calcul réduit, car seule une partie du réseau est utilisée à chaque étape.",
+                "long_name": "Mélange d’experts",
+                "name": "MoE"
+            },
+            "na": {
+                "desc": "L’éditeur n’a pas rendu les informations sur l’architecture du modèle publiques.",
+                "long_name": "Non communiqué",
+                "name": "N/A"
+            }
+        },
+        "endpoint_upsert": {
+            "api_base": {
+                "help": "Base URL for the API endpoint.",
+                "label": "API base URL"
+            },
+            "api_key": {
+                "help": "if not given, all LLMs depending on this endpoint will be disabled.",
+                "label": "API secret key"
+            },
+            "api_type": {
+                "help": "API format (e.g. 'openrouter' or 'openai' for OpenAI-compatible APIs).",
+                "label": "Api type"
+            },
+            "api_version": {
+                "help": "API version (optional)",
+                "label": "API version"
+            },
+            "created_at": {
+                "label": "Created At"
+            },
+            "id": {
+                "label": "Id"
+            },
+            "name": {
+                "help": "Readable endpoint name (e.g. 'OpenRouter').",
+                "label": "Name"
+            },
+            "updated_at": {
+                "label": "Updated At"
+            }
+        },
+        "lab_upsert": {
+            "created_at": {
+                "label": "Created At"
+            },
+            "id": {
+                "label": "Id"
+            },
+            "logo": {
+                "help": "An icon name from https://lobehub.com/fr/icons or a filename (e.g. 'ai2.svg') from `frontend/static/orgs/ai/`.",
+                "label": "Logo"
+            },
+            "name": {
+                "label": "Name"
+            },
+            "origin_country": {
+                "help": "A 2 letter code from https://en.wikipedia.org/wiki/ISO_3166-1.",
+                "label": "Origin Country"
+            },
+            "updated_at": {
+                "label": "Updated At"
+            }
+        },
+        "license_upsert": {
+            "commercial_use": {
+                "label": "Allows commercial use."
+            },
+            "created_at": {
+                "label": "Created At"
+            },
+            "id": {
+                "label": "Id"
+            },
+            "kind": {
+                "label": "Licence type"
+            },
+            "name": {
+                "help": "Licence name (e.g. 'Apache 2.0' or 'MIT').",
+                "label": "Name"
+            },
+            "reuse": {
+                "label": "Allows reuse/redistribution."
+            },
+            "updated_at": {
+                "label": "Updated At"
+            }
+        },
+        "llm_upsert": {
+            "active_params": {
+                "help": "Active parameters in billions (only for MoE LLMs).",
+                "label": "Active Params"
+            },
+            "api_model_id": {
+                "help": "Complete identifier used for API calls.",
+                "label": "API model id"
+            },
+            "arch": {
+                "help": "LLM architecture, Use `maybe-*` if information is not confirmed.",
+                "label": "Arch"
+            },
+            "context_tokens": {
+                "help": "Size of its context window in tokens.",
+                "label": "Context Tokens"
+            },
+            "created_at": {
+                "label": "Created At"
+            },
+            "custom_selectable": {
+                "help": "Whether visitors can pick this LLM themselves in custom mode. When off, it shows greyed out there and only comes up in random draws.",
+                "label": "Selectable in custom mode"
+            },
+            "endpoint_id": {
+                "help": "The LLM's endpoint information, create it first if not already available",
+                "label": "Endpoint"
+            },
+            "eu_hostable": {
+                "help": "Whether the LLM is hostable in the EU.",
+                "label": "Eu Hostable"
+            },
+            "human_id": {
+                "help": "(legacy id), usually the LLM id specified in 'api_model_id'",
+                "label": "Readable id"
+            },
+            "id": {
+                "label": "Id"
+            },
+            "inputs": {
+                "help": "What kind of media the LLM can have in input.",
+                "label": "Modalities"
+            },
+            "knowledge_cutoff": {
+                "help": "Date after which the LLM no longer has knowledge.",
+                "label": "Knowledge Cutoff"
+            },
+            "lab_id": {
+                "help": "The lab that developed the LLM, create it first if not already available",
+                "label": "Lab"
+            },
+            "license_id": {
+                "help": "The LLM's license, create it first if not already available",
+                "label": "License"
+            },
+            "links": {
+                "help": "List of links to display in LLM card.",
+                "label": "Links"
+            },
+            "name": {
+                "label": "Readable name"
+            },
+            "params": {
+                "help": "Total parameters in billions.",
+                "label": "Params"
+            },
+            "price_in": {
+                "help": "Price per million input tokens in USD.",
+                "label": "Price In"
+            },
+            "price_out": {
+                "help": "Price per million output tokens in USD.",
+                "label": "Price Out"
+            },
+            "public_training_code": {
+                "help": "Whether the LLM training code is public.",
+                "label": "Public Training Code"
+            },
+            "public_training_data": {
+                "help": "Whether the LLM training data is public.",
+                "label": "Public Training Data"
+            },
+            "public_weights": {
+                "help": "Whether the LLM weights are public.",
+                "label": "Public Weights"
+            },
+            "quantization": {
+                "help": "Quantization scheme applied (q4, q8, or None for full precision).",
+                "label": "Quantization"
+            },
+            "rate_limited": {
+                "help": "Apply rate limits (usually for high API costs LLMs).",
+                "label": "Rate Limited"
+            },
+            "release_date": {
+                "label": "Release Date"
+            },
+            "status": {
+                "help": "enabled: callable and displayed in llm list + rankings; archived: not callable but displayed in llm list + rankings; disabled: not callable and hidden in llm list + rankings.",
+                "label": "Status"
+            },
+            "system_prompt": {
+                "help": "System message to add in llm call if specified",
+                "label": "System Prompt"
+            },
+            "updated_at": {
+                "label": "Updated At"
+            },
+            "Link": {
+                "text": {
+                    "label": "Text"
+                },
+                "url": {
+                    "label": "Url"
+                }
+            }
+        },
+        "prompt_check_upsert": {
+            "api_key": {
+                "help": "Laissée vide, la vérification utilise OPENROUTER_API_KEY.",
+                "label": "Clé API OpenRouter"
+            },
+            "criteria": {
+                "label": "Critères"
+            },
+            "description": {
+                "help": "Le modèle la lit avec chaque message. Dites ce qui est bienvenu ici, pour qu'une question de santé ne passe pas pour suspecte sur une arène santé.",
+                "label": "Description de l'instance"
+            },
+            "enabled": {
+                "label": "Vérification des messages"
+            },
+            "model": {
+                "help": "Un modèle de décision d'OpenRouter.",
+                "label": "Modèle de décision"
+            },
+            "PromptCheckCriterion": {
+                "action": {
+                    "label": "Action"
+                },
+                "key": {
+                    "help": "Les statistiques sont comptées par identifiant : ne le changez plus une fois le critère en service.",
+                    "label": "Identifiant"
+                },
+                "label": {
+                    "label": "Nom"
+                },
+                "message": {
+                    "label": "Message affiché"
+                },
+                "no": {
+                    "label": "Compte comme non"
+                },
+                "question": {
+                    "help": "Une question fermée sur le `message`, à laquelle on répond par oui ou non.",
+                    "label": "Question posée au modèle"
+                },
+                "threshold": {
+                    "label": "Seuil"
+                },
+                "yes": {
+                    "label": "Compte comme oui"
+                }
+            },
+            "required": {
+                "help": "Quand la vérification ne répond pas (délai dépassé, OpenRouter saturé, clé refusée), le message est refusé. Désactivée, il passe sans être vérifié. Dans les deux cas, après plusieurs échecs d'OpenRouter d'affilée, les messages passent sans vérification une minute à la fois.",
+                "label": "Vérification obligatoire"
+            },
+            "conversations_per_ip_per_hour": {
+                "help": "Sur une heure glissante, même quand la vérification est désactivée. Partagée par tous ceux qui sortent par la même IP (une école, un ministère) ; les cohortes partenaires (Pix) n'y sont pas soumises. 0 désactive la limite, vide revient à la valeur par défaut de l'instance.",
+                "label": "Conversations par IP et par heure"
+            },
+            "conversations_same_models_per_ip_per_hour": {
+                "help": "La même limite, pour une même paire de modèles. 0 la désactive, vide revient à la valeur par défaut de l'instance.",
+                "label": "Conversations par IP et par heure avec les mêmes modèles"
+            }
+        }
+    },
+    "header": {
+        "chatbot": {
+            "newDiscussion": "Nouvelle discussion",
+            "reveal": {
+                "description": "Découvrez l’impact environnemental de vos discussions avec chaque modèle",
+                "subtitle": "Les modèles sont démasqués !",
+                "title": "Révélation"
+            }
+        },
+        "homeTitle": "Accueil - {platformName}",
+        "legal": {
+            "label": "Légal",
+            "title": "Informations légales"
+        },
+        "menu": "Menu",
+        "title": "compar:IA",
+        "votes": {
+            "count": "{count} votes",
+            "legend": "Légende",
+            "objective": "Obj : {count}k",
+            "tooltip": "Discutez, votez et aidez-nous à atteindre cet objectif !<br /><strong>Vos votes sont importants</strong> : ils alimentent le jeu de données {platformName} mis à disposition librement pour affiner les prochains modèles sur le français.<br />Ce commun numérique contribue au meilleur <strong>respect de la diversité linguistique et culturelle des futurs modèles de langue.</strong>"
+        }
+    },
+    "home": {
+        "vote": {
+            "datasets": "Jeux de données",
+            "steps": {
+                "datasets": {
+                    "desc": "Toutes les questions posées et les votes sont compilés dans des jeux de données et publiés librement après anonymisation.",
+                    "title": "Les jeux de données par langue"
+                },
+                "finetune": {
+                    "desc": "À terme, les entreprises et les acteurs universitaires peuvent exploiter les jeux de données pour entrainer de nouveaux modèles plus respectueux de la diversité linguistique et culturelle.",
+                    "title": "Des modèles affinés sur la langue spécifique"
+                },
+                "prefs": {
+                    "desc": "Après discussion avec les IA, vous indiquez votre préférence pour un modèle selon des critères donnés, tels que la pertinence ou l’utilité des réponses.",
+                    "title": "Vos préférences"
+                }
+            },
+            "title": "Pourquoi votre vote est important ?"
+        }
+    },
+    "invite": {
+        "accept": "Accepter et continuer",
+        "accepting": "Connexion en cours...",
+        "backToLogin": "Se connecter autrement",
+        "invalid": "Ce lien d'invitation n'est plus valide. Il a peut-être expiré ou déjà été utilisé.",
+        "title": "Vous avez été invité·e sur {platformName}"
+    },
+    "maintenance": {
+        "desc": "{platformName} est actuellement en maintenance. Nous serons de retour très prochainement.",
+        "title": "Site en maintenance"
+    },
+    "models": {
+        "arch": {
+            "title": "Le saviez-vous ?"
+        },
+        "cards": {
+            "arch": {
+                "title": "Architecture",
+                "tooltip": "L’architecture décrit la manière dont le modèle est organisé pour produire ses réponses, par exemple un modèle dense ou un mélange d’experts (MoE).",
+                "withName": "Architecture {name}"
+            },
+            "context": {
+                "chars_count": "Envir. {count}k caractères",
+                "desc": "Peut analyser environ plusieurs centaines de pages de texte",
+                "title": "Contexte",
+                "tokens_count": "{count}<span {midProps}>k</span> <span {smallProps}>jetons</span>",
+                "tooltip": "Le contexte correspond à la quantité maximale de texte que le modèle peut prendre en compte en une seule conversation, exprimée en jetons."
+            },
+            "energy": {
+                "class": {
+                    "A": "Très faible consommation estimée à l’inférence",
+                    "B": "Faible consommation estimée à l’inférence",
+                    "C": "Consommation estimée à l’inférence modérée",
+                    "D": "Consommation estimée à l’inférence intermédiaire",
+                    "E": "Consommation estimée à l’inférence élevée",
+                    "F": "Consommation estimée à l’inférence très élevée"
+                },
+                "desc": "Plus la classe est proche de A, plus la consommation estimée à l’inférence est faible.",
+                "title": "Classe de consommation énergétique",
+                "title_short": "Score énergie",
+                "tooltip": "Estimation EcoLogits 0.10.2 pour générer 1 million de jetons de sortie. Le calcul utilise le nombre total de paramètres et, pour les modèles à mélange d’experts (MoE), le nombre de paramètres actifs. Hypothèses : efficacité énergétique du centre de données (PUE) de 1,2, latence non renseignée et valeur médiane lorsque le résultat est une fourchette. Seuils : A < 100 Wh ; B < 300 Wh ; C < 1 000 Wh ; D < 3 000 Wh ; E < 10 000 Wh ; F ≥ 10 000 Wh. Il ne s’agit pas d’une mesure du fournisseur : le matériel réel, la quantification, la longueur des entrées et la latence peuvent modifier la consommation."
+            },
+            "license": {
+                "title": "Licence"
+            },
+            "modalities": {
+                "title": "Modalités",
+                "tooltip": "Les multimodalités indiquent les types de contenus que le modèle peut traiter : texte, image, audio ou vidéo.",
+                "types": {
+                    "audio": "Audio",
+                    "image": "Image",
+                    "text": "Texte",
+                    "video": "Vidéo"
+                }
+            },
+            "price": {
+                "desc": "Entrée = question envoyée, Sortie = réponse générée",
+                "price_count": "{count}<span {midProps}>/M</span>",
+                "price_in": "Prix d’entrée",
+                "price_out": "Prix de sortie",
+                "title": "Prix",
+                "tooltip": "Prix indicatif d’utilisation via API pour un million de jetons. L’entrée correspond à la requête envoyée, la sortie à la réponse générée."
+            },
+            "rank": {
+                "detail": "/{count} modèles",
+                "single": "#{min}",
+                "title": "Rang classement",
+                "title_short": "Classement",
+                "to": "#{min} à {max}",
+                "tooltip": "Position du modèle dans le classement {platformName}, établi à partir des votes des utilisatrices et utilisateurs."
+            },
+            "release": {
+                "title": "Sortie"
+            },
+            "size": {
+                "active_params_count": "Dont {count}mds actifs",
+                "desc": "Plus un modèle a de paramètres, plus il demande de ressources",
+                "params_count": "{count}<span {midProps}>mds</span> <span {smallProps}>paramètres</span>",
+                "params_count_short": "{count}<span {midProps}>mds</span> <span {smallProps}>param.</span>",
+                "title": "Taille",
+                "title_estimated": "Taille estimée",
+                "tooltip": "Les paramètres ou les poids, comptés en milliards, sont les variables, apprises par un modèle au cours de son entrainement, qui déterminent ses réponses. Plus le nombre de paramètres est important, plus il a besoin de ressources pour fonctionner."
+            },
+            "sovereignty": {
+                "sub": "Critères atteints",
+                "title": "Niveau d’ouverture",
+                "tooltip": "Score calculé à partir de critères d’ouverture et de maîtrise : licence, poids, données et code d’entraînement publics, usage commercial, réutilisation des sorties et hébergement possible dans l’Union européenne."
+            }
+        },
+        "conso": {
+            "count": {
+                "L": "> 5000 mWh",
+                "M": "de 150 à 5000 mWh",
+                "S": "< 150 mWh"
+            },
+            "filterLegend": "Filtre par consommation énergétique moyenne pour 1000 tokens"
+        },
+        "envImpact": {
+            "hardware": {
+                "title": "Matériel nécessaire",
+                "tooltip": "Estimation de la mémoire nécessaire pour charger les paramètres du modèle, hors cache KV, contexte, système et surcoût du moteur d’inférence. Catégories utilisées : jusqu’à 3 Go, smartphone ; jusqu’à 16 Go, ordinateur portable ; jusqu’à 80 Go, station de travail avec un GPU ; au-delà, serveur. Le nombre de GPU est arrondi à l’entier supérieur sur l’hypothèse de 80 Go de mémoire par carte. Il s’agit d’un minimum théorique : la précision des poids, la quantification, la longueur du contexte, la mise en lots et le logiciel d’inférence peuvent augmenter ou réduire le besoin réel.",
+                "types": {
+                    "laptop": {
+                        "detail": "Aucune carte graphique nécessaire",
+                        "name": "Ordinateur",
+                        "title": "Fonctionne sur un ordinateur portable"
+                    },
+                    "server": {
+                        "detail": "Serveur multi-GPU",
+                        "name": "Serveur",
+                        "title": "Nécessite {count} cartes graphiques"
+                    },
+                    "smartphone": {
+                        "detail": "Aucune carte graphique nécessaire",
+                        "name": "Smartphone",
+                        "title": "Fonctionne sur un smartphone"
+                    },
+                    "workstation": {
+                        "detail": "Station de travail puissante (1 GPU)",
+                        "name": "Station",
+                        "title": "Nécessite une carte graphique"
+                    }
+                }
+            },
+            "title": "Impact environnemental"
+        },
+        "infosSources": {
+            "title": "Plus d’informations et sources"
+        },
+        "knowledge": {
+            "badge": "Données jusqu’en {date}",
+            "tooltip": "Date jusqu’à laquelle les informations utilisées pour entraîner le modèle sont supposées être couvertes."
+        },
+        "licenses": {
+            "type": {
+                "openSource": "Open source",
+                "proprietary": "Propriétaire",
+                "semiOpen": "Semi-ouvert"
+            }
+        },
+        "list": {
+            "filters": {
+                "archived": {
+                    "checkedLabel": "Visibles",
+                    "label": "Modèles archivés",
+                    "uncheckedLabel": "Non visibles"
+                },
+                "editor": {
+                    "all": "Tous les éditeurs",
+                    "legend": "Éditeur"
+                },
+                "license": {
+                    "all": "Toutes les licences",
+                    "legend": "Licence d'utilisation"
+                },
+                "reset": "Effacer tous les filtres",
+                "size": {
+                    "all": "Toutes les tailles",
+                    "legend": "Taille (paramètres)"
+                },
+                "statuses": {
+                    "all": "Tous les status",
+                    "legend": "Status"
+                }
+            },
+            "model": "modèle",
+            "models": "modèles",
+            "noresults": "Aucun modèle ne correspond à vos critères de recherche.",
+            "triage": {
+                "label": "Trier par",
+                "options": {
+                    "date-desc": "Date de sortie (du plus au moins récent)",
+                    "name-asc": "Nom du modèle (A à Z)",
+                    "org-asc": "Éditeur (A à Z)",
+                    "params-asc": "Taille (du plus petit au plus grand)"
+                }
+            }
+        },
+        "names": {
+            "a": "Modèle A",
+            "b": "Modèle B"
+        },
+        "opennessSovereignty": {
+            "fields": {
+                "commercial_use": "Usage commercial",
+                "eu_hostable": "Hébergeable dans l’UE",
+                "license_name": "Licence",
+                "license_type": "Type",
+                "origin_country": "Pays d’origine de l’éditeur",
+                "public_training_code": "Code d’entraînement",
+                "public_training_data": "Jeux de données d’entraînement",
+                "public_weights": "Poids du modèle",
+                "reuse": "Réutilisation des sorties"
+            },
+            "title": "Niveau d’ouverture"
+        },
+        "openWeight": {
+            "tooltips": {
+                "openSource": "Le corpus, le code d'entraînement, et les poids de ce modèle (c’est-à-dire les paramètres appris pendant son entraînement) sont entièrement téléchargeables et modifiables par le public, lui permettant de faire fonctionner et modifier le modèle sur son propre matériel. Qu'un modèle soit « open source » est plus contraignant qu'« open weights », notamment à cause de la nécessité de transparence du corpus d'entraînement, et rares sont les modèles qui sont considérés « open source ».",
+                "openWeight": "Modèle dit « open weights » dont les poids, c’est-à-dire les paramètres appris pendant son entraînement, sont téléchargeables par le public, lui permettant de faire fonctionner le modèle sur son propre matériel. Qu'un modèle soit « open source » est plus contraignant (principalement par rapport à la transparence du corpus d'entraînement), et rares sont les modèles qui sont considérés « open source »."
+            }
+        },
+        "performance": {
+            "fields": {
+                "score": {
+                    "detail": "(confiance ±{count})",
+                    "title": "Score Bradley-Terry"
+                },
+                "votes": {
+                    "title": "Votes enregistrés"
+                }
+            },
+            "group": "Groupe {count}",
+            "level": "Niveau {count} sur {total}",
+            "rankFromTo": "Rang {min} à {max}",
+            "rankSingle": "Rang {min}",
+            "title": "Niveau de performance par rapport aux autres modèles",
+            "tooltip": "Le niveau de performance est calculé à partir des votes {platformName} avec un score Bradley-Terry. Il reflète la préférence observée des utilisateurs, pas une vérité absolue sur le modèle."
+        },
+        "release": "Sortie {date}",
+        "size": {
+            "count": {
+                "L": "100 à 400 mds",
+                "M": "60 à 100 mds",
+                "S": "15 à 60 mds",
+                "XL": ">400 mds",
+                "XS": "<15 mds"
+            },
+            "estimated": "Taille estimée {size}",
+            "title": "Taille {size}"
+        },
+        "technical": {
+            "title": "Caractéristiques techniques"
+        }
+    },
+    "modes": {
+        "big-vs-small": {
+            "altLabel": "David contre Goliath",
+            "description": "Un petit modèle contre un grand, les deux tirés au hasard",
+            "label": "David contre Goliath",
+            "title": "Mode David contre Goliath"
+        },
+        "custom": {
+            "altLabel": "Sélection manuelle",
+            "description": "Reconnaîtrez-vous les deux modèles que vous avez choisis ?",
+            "label": "Sélection manuelle",
+            "title": "Mode Sélection"
+        },
+        "random": {
+            "altLabel": "Modèles aléatoires",
+            "description": "Deux modèles choisis au hasard parmi toute la liste",
+            "label": "Aléatoire",
+            "title": "Mode Aléatoire"
+        },
+        "reasoning": {
+            "altLabel": "Modèles avec raisonnement",
+            "description": "Deux modèles tirés au hasard parmi ceux optimisés pour des tâches complexes",
+            "label": "Raisonnement",
+            "title": "Mode Raisonnement"
+        },
+        "small-models": {
+            "altLabel": "Modèles frugaux",
+            "description": "Deux modèles tirés au hasard parmi ceux de plus petite taille",
+            "label": "Frugal",
+            "title": "Mode Frugal"
+        }
+    },
+    "ranking": {
+        "energy": {
+            "desc": "Ce graphique représente pour chaque modèle le score de satisfaction (score Bradley Terry) en fonction de l’estimation de la consommation énergétique moyenne pour 1000 tokens. La consommation énergétique est estimée à partir de la méthodologie <a {linkProps}>Ecologits</a> et repose sur la prise en compte de deux paramètres: la <strong>taille</strong> des modèles (nombre de paramètres) et leur <strong>architecture</strong>. Pour les <strong>modèles propriétaires</strong>, ces informations ne sont pas ou que partiellement communiquées. C’est pourquoi ils sont exclus du graphique ci-dessous.",
+            "tabLabel": "Focus énergie",
+            "title": "Les modèles les plus appréciés sont-ils économes en énergie ?",
+            "views": {
+                "graph": {
+                    "desc": "Sélectionnez un modèle pour connaitre son score Bradley-Terry (BT) et sa consommation énergétique",
+                    "legends": {
+                        "arch": "Architecture du modèle",
+                        "size": "Filtre par taille",
+                        "sizeSub": "(milliards de paramètres)"
+                    },
+                    "tabLabel": "Vue graphique",
+                    "title": "Score de satisfaction Bradley-Terry (BT) VS Consommation moyenne pour 1000 tokens",
+                    "tooltip": {
+                        "active_params": "Paramètres actifs (mds)",
+                        "arch": "Architecture",
+                        "consumption": "Conso. moyenne (mWh)",
+                        "elo": "Score BT",
+                        "params": "Paramètres (mds)"
+                    },
+                    "xLabel": "Consommation moyenne pour 1000 tokens (mWh)",
+                    "yLabel": "Score Bradley-Terry (BT)"
+                },
+                "methodo": {
+                    "1": {
+                        "list": {
+                            "1": "<strong>Plus un modèle est situé en haut du graphique</strong>, plus son score de satisfaction Bradley-Terry est élevé. <strong>Plus un modèle est situé sur la gauche du graphique</strong>, moins il consomme d’énergie par rapport aux autres modèles.",
+                            "2": "<strong>En haut à gauche</strong> se trouvent les modèles qui plaisent et qui consomment peu d’énergie par rapport aux autres modèles.",
+                            "3": "Au-delà de la taille, <strong>l’architecture</strong> a un impact sur la consommation énergétique moyenne des modèles: par exemple, à gabarit similaire, le modèle Llama 3 405B (architecture dense, 405 milliards de paramètres) consomme 10 fois plus d’énergie en moyenne que le modèle GLM 4.5 (architecture MOE, 355 milliards de paramètres et 32 milliards de paramètres actifs)."
+                        },
+                        "subTitle": "Exemples de lecture du graphique",
+                        "title": "Comment trouver le bon équilibre entre performance perçue et sobriété énergétique ?"
+                    },
+                    "2": {
+                        "descs": {
+                            "1": "L’estimation de la consommation énergétique pour l’inférence des modèles repose sur la méthodologie Ecologits qui prend en compte la taille et l’architecture des modèles. Or ces informations ne sont pas rendues publiques par les éditeurs de modèles pour les modèles dits « propriétaires ».",
+                            "2": "Nous prenons ainsi le parti de ne pas intégrer les modèles propriétaires au graphique tant que les informations contribuant au calcul de consommation énergétique ne sont pas transparentes."
+                        },
+                        "title": "Pourquoi les modèles propriétaires ne sont-ils pas affichés sur le graphique ?"
+                    },
+                    "3": {
+                        "descs": {
+                            "1": "{platformName} utilise la méthodologie développée par <a {ecoLinkProps}><strong>Ecologits</strong></a> (<a {genaiLinkProps}><strong>GenAI Impact</strong></a>) pour fournir une estimation du bilan énergétique lié à l’inférence des modèles d’IA générative conversationnelle. Cette estimation permet aux utilisateurs de comparer l'impact environnemental de différents modèles d'IA pour une même requête. Cette transparence est essentielle pour encourager le développement et l'adoption de modèles d'IA plus éco-responsables.",
+                            "2": "Ecologits applique les principes de l'analyse du cycle de vie (ACV) conformément à la norme ISO 14044 en se concentrant pour le moment sur l'impact de l'inférence (c'est-à-dire l'utilisation des modèles pour répondre aux requêtes) et de la <strong>fabrication des cartes graphiques</strong> (extraction des ressources, fabrication et transport).",
+                            "3": "La consommation électrique du modèle est estimée en tenant compte de divers paramètres tels que la taille et l’architecture du modèle d'IA utilisé, la localisation des serveurs où sont déployés les modèles et le nombre de tokens de sortie. Le calcul de l’indicateur de potentiel de réchauffement climatique exprimé en équivalent CO2 est dérivé de la mesure de consommation électrique du modèle.",
+                            "4": "Il est important de noter que les méthodologies d'évaluation de l'impact environnemental de l'IA sont encore en développement."
+                        },
+                        "title": "Comment est calculé l’impact énergétique des modèles ?"
+                    }
+                },
+                "table": {
+                    "title": "Données du graphique en tableau"
+                }
+            }
+        },
+        "methodo": {
+            "desc": {
+                "1": "Depuis 2024, des milliers d’utilisateurs ont utilisé {platformName} pour comparer les réponses de différents modèles, générant ainsi des centaines de milliers de votes. Compter simplement le nombre de victoires ne suffit pas pour établir un classement. Un système équitable doit être statistiquement robuste, s’ajuster après chaque confrontation, et refléter réellement la valeur des performances obtenues.",
+                "2": "C’est dans cette perspective qu’a été mis en place un <strong>classement basé sur le modèle Bradley-Terry</strong>, élaboré en collaboration avec les <strong>équipes du Pôle d’Expertise de la Régulation numérique (<a {perenLinkProps}>PEReN</a>)</strong>, à partir de l’ensemble des votes et réactions collectés sur la plateforme. Pour aller plus loin, consultez notre <a {notebookLinkProps}>carnet méthodologique</a>."
+            },
+            "impacts": {
+                "elo": {
+                    "desc": {
+                        "1": "Le modèle <strong>Bradley-Terry</strong> transforme un ensemble de comparaisons locales et potentiellement incomplètes en un système de classement global cohérent et statistiquement robuste, là où le taux de victoire empirique reste limité aux observations directes."
+                    },
+                    "title": "10 premiers modèles du classement selon de taux de victoire estimé avec le modèle Bradley-Terry"
+                },
+                "title": "Impact du choix de la méthode sur le classement des modèles",
+                "winrate": {
+                    "desc": {
+                        "1": "En se basant uniquement sur le <strong>taux de victoire moyen</strong>, on peut obtenir un classement global, mais ce calcul suppose que chaque modèle ait joué contre tous les autres.",
+                        "2": "Cette méthode n'est pas idéale car elle nécessite les données de toutes les combinaisons de modèles et ès qu’on augmente le nombre de modèles, cela devient vite coûteux et lourd à maintenir."
+                    },
+                    "title": "10 premiers modèles du classement selon de taux de victoire « empirique »"
+                }
+            },
+            "methods": {
+                "cons": "Problèmes principaux",
+                "def": "",
+                "elo": {
+                    "def": "<strong>Définition</strong> : Système de classement où le gain ou la perte de points dépend du résultat (victoire/défaite/nul <strong>et</strong> du niveau estimé de l’adversaire : si un modèle plus faible bat un modèle plus fort, sa progression dans le classement est plus importante.",
+                    "list": {
+                        "1": "<strong>Modèle probabiliste</strong> : on peut estimer le résultat probable de n'importe quelle confrontation, même entre des modèles n'ayant jamais été directement comparés.",
+                        "2": "<strong>Prise en compte de la difficulté des matchs</strong> : les scores estimés à partir du modèle Bradley Terry tiennent compte du niveau des adversaires rencontrés, permettant une comparaison équitable entre modèles.",
+                        "3": "<strong>Meilleure gestion de l’incertitude</strong> : l'intervalle de confiance intègre l'ensemble du réseau de comparaisons. Cela permet une estimation plus précise de l'incertitude, surtout pour les modèles ayant peu de confrontations directes mais beaucoup d'adversaires communs."
+                    },
+                    "title": "Classement Bradley-Terry (BT)"
+                },
+                "pros": "Avantages",
+                "title": "Deux manières de classer les modèles",
+                "winrate": {
+                    "def": "<strong>Définition</strong> : Système de classement empirique des modèles reposant sur le pourcentage de parties gagnées par un modèle contre tous les autres modèles.",
+                    "list": {
+                        "1": "<strong>Biais du nombre de parties</strong> : un modèle ayant remporté trois victoires sur trois “matchs” affiche un taux de victoire de 100 %, mais ce score est peu significatif étant basé sur très peu de données.",
+                        "2": "<strong>Aucune prise en compte de la difficulté des matchs</strong> : battre un modèle “débutant” ou un “expert” compte pareil. Les taux de victoire ne sont pas équitables puisqu’ils ne tiennent pas compte de la difficulté des matchs.",
+                        "3": "<strong>Stagnation</strong> : à long terme, beaucoup de bons modèles finissent autour de 50 % de taux de victoire car ils affrontent des modèles de leur niveau, ce qui rend le classement peu discriminant."
+                    },
+                    "title": "Classement par taux de victoire"
+                }
+            },
+            "personal": {
+                "choices": {
+                    "both_bad": "<strong>Aucun des deux ne convient</strong> : 0 point pour chacun des deux modèles — l’insatisfaction compte, pas seulement la préférence relative.",
+                    "both_good": "<strong>Les deux se valent</strong> : 0,5 point pour chacun des deux modèles.",
+                    "idk": "<strong>Je ne sais pas</strong> : le vote est exclu, il ne compte pour aucun des deux modèles."
+                },
+                "desc": {
+                    "1": "Bradley-Terry a besoin d’un réseau de comparaisons connecté : vos votes ne forment qu’un nuage de paires isolées, la méthode ne s’applique donc pas à l’échelle d’un compte. Le score personnel est un <strong>taux de victoire lissé</strong> :",
+                    "2": "<strong>points</strong> est votre total de points sur le modèle, <strong>battles</strong> le nombre de comparaisons scorées le concernant, et <strong>m</strong> votre moyenne de points par comparaison, tous modèles confondus. Le lissage rapproche un modèle peu comparé de cette moyenne : une seule victoire affiche donc 0,667 et non 100 %, et un modèle comparé vingt fois dépasse un modèle comparé une fois à taux comparable."
+                },
+                "title": "Le classement personnel : comment est calculé votre score"
+            },
+            "style": {
+                "coef": {
+                    "footnote": "La longueur et les marqueurs markdown sont corrélés : ces coefficients se lisent conjointement, et non comme des effets indépendants pris isolément.",
+                    "hint": "Coefficients de la régression estimés sur l’ensemble des votes. Une valeur positive indique que cet axe de présentation est associé à une probabilité de victoire plus élevée une fois la force du modèle prise en compte. C’est précisément la part que le contrôle du style retire du classement.",
+                    "title": "Effet mesuré de la présentation"
+                },
+                "desc": {
+                    "1": "Un modèle peut grimper dans le classement simplement en répondant plus longuement ou avec une mise en forme plus riche (titres, gras, listes), sans être plus pertinent sur le fond. Le contrôle du style, inspiré du « Style Control » de LMArena, retire cet effet : une régression logistique sépare, dans chaque vote, ce qui revient à la force du modèle de ce qui revient à la présentation.",
+                    "2": "Le score affiché devient alors un Elo « débiaisé du style » : le classement que l’on obtiendrait si les deux réponses comparées étaient mises en forme de la même manière. Le contrôle du style est activé par défaut ; le bouton « Contrôle du style » en haut du tableau permet de revenir au classement Bradley-Terry brut pour comparer."
+                },
+                "features": {
+                    "length": "Longueur de la réponse",
+                    "md_bold": "Texte en gras",
+                    "md_headers": "Titres",
+                    "md_lists": "Listes à puces"
+                },
+                "title": "Contrôle du style : neutraliser l’effet de la présentation"
+            },
+            "tabLabel": "Méthodologie",
+            "title": "Comment choisir la méthode de classement des modèles ?"
+        },
+        "no_data": "Le classement est actuellement indisponible ou en cours de calcul.",
+        "notEnoughVotes": "Aucun modèle n’a encore reçu assez de votes pour être classé. Un modèle apparaît dès que son rang est assez sûr : continuez à voter !",
+        "personal": {
+            "cols": {
+                "battles": "Comparaisons",
+                "general_rank": "Rang général",
+                "record": "Bilan (V-É-D)",
+                "score": "Mon score"
+            },
+            "loading": "Chargement de votre classement…",
+            "noVotes": "Votez lors d’une comparaison pour commencer votre classement.",
+            "signedOut": "Connectez-vous pour voir le classement issu de vos votes.",
+            "title": "Mon classement",
+            "tooltips": {
+                "battles": "Nombre de comparaisons où vous avez voté sur ce modèle. « Je ne sais pas » ne compte pas.",
+                "general_rank": "Position du modèle dans le classement général, établi à partir des votes de tous les utilisateurs.",
+                "rank": "Position du modèle dans votre classement, du score le plus élevé au plus bas. À score égal, le rang général départage.",
+                "record": "Victoires, défaites et égalités du modèle dans vos votes. « Les deux sont bonnes » compte comme une égalité, « les deux sont mauvaises » comme une défaite pour chacun.",
+                "score": "Un modèle comparé peu de fois est rapproché de votre moyenne personnelle plutôt que d’afficher un score extrême."
+            },
+            "totalModels": "Modèles classés :",
+            "totalVotes": "Mes votes :"
+        },
+        "preferences": {
+            "desc": "Quand vous votez, vous pouvez qualifier votre préférence selon différentes catégories positives et négatives. Comparez leur répartition d’un modèle à l’autre.",
+            "modal": {
+                "cta": "Qu’est-ce qu’une préférence ?",
+                "title": "Préférences positives et négatives"
+            },
+            "tabLabel": "Focus préférences",
+            "table": {
+                "cols": {
+                    "clear_formatting": "Mise en forme<br> claire",
+                    "complete": "Complète",
+                    "creative": "Créative",
+                    "incorrect": "Incorrecte",
+                    "instructions_not_followed": "Instructions<br> non suivies",
+                    "n_match": "Total matchs",
+                    "name": "Modèle",
+                    "positive_prefs_ratio": "Répartition des préférences",
+                    "superficial": "Superficielle",
+                    "total_negative_prefs": "Total préférences<br> Négatives",
+                    "total_positive_prefs": "Total préférences<br> Positives",
+                    "useful": "Utile"
+                },
+                "percentLabel": "Préférences en pourcentage",
+                "tooltips": {
+                    "positive_prefs_ratio": "Lors du vote, des badges permettaient de préciser les raisons de votre préférence. Cette colonne présente la répartition en pourcentage de ces badges (positifs ou négatifs) pour l'ensemble des votes."
+                }
+            },
+            "title": "Comment se répartissent les préférences des utilisateurs ?"
+        },
+        "price": {
+            "desc": "Ce graphique met en regard le score de satisfaction (score Bradley-Terry) de chaque modèle et son prix de sortie, c'est-à-dire le prix indicatif d'un million de jetons générés via l'API du fournisseur. Les prix sont ceux affichés publiquement par les fournisseurs, convertis en {currency}. Tous les modèles classés y figurent, y compris les modèles propriétaires. La ligne relie les modèles qu'aucun autre ne bat à la fois sur le score et sur le prix : c'est la frontière de Pareto.",
+            "tabLabel": "Focus prix",
+            "title": "Les modèles les plus appréciés sont-ils les plus chers ?",
+            "views": {
+                "graph": {
+                    "desc": "Survolez un modèle pour connaître son score Bradley-Terry (BT) et ses prix d'entrée et de sortie",
+                    "legends": {
+                        "frontier": "Frontière de Pareto",
+                        "frontierOnly": "Afficher seulement la frontière",
+                        "frontierSub": "Modèles qu'aucun autre ne bat à la fois sur le score et sur le prix",
+                        "kinds": {
+                            "open-source": "Open source",
+                            "open-weights": "Poids ouverts",
+                            "proprietary": "Propriétaire"
+                        },
+                        "license": "Filtrer par licence"
+                    },
+                    "title": "Score de satisfaction Bradley-Terry (BT) VS prix de sortie par million de jetons",
+                    "tooltip": {
+                        "elo": "Score BT",
+                        "license": "Licence",
+                        "onFrontier": "Sur la frontière de Pareto",
+                        "price_in": "Prix d'entrée (1M jetons)",
+                        "price_out": "Prix de sortie (1M jetons)"
+                    },
+                    "xLabel": "Prix de sortie par million de jetons ({currency}, échelle logarithmique)",
+                    "yLabel": "Score Bradley-Terry (BT)"
+                },
+                "methodo": {
+                    "list": {
+                        "1": "<strong>Plus un modèle est haut</strong> sur le graphique, plus son score de satisfaction Bradley-Terry est élevé. <strong>Plus il est à droite</strong>, moins il coûte cher par jeton généré.",
+                        "2": "<strong>En haut à droite</strong> se trouvent les modèles à la fois appréciés et bon marché. La ligne relie ceux qu'aucun autre modèle ne bat sur les deux critères à la fois : pour chacun d'eux, obtenir un meilleur score oblige à payer plus cher.",
+                        "3": "L'axe des prix est <strong>logarithmique</strong> : un même écart sur l'axe correspond au même rapport de prix, de 0,1 à 1 comme de 1 à 10. Les prix sont indicatifs, relevés sur les grilles publiques des fournisseurs, et ne tiennent pas compte des remises, du cache ou des offres de traitement par lots."
+                    },
+                    "subTitle": "Exemples de lecture du graphique",
+                    "title": "Comment trouver le bon équilibre entre performance perçue et prix ?"
+                },
+                "table": {
+                    "title": "Tableau des prix par modèle"
+                }
+            }
+        },
+        "ranking": {
+            "desc": "Ce classement est calculé à partir des votes recueillis lors de <strong>comparaisons à l’aveugle</strong>, selon le modèle statistique <strong>Bradley-Terry</strong>. Il reflète des <strong>préférences subjectives</strong> et doit être interprété avec prudence : il ne mesure ni la factualité des réponses ni la performance globale des modèles.",
+            "tabLabel": "Classement"
+        },
+        "styleControl": {
+            "help": "Retire l’effet de la mise en forme (longueur de la réponse, titres, gras, listes) du classement, pour que le score reflète le fond plutôt que la présentation. Activé par défaut. Détails dans l’onglet Méthodologie.",
+            "label": "Contrôle du style"
+        },
+        "table": {
+            "data": {
+                "billions": "{count} Mds",
+                "cols": {
+                    "arch": "Architecture",
+                    "consumption": "Conso. moyenne<br>(1000 tokens)",
+                    "elo": "Score de<br> satisfaction BT",
+                    "license": "Licence",
+                    "n_match": "Total votes",
+                    "name": "Modèle",
+                    "organisation": "Organisation",
+                    "price_in": "Prix d’entrée<br>(1M tokens)",
+                    "price_out": "Prix de sortie<br>(1M tokens)",
+                    "rank": "Classe",
+                    "rank_number": "Rang",
+                    "release": "Date sortie",
+                    "size": "Taille<br>(paramètres)",
+                    "trust_range": "Confiance (±)"
+                },
+                "estimation": "(estimation)",
+                "tooltips": {
+                    "arch": "L'architecture d'un modèle LLM désigne les principes de conception qui définissent comment les composants d'un réseau de neurones sont agencés et interagissent pour transformer les données d'entrée en sorties prédictives, incluant le mode d'activation des paramètres (dense vs. sparse), la spécialisation des composants et les mécanismes de traitement de l'information (transformers, réseaux convolutifs, architectures hybrides).",
+                    "consumption": "Mesurée en milliwattheures, l’énergie consommée représente l'électricité utilisée par le modèle pour traiter une requête et générer la réponse correspondante. La consommation énergétique des modèles dépend de leur taille et de leur architecture. Nous prenons le parti d’afficher en grisé non analysés (N/A) les modèles propriétaires pour lesquels nous ne disposons pas d’information transparente sur la taille et l’architecture.",
+                    "elo": "Score statistique estimé selon le modèle Bradley-Terry reflétant la probabilité qu'un modèle soit préféré à un autre. Ce score est calculé à partir de l'ensemble des votes et réactions des utilisateurs. Pour en savoir plus, rendez-vous sur l’onglet méthodologie.",
+                    "price": "Prix indicatif d’utilisation via API pour un million de jetons, converti dans la devise affichée. L’entrée correspond à la requête envoyée, la sortie à la réponse générée.",
+                    "rank": "Classe de modèles que les votes ne permettent pas de départager. Chaque modèle d'une classe est statistiquement indiscernable du premier de sa classe. Les classes sont calculées sur l'ensemble du classement : elles ne changent pas quand vous filtrez ou triez le tableau. La dernière classe regroupe tous les modèles situés en dessous.",
+                    "size": "Taille du modèle en milliards de paramètres, catégorisée selon cinq classes. Pour les modèles propriétaires, cette taille n’est pas communiquée.",
+                    "trust_range": "Intervalle indiquant la fiabilité du rang de classement : plus l'intervalle est étroit, plus l'estimation du rang est fiable. Il y a 95% de chances que le vrai rang du modèle soit dans cette plage."
+                }
+            },
+            "lastUpdate": "Mise à jour le {date}",
+            "showRanks": {
+                "help": "Affiche la position exacte de chaque modèle, de 1 au dernier. Deux rangs voisins ne sont presque jamais départageables : l'écart entre le 4e et le 7e tient le plus souvent au hasard des votes. Les classes disent ce que les données permettent d'affirmer.",
+                "label": "Afficher les rangs"
+            },
+            "totalModels": "Total modèles :",
+            "totalVotes": "Total votes :"
+        },
+        "title": "Des votes… au classement des modèles",
+        "views": {
+            "general": "Général",
+            "legend": "Vue du classement",
+            "personal": "Mon classement"
+        }
+    },
+    "reveal": {
+        "feedback": {
+            "description": "Faites découvrir {platformName} en partageant les modèles d’IA avec lesquels vous avez échangé ! Seuls les noms et l’impact énergétique de la discussion seront visibles via ce lien, sans accès aux messages échangés.",
+            "example": "Exemple de partage de résultat",
+            "moreOnVotes": "En savoir plus sur les votes",
+            "shareResult": "Partager votre résultat"
+        },
+        "impacts": {
+            "cost": {
+                "comparison": {
+                    "less": "≈ {factor}× moins cher que l’autre modèle",
+                    "more": "≈ {factor}× plus cher que l’autre modèle",
+                    "similar": "Coût comparable à l’autre modèle",
+                    "unavailable": "Coût non comparable avec l’autre modèle"
+                },
+                "sub": "Tarif standard (entrée et sortie)",
+                "title": "Coût",
+                "tooltip": "Estimation fondée sur le tarif public d’entrée et de sortie du modèle. Pour les scénarios, elle suppose une exécution sans cache et peut varier selon le fournisseur."
+            },
+            "energy": {
+                "comparison": {
+                    "less": "≈ {factor}× moins d’énergie que l’autre modèle",
+                    "more": "≈ {factor}× plus d’énergie que l’autre modèle",
+                    "similar": "Énergie comparable à l’autre modèle",
+                    "unavailable": "Énergie non comparable avec l’autre modèle"
+                },
+                "conso": "{count}<span {midProps}>mWh</span>",
+                "conso_estimated": "{count}<span {midProps}>mWh</span><span {smallProps}> estimé</span>",
+                "equivalences": {
+                    "intro": "Cette énergie correspond environ à :",
+                    "led": {
+                        "description": "d’éclairage avec une ampoule LED de 6 W",
+                        "title": "Ampoule LED",
+                        "tooltip": "Comparaison avec une ampoule LED de 6 W allumée en continu. Une consommation de 6 Wh correspond à une heure d’éclairage."
+                    },
+                    "phone": {
+                        "description": "de la capacité d’une batterie de smartphone de référence",
+                        "title": "Batterie de smartphone",
+                        "tooltip": "Comparaison avec la capacité d’une batterie de smartphone de référence (15 Wh). 100 % correspond à une recharge complète."
+                    },
+                    "tabs": {
+                        "label": "Choisir une équivalence énergétique"
+                    },
+                    "tooltip": "Équivalences indicatives : une heure de streaming vidéo (80 Wh), une ampoule LED de référence de 6 W et une batterie de smartphone de référence de 15 Wh.",
+                    "unavailable": "Aucune équivalence n’est disponible pour cette estimation.",
+                    "video": {
+                        "description": "de streaming vidéo (référence : 80 Wh par heure)",
+                        "title": "Streaming vidéo",
+                        "tooltip": "Comparaison avec une heure de streaming vidéo, estimée à 80 Wh. Cette référence inclut la lecture vidéo et les équipements associés ; elle reste indicative."
+                    }
+                },
+                "estimate": "Pour les scénarios, cette estimation porte sur la génération de la réponse. Elle ne modélise ni le contexte envoyé au modèle ni les effets éventuels du cache.",
+                "title": "Énergie estimée",
+                "tooltip": "Exprimée en milliwattheures, cette estimation représente l'électricité mobilisée par le modèle pour générer une réponse. Plus un modèle est grand (en milliards de paramètres), plus il faut d'énergie pour produire un token."
+            },
+            "how": {
+                "tabs": {
+                    "equivalences": "Équivalences",
+                    "explanation": "Explication",
+                    "label": "Détail de la consommation"
+                },
+                "title": "Pourquoi cette consommation ?"
+            },
+            "summary": {
+                "classification": {
+                    "dense": "<strong>{model}</strong> est un modèle <strong>{size}</strong> à l’architecture <strong>dense</strong> : il mobilise l’ensemble de ses paramètres à chaque réponse. Sa classe énergétique est <strong>{energyClass}</strong>.",
+                    "matformer": "<strong>{model}</strong> est un modèle <strong>{size}</strong> à l’architecture <strong>Matformer</strong> : il adapte la part de ses paramètres mobilisée à chaque réponse. Sa classe énergétique est <strong>{energyClass}</strong>.",
+                    "moe": "<strong>{model}</strong> est un modèle <strong>{size}</strong> à l’architecture <strong>par mélange d’experts</strong> : il n’active qu’une partie de ses paramètres à chaque réponse (environ <strong>{activeParams} milliards</strong> sur <strong>{params} milliards</strong>). Sa classe énergétique est <strong>{energyClass}</strong>.",
+                    "moeProprietary": "<strong>{model}</strong> est un modèle propriétaire <strong>{size}</strong> à l’architecture <strong>par mélange d’experts</strong> : il n’active qu’une partie de ses paramètres à chaque réponse. Sa classe énergétique est <strong>{energyClass}</strong>.",
+                    "unknown": "<strong>{model}</strong> est un modèle <strong>{size}</strong> dont l’architecture n’est pas communiquée. Compte tenu de sa taille, sa classe énergétique est <strong>{energyClass}</strong>.",
+                    "unknownProprietary": "<strong>{model}</strong> est un modèle propriétaire <strong>{size}</strong> dont l’architecture n’est pas communiquée. Compte tenu de sa taille, sa classe énergétique est <strong>{energyClass}</strong>."
+                },
+                "comparison": {
+                    "comparable": "une consommation <strong>comparable</strong> à celle de <strong>{otherModel}</strong>",
+                    "multipleLess": "une consommation près de <strong>{count} fois moins élevée</strong> que celle de <strong>{otherModel}</strong>",
+                    "multipleMore": "une consommation près de <strong>{count} fois plus élevée</strong> que celle de <strong>{otherModel}</strong>",
+                    "percentageLess": "une consommation <strong>{percentage} % moins élevée</strong> que celle de <strong>{otherModel}</strong>",
+                    "percentageMore": "une consommation <strong>{percentage} % plus élevée</strong> que celle de <strong>{otherModel}</strong>",
+                    "unavailable": "une consommation qui ne peut pas être comparée à celle de <strong>{otherModel}</strong>"
+                },
+                "consumption": "Pour {usage}, la génération de <strong>{tokens} jetons</strong> a consommé environ <strong>{energy} mWh</strong>, soit {comparison}.",
+                "size": {
+                    "estimatedL": "de grande taille (estimée)",
+                    "estimatedM": "de taille moyenne (estimée)",
+                    "estimatedS": "de petite taille (estimée)",
+                    "estimatedXl": "de très grande taille (estimée)",
+                    "estimatedXs": "de très petite taille (estimée)",
+                    "l": "de grande taille",
+                    "m": "de taille moyenne",
+                    "s": "de petite taille",
+                    "xl": "de très grande taille",
+                    "xs": "de très petite taille"
+                }
+            },
+            "title": "Bilan",
+            "tokens": {
+                "max": "Contexte max : {count}k jetons",
+                "title": "Texte généré",
+                "tooltip": "L’IA analyse et génère des phrases à partir de mots ou de parties de mots d’à peu près quatre lettres, cette unité de texte est appelée token (« jeton »). Plus un texte est long, plus le nombre de tokens est grand.",
+                "used": "{count}<span {midProps}> jetons</span><span {smallProps}> utilisés</span>"
+            },
+            "usage": {
+                "assumption": "Hypothèse : exécution sans cache. Les éventuelles réductions tarifaires ou énergétiques liées au cache ne sont pas incluses.",
+                "changeLabel": "Changer le scénario de l’estimation",
+                "coding": "une session de code agentique (500 k jetons)",
+                "descriptionCoding": "Exemple de session de code agentique (500 k jetons). Sa taille peut beaucoup varier selon le dépôt et les tâches.",
+                "descriptionDiscussion": "Estimation calculée à partir de cette discussion.",
+                "descriptionDocument": "Projection si ce modèle devait générer un document de 5 pages.",
+                "descriptionResearch": "Projection pour une recherche approfondie : recherches web, lecture de sources et synthèse citée.",
+                "discussion": "cette discussion",
+                "document": "un document de 5 pages",
+                "headingCoding": "pour une session de code agentique",
+                "headingDiscussion": "de cette discussion",
+                "headingDocument": "Bilan pour un document de 5 pages",
+                "headingResearch": "pour une recherche approfondie",
+                "label": "Usage à estimer",
+                "menuCoding": "Session de code agentique",
+                "menuDiscussion": "Cette discussion",
+                "menuDocument": "Document · 5 pages",
+                "menuResearch": "Recherche approfondie",
+                "research": "une recherche approfondie (310 k jetons)"
+            }
+        },
+        "thanks": {
+            "cta": "Accéder au classement",
+            "desc": "Découvrez comment votre préférence se situe par rapport au classement général des modèles dans compar:IA.",
+            "graphAlt": "Aperçu du graphique représentant le score et la consommation d'électricité des modèles",
+            "rankingAlt": "Aperçu du classement sous forme de tableau",
+            "title": "Merci pour votre contribution !"
+        }
+    },
+    "seo": {
+        "desc": "{platformName} est un outil permettant de comparer à l’aveugle différents modèles d'IA conversationnelle pour sensibiliser aux enjeux de l'IA générative (biais, impact environmental) et constituer des jeux de données de préférence en français.",
+        "title": "{platformName}, le comparateur d'IA conversationnelles",
+        "titles": {
+            "accessibilite": "Déclaration d’accessibilité",
+            "arene": "Discussion",
+            "donnees-personnelles": "Politique de confidentialité",
+            "invite": "Invitation",
+            "login": "Connexion",
+            "mentions-legales": "Mentions légales",
+            "modalites": "Modalités d’utilisation",
+            "modeles": "Liste des modèles",
+            "ranking": "Classement",
+            "rgesn": "Déclaration d’écoconception",
+            "settings": "Paramètres"
+        }
+    },
+    "statistics": {
+        "activity": {
+            "conversationsLabel": "Conversations",
+            "dateLabel": "Date",
+            "estimateLabel": "estimation pour la période en cours",
+            "ongoingLabel": "en cours",
+            "promptsLabel": "Prompts envoyés",
+            "sectionTitle": "Activité",
+            "tableLabel": "Consulter les données sous forme de tableau",
+            "title": "Activité de la plateforme"
+        },
+        "counterLink": "Consulter les statistiques de la plateforme",
+        "eyebrow": "Statistiques",
+        "filters": {
+            "allTime": "Depuis le début",
+            "label": "Période",
+            "ninetyDays": "90 jours",
+            "sevenDays": "7 jours",
+            "thirtyDays": "30 jours"
+        },
+        "intro": "Découvrez l’activité de la plateforme.",
+        "metrics": {
+            "conversations": {
+                "label": "Conversations réalisées"
+            },
+            "models": {
+                "label": "Modèles testés"
+            },
+            "prompts": {
+                "label": "Prompts envoyés"
+            },
+            "votes": {
+                "label": "Votes exprimés"
+            }
+        },
+        "overview": "Vue d’ensemble",
+        "title": "Statistiques de la plateforme"
+    },
+    "vote": {
+        "choices": {
+            "negative": {
+                "comment": "Précisez ce que vous n’avez pas aimé…",
+                "incorrect": "Incorrecte",
+                "instructions_not_followed": "Instructions non suivies",
+                "question": "Pourquoi la réponse ne convient-elle pas ?",
+                "superficial": "Superficielle"
+            },
+            "positive": {
+                "clear_formatting": "Mise en forme claire",
+                "comment": "Précisez ce que vous avez apprécié…",
+                "complete": "Complète",
+                "creative": "Créative",
+                "question": "Qu'avez-vous apprécié dans la réponse ?",
+                "useful": "Utile"
+            }
+        },
+        "continueReminder": "Votez pour une réponse ou choisissez « Passer le vote » avant de continuer.",
+        "importantDesc": "Votre préférence enrichit les jeux de données {platformName} dont l’objectif est d’affiner les futurs modèles d’IA sur le français, le suédois, le lituanien et le danois.",
+        "title": "Quel modèle d’IA préférez-vous ?",
+        "turn": {
+            "choices": {
+                "a_better": "A est meilleur",
+                "b_better": "B est meilleur",
+                "both_bad": "Les deux sont mauvais",
+                "both_good": "Les deux sont bons",
+                "idk": "Passer le vote"
+            },
+            "important": "Votre vote est important : il contribue à un meilleur alignement avec les <a {linkProps}>préférences francophones</a>."
+        },
+        "yours": "Votre vote"
+    },
+    "words": {
+        "activated": "Activé",
+        "add": "Ajouter",
+        "allowed": "autorisé",
+        "archived": "Archivé",
+        "available": "Disponible",
+        "back": "Retour",
+        "cancel": "Annuler",
+        "close": "Fermer",
+        "deactivated": "Désactivé",
+        "forbidden": "interdit",
+        "loading": "Chargement",
+        "NA": "N/A",
+        "new": "Nouveau",
+        "no": "Non",
+        "private": "privé",
+        "public": "public",
+        "random": "Aléatoire",
+        "regenerate": "Regénérer",
+        "remove": "Supprimer",
+        "reset": "Réinitialiser",
+        "restart": "Recommencer",
+        "retry": "Recommencer",
+        "save": "Enregistrer",
+        "search": "Rechercher",
+        "send": "Envoyer",
+        "tooltip": "Infobulle",
+        "validate": "Valider",
+        "yes": "Oui"
+    }
+}

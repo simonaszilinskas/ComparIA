@@ -1,0 +1,323 @@
+"""
+Ranking computation orchestration.
+
+Fetches votes from DB, runs Bradley-Terry, and returns results matching the
+DatasetData and PreferencesData shapes from backend/llms/models.py.
+"""
+
+import logging
+import math
+import time
+from collections import defaultdict
+from dataclasses import dataclass, field
+from uuid import UUID
+
+import numpy as np
+
+from backend.llms.models import DatasetData, PreferencesData, RankingVariant
+from backend.vote_tags.services import get_active_vote_tags, get_all_vote_tag_signs
+from utils.database.models.vote_tag import VoteTagSign
+from utils.database.settings import get_app_settings
+from utils.ranking.bradley_terry import (
+    Battle,
+    Interval,
+    bootstrap_confidence_intervals,
+)
+from utils.ranking.queries import fetch_votes
+from utils.ranking.style_control import (
+    STYLE_FEATURES,
+    bootstrap_style_controlled,
+    style_vector,
+)
+from utils.utils import configure_logger
+
+logger = configure_logger(logging.getLogger("ranking.compute"))
+
+
+@dataclass
+class RankingResult:
+    timestamp: float
+    rankings: dict[UUID, DatasetData] = field(default_factory=dict)
+    preferences: dict[UUID, PreferencesData] = field(default_factory=dict)
+    # Style coefficients from the style-controlled fit (one per STYLE_FEATURES
+    # entry); exposed for transparency about how much presentation drives votes.
+    style_coefficients: dict[str, float] = field(default_factory=dict)
+
+
+def _votes_to_battles(
+    votes: list[dict],
+) -> tuple[list[Battle], np.ndarray, np.ndarray]:
+    """
+    Convert vote records to decisive battle tuples plus aligned style vectors.
+
+    Ties (both_good / both_bad) carry no winner and are dropped from the
+    Bradley-Terry fit. Decisive votes whose answers have no token count are also
+    dropped: a zero-length style vector would read as an extreme "minimal style"
+    signal rather than as missing data. Returns ``(battles, style_a, style_b)``
+    where the two arrays are (n_battles, n_features) raw style measurements
+    row-aligned with ``battles`` for the style-controlled solver.
+    """
+    battles: list[Battle] = []
+    style_a: list[np.ndarray] = []
+    style_b: list[np.ndarray] = []
+    dropped_no_length = 0
+    for v in votes:
+        if v["choice"] not in ("a_better", "b_better"):
+            continue
+        tokens_a, tokens_b = v.get("tokens_a"), v.get("tokens_b")
+        if not tokens_a or not tokens_b:
+            dropped_no_length += 1
+            continue
+        winner = v["llm_id_a"] if v["choice"] == "a_better" else v["llm_id_b"]
+        battles.append((v["llm_id_a"], v["llm_id_b"], winner))
+        style_a.append(style_vector(v.get("content_a"), tokens_a))
+        style_b.append(style_vector(v.get("content_b"), tokens_b))
+
+    if dropped_no_length:
+        logger.warning(
+            "[Ranking] Dropped %d decisive vote(s) with no answer token count "
+            "from the style-controlled fit.",
+            dropped_no_length,
+        )
+
+    n_feat = len(STYLE_FEATURES)
+    return (
+        battles,
+        np.array(style_a) if style_a else np.empty((0, n_feat)),
+        np.array(style_b) if style_b else np.empty((0, n_feat)),
+    )
+
+
+def _aggregate_preferences(
+    votes: list[dict],
+    signs: dict[str, VoteTagSign],
+    *,
+    with_ratio: bool,
+) -> dict[UUID, PreferencesData]:
+    """
+    Count vote tags per model.
+
+    'signs' covers archived tags as well as active ones, so a tag withdrawn
+    from the arena keeps counting in the votes already cast.
+    """
+    counts: dict[UUID, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    total: dict[UUID, int] = defaultdict(int)
+
+    for v in votes:
+        for side in ("a", "b"):
+            model = v[f"llm_id_{side}"]
+            for key in v[f"keyword_annotations_{side}"]:
+                total[model] += 1
+                counts[model][key] += 1
+
+    result = {}
+    for model in total:
+        c = counts[model]
+        ratio = None
+        if with_ratio:
+            positive = sum(n for key, n in c.items() if signs.get(key) == "positive")
+            negative = sum(n for key, n in c.items() if signs.get(key) == "negative")
+            ratio = positive / (positive + negative) if positive + negative else None
+
+        result[model] = PreferencesData(
+            positive_prefs_ratio=ratio,
+            total_prefs=total[model],
+            counts=dict(c),
+        )
+
+    return result
+
+
+def _bootstrap_rank_bounds(samples: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """
+    95% rank interval of each model, read from the bootstrap rounds.
+
+    ``samples`` is (n_rounds, n_models). In each round a model's rank is one
+    plus the number of models rated above it. A NaN rating never compares
+    greater, so a model missing from a round does not push anyone down, and
+    gets no rank of its own in that round.
+    """
+    above = (samples[:, None, :] > samples[:, :, None]).sum(axis=2)
+    ranks = np.where(np.isnan(samples), np.nan, above + 1.0)
+    best = np.floor(np.nanpercentile(ranks, 2.5, axis=0)).astype(int)
+    worst = np.ceil(np.nanpercentile(ranks, 97.5, axis=0)).astype(int)
+    return best, worst
+
+
+def _variant_table(
+    ci: dict[UUID, Interval],
+    match_counts: dict[UUID, int],
+    win_counts: dict[UUID, int],
+) -> dict[UUID, dict]:
+    """
+    Turn a ``{model: Interval}`` map into per-model ranking fields.
+
+    Shared by the style-controlled and plain Bradley-Terry views so both are
+    built identically (rank, bootstrap rank bounds, mean win probability, win
+    rate); only the input CI differs. Degenerate models (any NaN bound) are
+    dropped here. Returns a ``{model: fields}`` dict ready to splat into a
+    ``RankingVariant`` / ``DatasetData``.
+    """
+    ci = {
+        m: v
+        for m, v in ci.items()
+        if not any(math.isnan(x) for x in (v.point, v.lower, v.upper))
+    }
+
+    # Sort by point-estimate Elo descending
+    sorted_models = sorted(ci, key=lambda m: -ci[m].point)
+    if not sorted_models:
+        return {}
+
+    # Ranks are counted among the models in this table only, so models left
+    # out (under the vote minimum) do not widen anyone's interval.
+    ranks_best, ranks_worst = _bootstrap_rank_bounds(
+        np.column_stack([ci[m].samples for m in sorted_models])
+    )
+
+    table: dict[UUID, dict] = {}
+    for i, model in enumerate(sorted_models):
+        rank = i + 1
+        elo_point, elo_lower, elo_upper, _ = ci[model]
+        n_match = match_counts.get(model, 0)
+        wins = win_counts.get(model, 0)
+
+        # The point rank comes from the full-data fit, which can fall just
+        # outside the bootstrap interval when the rounds are skewed.
+        rank_best = min(int(ranks_best[i]), rank)
+        rank_worst = max(int(ranks_worst[i]), rank)
+
+        # Mean win probability: P(i beats j) = s_i / (s_i + s_j), averaged
+        strength_i = 10 ** ((elo_point - 1000) / 400)
+        win_probs = []
+        for other in sorted_models:
+            if other == model:
+                continue
+            strength_j = 10 ** ((ci[other].point - 1000) / 400)
+            win_probs.append(strength_i / (strength_i + strength_j))
+        mean_win_prob = sum(win_probs) / len(win_probs) if win_probs else 0.5
+
+        table[model] = dict(
+            elo=round(elo_point),
+            score_p2_5=round(elo_lower),
+            score_p97_5=round(elo_upper),
+            rank=rank,
+            rank_p2_5=rank_best,
+            rank_p97_5=rank_worst,
+            n_match=n_match,
+            mean_win_prob=round(mean_win_prob, 4),
+            win_rate=round(wins / n_match, 4) if n_match > 0 else 0.0,
+        )
+
+    return table
+
+
+def _compute_ranking(
+    votes: list[dict],
+    signs: dict[str, VoteTagSign],
+    *,
+    with_ratio: bool,
+    min_votes: int = 0,
+) -> RankingResult:
+    """Compute ranking and preferences for a single group of votes/reactions."""
+    all_battles, style_a, style_b = _votes_to_battles(votes)
+
+    if not all_battles:
+        return RankingResult(timestamp=time.time())
+
+    # Two rankings from the same battles so the frontend "Contrôle du style"
+    # toggle can switch views without a recompute:
+    #   - style-controlled (default): answer length and markdown formatting
+    #     regressed out, so the Elo reflects substance over presentation;
+    #   - uncontrolled: the plain MM Bradley-Terry fit (presentation included).
+    # Both map each model to its Interval.
+    ci_controlled, style_coefficients = bootstrap_style_controlled(
+        all_battles, style_a, style_b
+    )
+    ci_plain = bootstrap_confidence_intervals(all_battles)
+    logger.info(
+        "[Ranking] Style coefficients: "
+        + ", ".join(f"{k}={v:+.3f}" for k, v in style_coefficients.items())
+    )
+
+    # Count matches and wins per model (shared by both views)
+    match_counts: dict[UUID, int] = defaultdict(int)
+    win_counts: dict[UUID, int] = defaultdict(int)
+    for a, b, winner in all_battles:
+        match_counts[a] += 1
+        match_counts[b] += 1
+        win_counts[winner] += 1
+
+    # Models under the vote minimum stay in the fit, so their battles still
+    # inform their opponents' scores, but are left out of the table: their wide
+    # intervals would otherwise widen every other model's rank bounds.
+    eligible = {m for m, n in match_counts.items() if n >= min_votes}
+    controlled = _variant_table(
+        {m: v for m, v in ci_controlled.items() if m in eligible},
+        match_counts,
+        win_counts,
+    )
+    plain = _variant_table(
+        {m: v for m, v in ci_plain.items() if m in eligible},
+        match_counts,
+        win_counts,
+    )
+
+    rankings: dict[UUID, DatasetData] = {}
+    for model, fields in controlled.items():
+        uncontrolled = plain.get(model)
+        rankings[model] = DatasetData(
+            **fields,
+            uncontrolled=RankingVariant(**uncontrolled) if uncontrolled else None,
+        )
+
+    preferences = _aggregate_preferences(votes, signs, with_ratio=with_ratio)
+
+    return RankingResult(
+        timestamp=time.time(),
+        rankings=rankings,
+        preferences=preferences,
+        style_coefficients=style_coefficients,
+    )
+
+
+async def compute_ranking() -> RankingResult | None:
+    """
+    Main function called by the scheduler.
+
+    Fetches all votes and computes ranking.
+
+    Returns:
+        RankingResult.
+    """
+    logger.info("[Ranking] Starting ranking computation...")
+    start = time.time()
+
+    all_votes = await fetch_votes()
+
+    if not all_votes:
+        logger.warning("[Ranking] No votes found, skipping computation")
+        return None
+
+    signs = await get_all_vote_tag_signs()
+    # An instance can turn off a whole side of the taxonomy. With one side
+    # gone there is no positive share to report, so the ratio is left out
+    # rather than reported as zero.
+    active_signs = {tag.sign for tag in await get_active_vote_tags()}
+    with_ratio = {"positive", "negative"} <= active_signs
+    app_settings = await get_app_settings()
+
+    try:
+        ranking = _compute_ranking(
+            all_votes,
+            signs,
+            with_ratio=with_ratio,
+            min_votes=app_settings.ranking_min_votes,
+        )
+        elapsed = time.time() - start
+        logger.info(f"[Ranking] Updated ranking in {elapsed:.1f}s")
+
+        return ranking
+    except Exception:
+        logger.error("[Ranking] Error computing ranking", exc_info=True)
+        return None

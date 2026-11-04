@@ -1,0 +1,237 @@
+{
+    "a11y": {
+        "externalLink": "{text}"
+    },
+    "actions": {
+        "contact": "Kontaktai",
+        "contactUs": "Susisiekite su mumis",
+        "copyLink": {
+            "do": "Kopijuoti nuorodą",
+            "done": "Nuoroda nukopijuota į iškarpinę"
+        },
+        "copyMessage": {
+            "do": "Kopijuoti žinutę",
+            "done": "Žinutė nukopijuota"
+        },
+        "home": "Pagrindinis puslapis",
+        "returnHome": "Grįžti į pagrindinį puslapį",
+        "seeMore": "Matyti daugiau",
+        "selectLanguage": "Pasirinkite kalbą"
+    },
+    "arenaHome": {
+        "compareModels": {
+            "count": "{count}/2 modeliai",
+            "help": "Jei pasirinksite tik vieną, antrasis bus pasirinktas atsitiktinai",
+            "question": "Kuriuos modelius norėtumėte palyginti?"
+        },
+        "modelSelection": "Modelių pasirinkimas",
+        "prompt": {
+            "label": "Parašykite savo pirmąją žinutę",
+            "placeholder": "Rašykite savo žinutę čia"
+        },
+        "selectModels": {
+            "help": "Pasirinkite palyginimo tipą",
+            "question": "Kuriuos modelius norėtumėte palyginti?"
+        },
+        "suggestions": {
+            "generateAnother": "Sukurti dar vieną užklausą",
+            "title": "Siūlomos užklausos"
+        },
+        "title": "Kaip galime Jums padėti?",
+        "webSearch": {
+            "disabled": "Paieška internete išjungta",
+            "enabled": "Paieška internete įjungta",
+            "label": "Paieška internete",
+            "tooltip": "Įjunkite paiešką internete, kad modeliai galėtų naudoti internetinius šaltinius ir cituoti naujesnę informaciją.<br><strong>Be paieškos internete</strong> modeliai atsako remdamiesi tuo, ką išmoko mokymo metu (savo mokymo duomenimis). Jie negali patikrinti informacijos internete, todėl labai nauji ar labai specifiniai faktai gali būti neišsamūs."
+        }
+    },
+    "chatbot": {
+        "continuePrompt": "Tęsti pokalbį su abiem AI modeliais",
+        "conversation": "Pokalbis",
+        "errors": {
+            "other": {
+                "message": "Įvyko laikina klaida.",
+                "retry": "Galite pabandyti dar kartą kreiptis į modelius.",
+                "title": "Oi, laikina klaida"
+            },
+            "tooLong": {
+                "message": "Kiekvienas modelis turi ribotą pokalbių, kuriuos jis gali apdoroti, skaičių.",
+                "retry": "Galite pradėti pokalbį su dviem naujais modeliais.",
+                "title": "Oi, pokalbis yra per ilgas vienam iš modelių."
+            }
+        },
+        "loading": "Įkeliami atsakymai",
+        "reasoning": {
+            "finished": "Mąstymas baigtas",
+            "inProgress": "Mąstoma…"
+        },
+        "revealButton": "Atskleisti modelius",
+        "webSearch": {
+            "label": "Susiję paieškos internete rezultatai."
+        }
+    },
+    "closeModal": "Uždaryti iškylantį langą",
+    "components": {
+        "pagination": {
+            "first": "Pirmasis puslapis",
+            "label": "Puslapiai",
+            "last": "Paskutinis puslapis",
+            "next": "Kitas puslapis",
+            "nth": "Puslapis {count}",
+            "previous": "Praeitas puslapis"
+        },
+        "table": {
+            "linePerPage": "Eilučių skaičius viename puslapyje",
+            "pageCount": "{count} Eilučių skaičius viename puslapyje",
+            "triage": "Rikiavimas"
+        },
+        "theme": {
+            "legend": "Pasirinkite norimą svetainės išvaizdą.",
+            "options": {
+                "dark": "Tamsus motyvas",
+                "light": "Šviesus motyvas",
+                "system": "Sistema",
+                "systemSub": "Naudoti sistemos nustatymus"
+            },
+            "title": "Ekrano nustatymai"
+        }
+    },
+    "errors": {
+        "404": {
+            "desc": "Jei įvedėte interneto adresą naršyklėje, patikrinkite, ar jis teisingas. Galbūt puslapis nebeprieinamas. <br />Tokiu atveju, norėdami tęsti apsilankymą, galite apsilankyti mūsų pagrindiniame puslapyje. <br />Kitaip susisiekite su mumis, kad galėtume nukreipti jus į reikiamą puslapį.",
+            "error": "Klaida 404",
+            "sorry": "Jūsų ieškomas puslapis nerastas. Atsiprašome už nepatogumus.",
+            "title": "Puslapis nerastas"
+        },
+        "unexpected": {
+            "desc": "Pabandykite atnaujinti puslapį arba pabandykite vėliau.",
+            "error": "Klaida {code}",
+            "sorry": "Atsiprašome, yra problemų su paslauga, stengiamės jas kuo greičiau išspręsti.",
+            "title": "Nenumatyta klaida"
+        },
+        "unknown": "Įvyko klaida"
+    },
+    "header": {
+        "title": "palyginti:AI"
+    },
+    "models": {
+        "cards": {
+            "sovereignty": {
+                "title": "Atvirumo lygis"
+            }
+        },
+        "opennessSovereignty": {
+            "title": "Atvirumo lygis"
+        }
+    },
+    "ranking": {
+        "methodo": {
+            "personal": {
+                "choices": {
+                    "both_bad": "<strong>Nė vienas neteko</strong>: po 0 taškų kiekvienam modeliui — skaičiuojamas jūsų nepasitenkinimas, o ne tik santykinis pasirinkimas.",
+                    "both_good": "<strong>Abu geri</strong>: po 0,5 taško kiekvienam modeliui.",
+                    "idk": "<strong>Nežinau</strong>: neįtraukiama į skaičiavimą, neįskaitoma nė vienam modeliui."
+                },
+                "desc": {
+                    "1": "Bradley-Terry metodui reikia sujungto palyginimų tinklo: jūsų balsai daugiausia sudaro išsibarsčiusias, nesusijusias poras, todėl metodas netinka vienai paskyrai. Asmeninis įvertis yra <strong>sumažintas laimėjimų rodiklis</strong>:",
+                    "2": "<strong>points</strong> – jūsų taškų suma už modelį, <strong>battles</strong> – įvertintų palyginimų su juo skaičius, o <strong>m</strong> – jūsų vidutinis taškų skaičius už palyginimą visuose modeliuose. Sumažinimas retai lyginamą modelį priartina prie šio vidurkio: vienas laimėjimas rodo 0,667, o ne 100 %, o dvidešimt kartų lygintas modelis lenkia vieną kartą lygintą modelį esant panašiam santykiui."
+                },
+                "title": "Asmeninis reitingas: kaip apskaičiuojamas jūsų įvertis"
+            }
+        },
+        "personal": {
+            "cols": {
+                "battles": "Palyginimai",
+                "general_rank": "Bendras rangas",
+                "record": "Rezultatas (L-Ly-P)",
+                "score": "Mano įvertis"
+            },
+            "loading": "Įkeliamas jūsų reitingas…",
+            "noVotes": "Balsuokite palyginime, kad pradėtumėte savo reitingą.",
+            "signedOut": "Prisijunkite, kad pamatytumėte reitingą, sudarytą iš jūsų balsų.",
+            "title": "Mano reitingas",
+            "tooltips": {
+                "score": "Modelis, kurį palyginote vos kelis kartus, priartinamas prie jūsų vidurkio, o ne rodo kraštutinį įvertį."
+            },
+            "totalModels": "Įvertinti modeliai:",
+            "totalVotes": "Mano balsai:"
+        },
+        "views": {
+            "general": "Bendras",
+            "legend": "Reitingo rodinys",
+            "personal": "Mano reitingas"
+        }
+    },
+    "reveal": {
+        "impacts": {
+            "summary": {
+                "classification": {
+                    "dense": "<strong>{model}</strong> yra <strong>{size}</strong> modelis su <strong>tankiąja</strong> architektūra: kiekvienam atsakymui jis naudoja visus savo parametrus. Jo energinė klasė yra <strong>{energyClass}</strong>.",
+                    "matformer": "<strong>{model}</strong> yra <strong>{size}</strong> modelis su <strong>Matformer</strong> architektūra: kiekvienam atsakymui jis pritaiko naudojamų parametrų dalį. Jo energinė klasė yra <strong>{energyClass}</strong>.",
+                    "moe": "<strong>{model}</strong> yra <strong>{size}</strong> modelis su <strong>ekspertų mišinio</strong> architektūra: kiekvienam atsakymui jis aktyvuoja tik dalį parametrų (apie <strong>{activeParams} mlrd.</strong> iš <strong>{params} mlrd.</strong>). Jo energinė klasė yra <strong>{energyClass}</strong>.",
+                    "unknown": "<strong>{model}</strong> yra <strong>{size}</strong> modelis, kurio architektūra neskelbiama. Atsižvelgiant į jo dydį, energinė klasė yra <strong>{energyClass}</strong>.",
+                    "unknownProprietary": "<strong>{model}</strong> yra nuosavybinis <strong>{size}</strong> modelis, kurio architektūra neskelbiama. Atsižvelgiant į jo dydį, energinė klasė yra <strong>{energyClass}</strong>."
+                },
+                "comparison": {
+                    "comparable": "<strong>panašiai</strong> kaip <strong>{otherModel}</strong>",
+                    "multipleLess": "beveik <strong>{count} kartų mažiau</strong> nei <strong>{otherModel}</strong>",
+                    "multipleMore": "beveik <strong>{count} kartų daugiau</strong> nei <strong>{otherModel}</strong>",
+                    "percentageLess": "<strong>{percentage} % mažiau</strong> nei <strong>{otherModel}</strong>",
+                    "percentageMore": "<strong>{percentage} % daugiau</strong> nei <strong>{otherModel}</strong>",
+                    "unavailable": "nepalyginama su <strong>{otherModel}</strong>"
+                },
+                "consumption": "Šiame pokalbyje buvo sugeneruota <strong>{tokens} žetonų</strong>, o tam sunaudota apie <strong>{energy} mWh</strong>, t. y. {comparison}.",
+                "size": {
+                    "estimatedL": "numatomo didelio dydžio",
+                    "estimatedM": "numatomo vidutinio dydžio",
+                    "estimatedS": "numatomo mažo dydžio",
+                    "estimatedXl": "numatomo labai didelio dydžio",
+                    "estimatedXs": "numatomo labai mažo dydžio",
+                    "l": "didelis",
+                    "m": "vidutinio dydžio",
+                    "s": "mažas",
+                    "xl": "labai didelis",
+                    "xs": "labai mažas"
+                }
+            }
+        }
+    },
+    "statistics": {
+        "activity": {
+            "conversationsLabel": "Pokalbiai",
+            "dateLabel": "Data",
+            "estimateLabel": "dabartinio laikotarpio įvertis",
+            "ongoingLabel": "vyksta",
+            "promptsLabel": "Pateiktos užklausos",
+            "sectionTitle": "Aktyvumas",
+            "tableLabel": "Rodyti duomenis lentelėje",
+            "title": "Platformos aktyvumas"
+        },
+        "counterLink": "Peržiūrėti platformos statistiką",
+        "eyebrow": "Statistika",
+        "filters": {
+            "allTime": "Visas laikotarpis",
+            "label": "Laikotarpis",
+            "ninetyDays": "90 dienų",
+            "sevenDays": "7 dienos",
+            "thirtyDays": "30 dienų"
+        },
+        "intro": "Sužinokite, kaip platformoje pateikti pokalbiai ir pasirinkimai prisideda prie bendro duomenų rinkinio.",
+        "metrics": {
+            "conversations": {
+                "label": "Įvykę pokalbiai"
+            },
+            "models": {
+                "label": "Išbandyti modeliai"
+            },
+            "prompts": {
+                "label": "Pateiktos užklausos"
+            },
+            "votes": {
+                "label": "Pateikti balsai"
+            }
+        },
+        "overview": "Apžvalga",
+        "title": "Platformos statistika"
+    }
+}

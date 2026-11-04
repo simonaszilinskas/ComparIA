@@ -1,0 +1,73 @@
+# Overlay for full stack (frontend + backend)
+# Usage: docker compose -f docker-compose.yml -f app.compose.override.yml up
+services:
+  frontend:
+    build:
+      context: ../../frontend
+      dockerfile: ../devops/docker/Dockerfile.front
+    depends_on:
+      - backend
+    environment:
+      # URL for server-side rendering (inside Docker network)
+      PUBLIC_API_LOCAL_URL: "http://backend:80"
+      # URL for client-side browser requests (exposed to host)
+      PUBLIC_API_URL: "http://localhost:8000"
+      PUBLIC_API_DEV_MODE: "true"
+    ports:
+      - "127.0.0.1:3000:3000"
+    mem_limit: 512m
+    cpus: 1
+    pids_limit: 200
+    # Dev config
+    # volumes:
+    #   - ../../frontend:/app
+    #   - /app/node_modules # Exclude node_modules from host mount
+    # command: ["node", "build"]
+
+  backend:
+    env_file: ../../.env
+    environment:
+      LOGDIR: /data
+      # Local dev over plain http://localhost: LANGUIA_DEBUG=true gets a
+      # dev-only auto-generated ALTCHA_HMAC_KEY and a fixed dev
+      # COMPARIA_ENCRYPTION_KEY if none is set; the Secure cookie flag is set
+      # separately since it no longer follows debug.
+      LANGUIA_DEBUG: "true"
+      COMPARIA_COOKIE_SECURE: "false"
+      COMPARIA_DB_URI: "postgresql://postgres:postgres@postgres:5432/languia"
+      COMPARIA_REDIS_HOST: redis
+      COMPARIA_REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+    build:
+      context: ../..
+      dockerfile: devops/docker/Dockerfile
+      # args:
+      #   GIT_COMMIT: ${GIT_COMMIT:-}
+      #   PUBLIC_API_URL: ${PUBLIC_API_URL:-}
+      #   MATOMO_ID: ${MATOMO_ID:-}
+      #   MATOMO_URL: ${MATOMO_URL:-}
+    image: languia:latest
+    ports:
+      - "127.0.0.1:8000:80"
+    mem_limit: 1g
+    cpus: 2
+    pids_limit: 200
+    # volumes:
+    #   # Dev config - mount everything except .venv
+    #   - ../../:/app
+    #   - /app/.venv # Exclude .venv from host mount (use container's .venv)
+    command:
+      [
+        "uvicorn",
+        "backend.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "80",
+        "--reload",
+      ]
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  pgadmin-data:

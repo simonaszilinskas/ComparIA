@@ -1,0 +1,363 @@
+import uuid
+from copy import deepcopy
+from typing import Annotated, Literal
+from urllib.parse import urlsplit
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+
+from pydantic import ValidationInfo, field_validator
+from sqlalchemy import LargeBinary
+from sqlalchemy.dialects.postgresql import JSONB
+from sqlmodel import Field, SQLModel, String
+
+from utils.validation import is_secure_url
+
+from .publish import PublishFrequency
+from .utils import AutoDatetime, logo_version
+
+PRIMARY_COLOR_LIGHT_DEFAULT = "#6464F3"
+PRIMARY_COLOR_DARK_DEFAULT = "#9898F8"
+SECONDARY_COLOR_LIGHT_DEFAULT = "#FF9575"
+SECONDARY_COLOR_DARK_DEFAULT = "#FFCC00"
+
+_HEX_COLOR_LENGTH = 7
+_HOMEPAGE_URL_MAX_LENGTH = 2_048
+# Largest value a Postgres INTEGER column holds; past it the update fails.
+_INT_MAX = 2_147_483_647
+
+
+def _normalize_hex_color(value: object) -> str:
+    if not isinstance(value, str) or len(value) != _HEX_COLOR_LENGTH:
+        raise ValueError("Color must use the #RRGGBB format")
+    if value[0] != "#" or any(
+        char not in "0123456789abcdefABCDEF" for char in value[1:]
+    ):
+        raise ValueError("Color must use the #RRGGBB format")
+    return value.upper()
+
+
+def _relative_luminance(color: str) -> float:
+    channels = [int(color[index : index + 2], 16) / 255 for index in (1, 3, 5)]
+    red, green, blue = [
+        channel / 12.92 if channel <= 0.04045 else ((channel + 0.055) / 1.055) ** 2.4
+        for channel in channels
+    ]
+    return 0.2126 * red + 0.7152 * green + 0.0722 * blue
+
+
+def _contrast_ratio(first: str, second: str) -> float:
+    lighter, darker = sorted(
+        (_relative_luminance(first), _relative_luminance(second)), reverse=True
+    )
+    return (lighter + 0.05) / (darker + 0.05)
+
+
+def _normalize_homepage_url(value: object) -> str | None:
+    if value is None:
+        return None
+    if not isinstance(value, str):
+        raise ValueError("Homepage URL must be a string")
+
+    url = value.strip()
+    if not url:
+        return None
+    if len(url) > _HOMEPAGE_URL_MAX_LENGTH:
+        raise ValueError("Homepage URL must not exceed 2048 characters")
+    if any(character.isspace() or ord(character) < 32 for character in url):
+        raise ValueError(
+            "Homepage URL must not contain whitespace or control characters"
+        )
+
+    parsed = urlsplit(url)
+    if (
+        parsed.scheme != "https"
+        or not parsed.netloc
+        or parsed.hostname is None
+        or parsed.username is not None
+        or parsed.password is not None
+    ):
+        raise ValueError("Homepage URL must be an absolute HTTPS URL")
+    return url
+
+
+# Locales compiled into the frontend bundle, see frontend/comparia.inlang/settings.json.
+# An instance enables a subset of these. Anything outside the tuple is refused
+# rather than stored, because the frontend has no messages for it and would fall
+# back to the base locale without telling anyone.
+SUPPORTED_LOCALES = ("da", "en", "fr", "it", "lt", "nb-NO", "sv")
+
+# What a new instance starts with, and what the migration backfills onto the
+# existing ones. Narrower than SUPPORTED_LOCALES: it, lt, nb-NO and sv ship too
+# few translated messages to be offered unasked, which is why prod carried
+# PUBLIC_DISABLED_LOCALES="lt,sv". An admin can still turn them on from
+# /admin/locales, which is the point of the setting.
+DEFAULT_ENABLED_LOCALES = ("da", "en", "fr")
+
+DEFAULT_INFORMATIONAL_LEGAL_PAGES: dict[str, dict[str, object]] = {
+    "legal_notice": {
+        "mode": "internal",
+        "external_url": None,
+        "visible_in_legal_menu": True,
+        "visible_in_settings": True,
+        "content_by_locale": {},
+    },
+    "accessibility": {
+        "mode": "internal",
+        "external_url": None,
+        "visible_in_legal_menu": True,
+        "visible_in_settings": True,
+        "content_by_locale": {},
+    },
+    "ecodesign": {
+        "mode": "internal",
+        "external_url": None,
+        "visible_in_legal_menu": True,
+        "visible_in_settings": True,
+        "content_by_locale": {},
+    },
+}
+
+
+def default_informational_legal_pages() -> dict[str, dict[str, object]]:
+    """Return an independent copy suitable for a mutable JSONB column."""
+    return deepcopy(DEFAULT_INFORMATIONAL_LEGAL_PAGES)
+
+
+def _check_enabled_locales(value: list[str]) -> list[str]:
+    if not value:
+        raise ValueError("At least one locale must be enabled")
+    unknown = sorted(set(value) - set(SUPPORTED_LOCALES))
+    if unknown:
+        raise ValueError(f"Unsupported locales: {', '.join(unknown)}")
+    return value
+
+
+class AppSettings(SQLModel, table=True):
+    """Singleton row (id=1) holding product settings editable from the admin panel."""
+
+    __tablename__ = "app_settings"
+
+    id: int = Field(default=1, primary_key=True)
+    auth_access_policy: str = Field(default="anonymous_first")
+    auth_domain_allowlist: Annotated[list[str], Field(sa_type=JSONB)] = []
+    votes_objective: int = Field(default=300_000)
+    # Leaderboard thresholds. A model needs this many decisive votes to be
+    # ranked at all, and is shown only if its rank could move by at most
+    # ranking_max_rank_spread places either way. Small instances relax them to
+    # show something while votes come in.
+    ranking_min_votes: int = Field(default=0)
+    ranking_max_rank_spread: int = Field(default=30)
+    platform_name: str = Field(default="Compar:IA")
+    legal_presentation: Annotated[dict | None, Field(sa_type=JSONB)] = None
+    informational_legal_pages: Annotated[dict, Field(sa_type=JSONB)] = (
+        default_informational_legal_pages()
+    )
+    primary_color_light: str = Field(default=PRIMARY_COLOR_LIGHT_DEFAULT, max_length=7)
+    primary_color_dark: str = Field(default=PRIMARY_COLOR_DARK_DEFAULT, max_length=7)
+    secondary_color_light: str = Field(
+        default=SECONDARY_COLOR_LIGHT_DEFAULT, max_length=7
+    )
+    secondary_color_dark: str = Field(
+        default=SECONDARY_COLOR_DARK_DEFAULT, max_length=7
+    )
+    homepage_url: str | None = Field(default=None, max_length=_HOMEPAGE_URL_MAX_LENGTH)
+    # The model that reads whole comparisons before publication and says
+    # whether they hold personal information or spam. It is not the arena's
+    # input guardrail: different check, different provider, its own setting.
+    analysis_endpoint_id: uuid.UUID | None = Field(
+        default=None, foreign_key="llm_endpoint.id"
+    )
+    analysis_model: str | None = Field(default=None, max_length=200)
+    # When the publish run fires. 'off' until an instance asks for one.
+    publish_frequency: Annotated[PublishFrequency, Field(sa_type=String)] = "off"
+    publish_hour: int = Field(default=3)
+    publish_timezone: str = Field(default="UTC", max_length=64)
+    logo: Annotated[bytes | None, Field(sa_type=LargeBinary)] = None
+    logo_content_type: str | None = None
+    enabled_locales: Annotated[list[str], Field(sa_type=JSONB)] = list(
+        DEFAULT_ENABLED_LOCALES
+    )
+    default_locale: str = Field(default="fr")
+    auth_methods: Annotated[list[str], Field(sa_type=JSONB)] = list(["email_code"])
+    oidc_issuer: str | None = None
+    oidc_client_id: str | None = None
+    oidc_client_secret_encrypted: Annotated[
+        bytes | None, Field(sa_type=LargeBinary)
+    ] = None
+    oidc_scopes: Annotated[list[str], Field(sa_type=JSONB)] = list(["openid", "email"])
+    oidc_button_label: str | None = None
+    oidc_button_logo: Annotated[bytes | None, Field(sa_type=LargeBinary)] = None
+    oidc_button_logo_content_type: str | None = None
+    # Outcome of the last "test connection": passed, the reason if not, when,
+    # and the fingerprint of the provider config it was run against.
+    oidc_connection_test: Annotated[dict | None, Field(sa_type=JSONB)] = None
+    updated_at: AutoDatetime
+    updated_by: uuid.UUID | None = Field(default=None, foreign_key="auth_user.id")
+
+    @property
+    def logo_version(self) -> str | None:
+        return logo_version(self.logo)
+
+
+class OIDCConnectionTest(SQLModel):
+    """The last connection test, when it was run on the config in force."""
+
+    passed: bool
+    # Named failure, None when it passed.
+    reason: str | None = None
+    tested_at: str
+
+
+class AppSettingsPublic(SQLModel):
+    auth_access_policy: Literal["anonymous_first", "sign_in_required"]
+    auth_domain_allowlist: list[str]
+    votes_objective: int
+    ranking_min_votes: int
+    ranking_max_rank_spread: int
+    platform_name: str
+    primary_color_light: str
+    primary_color_dark: str
+    secondary_color_light: str
+    secondary_color_dark: str
+    homepage_url: str | None
+    analysis_endpoint_id: uuid.UUID | None
+    analysis_model: str | None
+    publish_frequency: PublishFrequency
+    publish_hour: int
+    publish_timezone: str
+    has_custom_logo: bool
+    logo_version: str | None = None
+    enabled_locales: list[str]
+    default_locale: str
+    auth_methods: list[str]
+    oidc_issuer: str | None
+    oidc_client_id: str | None
+    oidc_has_client_secret: bool
+    oidc_scopes: list[str]
+    oidc_button_label: str | None
+    oidc_has_button_logo: bool
+    oidc_button_logo_content_type: str | None
+    oidc_connection_test: OIDCConnectionTest | None = None
+    updated_at: str
+    updated_by: uuid.UUID | None = None
+
+
+_VALID_AUTH_METHODS = frozenset({"email_code", "oidc"})
+
+
+class AppSettingsPatch(SQLModel):
+    auth_access_policy: Literal["anonymous_first", "sign_in_required"] | None = None
+    auth_domain_allowlist: list[str] | None = None
+    votes_objective: int | None = None
+    ranking_min_votes: int | None = Field(default=None, ge=0, le=_INT_MAX)
+    ranking_max_rank_spread: int | None = Field(default=None, ge=0, le=_INT_MAX)
+    platform_name: str | None = None
+    primary_color_light: str | None = None
+    primary_color_dark: str | None = None
+    secondary_color_light: str | None = None
+    secondary_color_dark: str | None = None
+    homepage_url: str | None = Field(default=None, max_length=_HOMEPAGE_URL_MAX_LENGTH)
+    enabled_locales: list[str] | None = None
+    default_locale: str | None = None
+    analysis_endpoint_id: uuid.UUID | None = None
+    analysis_model: str | None = Field(default=None, max_length=200)
+    publish_frequency: PublishFrequency | None = None
+    publish_hour: int | None = Field(default=None, ge=0, le=23)
+    publish_timezone: str | None = Field(default=None, max_length=64)
+    auth_methods: list[str] | None = None
+    oidc_issuer: str | None = None
+    oidc_client_id: str | None = None
+    oidc_client_secret: str | None = None
+    oidc_scopes: list[str] | None = None
+    oidc_button_label: str | None = None
+
+    @field_validator("auth_methods")
+    @classmethod
+    def validate_auth_methods(cls, value: list[str] | None) -> list[str] | None:
+        if value is None:
+            return None
+        if not value:
+            raise ValueError("At least one auth method must be enabled")
+        unknown = sorted(set(value) - _VALID_AUTH_METHODS)
+        if unknown:
+            raise ValueError(f"Unknown auth methods: {', '.join(unknown)}")
+        return value
+
+    @field_validator("oidc_issuer")
+    @classmethod
+    def validate_oidc_issuer(cls, value: str | None) -> str | None:
+        # The id_token signature is not verified: TLS is what protects the
+        # exchange with the provider.
+        if value and not is_secure_url(value):
+            raise ValueError(
+                "The OIDC issuer must be an https URL (http only on localhost)"
+            )
+        return value
+
+    @field_validator("oidc_scopes")
+    @classmethod
+    def validate_oidc_scopes(cls, value: list[str] | None) -> list[str] | None:
+        # Without `openid` the provider runs plain OAuth2: no id_token, so no
+        # nonce to check and nothing that says who signed in.
+        if value is not None and "openid" not in value:
+            raise ValueError("OIDC scopes must include openid")
+        return value
+
+    @field_validator("publish_timezone")
+    @classmethod
+    def known_timezone(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        try:
+            ZoneInfo(value)
+        except (ZoneInfoNotFoundError, ValueError):
+            raise ValueError(f"Unknown time zone: {value}")
+        return value
+
+    @field_validator("ranking_min_votes", "ranking_max_rank_spread", mode="before")
+    @classmethod
+    def ranking_threshold_not_null(cls, value: object) -> object:
+        if value is None:
+            raise ValueError("Leaderboard thresholds cannot be null")
+        return value
+
+    @field_validator(
+        "primary_color_light",
+        "primary_color_dark",
+        "secondary_color_light",
+        "secondary_color_dark",
+        mode="before",
+    )
+    @classmethod
+    def normalize_colors(cls, value: object, info: ValidationInfo) -> str:
+        if value is None:
+            raise ValueError("Color cannot be null")
+        color = _normalize_hex_color(value)
+        if info.field_name == "primary_color_light":
+            background = "#FFFFFF"
+        elif info.field_name == "primary_color_dark":
+            background = "#161616"
+        else:
+            return color
+        if _contrast_ratio(color, background) < 4.5:
+            raise ValueError(
+                "Primary color must have a contrast ratio of at least 4.5:1 "
+                "against the theme background"
+            )
+        return color
+
+    @field_validator("homepage_url", mode="before")
+    @classmethod
+    def normalize_homepage_url(cls, value: object) -> str | None:
+        return _normalize_homepage_url(value)
+
+    @field_validator("enabled_locales")
+    @classmethod
+    def validate_enabled_locales(cls, value: list[str] | None) -> list[str] | None:
+        return value if value is None else _check_enabled_locales(value)
+
+    @field_validator("default_locale")
+    @classmethod
+    def validate_default_locale(cls, value: str | None) -> str | None:
+        if value is not None and value not in SUPPORTED_LOCALES:
+            raise ValueError(f"Unsupported locale: {value}")
+        return value

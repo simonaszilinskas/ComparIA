@@ -1,0 +1,27 @@
+# Multi-stage build optimisé avec buildx
+FROM public.ecr.aws/docker/library/node:26@sha256:1b84b89ada025e3b14543cbb837ffaa1c1b5273b841c5b94dd1a8f9c1d8cf7fe AS builder
+
+WORKDIR /app
+RUN npm install -g yarn@1.22.22
+COPY package.json yarn.lock .dsfr.yml ./
+RUN yarn install --frozen-lockfile
+
+COPY . .
+ARG PUBLIC_API_URL MATOMO_ID MATOMO_URL GIT_COMMIT
+ENV PUBLIC_API_URL=$PUBLIC_API_URL MATOMO_ID=$MATOMO_ID MATOMO_URL=$MATOMO_URL PUBLIC_GIT_COMMIT=$GIT_COMMIT
+
+RUN yarn build && yarn install --production --ignore-scripts
+
+FROM public.ecr.aws/docker/library/node:26-alpine@sha256:6f08a523443ddedf52941874c203475b0ad503e859ad70cb26ab8be9a517dbd5 AS runtime
+WORKDIR /app
+
+# Copier le build et les dépendances de production. The image already ships
+# a non-root "node" user (uid 1000); run as it instead of root.
+COPY --from=builder --chown=node:node /app/package.json ./package.json
+COPY --from=builder --chown=node:node /app/node_modules ./node_modules
+COPY --from=builder --chown=node:node /app/build ./build
+
+EXPOSE 80
+USER node
+# node build executes build/index.js which starts the server (@sveltejs/adapter-node)
+CMD ["node", "build"]

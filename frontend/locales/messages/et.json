@@ -1,0 +1,707 @@
+{
+    "a11y": {
+        "externalLink": "{text}"
+    },
+    "actions": {
+        "accessData": "Juurdepääs andmetele",
+        "contact": "Võta ühendust",
+        "contactUs": "Võta ühendust",
+        "copyLink": {
+            "do": "Kopeeri link",
+            "done": "Link kopeeriti lõikelauale"
+        },
+        "copyMessage": {
+            "do": "Kopeeri sõnum",
+            "done": "Sõnum kopeeritud"
+        },
+        "downloadData": "Lae andmed alla",
+        "home": "Avaleht",
+        "returnHome": "Tagasi avalehele",
+        "scrollLeft": "Keri vasakule",
+        "scrollRight": "Keri paremale",
+        "searchModel": "Otsi mudelit",
+        "seeMore": "Vaata veel",
+        "selectLanguage": "Vali keel"
+    },
+    "arenaHome": {
+        "compareModels": {
+            "count": "{count}/2 mudelit",
+            "help": "Kui valid ainult ühe, valitakse teine juhuslikult",
+            "question": "Missuguseid mudeleid võrrelda soovid?"
+        },
+        "modelSelection": "Mudelite valik",
+        "prompt": {
+            "label": "Sisesta oma esimene sõnum",
+            "placeholder": "Sisesta siia oma esimene sõnum"
+        },
+        "selectModels": {
+            "help": "Vali võrdlusrežiim",
+            "question": "Missuguseid mudeleid võrrelda soovid?"
+        },
+        "suggestions": {
+            "generateAnother": "Genereeri veel üks viip",
+            "title": "Soovitatud viibad"
+        },
+        "title": "Millega sind täna aidata saan?",
+        "webSearch": {
+            "disabled": "Veebiotsing deaktiveeritud",
+            "enabled": "Veebiotsing aktiveeritud",
+            "label": "Veebiotsing",
+            "tooltip": "Luba veebiotsing, et mudelid saaksid kasutada veebiallikaid ja viidata ajakohasemale teabele.<br><strong>Ilma veebiotsinguta</strong> vastavad mudelid oma treeningandmete põhjal. Nad ei saa teavet veebist kontrollida, seega väga uued või väga spetsiifilised faktid võivad olla puudulikud."
+        }
+    },
+    "chatbot": {
+        "continuePrompt": "Jätka nende keelemudelitega vestlemist",
+        "conversation": "Vestlus",
+        "errors": {
+            "other": {
+                "message": "Ilmnes ajutine tõrge.",
+                "retry": "Võid veelkord proovida.",
+                "title": "Ups, ajutine tõrge"
+            },
+            "tooLong": {
+                "message": "Igal mudelil on piiratud vestluste maht, mida see käsitleda suudab.",
+                "retry": "Võid vestlust kahe uue mudeliga uuesti alustada.",
+                "title": "Ups, vestlus on ühe mudeli jaoks liiga pikk."
+            }
+        },
+        "loading": "Vastuste laadimine",
+        "reasoning": {
+            "finished": "Arutlemine lõpetatud",
+            "inProgress": "Arutlemine on käimas …"
+        },
+        "revealButton": "Näita mudeleid",
+        "webSearch": {
+            "label": "Seotud veebiotsingu tulemused."
+        }
+    },
+    "closeModal": "Sulge hüpikaken",
+    "components": {
+        "pagination": {
+            "first": "Esimene lehekülg",
+            "label": "Leheküljed",
+            "last": "Viimane lehekülg",
+            "next": "Järgmine lehekülg",
+            "nth": "Lehekülg {count}",
+            "previous": "Eelmine lehekülg"
+        },
+        "table": {
+            "linePerPage": "Ridade arv leheküljel",
+            "pageCount": "{count} rida leheküljel",
+            "triage": "Sorteeri"
+        },
+        "theme": {
+            "legend": "Vali lehekülje välimuse kohandamiseks režiim.",
+            "options": {
+                "dark": "Tume režiim",
+                "light": "Hele režiim",
+                "system": "Süsteem",
+                "systemSub": "Kasuta süsteemi sätteid"
+            },
+            "title": "Vaateseadistused"
+        }
+    },
+    "errors": {
+        "404": {
+            "desc": "Kui trükkisid URL-i oma veebilehitsejasse, kontrolli selle õigsust. Leht ei pruugi enam saadaval olla. <br />Võid jätkata, minnes meie avalehele. <br />Kui sul on raskusi otsitava lehe leidmisega, võta meiega ühendust, et saaksime sind õigele URL-ile suunata.",
+            "error": "Tõrge 404",
+            "sorry": "Otsitavat lehte ei leitud. Vabandame ebamugavuste pärast.",
+            "title": "Lehekülge ei leitud"
+        },
+        "unexpected": {
+            "desc": "Proovi lehekülge värskendada või proovi hiljem uuesti.",
+            "error": "Tõrge {code}",
+            "sorry": "Vabandame, teenusega on tekkinud probleem ja me töötame selle võimalikult kiire lahendamise nimel.",
+            "title": "Ootamatu tõrge"
+        },
+        "unknown": "Tekkis tõrge"
+    },
+    "footer": {
+        "license": {
+            "linkTitle": "Etalab litsents - uues aknas",
+            "mention": "Kui lehekülje sisu ei ole selgesõnaliselt märgitud kolmanda osapoole intellektuaalomandina, pakutakse selle lehekülje sisu <a {linkProps}>Etalab 2.0 litsentsi</a> alusel"
+        },
+        "links": {
+            "accessibility": "Ligipääsetavus: nõuetele-mittevastav",
+            "legal": "Õigusteave",
+            "rgesn": "Ökokontseptsioon",
+            "sources": "Lähtekood"
+        }
+    },
+    "general": {
+        "a11y": {
+            "desc": "See ligipääsetavuse avaldus kehtib veebilehel <strong>baromeeter.ai</strong>.",
+            "disclaimer": "<strong>compar:IA</strong> kohustub muutma oma digiteenused ligipääsetavaks vastavalt 11. veebruari 2005. aasta seaduse nr 2005-102 artiklile 47.",
+            "improveAdress": "Aadress: DINUM, 20 avenue de Ségur, 75007, Pariis",
+            "improveDelay": "Püüame vastata kahe tööpäeva jooksul.",
+            "improveDesc": "Kui te ei pääse sisule või teenusele ligi, võite võtta ühendust beta.gouv.fr vastutava isikuga, kes suunab teid ligipääsetava alternatiivi juurde või hangib sisu teises vormingus.",
+            "improveMail": "E-post: <a {linkProps}>baromeeter@tartunlp.ai</a>",
+            "improveTitle": "Parandused ja kontakt",
+            "remedyAdvocate": "Kirjutage sõnum <a {linkProps}>õiguste kaitse asutusele</a>",
+            "remedyAdvocateAdress": "Saatke kiri posti teel (tasuta, marki pole vaja): Õiguste kaitsja - tasuta vastus 71120, 75342, Pariis, CEDEX 07",
+            "remedyDelegateAdvocate": "Võtke ühendust <a {linkProps}>oma piirkonna õiguste kaitsja esindajaga</a>",
+            "remedyDesc": "Seda menetlust tuleb kasutada juhul, kui olete teavitanud veebilehe haldajat ligipääsetavuse puudusest, mis takistab teil juurdepääsu sisule või ühele portaali teenustest, ning te ei ole saanud rahuldavat vastust.",
+            "remedyList": "Saad:",
+            "remedyTitle": "Vaidlusavalduse esitada",
+            "stateDesc": "Veebileht comparia.beta.gouv.fr ei vasta RGAA 4.1 standardile. Lehekülge <strong>pole veel auditeeritud</strong>. Siiski on lehekülg loodud nii, et see oleks võimalikult suurele kasutajaskonnale ligipääsetav. Seetõttu peaksite saama:",
+            "stateNavigate": "Kõikidel lehekülgedel vaid klaviatuuri abil navigeerida",
+            "statePrefs": "Lehekülge ilma sisu kaotamata oma eelistustega kohandada (kirjasuurus, ekraani suum, kirjatüübi muutmine jne)",
+            "stateScreenReader": "Veebilehte ekraanilugeja abil vaadata.",
+            "stateTitle": "Nõuetele vastavuse staatus",
+            "title": "Ligipääsetavuse avaldus"
+        },
+        "legal": {
+            "a11yDesc": "Digiligipääsetavuse standarditele vastavus on tulevikueesmärk, kuid püüdleme selle poole, et muuta see lehekülg kõigile kättesaadavaks.",
+            "a11yTitle": "Ligipääsetavus",
+            "directorDesc": "Härra Romain Delassus, kultuuriministeeriumi digiosakonna juhataja",
+            "directorTitle": "Avaldamise eest vastutav isik",
+            "editorDesc": "Seda veebilehte avaldab Prantsumaa kultuuriministeerium, 182 rue Saint-Honoré, 75001, Pariis",
+            "editorTitle": "Avaldatud",
+            "hostingDesc": "Seda veebilehte majutab OVH SAS (<a {linkProps}>https://www.ovh.com</a>), kelle registrijärgne asukoht on rue Kellermann 2, 59100, Roubaix, Prantsusmaa.",
+            "hostingTitle": "Lehekülje majutamine",
+            "reportA11y": "Kui teil tekib ligipääsetavusprobleem, mis takistab lehekülje sisu või funktsioonide kasutamist, andke meile sellest teada.",
+            "reportA11yDesc": "Lisateavet Prantsusmaa digitaalse ligipääsetavuse põhimõtete kohta leiate aadressilt <a {linkProps}>references.modernisation.gouv.fr/accessibilite-numerique</a>",
+            "reportDesc": "Kui te meilt kiiresti vastust ei saa, on teil õigus saata oma kaebus või suunamise taotlus õiguste kaitsjale.",
+            "reportTitle": "Teavita probleemist",
+            "securityCertif": "Veebileht on kaitstud elektroonilise sertifikaadiga, mida enamikus veebilehitsejates tähistab tabaluku ikoon. See kaitse aitab tagada andmevahetuse konfidentsiaalsuse.",
+            "securityNoMail": "Platvormiga seotud teenused ei saada mitte mingil juhul e-kirju, milles küsitakse isikuandmeid.",
+            "securityTitle": "Turvalisus",
+            "sources": "Kui ei ole märgitud teisiti, on kõik selle lehekülje tekstid avaldatud <a {etalabLinkProps}>Etalab Open 2.0 litsentsi</a> alusel. Selle rakenduse lähtekood on vabalt taaskasutatav ja kättesaadav <a {githubLinkProps}>GitHubis</a>.",
+            "title": "Õigusteave"
+        },
+        "privacy": {
+            "cookiesBannerDesc": "See on tõsi – sa ei pidanud klõpsama poolt lehte katval hüpikaknal, et küpsiste kasutamisega nõustuda – isegi siis, kui sa ei tea täpselt, mida see tähendab!",
+            "cookiesBannerNoNeed": "Selles pole midagi omapärast. Me lihtsalt järgime seadust, mis sätestab, et külastajate jälgimise teatud tööriistad, kui need on korrektselt ja privaatsust austavalt seadistatud, on eelnevast nõusolekust vabastatud.",
+            "cookiesBannerTitle": "Miks sellele leheküljel küpsiste kasutamise nõusolekut ei küsita?",
+            "cookiesBannerTools": "Kasutame <a {libreLinkProps}>vabatarkvaralist</a> tööriista nimega <a {matomoLinkProps}>Matomot</a>, mis on seadistatud kooskõlas CNILi küpsiste <a {cnilLinkProps}>soovitustega</a>. See tähendab näiteks seda, et sinu IP-aadress anonümiseeritakse enne salvestamist. Seetõttu ei ole võimalik selle lehekülje külastusi sinu isikuga seostada.",
+            "cookiesDesc": "Selle veebilehe külastamine salvestab sinu arvutisse väikese tekstifaili (ehk küpsise). See võimaldab meil külastuste arvu mõõta ja mõista, milliseid lehti kõige enam vaadatakse.",
+            "cookiesDescMore": "Saad sellel veebilehel veebilehitsemise jälgimisest keelduda. See kaitseb sinu privaatsust, kuid samas ei ole lehekülje omanikul siis võimalik sinu tegevustest õppida ning sulle ja teistele kasutajatele paremat kasutuskogemust luua.",
+            "cookiesTitle": "Küpsised ja nõusolek",
+            "dataAccessDatasets": "Kasutajate dialoogi ja eelistuste andmeid levitatakse Etalabi avatud litsentsi 2.0 alusel Hugging Face'i platvormil Prantsusmaa kultuuriministeeriumi konto (<a {linkProps}>https://huggingface.co/ministere-culture</a>) kaudu.",
+            "dataAccessDesc": "Muidugi! Lehekülje kasutusstatistika on vabalt kättesaadav aadressil <a {linkProps}>stats.beta.gouv.fr</a>.",
+            "dataAccessTitle": "Panustan teie andmestikku, kas mul on sellele juurdepääs?",
+            "dataExtraCountry": "Asukohariik: Prantsusmaa",
+            "dataExtraHost": "Alltöövõtja: OVH",
+            "dataExtraTitle": "Kes meil andmeid töödelda aitab?",
+            "dataExtraWarranty": "Garantiid: <a {linkProps}>https://storage.gra.cloud.ovh.net/v1/AUTH_325716a587c64897acbef9a4a4726e38/contracts/9e74492-OVH_Data_Protection_Agreement-FR-6.0.pdf</a>",
+            "dataExtraWhat": "Töötlemine: Majutamine",
+            "dataRespDesc": "Teie isikuandmete töötlemise eest vastutab Prantsusmaa kultuuriministeeriumi digiosakond.",
+            "dataRespTitle": "Kes andmete töötlemise eest vastutab?",
+            "dataTimeDesc": "Kasutajate ja nende vestluste kohta käivaid andmeid säilitatakse alates hetkest, mil eelistus on salvestatud.",
+            "dataTimeTitle": "Kui kaua me andmeid säilitame?",
+            "dataUseDesc": "Igal juhul kohustub väljaandja rakendama meetmeid, et tagada enne dialoogiandmete avalikustamist nende anonüümseks muutmine.",
+            "dataUseTitle": "Kuidas vestlusandmeid töödeldakse?",
+            "desc": "Teenuse avaldaja on Prantsusmaa kultuuriministeeriumi digiosakond.",
+            "privacyData": "Leheküljel kogutakse järgnevaid andmeid:",
+            "privacyDataArena": "Mudelitega vestlemise andmed: kasutajate esitatud küsimused, mudelite vastused ning kasutajate vastuse eelistused",
+            "privacyDataForm": "Küsimustiku \"Aita meil compar:IA-d paremaks muuta\" andmed.",
+            "privacyDesc": "See teenus ei töötle andmeid, mis CNILi määratluse kohaselt klassifitseeruvad isikuandmeteks, st teabeks, mis puudutab otseselt või kaudselt tuvastatavat füüsilist isikut.",
+            "privacyResp": "Kasutaja vastutab andmete või sisu eest, mida ta platvormi pakutud viipa sisestab. <a {linkProps}>Kasutustingimustega</a> nõustudes kohustub kasutaja mitte edastama teavet, mille põhjal võiks tuvastada teda ennast või kolmandat isikut.",
+            "privacyTitle": "Kas me töötleme isikuandmeid?",
+            "tallyData": "Kui täidate ühe neist vormidest, edastatakse teie sisestatud andmed Tallyle (Tally BV, Belgia) ja need majutatakse seal. Tally on pühendunud teie andmete mittekasutamisele ärilistel eesmärkidel ja isikuandmete kaitse üldmääruse (GDPR) järgimisele. Lisateabe saamiseks vaadake Tally <a {tallyPrivacyLinkProps}>privaatsuspoliitikat</a>.",
+            "tallyDesc": "See lehekülg kasutab kahe funktsiooni jaoks veebipõhist vormide loomise teenust <a {tallyLinkProps}>Tally</a>:",
+            "tallyFeedback": "Tagasisidevorm, mis võimaldab meil koguda teie tagasisidet teenuse kohta",
+            "tallyNewsletter": "Uudiskirja tellimisvorm",
+            "tallyTitle": "Tally vormid",
+            "title": "Privaatsuseeskirjad"
+        },
+        "rgesn": {
+            "1": {
+                "1": "See veebileht võimaldab lihtsat ja tasuta juurdepääsu väga laiale valikule keelemudelitele ning aitab seeläbi tõsta kodanike teadlikkust generatiivse tehisaru erinevatest aspektidest, nagu mitmekesisus, kallutatus ja keskkonnamõju. Lisaks jagatakse koostatud viipade ja eelistuste andmekogumeid avatud lähtekoodina MIT/Etalab 2.0 litsentsi alusel.",
+                "2": "Compar:IA teenuse kasutajate sihtgrupid tuvastati kasutajaintervjuude ning vajaduste kaardistamise etapi kaudu.",
+                "3": "Seega kuuluvad potentsiaalsete kasutajate hulka kõik kodanikud, kuid eelkõige õpetajad, õpilased, üliõpilased, digivahendajad, tehisaru valdkonna koolitajad ning ka teadlased (arvutiteadus, tehisaru, sotsiaal- ja humanitaarteadused) ja ettevõtted, kes on huvitatud avatud lähtekoodina jagatud andmekogumite analüüsimisest või kasutamisest.<br> Sellega kooskõlas vastab digiteenus nende vajadustele järgmiste funktsioonide kaudu: mudelite tasuta testimine ja võrdlemine ning avatud lähtekoodina jagatud andmete kasutamine.",
+                "4": "compar:IA teenus osaleb ökodisaini lähenemises, mille eesmärk on vähendada keskkonnamõjusid. Selleks koostati digiteenuste ökoloogilise disaini üldraamistiku (RGESN, 2024 versioon) rakendamise raames käesolev deklaratsioon.<br> RGESN, mille töötasid välja Arcep ja Arcom koostöös ADEME, DINUMi, CNILi ja Inriaga, on kättesaadav <a {linkProps}>Arcepi veebilehel</a>.",
+                "title": "Teenuse eesmärk"
+            },
+            "2": {
+                "1": "Digitaalteenuste ökodisain on lähenemisviis, mille eesmärk on vähendada ja piirata teenuse keskkonnamõju alates selle kavandamisetapist ja kogu selle elutsükli vältel.",
+                "2": {
+                    "1": "Jätkusuutlikumate digiteenuste kavandamine seadmete eluea pikendamiseks;",
+                    "2": "Keskkonnasõbraliku lähenemise edendamine kooskõlas rahvusvaheliste keskkonnaeesmärkidega, vastukaaluks strateegiatele, mille eesmärk on köita kasutajate tähelepanu;",
+                    "3": "Kasutatavate IT-ressursside vähendamine, andmeliikluse ja digitaalse taristu kasutamise optimeerimine;",
+                    "4": "Digiteenuse keskkonnajalajälje läbipaistvuse suurendamine.",
+                    "title": "Selle rakendamisel on neli peamist eesmärki:"
+                },
+                "3": {
+                    "1": "Lehekülje suuruse piiramine",
+                    "2": "Lehekülje keerukuse piiramine",
+                    "3": "Serveripäringute arvu piiramine",
+                    "4": "Teenuse majutamiseks vajaliku energiatarbimise piiramine",
+                    "title": "Praktikas tähendab ökodisain parimate tavade kogumit, mida tuleb järgida enne teenuse loomist või täiustamist, selle ajal ja pärast seda, võimaldades eelkõige:"
+                },
+                "4": "See on pidev ja koostööl põhinev täiustamise protsess.",
+                "title": "Mis on ökodisain?"
+            },
+            "3": {
+                "1": {
+                    "1": "Kasutajakogemuse lihtsustamine: navigeerimisteed on optimeeritud ja koondatud teenuse põhifunktsioonidele (mudelite testimine, andmekogumid, edetabel) ning neid testitakse regulaarselt kasutajatestimise teel.",
+                    "2": "Kasutajate teadlikkuse tõstmine teenuse ökoloogilise jalajälje kohta: tehisarule esitatud küsimuste kohta tuuakse välja energiakulu näitajad; edendatakse säästlikku kasutamist, pakkudes režiimi, mis koondab väiksemad mudelid, millel on väiksem keskkonnamõju.",
+                    "3": "DSFR-i (<i>State Design System</i>) liidesekomponentide kasutamine: need on ligipääsetavad ja nende jalajälg on minimaalne.",
+                    "4": "Kõige intuitiivsema navigeerimise rakendamine, et vähendada teabe otsimisele kuluvat aega.",
+                    "5": "Mobiilikeskne disain: kogu sisu on mobiilseadmetes nähtav. Lehekülg kohandub kõigi ekraanisuurustega.",
+                    "6": "Videote integreerimise välistamine leheküljel.",
+                    "title": "Peamine väljakutse on tagada, et teenus töötaks võimalikult vanadel kasutajaseadmetel ning erinevate ühenduvustingimuste korral. Projekteerimisetapis rakendati mitmeid meetmeid, sealhulgas:"
+                },
+                "title": "Keskkonnamõjude vähendamiseks või piiramiseks rakendatud strateegia ja eesmärgid"
+            },
+            "4": {
+                "1": "Tootemeeskond (kõikide kriteeriumide läbivaatamise ja valideerimise eest vastutasid kaks inimest) viis 2025. aasta maist oktoobrini läbi enesehindamise, mis hõlmas kõiki platvormi lehekülgi. Teatud tehniliste näitajate hindamiseks kasutatud tööriistad olid veebilehitseja arendustööriistad (<i>network inspector</i>), laiendus <a {greenitLinkProps}>Green IT Analysis</a> ja tööriist <a {ecoindexLinkProps}>EcoIndex</a>.",
+                "title": "RGESN diagnostika"
+            },
+            "5": {
+                "1": {
+                    "1": "RGESNi rakendamise edenemise skoor seisuga 12.10.2025: 89%",
+                    "title": "Enesehindamine näitab 89% vastavust <a {linkProps}>RGESN</a>-ile (üldine ökodisaini viide)."
+                },
+                "2": "Digitaalse teenuse compar:IA eesmärk on seda tulemust parandada, et see jõuaks 2027. aastaks 95%-ni.",
+                "3": {
+                    "1": "Strateegia: 100%",
+                    "2": "Spetsifikatsioonid: 78%",
+                    "3": "Arhitektuur: 100%",
+                    "4": "Kasutajakogemus ja liides (UX/UI): 100%",
+                    "5": "Sisu: 67%",
+                    "6": "Esirakendus: 82%",
+                    "7": "Tagarakendus: 64%",
+                    "8": "Veebimajutus: 90%",
+                    "9": "Algoritmid: 100%",
+                    "title": "Tulemus teemade kaupa:"
+                },
+                "4": {
+                    "date": "10. detsember 2025",
+                    "title": "RGESN-i audititabel"
+                },
+                "title": "Raamistiku rakendamisel saadud tulemus"
+            },
+            "6": {
+                "1": "Lehekülg on ligipääsetav mis tahes mobiilseadmes, mis on toodetud 2017. aastal või hiljem.",
+                "2": "Teenusele mugavaks juurdepääsuks ja selle kasutamiseks vajalik minimaalne internetiühendus: 3G mobiilsidevõrgus ja 512 Kbps püsivõrgus.",
+                "3": "Lehekülg on loodud erinevate ekraanisuurustega kasutamiseks (vähemalt 320 pikslit lai).",
+                "4": "Lehekülg ei ole Internet Exploreri veebilehitseja kaudu ligipääsetav. ",
+                "title": "Leheküljele juurdepääsu miinimumnõuded"
+            },
+            "7": {
+                "1": "Teenuse kavandamine koos lehe disaini ja koodi ülevaatusega, mille üks eesmärk on vähendada iga funktsiooni keskkonnamõju (kriteerium 2.1)",
+                "2": "Andmete säilitamise tähtaegade rakendamine kustutamise või arhiveerimise eesmärgil: logide regulaarne kustutamine failiserveris S3 ja eelkõige andmebaasis (Postgres).",
+                "3": {
+                    "1": "Serveripäringute maksimaalne arv ekraani kohta: 40",
+                    "2": "Maksimaalne ressursi suurus ekraani kohta: 600 KB",
+                    "title": "Kinni pidamine maksimaalsest päringute mahust ja arvu piirangust ekraani kohta (kriteerium 6.1):"
+                },
+                "4": "Illustratsioonide üleviimine vormingutesse WebP, AVIF, JPEG XL või mõnda tõhusamasse pildivormingusse (kriteerium 5.1).",
+                "5": "Mudelite võrdlemise ajal vastuste laadimise katkestamise võimaldamine.",
+                "6": "EcoIndexi analüüsi tulemused näitavad märkimisväärset lahknevust mõju mõõtmisel, kusjuures mõned lehed saavad hoolimata rakendatud headest tavadest hindeks E kuni F (suhteliselt suur lehe kaal, keerukus ja päringute arv). Nüüd on väljakutseks neid tulemusi igal üksikjuhul eraldi täpsemalt mõista, et edasised täiustused kindlaks teha.",
+                "desc": "Mitu täiustust on juba kindlaks tehtud või nende kindlakstegemine on töös, sealhulgas:",
+                "title": "Tuvastatud parendused"
+            },
+            "desc": "avaldatud 11. detsembril 2025",
+            "title": "Ökodisaini avaldus"
+        },
+        "tos": {
+            "title": "Kasutustingimused"
+        }
+    },
+    "generated": {
+        "archs": {
+            "dense": {
+                "desc": "Tihe arhitektuur viitab närvivõrgu tüübile, kus iga ühe kihi neuron on ühendatud kõigi järgmise kihi neuronitega. See võimaldab kõigil kihi parameetritel väljundi arvutamisse panustada.",
+                "name": "Tihe"
+            },
+            "matformer": {
+                "desc": "Kujuta ette Vene puunukke (matrjoškad → matrjoška-transformer → Matformer): iga plokk sisaldab mitut pesastatud kasvava suurusega alam-mudelit, mis jagavad samu parameetreid. See võimaldab iga päringu puhul valida sobiva mahuga mudeli vastavalt saadaolevale mälule või lubatud latentsusele, ilma et erinevaid mudeleid oleks vaja eraldi ümber treenida.",
+                "name": "Matformer"
+            },
+            "moe": {
+                "desc": "<i>Mixture of experts</i>i (MoE) arhitektuur kasutab suunamismehhanismi, mis aktiveerib sisendist sõltuvalt närvivõrgus ainult teatud spetsialiseeritud alamhulgad (eksperdid). See võimaldab ehitada väga suuri mudeleid, hoides samal ajal arvutuslikud kulud madalad, kuna igal sammul kasutatakse vaid osa võrgust.",
+                "name": "MoE"
+            },
+            "na": {
+                "desc": "Väljaandja ei ole avalikustanud teavet mudeli arhitektuuri kohta.",
+                "name": "Suletud"
+            }
+        }
+    },
+    "header": {
+        "chatbot": {
+            "newDiscussion": "Uus vestlus"
+        },
+        "homeTitle": "Avaleht - baromeeter.ai",
+        "menu": "Menüü",
+        "title": "baromeeter.ai",
+        "votes": {
+            "count": "{count} häält",
+            "legend": "Legend",
+            "objective": "Eesmärk: {count}",
+            "tooltip": "Vestle, hääleta ja aita meil eesmärgini jõuda!<br /><strong>Sinu hääl on oluline</strong>: see täiendab baromeeter.ai andmestikku, mis on vabalt kättesaadav ning aitab täiustada tulevasi mudeleid.<br />See digitaalne ühisvara aitab kaasa <strong>keelelise ja kultuurilise mitmekesisuse paremale esindatusele tulevastes keelemudelites.</strong>"
+        }
+    },
+    "home": {
+        "vote": {
+            "steps": {
+                "datasets": {
+                    "desc": "Kõik küsimused ja hääled koondatakse andmestikeks ning avaldatakse pärast anonümiseerimist.",
+                    "title": "Andmestikud keelte kaupa"
+                },
+                "finetune": {
+                    "desc": "Ettevõtted ja haridusasutused saavad neid andmestikke kasutada, et uusi keelelise ja kultuurilise mitmekesisusega paremini arvestavaid mudeleid treenida.",
+                    "title": "Konkreetsete keelte jaoks peenhäälestatud mudelid"
+                },
+                "prefs": {
+                    "desc": "Pärast keelemudeliga vestlemist palutakse sul märkida kriteeriumid, mille põhjal sa konkreetse mudeli kasuks otsustasid. Näiteks vastuste asjakohasus või kasulikkus.",
+                    "title": "Sinu eelistused"
+                }
+            },
+            "title": "Miks sinu hääl oluline on?"
+        }
+    },
+    "models": {
+        "arch": {
+            "title": "Kas teadsid?"
+        },
+        "conso": {
+            "count": {
+                "L": "> 5000 mWh",
+                "M": "150–5000 mWh",
+                "S": "< 150 mWh"
+            },
+            "filterLegend": "Filtreeri keskmise energiatarbimise järgi 1000 tookeni kohta"
+        },
+        "licenses": {
+            "type": {
+                "openSource": "Avatud lähtekoodiga",
+                "proprietary": "Suletud",
+                "semiOpen": "Avatud"
+            }
+        },
+        "list": {
+            "filters": {
+                "archived": {
+                    "checkedLabel": "Nähtavad",
+                    "label": "Arhiveeritud mudelid",
+                    "uncheckedLabel": "Peidetud"
+                },
+                "editor": {
+                    "legend": "Avaldaja"
+                },
+                "license": {
+                    "legend": "Litsents"
+                },
+                "reset": "Eemalda kõik filtrid",
+                "size": {
+                    "legend": "Suurus (parameetrid)"
+                }
+            },
+            "model": "mudel",
+            "models": "mudelid",
+            "noresults": "Ükski mudel ei vasta sinu otsingukriteeriumidele.",
+            "triage": {
+                "label": "Sorteeri",
+                "options": {
+                    "date-desc": "Avaldamise kuupäev (uusimast vanimani)",
+                    "name-asc": "Mudeli nimi (A–Z)",
+                    "org-asc": "Avaldaja (A–Z)",
+                    "params-asc": "Suurus (väikseimast suurimani)"
+                }
+            }
+        },
+        "names": {
+            "a": "Mudel A",
+            "b": "Mudel B"
+        },
+        "openWeight": {
+            "tooltips": {
+                "openSource": "Selle mudeli treeningandmed, kood ja treenimise käigus õpitud parameetrid on täielikult allalaaditavad ja muudetavad, võimaldades mudelit käitada ja kohandada omaenda riistvaral. Avatud lähtekoodiga mudel on piiravam mõiste kui avatud mudel (peamiselt seoses treeningkorpuse läbipaistvusega) ning väheseid mudeleid peetakse avatud lähtekoodiga mudeliteks.",
+                "openWeight": "Avatud mudel, mille treenimise käigus õpitud parameetrid on avalikkusele allalaaditavad, võimaldades mudelit käitada omaenda riistvaral. Avatud lähtekoodiga mudel on piiravam mõiste kui avatud mudel (peamiselt seoses treeningkorpuse läbipaistvusega) ning väheseid mudeleid peetakse avatud lähtekoodiga mudeliteks."
+            }
+        },
+        "release": "Avaldatud {date}",
+        "size": {
+            "count": {
+                "L": "100–400 miljardit",
+                "M": "60–100 miljardit",
+                "S": "15–60 miljardit",
+                "XL": "> 400 miljardit",
+                "XS": "<15 miljardit"
+            },
+            "estimated": "Hinnanguline suurus ({size})",
+            "title": "Suurus {size}"
+        }
+    },
+    "modes": {
+        "big-vs-small": {
+            "altLabel": "Väike ja suur",
+            "description": "Üks juhuslikult valitud väike mudel ühe juhuslikult valitud suure mudeli vastu",
+            "label": "Väike ja suur",
+            "title": "Režiim väike versus suur"
+        },
+        "custom": {
+            "altLabel": "Mudelite valimine käsitsi",
+            "description": "Kas tunned oma kaks valitud mudelit ära?",
+            "label": "Käsitsi valimine",
+            "title": "Käsitsi valimise režiim"
+        },
+        "random": {
+            "altLabel": "Juhuslik mudelite valik",
+            "description": "Kaks mudelit valitakse kogunimekirjast juhuslikult",
+            "label": "Juhuslik",
+            "title": "Juhusliku valiku režiim"
+        },
+        "reasoning": {
+            "altLabel": "Arutlusmudelite valik",
+            "description": "Kaks juhuslikult valitud arutlusmudelit",
+            "label": "Arutlemine",
+            "title": "Arutlevate mudelite režiim"
+        },
+        "small-models": {
+            "altLabel": "Väikeste mudelite valik",
+            "description": "Kaks juhuslikult valitud väikest mudelit",
+            "label": "Säästlik",
+            "title": "Säästlik režiim"
+        }
+    },
+    "ranking": {
+        "energy": {
+            "desc": "See graafik näitab iga mudeli puhul rahuloluskoori (Bradley–Terry) seost hinnangulise keskmise energiatarbega 1000 tookeni kohta. Energiatarbimist on hinnatud <a {linkProps}>Ecologitsi</a> metoodika alusel ning see põhineb kahel parameetril, milleks on mudelite <strong>suurus</strong> (parameetrite arv) ja nende <strong>arhitektuur</strong>. <strong>Suletud mudelite</strong> puhul ei ole need andmed kas üldse kättesaadavad või on need vaid osaliselt avalikustatud. Seetõttu on need allolevast graafikust välja jäetud.",
+            "tabLabel": "Energiavaade",
+            "title": "Kas kõige populaarsemad mudelid on energiatõhusad?",
+            "views": {
+                "graph": {
+                    "desc": "Vali mudel, et näha selle Bradley-Terry (BT) skoori ja energiatarbimist",
+                    "legends": {
+                        "arch": "Mudeli arhitektuur",
+                        "size": "Filtreeri suuruse järgi",
+                        "sizeSub": "(miljardit parameetrit)"
+                    },
+                    "tabLabel": "Graafiku vaade",
+                    "title": "Bradley-Terry (BT) skoor versus keskmine tarbimine 1000 tookeni kohta",
+                    "tooltip": {
+                        "active_params": "Aktiivsed parameetrid (miljardites)",
+                        "arch": "Arhitektuur",
+                        "consumption": "Keskmine tarbimine (mWh)",
+                        "elo": "BT skoor",
+                        "params": "Parameetrit (miljardites)"
+                    },
+                    "xLabel": "Keskmine tarbimine 1000 tookeni kohta (mWh)",
+                    "yLabel": "Bradley-Terry skoor (BT)"
+                },
+                "methodo": {
+                    "1": {
+                        "list": {
+                            "1": "<strong>Mida kõrgemal mudel graafikul asub</strong>, seda kõrgem on selle Bradley-Terry skoor. <strong>Mida kaugemal vasakul mudel graafikul asub</strong>, seda vähem energiat see teiste mudelitega võrreldes tarbib.",
+                            "2": "<strong>Vasakus ülanurgas</strong> on populaarsed mudelid, mis tarbivad teiste mudelitega võrreldes vähem energiat.",
+                            "3": "Lisaks suurusele mõjutab mudelite keskmist energiatarbimist ka mudeli <strong>arhitektuur</strong>. Näiteks sarnase suurusega Llama 3 405B mudel (tihe arhitektuur, 405 miljardit parameetrit) tarbib keskmiselt 10 korda rohkem energiat kui GLM 4.5 mudel (MoE-arhitektuur, 355 miljardit parameetrit ja 32 miljardit aktiivset parameetrit)."
+                        },
+                        "subTitle": "Graafiku lugemise näited",
+                        "title": "Kuidas leida õige tasakaal tajutava jõudluse ja energiatõhususe vahel?"
+                    },
+                    "2": {
+                        "descs": {
+                            "1": "Mudeli kasutamisega kaasneva energiakulu hindamine tugineb Ecologitsi metoodikale, mis võtab arvesse mudelite suurust ja arhitektuuri. Suletud mudelite puhul ei avalikusta mudeliarendajad seda teavet.",
+                            "2": "Seetõttu otsustasime suletuid mudeleid graafikusse mitte lisada, kuni nende energiatarbimise arvutamiseks vajalik teave on läbipaistev."
+                        },
+                        "title": "Miks sellel graafikul suletud mudeleid ei kuvata?"
+                    },
+                    "3": {
+                        "descs": {
+                            "1": "Platvorm kasutab <a {ecoLinkProps}><strong>Ecologitsi</strong></a> (<a {genaiLinkProps}><strong>GenAI Impacti</strong></a>) poolt välja töötatud metoodikat, et hinnata keelemudelite kasutamisega seotud energiatarbimist. See hinnang võimaldab kasutajatel võrrelda erinevate mudelite keskkonnamõju sama päringu puhul. Selline läbipaistvus on oluline, et soodustada keskkonnasäästlikumate mudelite arendamist ja kasutuselevõttu.",
+                            "2": "Ecologits rakendab olelusringi hindamise põhimõtteid vastavalt standardile ISO 14044. See keskendub praegu eelkõige mudelite kasutamise mõjule (st mudelite kasutamisele päringutele vastamiseks) ning <strong>graafikakaartide tootmisele</strong> (ressursside kaevandamine, tootmine ja transport).",
+                            "3": "Mudeli energiatarvet hinnatakse mitmeid parameetreid arvesse võttes. Näiteks vaadatakse mudeli suurust ja arhitektuuri, serverite asukohta, kus mudeleid käitatakse, ning väljundtookenite arvu. Globaalse soojenemise potentsiaali näitaja, mida väljendatakse CO₂ ekvivalendina, arvutatakse mudeli energiatarbe põhjal.",
+                            "4": "Oluline on märkida, et tehisaru keskkonnamõju hindamise metoodikad on alles väljatöötamisel."
+                        },
+                        "title": "Kuidas mudelite keskkonnamõju arvutatakse?"
+                    }
+                },
+                "table": {
+                    "title": "Graafiku andmed tabeli vormis"
+                }
+            }
+        },
+        "methodo": {
+            "desc": {
+                "1": "Alates 2025. aastast on tuhanded kasutajad tehisaru baromeetrit erinevate mudelite vastuste võrdlemiseks kasutanud, genereerides üle viieteistkümne tuhande hääle. Pingerea koostamiseks ei piisa pelgalt võitude arvu lugemisest. Õiglane süsteem peab olema statistiliselt usaldusväärne, kohanduma pärast iga võrdust ning kajastama saavutatud soorituste väärtust tõepäraselt.",
+                "2": "Sellest lähtuvalt on loodud <strong>Bradley–Terry mudelil põhinev edetabel</strong>, mis töötati välja koostöös <strong><a {perenLinkProps}>PEReNi</a> (Pôle d’Expertise de la Régulation numérique ) meeskondadega</strong>, tuginedes platvormil kogutud häältele ja reaktsioonidele. Lisateabe saamiseks tutvu meie <a {notebookLinkProps}>metoodilise märkmikuga</a>."
+            },
+            "impacts": {
+                "elo": {
+                    "desc": {
+                        "1": "<strong>Bradley–Terry</strong> mudel teisendab kohalike ja potentsiaalselt mittetäielike võrdluste kogumi ühtseks ja statistiliselt usaldusväärseks globaalseks järjestussüsteemiks, kus empiiriline võidumäär piirdub otseste vaatluste põhjal tehtud hinnangutega."
+                    },
+                    "title": "Edetabeli 10 parimat keelemudelit Bradley–Terry mudeli alusel arvutatud võidumäära põhjal"
+                },
+                "title": "Metoodika valiku mõju mudelite järjestusele",
+                "winrate": {
+                    "desc": {
+                        "1": "Ainult <strong>keskmise võidumäära</strong> alusel on võimalik koostada üldine pingerida, kuid selline arvutus eeldab, et iga mudel on olnud vastamisi kõigi teistega.",
+                        "2": "See meetod ei ole ideaalne, kuna see nõuab andmeid kõigi mudelite kombinatsioonide kohta ning niipea, kui mudelite arv suureneb, muutub selle haldamine kiiresti kulukaks ja keerukaks."
+                    },
+                    "title": "10 parima mudeli pingerida empiiriliste võidumäärade alusel"
+                }
+            },
+            "methods": {
+                "cons": "Peamised probleemid",
+                "elo": {
+                    "def": "<strong>Määratlus</strong>: pingereasüsteem, kus punktide juurde saamine või kaotamine sõltub tulemuse (võit/kaotus/viik) <strong>ja</strong> vastase hinnangulise taseme kombinatsioonist. Kui nõrgem mudel alistab tugevama mudeli, on tema edenemine pingereas suurem.",
+                    "list": {
+                        "1": "<strong>Tõenäosuslik mudel</strong>: võimaldab hinnata mis tahes vastasseisu tõenäolist tulemust, isegi selliste mudelite vahel, mis ei ole kunagi otseselt omavahel võistelnud.",
+                        "2": "<strong>Võistluse raskusastme arvestamine</strong>: Bradley–Terry mudeli põhjal tuletatud skoorid võtavad arvesse vastamisi olnud mudelite taset, võimaldades mudelite õiglast võrdlemist.",
+                        "3": "<strong>Parem määramatuse haldamine</strong>: usaldusvahemik hõlmab kogu võrdluste võrgustikku. See võimaldab määramatust täpsemalt hinnata, eriti mudelite puhul, millel on vähe otseseid vastasseise, kuid palju ühiseid vastaseid."
+                    },
+                    "title": "Bradley–Terry (BT) pingerida"
+                },
+                "pros": "Eelised",
+                "title": "Kaks võimalust mudelite klassifitseerimiseks",
+                "winrate": {
+                    "def": "<strong>Määratlus</strong>: empiiriline mudelite pingereasüsteem, mis põhineb mudeli poolt kõigi teiste mudelite vastu võidetud vastasseisude protsendil.",
+                    "list": {
+                        "1": "<strong>Vastasseisude arvul põhinev kallutatus</strong>: mudel, mis on võitnud kolm vastasseisu kolmest, omab 100% võidumäära, kuid see tulemus ei ole kuigi tähenduslik, kuna põhineb väga väikesel andmehulgal.",
+                        "2": "<strong>Vastasseisu raskusastet ei arvestata</strong>: mudeli alistamine loetakse samaväärseks olenemata mudelite üldisest võimekusest. Võidumäärad on ebaõiglased, kuna need ei võta arvesse vastasseisu raskusastet.",
+                        "3": "<strong>Stagnatsioon</strong>: pikemas perspektiivis jõuavad paljud head mudelid umbes 50% võidumäärani, kuna nad seisavad vastamisi samal tasemel mudelitega ning see muudab pingeread vähem eristavaks."
+                    },
+                    "title": "Võidumääral põhinev pingerida"
+                }
+            },
+            "tabLabel": "Metoodika",
+            "title": "Kuidas valida mudelite järjestamise meetod?"
+        },
+        "no_data": "Edetabel pole hetkel saadaval või seda alles arvutatakse.",
+        "preferences": {
+            "desc": "Hääletamisel saad oma eelistust erinevate positiivsete ja negatiivsete siltidega märgistada. Võrdle nende jaotust mudelite lõikes.",
+            "modal": {
+                "cta": "Mis on eelistus?",
+                "title": "Positiivsed ja negatiivsed eelistused"
+            },
+            "tabLabel": "Eelistuspõhine vaade",
+            "table": {
+                "cols": {
+                    "clear_formatting": "Eemalda vorming<br>",
+                    "complete": "Lõpeta",
+                    "creative": "Loominguline",
+                    "incorrect": "Ebatäpne",
+                    "instructions_not_followed": "Ei järgi <br> juhiseid",
+                    "n_match": "Vastasseise kokku",
+                    "name": "Mudel",
+                    "positive_prefs_ratio": "Eelistuste jaotus",
+                    "superficial": "Pealiskaudne",
+                    "total_negative_prefs": "Eelistusi kokku<br> Negatiivne",
+                    "total_positive_prefs": "Eelistusi kokku<br> Positiivne",
+                    "useful": "Kasulik"
+                },
+                "percentLabel": "Protsentidena väljendatud eelistused",
+                "tooltips": {
+                    "positive_prefs_ratio": "Hääletamisel kasutatakse eelistuse põhjuste märkimiseks silte. See veerg näitab nende siltide (positiivsete või negatiivsete) protsentuaalset jaotust kõigi antud häälte lõikes."
+                }
+            },
+            "title": "Kuidas kasutajate eelistused jagunevad?"
+        },
+        "ranking": {
+            "desc": "Täname sind sinu panuse eest! <br>Edetabel põhineb kõigil häältel ja reaktsioonidel, mis on kogutud mudelite </strong>pimevõrdluse<strong> teel alates teenuse avalikkusele kättesaadavaks tegemisest. Edetabel on koostatud <strong>Bradley-Terry</strong> meetodil, mis on laialdaselt kasutatud meetod binaarsete häälte teisendamiseks tõenäosuslikuks edetabeliks. <br>Edetabel ei ole mõeldud ametliku soovitusena ega mudelite tehnilise jõudluse hindamiseks. See kajastab platvormi kasutajate <strong>subjektiivseid eelistusi</strong>, mitte vastuste faktilist täpsust või tõepära.",
+            "tabLabel": "Edetabel"
+        },
+        "table": {
+            "data": {
+                "billions": "{count} miljardit",
+                "cols": {
+                    "arch": "Arhitektuur",
+                    "consumption": "Keskmine tarbimine<br>(1000 tookeni kohta)",
+                    "elo": "B-T <br> rahuloluskoor",
+                    "license": "Litsents",
+                    "n_match": "Hääli kokku",
+                    "name": "Mudel",
+                    "organisation": "Organisatsioon",
+                    "rank": "Tase",
+                    "release": "Avaldamise kuupäev",
+                    "size": "Suurus<br>(parameetrit)",
+                    "trust_range": "Usaldusvahemik (±)"
+                },
+                "estimation": "(hinnanguline)",
+                "tooltips": {
+                    "arch": "Keelemudeli arhitektuur viitab disainipõhimõtetele, mis määratlevad, kuidas närvivõrgu komponendid on üles ehitatud ja omavahel toimivad, et sisendandmed prognoositavateks väljunditeks teisendada. See hõlmab parameetrite aktiveerimisviisi (tihe <i>vs.</i> hõre), komponentide spetsialiseerumist ning teabe töötlemise mehhanisme (transformerid, konvolutsioonivõrgud, hübriidarhitektuurid).",
+                    "consumption": "Millivatt-tundides mõõdetuna tähistab energiatarve elektrienergiat, mida mudel kasutab päringu töötlemiseks ja vastuse koostamiseks. Mudelite energiatarve sõltub nende suurusest ja arhitektuurist. Oleme otsustanud kuvada suletud mudelideid halli värviga ja märgistusega N/A, kui meil puudub analüüsi teostamiseks läbipaistev teave nende suuruse ja arhitektuuri kohta.",
+                    "elo": "Bradley–Terry mudelil põhinev hinnanguline statistiline skoor, mis kajastab tõenäosust, et üht mudelit eelistatakse teisele. See skoor arvutatakse kõigi kasutajate häälte ja reaktsioonide põhjal. Lisateabe saamiseks vaata metoodika vahekaarti.",
+                    "rank": "Bradley–Terry skoori alusel määratud koht pingereas",
+                    "size": "Mudeli suurus miljardites parameetrites, viide kategooriasse jaotatuna. Suletud mudelite puhul seda suurust ei avaldata.",
+                    "trust_range": "Intervall, mis näitab edetabeli koha usaldusväärsust: mida kitsam on intervall, seda usaldusväärsem on hinnanguline koht pingereas. On 95% tõenäosus, et mudeli tegelik koht pingereas jääb sellesse vahemikku."
+                }
+            },
+            "lastUpdate": "Uuendatud {date}",
+            "totalModels": "Mudeleid kokku:",
+            "totalVotes": "Hääli kokku:"
+        },
+        "title": "Häältest edetabelini"
+    },
+    "reveal": {
+        "feedback": {
+            "description": "Jaga platvormi teistega, jagades mudeleid, millega oled suhelnud! Selle lingi kaudu on nähtavad ainult mudelite nimed ja energiamõju, ligipääs vestlusele puudub.",
+            "example": "Näited jagatud tulemustest",
+            "moreOnVotes": "Loe häälte kohta lisaks",
+            "shareResult": "Jaga oma tulemusi"
+        },
+        "impacts": {
+            "energy": {
+                "tooltip": "Millivatt-tundides mõõdetuna tähistab energiatarve elektrienergiat, mida mudel kasutab päringu töötlemiseks ja vastuse koostamiseks. Mida suurem on mudel (miljardites parameetrites), seda rohkem energiat kulub ühe tookeni genereerimiseks."
+            },
+            "title": "Vestluse hinnanguline energiatarve",
+            "tokens": {
+                "tooltip": "Tehisaru analüüsib ja genereerib lauseid sõnadest või ligikaudu neljatähelistest sõnaosadest; seda tekstiühikut nimetatakse tookeniks. Mida pikem on tekst, seda suurem on tookenite arv."
+            }
+        },
+        "thanks": {
+            "cta": "Vaata edetabelit",
+            "desc": "Vaata kus sinu eelistatud mudel baromeeter.ai mudelite üldises edetabelis asub.",
+            "graphAlt": "Mudelite skoori ja elektritarbimist kajastava graafiku ülevaade",
+            "rankingAlt": "Edetabeli ülevaade tabeli kujul",
+            "title": "Täname sind sinu panuse eest!"
+        }
+    },
+    "seo": {
+        "desc": "Tehisaru baromeeter on tööriist, mille abil saab erinevaid keelemudeleid pimesi võrrelda. See aitab generatiivse tehisaruga seotud teemadel (mitmekesisus, kallutatus, keskkonnamõju) teadlikkust tõsta ning väheste ressurssidega keelte jaoks eelistusandmestikke luua.",
+        "title": "{platformName}, Tehisaru baromeeter",
+        "titles": {
+            "accessibilite": "Ligipääsetavuse avaldus",
+            "arene": "Vestlus",
+            "donnees-personnelles": "Privatsuspõhimõtted",
+            "mentions-legales": "Õigusteave",
+            "modalites": "Kasutustingimused",
+            "modeles": "Mudelite nimekiri",
+            "ranking": "Edetabel",
+            "rgesn": "Ökodisaini avaldus"
+        }
+    },
+    "vote": {
+        "choices": {
+            "negative": {
+                "incorrect": "Ekslik",
+                "instructions_not_followed": "Juhiseid ei järgitud",
+                "question": "Miks sulle see vastus ei meeldinud?",
+                "superficial": "Pealiskaudne"
+            },
+            "positive": {
+                "clear_formatting": "Selge vorming",
+                "complete": "Täielik",
+                "creative": "Loominguline",
+                "question": "Mis sulle selle vastuse juures meeldis?",
+                "useful": "Kasulik"
+            }
+        },
+        "title": "Missugust keelemudelit sa eelistad?",
+        "yours": "Sinu hääl"
+    },
+    "words": {
+        "NA": "N/A",
+        "activated": "Aktiveeritud",
+        "archived": "Arhiveeritud",
+        "back": "Tagasi",
+        "close": "Sulge",
+        "deactivated": "Välja lülitatud",
+        "loading": "Laeb",
+        "new": "Uus",
+        "random": "Juhuslik",
+        "regenerate": "Genereeri uuesti",
+        "reset": "Tagasi algusesse",
+        "restart": "Alusta uuesti",
+        "retry": "Alusta uuesti",
+        "search": "Otsi",
+        "send": "Saada",
+        "tooltip": "Kohtspikker",
+        "validate": "Valideeri"
+    }
+}

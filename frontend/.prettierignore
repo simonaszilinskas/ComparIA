@@ -1,0 +1,13 @@
+# Package Managers
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lock
+bun.lockb
+
+src/lib/icons
+src/lib/generated
+src/lib/i18n
+static/bundle.tracing.replay.min.js
+# inlang writes these itself
+comparia.inlang

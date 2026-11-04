@@ -1,0 +1,95 @@
+<script lang="ts">
+  import { Button } from '$components/dsfr'
+  import type { Bot } from '$lib/chatService.svelte'
+  import { m } from '$lib/i18n/messages'
+  import { onDestroy } from 'svelte'
+  import type { SvelteHTMLElements } from 'svelte/elements'
+
+  let {
+    children,
+    scrolledSide = $bindable('a'),
+    ...props
+  }: SvelteHTMLElements['div'] & { scrolledSide?: Bot } = $props()
+
+  let scrollableElem = $state<HTMLDivElement>()
+
+  function scrollToSide(side: Bot) {
+    scrollableElem?.scrollTo({
+      left: side === 'b' ? scrollableElem.scrollWidth : 0,
+      behavior: 'smooth'
+    })
+    scrolledSide = side
+  }
+
+  function doScroll() {
+    scrollToSide(scrolledSide === 'a' ? 'b' : 'a')
+  }
+
+  // Keep keyboard focus on screen: show the side holding the focused element
+  function onFocusIn(event: FocusEvent) {
+    if (!scrollableElem || scrollableElem.scrollWidth <= scrollableElem.clientWidth) return
+    const sides = Array.from(scrollableElem.firstElementChild?.children ?? [])
+    const index = sides.findIndex((side) => side.contains(event.target as Node))
+    if (index !== -1) scrollToSide(index === 0 ? 'a' : 'b')
+  }
+
+  let scrollDebounce: ReturnType<typeof setTimeout> | undefined
+  function onScroll() {
+    if (!scrollableElem) return
+    clearTimeout(scrollDebounce)
+    scrollDebounce = setTimeout(() => {
+      if (!scrollableElem) return
+      const { scrollLeft, scrollWidth, clientWidth } = scrollableElem
+      const maxScroll = scrollWidth - clientWidth
+      if (maxScroll <= 0) return
+      const next: Bot = scrollLeft / maxScroll > 0.5 ? 'b' : 'a'
+      if (next !== scrolledSide) scrolledSide = next
+    }, 80)
+  }
+
+  onDestroy(() => clearTimeout(scrollDebounce))
+</script>
+
+<div {...props} class="min-h-0 relative flex max-w-full">
+  <!-- `relative` makes this the containing block of the cards' absolute
+       children (the sr-only vote chip inputs). Without it they escape the
+       overflow clip and widen the page on phones. -->
+  <div
+    class="cl-side-switcher-scroller md:overflow-hidden! relative flex w-full overflow-x-auto"
+    bind:this={scrollableElem}
+    onscroll={onScroll}
+    onfocusin={onFocusIn}
+  >
+    {@render children?.()}
+  </div>
+
+  <!-- One button that flips sides, so keyboard focus stays on it after a click -->
+  <Button
+    text={m[scrolledSide === 'a' ? 'actions.scrollRight' : 'actions.scrollLeft']()}
+    icon={scrolledSide === 'a' ? 'arrow-right-line' : 'arrow-left-line'}
+    iconOnly
+    variant="tertiary"
+    class={[
+      'bg-white! md:hidden! absolute top-1/2 inline-flex -translate-y-1/2',
+      scrolledSide === 'a' ? 'right-0' : 'left-0'
+    ]}
+    onclick={doScroll}
+  />
+</div>
+
+<style>
+  @media (max-width: 47.99em) {
+    .cl-side-switcher-scroller {
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .cl-side-switcher-scroller::-webkit-scrollbar {
+      display: none;
+    }
+    .cl-side-switcher-scroller :global(> * > *) {
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+  }
+</style>

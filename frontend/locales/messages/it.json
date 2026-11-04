@@ -1,0 +1,750 @@
+{
+    "a11y": {
+        "externalLink": "{text}"
+    },
+    "actions": {
+        "accessData": "Accedere ai dati",
+        "contact": "Contattaci",
+        "contactUs": "Contattaci",
+        "copyLink": {
+            "do": "Copia il link",
+            "done": "Link copiato negli appunti"
+        },
+        "copyMessage": {
+            "do": "Copia il messaggio",
+            "done": "Messaggio copiato"
+        },
+        "discover": "Scoprire",
+        "downloadData": "Scarica i dati",
+        "home": "Pagina iniziale / principale",
+        "returnArena": "Ritornare all'arena",
+        "returnHome": "Torna alla pagina principale",
+        "scrollLeft": "Scorri verso sinistra",
+        "scrollRight": "Scorri verso destra",
+        "searchModel": "Cerca un modello",
+        "seeMore": "Scopri di più",
+        "selectLanguage": "Seleziona una lingua"
+    },
+    "arenaHome": {
+        "compareModels": {
+            "count": "{count}/2 modelli",
+            "help": "Se ne scegli solo uno, il secondo verrà selezionato casualmente",
+            "question": "Quali modelli desideri confrontare?"
+        },
+        "modelSelection": "Selezione del modello",
+        "prompt": {
+            "label": "Scrivi il tuo primo messaggio",
+            "placeholder": "Scrivi qui il tuo primo messaggio"
+        },
+        "selectModels": {
+            "help": "Seleziona il metodo di confronto più adatto a te",
+            "question": "Quali modelli desideri confrontare?"
+        },
+        "suggestions": {
+            "generateAnother": "Genera un altro messaggio",
+            "title": "Suggerimenti rapidi"
+        },
+        "title": "Come posso esserti d'aiuto oggi?",
+        "webSearch": {
+            "disabled": "Ricerca web disabilitata",
+            "enabled": "Ricerca web abilitata",
+            "label": "Ricerca web",
+            "tooltip": "Abilitare la ricerca web permette ai modelli di utilizzare fonti online e citare informazioni più recenti.<br> <strong>> Senza la ricerca web</strong>, i modelli rispondono in base a quanto appreso durante la formazione (i dati di formazione). Non potendo verificare le informazioni online, le informazioni più recenti o specifiche potrebbero risultare incomplete."
+        }
+    },
+    "chatbot": {
+        "continuePrompt": "Continua la conversazione…",
+        "conversation": "Conversazione",
+        "errors": {
+            "other": {
+                "message": "Si è verificato un errore temporaneo.",
+                "retry": "Puoi provare a sollecitare nuovamente i modelli.",
+                "title": "Ops, errore temporaneo"
+            },
+            "tooLong": {
+                "message": "Ciascun modello è limitato nella dimensione delle conversazioni che è in grado di elaborare.",
+                "retry": "Puoi riprendere la conversazione con due nuovi modelli.",
+                "title": "Ops, la conversazione è troppo lunga per uno dei modelli."
+            }
+        },
+        "loading": "Caricamento delle risposte",
+        "reasoning": {
+            "finished": "Ragionamento completato",
+            "inProgress": "Ragionamento in corso…"
+        },
+        "revealButton": "Termina e rivela i modelli",
+        "webSearch": {
+            "label": "Risultati di ricerca web associati."
+        }
+    },
+    "closeModal": "Chiudi la finestra popup",
+    "components": {
+        "pagination": {
+            "first": "Prima pagina",
+            "label": "Pagine",
+            "last": "Ultima pagina",
+            "next": "Pagina successiva",
+            "nth": "Pagina {count}",
+            "previous": "Pagina precedente"
+        },
+        "table": {
+            "linePerPage": "Numero di righe per pagina",
+            "pageCount": "{count} righe per pagina",
+            "triage": "Ordinare"
+        },
+        "theme": {
+            "legend": "Scegli un tema per personalizzare l'aspetto del sito.",
+            "options": {
+                "dark": "Tema cupo",
+                "light": "Tema chiaro",
+                "system": "Sistema",
+                "systemSub": "Utilizza le impostazioni di sistema"
+            },
+            "title": "Impostazioni display"
+        }
+    },
+    "errors": {
+        "404": {
+            "desc": "Se hai digitato l'indirizzo web nel tuo browser, verifica che sia corretto. La pagina potrebbe non essere più disponibile.<br />In tal caso, per continuare la navigazione puoi accedere alla nostra homepage.<br />Altrimenti contattaci e ti indirizzeremo alle informazioni corrette.",
+            "error": "Errore 404",
+            "sorry": "La pagina che stai cercando non è stata trovata. Ci scusiamo per l'inconveniente.",
+            "title": "Pagina non trovata"
+        },
+        "unexpected": {
+            "desc": "Prova ad aggiornare la pagina o riprova più tardi.",
+            "error": "Errore {code}",
+            "sorry": "Siamo spiacenti, il servizio sta riscontrando un problema. Stiamo lavorando per risolverlo il prima possibile.",
+            "title": "Errore imprevisto"
+        },
+        "unknown": "Si è verificato un errore"
+    },
+    "footer": {
+        "license": {
+            "linkTitle": "Licenza etalab - nuova finestra",
+            "mention": "Salvo diversa indicazione esplicita in merito alla proprietà intellettuale detenuta da terzi, il contenuto di questo sito è offerto sotto la licenza <a {linkProps}>etalab-2.0</a>"
+        },
+        "links": {
+            "accessibility": "Accessibilità: non conforme",
+            "legal": "Avviso legale",
+            "rgesn": "Ecodesign",
+            "sources": "Codice sorgente"
+        }
+    },
+    "general": {
+        "a11y": {
+            "desc": "La presente dichiarazione di accessibilità si applica al sito web <strong>{domain}</strong> .",
+            "disclaimer": "<strong>compar:IA</strong> si impegna a rendere accessibili i propri servizi digitali, in conformità all'articolo 47 della legge n. 2005-102 dell'11 febbraio 2005.",
+            "improveAdress": "Indirizzo: DINUM, 20 avenue de Ségur 75007 Parigi",
+            "improveDelay": "Cerchiamo di rispondere entro 2 giorni lavorativi.",
+            "improveDesc": "Se non riesci ad accedere a un contenuto o a un servizio, puoi contattare il responsabile di {domain} per essere indirizzato a un'alternativa accessibile o per ottenere il contenuto in un altro formato.",
+            "improveMail": "E-mail: <a {linkProps}>contact@beta.gouv.fr</a>",
+            "improveTitle": "Miglioramento e contatto",
+            "remedyAdvocate": "Scrivi un messaggio al <a {linkProps}>Difensore dei diritti</a>",
+            "remedyAdvocateAdress": "Invia una lettera per posta (gratuitamente, senza francobolli): Difensore dei Diritti - Risposta libera 71120 75342 Parigi CEDEX 07",
+            "remedyDelegateAdvocate": "Contatta il rappresentante del <a {linkProps}>Difensore dei diritti nella tua regione</a>",
+            "remedyDesc": "Questa procedura deve essere utilizzata nel seguente caso: hai segnalato un problema di accessibilità, al gestore del sito web, che ti impedisce di accedere a contenuti o a uno dei servizi del portale e non hai ricevuto una risposta soddisfacente.",
+            "remedyList": "Puoi :",
+            "remedyTitle": "Procedura di ricorso",
+            "stateDesc": "Il sito web {domain} non è conforme alla norma RGAA 4.1. Il sito non è <strong>ancora stato verificato</strong>. Tuttavia è stato progettato per essere accessibile al pubblico più ampio possibile. Dovresti quindi essere in grado di:",
+            "stateNavigate": "naviga tra tutte le pagine del sito utilizzando una tastiera",
+            "statePrefs": "adatta il sito alle tue preferenze (dimensione del carattere, zoom dello schermo, modifica della tipografia, ecc.) senza perdita di contenuti",
+            "stateScreenReader": "visualizza il sito web con un lettore di schermo.",
+            "stateTitle": "Stato di conformità",
+            "title": "Dichiarazione di accessibilità"
+        },
+        "legal": {
+            "a11yDesc": "Il rispetto degli standard di accessibilità digitale è un obiettivo successivo, ma ci impegniamo a rendere questo sito accessibile a tutti.",
+            "a11yTitle": "Accessibilità",
+            "directorDesc": "Il signor Romain Delassus, responsabile del dipartimento digitale presso il Ministero della Cultura",
+            "directorTitle": "Direttore della pubblicazione",
+            "editorDesc": "Questo sito web è pubblicato dal Ministero Francese della Cultura, 182, rue Saint-Honoré 75001 Parigi",
+            "editorTitle": "Editore",
+            "hostingDesc": "Questo sito è ospitato da OVH SAS (<a {linkProps}>https://www.ovh.com</a>) la cui sede legale si trova in 2 rue Kellermann - 59100 Roubaix - Francia.",
+            "hostingTitle": "Hosting del sito",
+            "reportA11y": "Se riscontri un problema di accessibilità che ti impedisce di accedere a contenuti o funzionalità del sito, ti invitiamo a comunicarcelo.",
+            "reportA11yDesc": "Per saperne di più sulla politica statale in materia di accessibilità digitale: <a {linkProps}>references.modernisation.gouv.fr/accessibilite-numeriche</a>",
+            "reportDesc": "Se non ricevi una risposta tempestiva da parte nostra, hai il diritto di inviare i tuoi reclami o una procedura di ricorso al Difensore dei diritti.",
+            "reportTitle": "Segnala un malfunzionamento",
+            "securityCertif": "Il sito è protetto da un certificato elettronico, rappresentato dall'icona di un lucchetto nella maggior parte dei browser. Questa protezione contribuisce alla riservatezza delle comunicazioni.",
+            "securityNoMail": "In nessun caso i servizi associati alla piattaforma invieranno e-mail che richiedano l'inserimento di informazioni personali.",
+            "securityTitle": "Sicurezza",
+            "sources": "Salvo diversa indicazione, tutti i testi presenti su questo sito sono soggetti alla licenza <a {etalabLinkProps}>Etalab Open 2.0</a>. Il codice sorgente di questa applicazione è liberamente riutilizzabile e accessibile su <a {githubLinkProps}>GitHub</a>.",
+            "title": "Avviso legale"
+        },
+        "privacy": {
+            "cookiesBannerDesc": "Esatto, non era necessario cliccare su un blocco che occupava metà della pagina per dare il proprio consenso all'utilizzo dei cookie, anche se non sapevi cosa significasse!",
+            "cookiesBannerNoNeed": "Niente di eccezionale, nessun trattamento speciale legato al dominio .gouv.fr. Stiamo semplicemente rispettando la legge, che stabilisce che alcuni strumenti di tracciamento dell'audience, opportunamente configurati per rispettare la privacy, sono esenti da autorizzazione preventiva.",
+            "cookiesBannerTitle": "Perché questo sito non mostra un banner per il consenso ai cookie?",
+            "cookiesBannerTools": "A tale scopo utilizziamo <a {matomoLinkProps}>Matomo</a>, uno strumento <a {libreLinkProps}>free</a>, configurato per conformarsi alla <a {cnilLinkProps}>recommendation</a>\"Cookie\" della CNIL. Ciò significa che il tuo indirizzo IP, ad esempio, viene anonimizzato prima di essere registrato. È quindi impossibile collegare le tue visite a questo sito alla tua persona.",
+            "cookiesDesc": "Questo sito web inserisce un piccolo file di testo (un \"cookie\") sul tuo computer quando lo visiti. Ciò ci consente di misurare il numero di visite e capire quali pagine vengono visualizzate più frequentemente.",
+            "cookiesDescMore": "Puoi scegliere di non consentire il tracciamento della tua attività di navigazione su questo sito web. Ciò tutelerà la tua privacy, ma impedirà anche al proprietario del sito di apprendere dalle tue azioni e di creare un'esperienza migliore per te e per gli altri utenti.",
+            "cookiesTitle": "Cookie installati e consenso",
+            "dataAccessDatasets": "I dati relativi al dialogo e alle preferenze degli utenti vengono distribuiti sulla piattaforma Hugging Face sotto la licenza Open License 2.0 di Etalab tramite l'account del Ministero della Cultura (<a {linkProps}>https://huggingface.co/ministere-culture</a>).",
+            "dataAccessDesc": "Certamente! Le statistiche sull'utilizzo del sito sono disponibili gratuitamente all'indirizzo <a {linkProps}>stats.beta.gouv.fr</a>.",
+            "dataAccessTitle": "Contribuisco ad arricchire i vostri dati, posso accedervi?",
+            "dataExtraCountry": "Paese destinatario: Francia",
+            "dataExtraHost": "Subappaltatore: OVH",
+            "dataExtraTitle": "Chi ci aiuta ad elaborare i dati?",
+            "dataExtraWarranty": "Garanzie: <a {linkProps}>https://storage.gra.cloud.ovh.net/v1/AUTH_325716a587c64897acbef9a4a4726e38/contracts/9e74492-OVH_Data_Protection_Agreement-FR-6.0.pdf</a>",
+            "dataExtraWhat": "Processo eseguito: Hosting",
+            "dataRespDesc": "Il dipartimento digitale del Ministero Francese della Cultura è responsabile del trattamento dei vostri dati personali.",
+            "dataRespTitle": "Chi è responsabile del trattamento dei dati?",
+            "dataTimeDesc": "I dati relativi agli utenti e alle loro conversazioni con i modelli vengono conservati a partire dalla registrazione del voto di preferenza.",
+            "dataTimeTitle": "Per quanto tempo conserviamo questi dati?",
+            "dataUseDesc": "In ogni caso, l'editore si impegna ad adottare le misure necessarie per garantire l'anonimizzazione dei dati relativi ai dialoghi prima di renderli pubblici.",
+            "dataUseTitle": "Quali elaborazioni vengono effettuate sui dati della conversazione?",
+            "desc": "Il servizio è pubblicato dal dipartimento digitale del Ministero Francese della Cultura.",
+            "optOutTitle": "Opporsi alla misurazione delle visite",
+            "privacyData": "I dati raccolti sul sito sono i seguenti:",
+            "privacyDataArena": "Dati relativi alle conversazioni degli utenti con i modelli : domande poste dagli utenti, risposte dei modelli e preferenze espresse dagli utenti tra i due modelli",
+            "privacyDataForm": "Dati relativi al questionario “Aiutaci a migliorare compar:AI”.",
+            "privacyDesc": "Il servizio non tratta dati personali come definiti dalla CNIL, ossia qualsiasi informazione riguardante una persona fisica che può essere identificata, direttamente o indirettamente.",
+            "privacyResp": "L'utente è responsabile dei dati o dei contenuti inseriti nel campo fornito dalla piattaforma. Accettando i <a {linkProps}>termini di utilizzo</a>, l'utente si impegna a non trasmettere alcuna informazione che possa identificare lui stesso o terzi.",
+            "privacyTitle": "Trattiamo dati a carattere personale?",
+            "tallyData": "Quando compili uno di questi moduli, i dati che inserisci vengono trasmessi e ospitati da Tally (Tally BV, Belgio). Tally si impegna a non utilizzare i tuoi dati per scopi commerciali e a rispettare il GDPR. Per ulteriori informazioni, consulta l'Informativa sulla privacy di Tally <a {tallyPrivacyLinkProps}>Privacy Policy</a>.",
+            "tallyDesc": "Questo sito utilizza <a {tallyLinkProps}>Tally</a>, un servizio online per la creazione di moduli, per due funzionalità:",
+            "tallyFeedback": "Il modulo \"La tua opinione\" ci permette di raccogliere il tuo feedback sul servizio",
+            "tallyNewsletter": "Il modulo di iscrizione alla newsletter compar:IA",
+            "tallyTitle": "Moduli Tally",
+            "title": "Politica sulla riservatezza"
+        },
+        "rgesn": {
+            "1": {
+                "1": "Il sito web compar:IA offre un accesso facile e gratuito a un'ampia varietà di modelli di intelligenza artificiale conversazionale, sensibilizzando così il pubblico sulle diverse sfide dell'IA generativa: diversità, pregiudizi e impatto ambientale. Inoltre, gli insiemi di dati relativi a domande e preferenze raccolti sono condivisi come open source con licenza MIT/Etalab 2.0.",
+                "2": "Gli utenti target del servizio Compar:IA sono stati identificati attraverso interviste fatte agli utenti ed attraverso una fase preliminare di analisi dei bisogni.",
+                "3": "Pertanto, tutti i cittadini sono interessati in quanto potenziali utenti, ma in particolare insegnanti, alunni, studenti, mediatori digitali, formatori di intelligenza artificiale, nonché ricercatori (informatica, intelligenza artificiale, scienze umane e sociali) e aziende interessate ad analizzare o utilizzare gli insiemi di dati condivisi in open source. Di conseguenza, il servizio digitale soddisfa le loro esigenze attraverso le seguenti caratteristiche: testare e confrontare modelli gratuitamente e utilizzare dati open source condivisi.",
+                "4": "Il servizio compar:IA si inserisce in un approccio di ecodesign volto a ridurre l'impatto ambientale. A tal fine, la presente dichiarazione è stata redatta nell'ambito dell'attuazione del Quadro generale di ecodesign per i servizi digitali (RGESN, versione 2024). Il RGESN, elaborato da Arcep e Arcom in collaborazione con ADEME, DINUM, CNIL e Inria, è disponibile sul <a {linkProps}>sito web di Arcep</a>.",
+                "title": "Obiettivo di questo servizio"
+            },
+            "2": {
+                "1": "L'ecodesign dei servizi digitali è un approccio volto a ridurre e limitare l'impatto ambientale di un servizio fin dalla fase di progettazione e per tutto il suo ciclo di vita.",
+                "2": {
+                    "1": "Progettare servizi digitali più sostenibili per prolungare la durata di vita dei dispositivi;",
+                    "2": "Promuovere un approccio di sobrietà ambientale di fronte a strategie volte a catturare l'attenzione dell'utente, in linea con gli obiettivi ambientali internazionali;",
+                    "3": "Ridurre le risorse IT utilizzate, ottimizzare il traffico dati e l'uso dell'infrastrutture digitali;",
+                    "4": "Aumentare il livello di trasparenza sull'impatto ambientale dei servizi digitali.",
+                    "title": "La sua attuazione persegue quattro obiettivi principali:"
+                },
+                "3": {
+                    "1": "Limita le dimensioni di una pagina",
+                    "2": "Limita la complessità di una pagina",
+                    "3": "Limitare il numero di richieste al server",
+                    "4": "Limitare il consumo energetico necessario per ospitare il servizio",
+                    "title": "In termini pratici, l'ecodesign si traduce in un insieme di buone pratiche da seguire prima, durante e dopo la creazione o il miglioramento di un servizio, consentendo, in particolare:"
+                },
+                "4": "Si tratta di un processo di miglioramento continuo e collettivo.",
+                "title": "Che cos'è l'ecodesign?"
+            },
+            "3": {
+                "1": {
+                    "1": "Semplificazione dell'esperienza utente: i percorsi di navigazione sono ottimizzati e incentrati sulle funzionalità essenziali del servizio Compar:IA (area dei modelli da testare, set di dati, classificazione) con regolari test utente.",
+                    "2": "Sensibilizzare gli utenti sull'impatto ambientale del servizio: evidenziare gli indicatori di impatto energetico nelle domande poste all'IA; promuovere usi \"parsimoniosi\", con una modalità dedicata all'interrogazione di modelli di IA conversazionale \"piccoli\" il cui impatto ambientale è minore.",
+                    "3": "Utilizzo dei componenti di interfaccia del State Design System (DSFR): sono accessibili e hanno un'impronta ecologica minimo.",
+                    "4": "La navigazione più intuitiva possibile per ridurre al minimo il tempo impiegato nella ricerca delle informazioni.",
+                    "5": "Design \"mobile-first\": tutti i contenuti sono visualizzabili su dispositivi mobili. Il sito si adatta a tutte le dimensioni dello schermo.",
+                    "6": "Esclusione dell'integrazione di video sul sito.",
+                    "title": "La sfida principale è garantire che il servizio compar:IA funzioni anche sui dispositivi utente più datati, in condizioni di connettività variabili. Durante la fase di progettazione sono state implementate diverse misure, tra cui:"
+                },
+                "title": "Strategia attuata e obiettivi relativi alla riduzione o limitazione degli impatti ambientali"
+            },
+            "4": {
+                "1": "L'autodiagnosi, condotta tra maggio e ottobre 2025 dal team di prodotto (due persone si sono occupate della revisione e della convalida di tutti i criteri), ha riguardato tutte le pagine del sito. Gli strumenti utilizzati per valutare alcuni indicatori tecnici sono stati lo strumento di ispezione \"network\" degli strumenti per sviluppatori del browser, l'estensione <a {greenitLinkProps}>Green IT Analysis</a> e lo strumento <a {ecoindexLinkProps}>EcoIndex</a>.",
+                "title": "Diagnosi RGESN"
+            },
+            "5": {
+                "1": {
+                    "1": "Punteggio di avanzamento nell'attuazione del RGESN, al 10/12/2025: 89%",
+                    "title": "L'autodiagnosi fornisce un tasso di conformità con le <a {linkProps}>RGENSN</a> (linee guida generali per l'ecodesign) dell'89%."
+                },
+                "2": "Il servizio digitale compar:IA punta a migliorare questo punteggio di progresso fino a raggiungere il 95% entro il 2027.",
+                "3": {
+                    "1": "Strategia: 100%",
+                    "2": "Specifiche: 78%",
+                    "3": "Architettura: 100%",
+                    "4": "Esperienza utente e interfaccia (UX/UI): 100%",
+                    "5": "Contenuti: 67%",
+                    "6": "Frontend: 82%",
+                    "7": "Backend: 64%",
+                    "8": "Hosting: 90%",
+                    "9": "Algoritmi: 100%",
+                    "title": "Punteggio per tema:"
+                },
+                "4": {
+                    "date": "10 dicembre 2025",
+                    "title": "Tabella di audit RGESN"
+                },
+                "title": "Punteggio nell'implementazione del framework"
+            },
+            "6": {
+                "1": "Il sito è stato progettato per essere accessibile da qualsiasi dispositivo mobile prodotto a partire dal 2017.",
+                "2": "Connessione minima richiesta per un accesso e un utilizzo agevole del servizio: 3G su rete mobile e 512 Kbps su connessione fissa.",
+                "3": "Il sito è progettato per adattarsi a diverse dimensioni dello schermo (larghezza minima 320 pixel).",
+                "4": "Il sito non è accessibile tramite il browser Internet Explorer. ",
+                "title": "Requisiti minimi per accedere al sito"
+            },
+            "7": {
+                "1": "Progettare il servizio con una revisione della progettazione e una revisione del codice, uno dei cui obiettivi è ridurre l'impatto ambientale di ciascuna funzionalità (criterio 2.1)",
+                "2": "Implementare periodi di conservazione dei dati ai fini della cancellazione o dell'archiviazione: cancellazione periodica dei log nel file server \"S3\" e, in particolare, nel database (Postgres).",
+                "3": {
+                    "1": "Numero massimo di richieste al server per schermata: 40",
+                    "2": "Dimensione massima delle risorse per schermata: 600 KB",
+                    "title": "Per rispettare un peso massimo e un limite al numero di richieste per schermata (criterio 6.1):"
+                },
+                "4": "Converti le illustrazioni in WebP, AVIF, JPEG XL o in un formato immagine più efficiente per le immagini raster (criterio 5.1).",
+                "5": "Consentire la possibilità di interrompere l'inferenza (caricamento delle risposte) durante il confronto dei modelli.",
+                "6": "I punteggi dell'analisi EcoIndex dimostrano una discrepanza significativa nelle misurazioni dell'impatto, con alcune pagine che ricevono punteggi fino a E o F (peso della pagina, complessità e numero di richieste relativamente elevati); la sfida ora è comprendere questi risultati in modo più preciso, caso per caso, nonostante le buone pratiche implementate, al fine di individuare ulteriori miglioramenti.",
+                "desc": "Sono stati individuati o sono tuttora in fase di individuazione diversi miglioramenti, tra cui:",
+                "title": "Miglioramenti individuati"
+            },
+            "desc": "pubblicato l'11 dicembre 2025",
+            "title": "Dichiarazione di ecodesign"
+        },
+        "tos": {
+            "title": "Termini d'uso"
+        }
+    },
+    "generated": {
+        "archs": {
+            "dense": {
+                "desc": "L'architettura densa si riferisce a un tipo di rete neurale in cui ogni neurone di uno strato è connesso a tutti i neuroni dello strato successivo. Ciò consente a tutti i parametri dello strato di contribuire al calcolo dell'output.",
+                "name": "Denso"
+            },
+            "matformer": {
+                "desc": "Immagina le bambole russe (matrioske → matryoshka transformer → Matformer): ogni blocco contiene diversi sotto-modelli annidati di dimensioni crescenti, che condividono gli stessi parametri. Ciò consente, per ogni richiesta, la selezione di un modello con capacità adeguate, a seconda della memoria disponibile o della latenza, senza la necessità di riaddestrare modelli diversi.",
+                "name": "Matformer"
+            },
+            "moe": {
+                "desc": "L'architettura Mixture of Experts (MoE) utilizza un meccanismo di routing per attivare, in base all'input, solo determinati sottoinsiemi specializzati (\"esperti\") della rete neurale. Ciò consente di costruire modelli molto grandi mantenendo un basso costo computazionale, poiché ad ogni passaggio viene utilizzata solo una porzione della rete.",
+                "name": "MoE"
+            },
+            "na": {
+                "desc": "L'editore non ha reso pubbliche le informazioni sull'architettura del modello.",
+                "name": "Proprietario"
+            }
+        }
+    },
+    "header": {
+        "chatbot": {
+            "newDiscussion": "Nuova chat",
+            "reveal": {
+                "description": "Scopri l'impatto ambientale delle tue conversazioni con ciascun modello",
+                "subtitle": "I modelli sono stati smascherati!",
+                "title": "Rivelazione"
+            }
+        },
+        "homeTitle": "Home - compar:IA",
+        "menu": "Menu",
+        "title": "comapr:IA",
+        "votes": {
+            "count": "{count} votes",
+            "legend": "Leggenda",
+            "objective": "Obiettivo: {count}k",
+            "tooltip": "Discuti, vota e aiutaci a raggiungere questo obiettivo!<br /><strong>I tuoi voti sono importanti</strong> : alimentano il dataset compar:IA reso liberamente disponibile per perfezionare i futuri modelli per la lingua francese.<br />Questo patrimonio digitale contribuisce ad un maggiore <strong>rispetto della diversità linguistica e culturale dei futuri modelli linguistici.</strong>"
+        }
+    },
+    "home": {
+        "vote": {
+            "steps": {
+                "datasets": {
+                    "desc": "Tutte le domande poste e i voti vengono raccolti in dataset e pubblicati liberamente dopo essere stati anonimizzati.",
+                    "title": "Dataset per lingua"
+                },
+                "finetune": {
+                    "desc": "In definitiva, le imprese e gli ambienti accademici possono sfruttare i dataset per addestrare nuovi modelli che siano più rispettosi della diversità linguistica e culturale.",
+                    "title": "Modelli perfezionati per la lingua specifica"
+                },
+                "prefs": {
+                    "desc": "Dopo aver discusso con l'IA, indica la tua preferenza per un modello in base a criteri specifici, come la pertinenza o l'utilità delle risposte.",
+                    "title": "Le tue preferenze"
+                }
+            },
+            "title": "Perché il tuo voto è importante?"
+        }
+    },
+    "models": {
+        "arch": {
+            "title": "Lo sapevi?"
+        },
+        "conso": {
+            "count": {
+                "L": "> 5000 mWh",
+                "M": "da 150 a 5000 mWh",
+                "S": "<150 mWh"
+            },
+            "filterLegend": "Filtra per consumo energetico medio ogni 1000 token"
+        },
+        "licenses": {
+            "type": {
+                "openSource": "Open source",
+                "proprietary": "Proprietario",
+                "semiOpen": "Open weight"
+            }
+        },
+        "list": {
+            "filters": {
+                "archived": {
+                    "checkedLabel": "Visibile",
+                    "label": "Modelli archiviati",
+                    "uncheckedLabel": "Non visibile"
+                },
+                "editor": {
+                    "legend": "Editore"
+                },
+                "license": {
+                    "legend": "Licenza d'uso"
+                },
+                "reset": "Cancella tutti i filtri",
+                "size": {
+                    "legend": "Dimensioni (parametri)"
+                }
+            },
+            "model": "modello",
+            "models": "modelli",
+            "noresults": "Nessun modello corrisponde ai criteri di ricerca.",
+            "triage": {
+                "label": "Ordina per",
+                "options": {
+                    "date-desc": "Data di pubblicazione (dalla più recente alla meno recente)",
+                    "name-asc": "Nome del modello (dalla A alla Z)",
+                    "org-asc": "Editore (dalla A alla Z)",
+                    "params-asc": "Dimensioni (dalla più piccola alla più grande)"
+                }
+            }
+        },
+        "names": {
+            "a": "Modello A",
+            "b": "Modello B"
+        },
+        "openWeight": {
+            "tooltips": {
+                "openSource": "Il corpus, il codice di addestramento e i pesi di questo modello (ovvero i parametri appresi durante l'addestramento) sono completamente scaricabili e modificabili dal pubblico, consentendo loro di eseguire e modificare il modello sul proprio hardware. Un modello \"open source\" è più restrittivo rispetto ad uno \"open weight\", soprattutto a causa della necessità di trasparenza del corpus di addestramento, e pochissimi modelli sono considerati \"open source\".",
+                "openWeight": "Un modello viene definito \"open weights\" quando i pesi, ovvero i parametri appresi durante l'addestramento, sono scaricabili pubblicamente, consentendo agli utenti di eseguire il modello sul proprio hardware. La definizione di \"open source\" è più restrittiva (principalmente per quanto riguarda la trasparenza del corpus di addestramento) e pochi modelli sono considerati \"open source\"."
+            }
+        },
+        "release": "Uscita {date}",
+        "size": {
+            "count": {
+                "L": "da 100 a 400 miliardi",
+                "M": "da 60 a 100 miliardi",
+                "S": "da 15 a 60 miliardi",
+                "XL": ">400 miliardi",
+                "XS": "<15 miliardi"
+            },
+            "estimated": "Dimensione stimata ({size})",
+            "title": "Dimensioni {size}"
+        }
+    },
+    "modes": {
+        "big-vs-small": {
+            "altLabel": "Davide contro Golia",
+            "description": "Un modello piccolo contro uno grande, entrambi scelti a caso",
+            "label": "Davide contro Golia",
+            "title": "Modalità Davide contro Golia"
+        },
+        "custom": {
+            "altLabel": "Selezione manuale",
+            "description": "Riusciresti a riconoscere i due modelli che hai scelto?",
+            "label": "Selezione manuale",
+            "title": "Modalità di selezione"
+        },
+        "random": {
+            "altLabel": "Modelli casuali",
+            "description": "Due modelli scelti a caso dall'intera lista",
+            "label": "Casuale",
+            "title": "Modalità casuale"
+        },
+        "reasoning": {
+            "altLabel": "Modelli con ragionamento",
+            "description": "Due modelli selezionati a caso tra quelli ottimizzati per compiti complessi",
+            "label": "Ragionamento",
+            "title": "Modalità di ragionamento"
+        },
+        "small-models": {
+            "altLabel": "Modelli frugali",
+            "description": "Due modelli scelti a caso tra i più piccoli",
+            "label": "Frugale",
+            "title": "Modalità frugale"
+        }
+    },
+    "ranking": {
+        "energy": {
+            "desc": "Questo grafico rappresenta il punteggio di soddisfazione (punteggio Bradley Terry) per ciascun modello in funzione del consumo energetico medio stimato per 1000 token. Il consumo energetico è stimato utilizzando la metodologia <a {linkProps}>Ecologits</a> e si basa su due parametri: la <strong>dimensione</strong> dei modelli (numero di parametri) e la loro <strong>architettura</strong>. Per i <strong>modelli proprietari</strong>, queste informazioni non sono fornite o sono disponibili solo parzialmente. Pertanto, sono esclusi dal grafico sottostante.",
+            "tabLabel": "Focus sull'energia",
+            "title": "I modelli più diffusi sono efficienti dal punto di vista energetico?",
+            "views": {
+                "graph": {
+                    "desc": "Seleziona un modello per scoprire il suo punteggio Bradley-Terry (BT) e il suo consumo energetico",
+                    "legends": {
+                        "arch": "Architettura del modello",
+                        "size": "Filtra per dimensione",
+                        "sizeSub": "(miliardi di parametri)"
+                    },
+                    "tabLabel": "Vista grafica",
+                    "title": "Punteggio di soddisfazione Bradley-Terry (BT) rispetto al consumo medio per 1000 token",
+                    "tooltip": {
+                        "active_params": "Parametri attivi (mds)",
+                        "arch": "Architettura",
+                        "consumption": "Consumo medio (mWh)",
+                        "elo": "Score BT",
+                        "params": "Parametri (mds)"
+                    },
+                    "xLabel": "Consumo medio per 1000 token (mWh)",
+                    "yLabel": "Punteggio Bradley-Terry (BT)"
+                },
+                "methodo": {
+                    "1": {
+                        "list": {
+                            "1": "<strong>Più in alto si trova un modello sul grafico</strong>, maggiore è il suo punteggio di soddisfazione Bradley-Terry. <strong>Più un modello si trova a sinistra sul grafico</strong>, minore è l'energia che consuma rispetto agli altri modelli.",
+                            "2": "<strong>In alto a sinistra</strong> si trovano i modelli più popolari e che consumano meno energia rispetto agli altri modelli.",
+                            "3": "Oltre alle dimensioni, <strong>l'architettura</strong> ha un impatto sul consumo energetico medio dei modelli: ad esempio, a parità di dimensioni, il modello Llama 3 405B (architettura densa, 405 miliardi di parametri) consuma in media 10 volte più energia del modello GLM 4.5 (architettura MOE, 355 miliardi di parametri e 32 miliardi di parametri attivi)."
+                        },
+                        "subTitle": "Esempi di lettura del grafico",
+                        "title": "Come trovare il giusto equilibrio tra prestazioni percepite ed efficienza energetica?"
+                    },
+                    "2": {
+                        "descs": {
+                            "1": "La stima del consumo energetico per l'inferenza dei modelli si basa sulla metodologia Ecologits, che tiene conto delle dimensioni e dell'architettura dei modelli. Tuttavia, queste informazioni non vengono rese pubbliche dagli sviluppatori dei modelli cosiddetti \"proprietari\".",
+                            "2": "Abbiamo pertanto deciso di non integrare modelli proprietari nel grafico finché le informazioni che contribuiscono al calcolo del consumo energetico non saranno trasparenti."
+                        },
+                        "title": "Perché i modelli proprietari non vengono visualizzati nel grafico?"
+                    },
+                    "3": {
+                        "descs": {
+                            "1": "compar:IA utilizza la metodologia sviluppata da <a {ecoLinkProps}><strong>Ecologits</strong></a> (<a {genaiLinkProps}><strong>GenAI ImpactImpact</strong></a>) per fornire una stima dell'impronta energetica associata all'inferenza di modelli di IA generativa conversazionale. Questa stima consente agli utenti di confrontare l'impatto ambientale di diversi modelli di IA per la stessa richiesta. Tale trasparenza è essenziale per incoraggiare lo sviluppo e l'adozione di modelli di IA più eco-responsabili.",
+                            "2": "Ecologits applica i principi della valutazione del ciclo di vita (LCA) in conformità con la norma ISO 14044, concentrandosi per il momento sull'impatto dell'inferenza (ovvero l'utilizzo di modelli per rispondere a quesiti) e sulla <strong>produzione di schede grafiche</strong> (estrazione delle risorse, produzione e trasporto).",
+                            "3": "Il consumo energetico del modello viene stimato tenendo conto di diversi parametri, come le dimensioni e l'architettura del modello di IA utilizzato, la localizzazione dei server su cui sono distribuiti i modelli e il numero di token di output. Il calcolo dell'indicatore del potenziale di riscaldamento globale, espresso in CO2 equivalente, deriva dalla misurazione del consumo energetico del modello.",
+                            "4": "È importante sottolineare che le metodologie per valutare l'impatto ambientale dell'IA sono ancora in fase di sviluppo."
+                        },
+                        "title": "Come viene calcolato l'impatto energetico dei modelli?"
+                    }
+                },
+                "table": {
+                    "title": "Dati del grafico in formato tabellare"
+                }
+            }
+        },
+        "methodo": {
+            "desc": {
+                "1": "Dal 2024, migliaia di utenti hanno utilizzato compar:AI per confrontare le risposte di diversi modelli, generando centinaia di migliaia di voti. Contare semplicemente il numero di vittorie non è sufficiente per stabilire una classifica. Un sistema equo deve essere statisticamente robusto, aggiornarsi dopo ogni confronto e riflettere fedelmente il valore delle prestazioni ottenute.",
+                "2": "È con questo obiettivo che è stata creata una <strong>classifica basata sul modello Bradley-Terry</strong>, sviluppata in collaborazione con i <strong>team del Centro di competenza sulla regolamentazione digitale (<a {perenLinkProps}>PEReN</a>)</strong>, utilizzando tutti i voti e le reazioni raccolti sulla piattaforma. Per maggiori informazioni, consultare la nostra <a {notebookLinkProps}>guida metodologica</a>."
+            },
+            "impacts": {
+                "elo": {
+                    "desc": {
+                        "1": "Il modello <strong>Bradley-Terry</strong> trasforma una serie di confronti locali e potenzialmente incompleti in un sistema di classificazione globale coerente e statisticamente robusto, in cui il tasso di successo empirico rimane limitato alle osservazioni dirette."
+                    },
+                    "title": "I 10 modelli migliori in classifica in base al tasso di successo stimato con il modello Bradley-Terry"
+                },
+                "title": "Impatto della scelta del metodo sulla classificazione dei modelli",
+                "winrate": {
+                    "desc": {
+                        "1": "Basandosi esclusivamente sulla <strong>percentuale media di vittorie</strong>, è possibile ottenere una classifica generale, ma questo calcolo presuppone che ogni modello abbia giocato contro tutti gli altri.",
+                        "2": "Questo metodo non è ideale perché richiede dati da tutte le combinazioni di modelli e, non appena il numero di modelli aumenta, diventa rapidamente costoso e complesso da gestire."
+                    },
+                    "title": "I 10 modelli migliori in classifica in base ai tassi di successo \"empirici\"."
+                }
+            },
+            "methods": {
+                "cons": "Problemi principali",
+                "elo": {
+                    "def": "<strong>Definizione</strong> : Sistema di classificazione in cui il guadagno o la perdita di punti dipende dal risultato (vittoria/sconfitta/pareggio)<strong>e</strong> dal livello stimato dell'avversario: se un modello più debole batte un modello più forte , il suo progresso in classifica è maggiore.",
+                    "list": {
+                        "1": "<strong>Modello probabilistico</strong>: possiamo stimare il probabile esito di qualsiasi confronto, anche tra modelli che non sono mai stati confrontati direttamente.",
+                        "2": "<strong>Considerazione della difficoltà della partita</strong>: i punteggi stimati dal modello Bradley Terry tengono conto del livello degli avversari incontrati, consentendo un confronto equo tra i modelli.",
+                        "3": "<strong>Gestione dell'incertezza migliorata</strong>: l'intervallo di confidenza incorpora l'intera rete di confronti. Ciò consente una stima più accurata dell'incertezza, soprattutto per i modelli con pochi scontri diretti ma molti avversari comuni."
+                    },
+                    "title": "Classifica Bradley-Terry (BT)"
+                },
+                "pros": "Benefici",
+                "title": "Due modi per classificare i modelli",
+                "winrate": {
+                    "def": "<strong>Definizione</strong>:Un sistema di classificazione empirico per i modelli basato sulla percentuale di partite vinte da un modello rispetto a tutti gli altri modelli.",
+                    "list": {
+                        "1": "<strong>Distorsione del numero di partite</strong>: un modello che ha vinto tre \"partite\" su tre mostra un tasso di vittoria del 100%, ma questo punteggio non è molto significativo in quanto basato su pochissimi dati.",
+                        "2": "<strong>Nessuna considerazione della difficoltà della partita</strong> : battere un modello \"principiante\" o un modello \"esperto\" ha lo stesso valore. Le percentuali di vittoria sono inique perché non tengono conto della difficoltà della partita.",
+                        "3": "<strong>Stagnazione</strong>: Nel lungo periodo, molti buoni modelli finiscono per avere un tasso di vittoria intorno al 50% perché si confrontano con modelli del loro stesso livello, rendendo la classifica meno discriminante."
+                    },
+                    "title": "Classifica in base al tasso di vittorie"
+                }
+            },
+            "style": {
+                "coef": {
+                    "footnote": "La lunghezza e gli indicatori markdown sono correlati: questi coefficienti vanno letti insieme e non come effetti indipendenti presi isolatamente.",
+                    "hint": "Coefficienti di regressione stimati su tutti i voti. Un valore positivo indica che questo linea di presentazione è associata ad una maggiore probabilità di vittoria, una volta presa in considerazione la forza del modello. Questa è precisamente la parte della classifica che il controllo dello stile elimina.",
+                    "title": "Effetto misurato della presentazione"
+                },
+                "desc": {
+                    "1": "Un modello può scalare le classifiche semplicemente fornendo una risposta più lunga o utilizzando una formattazione più ricca (titoli, testo in grassetto, elenchi), senza necessariamente essere più rilevante in termini di contenuto. Il controllo dello stile, ispirato a \"Style Control\" di LMArena, elimina questo effetto: una regressione logistica separa, in ogni voto, ciò che è dovuto alla forza del modello da ciò che è dovuto alla sua presentazione.",
+                    "2": "Il punteggio visualizzato diventa quindi un punteggio Elo \"non influenzato dallo stile\": la classifica che si otterrebbe se le due risposte confrontate fossero formattate allo stesso modo. Il controllo dello stile è abilitato per impostazione predefinita; il pulsante \"Controllo stile\" nella parte superiore della tabella consente di tornare al punteggio Bradley-Terry grezzo per il confronto."
+                },
+                "features": {
+                    "length": "Lunghezza della risposta",
+                    "md_bold": "Testo in grassetto",
+                    "md_headers": "Titoli",
+                    "md_lists": "Elenchi puntati"
+                },
+                "title": "Controllo dello stile: neutralizzare l'effetto della presentazione"
+            },
+            "tabLabel": "Metodologia",
+            "title": "Come scegliere il metodo per classificare i modelli?"
+        },
+        "no_data": "La classifica al momento non è disponibile o è in fase di calcolo.",
+        "preferences": {
+            "desc": "Quando esprimi il tuo voto, puoi categorizzare la tua preferenza utilizzando diverse categorie positive e negative. Confronta la loro distribuzione da un modello all'altro.",
+            "modal": {
+                "cta": "Che cos'è una preferenza?",
+                "title": "Preferenze positive e negative"
+            },
+            "tabLabel": "Fous sulle preferenze",
+            "table": {
+                "cols": {
+                    "clear_formatting": "Formattazione<br> chiara",
+                    "complete": "Completare",
+                    "creative": "Creativo",
+                    "incorrect": "Non corretto",
+                    "instructions_not_followed": "Istruzioni<br> non seguite",
+                    "n_match": "Partite totali",
+                    "name": "Modello",
+                    "positive_prefs_ratio": "Distribuzione delle preferenze",
+                    "superficial": "Superficiale",
+                    "total_negative_prefs": "Preferenze totali<br> Negative",
+                    "total_positive_prefs": "Preferenze totali<br> Positive",
+                    "useful": "Utile"
+                },
+                "percentLabel": "Preferenze espresse in percentuale",
+                "tooltips": {
+                    "positive_prefs_ratio": "Durante la votazione, i badge permettevano di specificare le motivazioni della propria preferenza. Questa colonna mostra la distribuzione in percentuale di questi badge (positivi o negativi) rispetto al totale dei voti."
+                }
+            },
+            "title": "Come vengono distribuite le preferenze degli utenti?"
+        },
+        "ranking": {
+            "desc": "Questa classifica è calcolata a partire dai voti raccolti attraverso <strong>confronti alla cieca</strong>, secondo il modello statistico <strong>Bradley-Terry</strong>. Riflette <strong>preferenze soggettive</strong> e va interpretata con prudenza: non misura né l'accuratezza fattuale delle risposte né le prestazioni complessive dei modelli.",
+            "tabLabel": "Classifica"
+        },
+        "styleControl": {
+            "help": "Rimuove l'effetto della formattazione (lunghezza della risposta, titoli, grassetto, elenchi) dalla classifica, in modo che il punteggio rifletta il contenuto piuttosto che la presentazione. Attivato per impostazione predefinita. Dettagli nella scheda Metodologia.",
+            "label": "Controllo dello stile"
+        },
+        "table": {
+            "data": {
+                "billions": "{count} Mds",
+                "cols": {
+                    "arch": "Architettura",
+                    "consumption": "Consumo medio<br>(1000 token)",
+                    "elo": "Punteggio di<br> soddisfazione BT",
+                    "license": "Licenza",
+                    "n_match": "Voti totali",
+                    "name": "Modello",
+                    "organisation": "Organizzazione",
+                    "rank": "Classifica",
+                    "release": "Data di rilascio",
+                    "size": "Dimensioni<br>(parametri)",
+                    "trust_range": "Fiducia (±)"
+                },
+                "estimation": "(stima)",
+                "tooltips": {
+                    "arch": "L'architettura di un modello LLM si riferisce ai principi di progettazione che definiscono come i componenti di una rete neurale sono disposti e interagiscono per trasformare i dati di input in output predittivi, inclusi la modalità di attivazione dei parametri (densa o sparsa), la specializzazione dei componenti e i meccanismi di elaborazione delle informazioni (trasformatori, reti convoluzionali, architetture ibride).",
+                    "consumption": "Misurato in milliwattora, il consumo energetico rappresenta l'elettricità utilizzata dal modello per elaborare una richiesta e generare la risposta corrispondente. Il consumo energetico del modello dipende dalle sue dimensioni e dalla sua architettura. Abbiamo scelto di visualizzare in grigio, con la dicitura \"non analizzato\" (N/A), i modelli proprietari per i quali non disponiamo di informazioni trasparenti su dimensioni e architettura.",
+                    "elo": "Il punteggio statistico, stimato secondo il modello di Bradley-Terry, riflette la probabilità che un modello sia preferito rispetto a un altro. Questo punteggio viene calcolato a partire da tutti i voti e le reazioni degli utenti. Per ulteriori informazioni, consultare la sezione \"Metodologia\".",
+                    "rank": "Classifica assegnata in base al punteggio di soddisfazione Bradley-Terry",
+                    "size": "Il modello è composto da miliardi di parametri, suddivisi in cinque classi. Per i modelli proprietari, le dimensioni non vengono divulgate.",
+                    "trust_range": "Intervallo che indica l'affidabilità della stima della classifica: più l'intervallo è ristretto, più affidabile è la stima della classifica. C'è una probabilità del 95% che la vera classifica del modello si trovi all'interno di questo intervallo."
+                }
+            },
+            "lastUpdate": "Aggiornato il {date}",
+            "totalModels": "Modelli totali:",
+            "totalVotes": "Voti totali:"
+        },
+        "title": "Dai voti alla classifica dei modelli"
+    },
+    "reveal": {
+        "feedback": {
+            "description": "Aiuta a promuovere compar:IA condividendo i modelli di IA con cui hai interagito! Tramite questo link saranno visibili solo i nomi e l'impatto energetico della discussione, senza accesso ai messaggi scambiati.",
+            "example": "Esempio di condivisione dei risultati",
+            "moreOnVotes": "Scopri di più sui voti",
+            "shareResult": "Condividi il tuo risultato"
+        },
+        "impacts": {
+            "energy": {
+                "tooltip": "Misurata in milliwattora, l'energia consumata rappresenta l'elettricità utilizzata dal modello per elaborare una richiesta e generare la risposta corrispondente. Più un modello è grande (in miliardi di parametri), maggiore è l'energia necessaria per produrre un token."
+            },
+            "title": "Stima dell'impatto energetico della discussione",
+            "tokens": {
+                "tooltip": "L'IA analizza e genera frasi a partire da parole o parti di parole di circa quattro lettere; questa unità di testo è chiamata token. Più lungo è il testo, maggiore è il numero di token."
+            }
+        },
+        "thanks": {
+            "cta": "Accedi alle classifiche",
+            "desc": "Scopri come le tue preferenze si confrontano con la classifica generale dei modelli su compar:IA.",
+            "graphAlt": "Panoramica del grafico che rappresenta il punteggio e il consumo di energia elettrica dei modelli",
+            "rankingAlt": "Panoramica della classifica in formato tabellare",
+            "title": "Grazie per il tuo contributo!"
+        }
+    },
+    "seo": {
+        "desc": "{platformName} è uno strumento che consente il confronto alla cieca di diversi modelli di IA conversazionale per sensibilizzare sulle problematiche dell'IA generativa (pregiudizi, impatto ambientale) e per creare dataset sulle preferenze in francese.",
+        "title": "{platformName}, il comparatore di intelligenza artificiale conversazionale",
+        "titles": {
+            "accessibilite": "Dichiarazione di accessibilità",
+            "arene": "Chat",
+            "donnees-personnelles": "Politica sulla riservatezza",
+            "mentions-legales": "Avviso legale",
+            "modalites": "Termini d'uso",
+            "modeles": "Elenco dei modelli",
+            "ranking": "Classifica",
+            "rgesn": "Dichiarazione di ecodesign"
+        }
+    },
+    "vote": {
+        "choices": {
+            "negative": {
+                "comment": "Per favore, specifica cosa non ti è piaciuto…",
+                "incorrect": "Non corretto",
+                "instructions_not_followed": "Istruzioni non seguite",
+                "question": "Perché questa risposta non è adeguata?",
+                "superficial": "Superficiale"
+            },
+            "positive": {
+                "clear_formatting": "Formattazione chiara",
+                "comment": "Per favore, specifica cosa ti è piaciuto…",
+                "complete": "Completo",
+                "creative": "Creativo",
+                "question": "Cosa hai apprezzato della risposta?",
+                "useful": "Utile"
+            }
+        },
+        "importantDesc": "La tua preferenza arricchisce i dataset di compar:IA, che mirano a perfezionare i futuri modelli di IA per le lingue francese, svedese, lituana e danese.",
+        "title": "Quale modello di IA preferisci?",
+        "turn": {
+            "choices": {
+                "a_better": "A è meglio",
+                "b_better": "B è meglio",
+                "both_bad": "Entrambi non vanno bene",
+                "both_good": "Entrambi sono buoni",
+                "idk": "Approva la votazione"
+            },
+            "important": "Il tuo voto è importante: contribuisce a un migliore allineamento con le <a {linkProps}>preferenze francofone</a>."
+        },
+        "yours": "Il tuo voto"
+    },
+    "words": {
+        "NA": "N/A",
+        "activated": "Attivato",
+        "archived": "Archiviato",
+        "back": "Indietro",
+        "close": "Chiudere",
+        "deactivated": "Disattivato",
+        "loading": "Caricamento",
+        "new": "Nuovo",
+        "random": "Casuale",
+        "regenerate": "Rigenerare",
+        "reset": "Reset",
+        "restart": "Ricominciare",
+        "retry": "Ricominciare",
+        "search": "Ricercare",
+        "send": "Inviare",
+        "tooltip": "Strumento di suggerimento",
+        "validate": "Convalidare"
+    }
+}
